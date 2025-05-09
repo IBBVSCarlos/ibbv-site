@@ -45,6 +45,14 @@
       color: #ccc;
     }
 
+    .semana {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
     .container {
       position: relative;
       background: white;
@@ -129,34 +137,15 @@
         padding: 15px;
       }
     }
-  
-    .versiculo {
-      font-style: italic;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      color: var(--verde-escuro);
-      background-color: #e8f5e9;
-      padding: 10px;
-      border-left: 4px solid var(--verde-claro);
-    }
-
-    .extra {
-      margin-top: 30px;
-    }
-
-    .extra ul {
-      list-style: disc;
-      padding-left: 20px;
-    }
-</style>
+  </style>
 </head>
 <body>
 
   <header>
+    <div class="semana" id="semana"></div>
     <img src="logo_site.png" alt="Logo IBBV São Carlos" />
     <h1>Boletim Informativo</h1>
     <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-    <p style="text-align:right; margin: 0; font-size: 0.9em; color: #aaa;"><em>Semana de 4 a 10 de maio de 2025</em></p>
   </header>
 
   <div class="container">
@@ -183,84 +172,61 @@
       <h2>Pedidos de Oração</h2>
       <p>Carregando...</p>
     </section>
-  
-    <section class="versiculo" id="versiculo">
-      <p>Carregando versículo...</p>
-    </section>
-
-    <section id="aniversariantes" class="extra">
-      <h2>Aniversariantes da Semana</h2>
-      <ul></ul>
-    </section>
-
-    <section id="escala" class="extra">
-      <h2>Escala de Ministérios</h2>
-      <ul></ul>
-    </section>
-
-    <section id="avisos" class="extra">
-      <h2>Avisos</h2>
-      <ul></ul>
-    </section>
   </div>
+
   <footer>
     &copy; 2025 IBBV São Carlos. Todos os direitos reservados.
   </footer>
 
   <script>
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQceUYQ2BOEQVz0XAx_UIIRMt3A0aw5MywiS5UvyVuqoqyaIKOB-vF0QcnqFGCYYTtWvtoEjSwaglqY/pub?output=csv';
+    // Calcula a semana atual (de domingo a sábado)
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
 
-    fetch(sheetURL)
-      .then(response => response.text())
-      .then(csv => {
-        const rows = csv.trim().split('\n').map(row => row.split(','));
-        const data = {};
-        for (let i = 1; i < rows.length; i++) {
-          data[rows[i][0]] = rows[i][1];
+    const formatar = d => d.toLocaleDateString('pt-BR', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+
+    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
+
+    fetch('data/conteudo.md')
+      .then(res => res.text())
+      .then(texto => {
+        const dados = /---([\s\S]*?)---/.exec(texto);
+        if (!dados) return;
+        const yaml = dados[1];
+        const linhas = yaml.split('\n').map(l => l.trim());
+        let campo = '';
+        const dadosBoletim = { programacao: [] };
+
+        for (let linha of linhas) {
+          if (linha.startsWith('mensagem:')) {
+            dadosBoletim.mensagem = linha.replace('mensagem:', '').trim().replace(/^"|"$/g, '');
+          } else if (linha.startsWith('oracao:')) {
+            dadosBoletim.oracao = linha.replace('oracao:', '').trim().replace(/^"|"$/g, '');
+          } else if (linha.startsWith('-')) {
+            dadosBoletim.programacao.push(linha.replace('-', '').trim());
+          }
         }
 
-        document.querySelector('#mensagem p').textContent = data['mensagem'];
+        document.querySelector('#mensagem p').textContent = dadosBoletim.mensagem;
 
         const listaProgramacao = document.querySelector('#programacao ul');
         listaProgramacao.innerHTML = '';
-        data['programacao'].split(';').forEach(item => {
+        dadosBoletim.programacao.forEach(item => {
           const li = document.createElement('li');
-          li.textContent = item.trim();
+          li.textContent = item;
           listaProgramacao.appendChild(li);
         });
 
-        
-        document.querySelector('#oracao p').textContent = data['oracao'];
-
-        document.querySelector('#versiculo p').textContent = data['versiculo'];
-
-        const listaAniversariantes = document.querySelector('#aniversariantes ul');
-        listaAniversariantes.innerHTML = '';
-        data['aniversariantes'].split(';').forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item.trim();
-          listaAniversariantes.appendChild(li);
-        });
-
-        const listaEscala = document.querySelector('#escala ul');
-        listaEscala.innerHTML = '';
-        data['escala'].split(';').forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item.trim();
-          listaEscala.appendChild(li);
-        });
-
-        const listaAvisos = document.querySelector('#avisos ul');
-        listaAvisos.innerHTML = '';
-        data['avisos'].split(';').forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item.trim();
-          listaAvisos.appendChild(li);
-        });
-
+        document.querySelector('#oracao p').textContent = dadosBoletim.oracao;
       })
-      .catch(error => {
-        console.error('Erro ao carregar a planilha:', error);
+      .catch(err => {
+        console.error('Erro ao carregar conteudo.md:', err);
       });
   </script>
 
