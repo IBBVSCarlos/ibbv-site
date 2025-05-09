@@ -7,262 +7,61 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
   <style>
-    :root {
-      --verde-claro: #66bb6a;
-      --verde-escuro: #2e7d32;
-      --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--fundo-gradiente);
-      color: #f0f0f0;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      transition: background 0.5s ease;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      text-align: center;
-      padding: 20px;
-      position: relative;
-    }
-
-    header img {
-      width: 80px;
-      margin-bottom: 10px;
-      animation: zoomIn 1s ease forwards;
-    }
-
-    header h1 {
-      margin: 10px 0 5px;
-      font-size: 2em;
-      color: var(--verde-claro);
-    }
-
-    header h2 {
-      margin: 0;
-      font-weight: normal;
-      font-size: 1.2em;
-      color: #ccc;
-    }
-
-    .semana {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      color: #aaa;
-      font-size: 0.9em;
-    }
-
-    .container {
-      position: relative;
-      background: #1e1e1e;
-      color: #f0f0f0;
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .marca-dagua {
-      position: absolute;
-      opacity: 0.04;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 80%;
-      pointer-events: none;
-    }
-
-    h2 {
-      color: var(--verde-claro);
-      border-bottom: 1px solid #555;
-      padding-bottom: 5px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    button {
-      background: var(--verde-claro);
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #4caf50;
-    }
-
-    #calendario {
-      background: #2e2e2e;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 30px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.8em;
-      padding: 20px;
-      color: #ccc;
-    }
-
-    .proximo-culto img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @media print {
-      body {
-        background: white;
-        color: black;
-      }
-      header {
-        background: white;
-        color: black;
-      }
-      .container {
-        box-shadow: none;
-        border: none;
-        background: white;
-        color: black;
-      }
-      button {
-        display: none;
-      }
-      .marca-dagua {
-        opacity: 0.05;
-      }
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-      .container {
-        margin: 10px;
-        padding: 15px;
-      }
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: #121212; color: #f0f0f0; }
+    .container { max-width: 800px; margin: auto; padding: 20px; background: #1e1e1e; border-radius: 10px; }
+    h2 { color: #66bb6a; }
+    button { margin-top: 10px; padding: 10px 15px; background: #66bb6a; color: white; border: none; border-radius: 5px; cursor: pointer; }
   </style>
 </head>
 <body>
-
-  <header data-aos="fade-down">
-    <div class="semana" id="semana"></div>
-    <img src="logo_site.png" alt="Logo IBBV São Carlos" />
-    <h1>Boletim Informativo</h1>
-    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-  </header>
-
   <div class="container">
-    <img src="logo_site.png" alt="Marca d'água" class="marca-dagua" />
+    <h1>Boletim Informativo</h1>
+    <div id="semana"></div>
 
-    <button onclick="window.print()">🖨️ Imprimir</button>
-
-    <section id="versiculo" class="fade-in" data-aos="fade-up">
+    <section id="versiculo">
       <h2>Versículo do Dia</h2>
       <p>Carregando versículo...</p>
-    </section>
-
-    <section class="proximo-culto fade-in" data-aos="fade-up">
-      <h2>Próximo Culto</h2>
-      <img src="culto_proximo.png" alt="Próximo Culto">
-    </section>
-
-    <section id="programacao" class="fade-in" data-aos="fade-up">
-      <h2>Programação</h2>
-      <ul></ul>
-    </section>
-
-    <section id="oracao" class="fade-in" data-aos="fade-up">
-      <h2>Pedidos de Oração</h2>
-      <p>Carregando...</p>
-    </section>
-
-    <section id="calendario" class="fade-in" data-aos="fade-up">
-      <h2>Calendário de Eventos</h2>
-      <div id="calendar"></div>
+      <button onclick="mostrarAleatorio()">📖 Ver outro versículo</button>
     </section>
   </div>
 
-  <footer data-aos="fade-in">
-    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
   <script>
-    AOS.init();
+    let versiculosLista = [];
 
     const hoje = new Date();
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const ano = hoje.getFullYear();
+    const dataHoje = `${ano}-${mes}-${dia}`;
 
-    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
-
-    fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
+    fetch("data/versiculos_do_ano.json")
       .then(res => res.json())
-      .then(data => {
-        const versiculo = `${data.book.name} ${data.chapter}:${data.number} - "${data.text}"`;
-        document.querySelector('#versiculo p').textContent = versiculo;
+      .then(lista => { 
+        versiculosLista = lista;
+        const versiculoHoje = lista.find(v => v.data === dataHoje) || lista.find(v => v.data === "fallback");
+        mostrarVersiculo(versiculoHoje);
       })
       .catch(() => {
-        document.querySelector('#versiculo p').textContent = 'Não foi possível carregar o versículo do dia.';
+        document.querySelector("#versiculo p").textContent = "Erro ao carregar versículo.";
       });
 
-    fetch('data/conteudo.json')
-      .then(res => res.json())
-      .then(dados => {
-        const listaProgramacao = document.querySelector('#programacao ul');
-        listaProgramacao.innerHTML = '';
-        (dados.programacao || []).forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          listaProgramacao.appendChild(li);
-        });
+    function mostrarVersiculo(versiculo) { 
+      const p = document.querySelector("#versiculo p");
+      p.innerHTML = `<strong>${versiculo.livro} ${versiculo.capitulo}:${versiculo.versiculo}</strong><br><em>"${versiculo.texto}"</em>`;
+    }
 
-        document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
+    function mostrarAleatorio() {
+      const aleatorio = versiculosLista[Math.floor(Math.random() * versiculosLista.length)];
+      mostrarVersiculo(aleatorio);
+    }
 
-        const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-          initialView: 'dayGridMonth',
-          height: 500,
-          locale: 'pt-br',
-          events: dados.eventos || []
-        });
-        calendar.render();
-      })
-      .catch(err => {
-        console.error('Erro ao carregar conteudo.json:', err);
-      });
+    const hojeData = new Date();
+    const diaDaSemana = hojeData.getDay();
+    const domingo = new Date(hojeData);
+    domingo.setDate(hojeData.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
+    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
   </script>
-
 </body>
 </html>
