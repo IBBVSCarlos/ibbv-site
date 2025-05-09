@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: SEU-USUARIO/ibbv-site
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "conteudo"
+    label: "Conteúdo do Boletim"
+    files:
+      - file: "data/conteudo.md"
+        label: "Boletim IBBV"
+        name: "boletim"
+        fields:
+          - { label: "Mensagem da Semana", name: "mensagem", widget: "text" }
+          - { label: "Programação", name: "programacao", widget: "list", default: ["Culto às 19h", "EBD às 9h"] }
+          - { label: "Pedidos de Oração", name: "oracao", widget: "text" }
