@@ -178,6 +178,22 @@
   color: #cccccc;
 }
 
+
+.programacao-lista {
+  list-style: none;
+  padding-left: 0;
+}
+
+.programacao-lista li {
+  background: #2e2e2e;
+  margin-bottom: 8px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #f0f0f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1em;
+}
+
 </style>
 </head>
 <body>
@@ -204,10 +220,18 @@
 
     <section id="programacao" class="fade-in" data-aos="fade-up">
       <h2>Programação</h2>
-      <ul></ul>
+      <ul class="programacao-lista"></ul>
     </section>
 
-    <section id="oracao" class="fade-in" data-aos="fade-up">
+    
+<section id="aniversariantes" class="fade-in" data-aos="fade-up">
+  <h2>Aniversariantes da Semana</h2>
+  <ul class="programacao-lista" id="lista-aniversariantes">
+    <li>Carregando aniversariantes...</li>
+  </ul>
+</section>
+
+<section id="oracao" class="fade-in" data-aos="fade-up">
       <h2>Pedidos de Oração</h2>
       <p>Carregando...</p>
     </section>
@@ -239,6 +263,40 @@ if (tituloCulto) {
   tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
 }
 
+
+fetch('data/aniversariantes.json')
+  .then(res => res.json())
+  .then(lista => {
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
+
+    const aniversariantes = lista.filter(pessoa => {
+      const data = new Date(pessoa.data + 'T00:00:00');
+      return data >= domingo && data <= sabado;
+    });
+
+    const ul = document.getElementById('lista-aniversariantes');
+    ul.innerHTML = '';
+
+    if (aniversariantes.length === 0) {
+      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
+    } else {
+      aniversariantes.forEach(pessoa => {
+        const li = document.createElement('li');
+        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
+        li.textContent = `${pessoa.nome} - ${data}`;
+        ul.appendChild(li);
+      });
+    }
+  })
+  .catch(() => {
+    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
+  });
+
 </script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js">
 // Calcula o próximo domingo
@@ -255,6 +313,40 @@ const tituloCulto = document.querySelector('.proximo-culto h2');
 if (tituloCulto) {
   tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
 }
+
+
+fetch('data/aniversariantes.json')
+  .then(res => res.json())
+  .then(lista => {
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
+
+    const aniversariantes = lista.filter(pessoa => {
+      const data = new Date(pessoa.data + 'T00:00:00');
+      return data >= domingo && data <= sabado;
+    });
+
+    const ul = document.getElementById('lista-aniversariantes');
+    ul.innerHTML = '';
+
+    if (aniversariantes.length === 0) {
+      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
+    } else {
+      aniversariantes.forEach(pessoa => {
+        const li = document.createElement('li');
+        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
+        li.textContent = `${pessoa.nome} - ${data}`;
+        ul.appendChild(li);
+      });
+    }
+  })
+  .catch(() => {
+    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
+  });
 
 </script>
   <script>
@@ -325,7 +417,40 @@ if (tituloCulto) {
   tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
 }
 
+
+fetch('data/aniversariantes.json')
+  .then(res => res.json())
+  .then(lista => {
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
+
+    const aniversariantes = lista.filter(pessoa => {
+      const data = new Date(pessoa.data + 'T00:00:00');
+      return data >= domingo && data <= sabado;
+    });
+
+    const ul = document.getElementById('lista-aniversariantes');
+    ul.innerHTML = '';
+
+    if (aniversariantes.length === 0) {
+      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
+    } else {
+      aniversariantes.forEach(pessoa => {
+        const li = document.createElement('li');
+        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
+        li.textContent = `${pessoa.nome} - ${data}`;
+        ul.appendChild(li);
+      });
+    }
+  })
+  .catch(() => {
+    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
+  });
+
 </script>
 </body>
 </html>
-
