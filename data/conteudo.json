@@ -1,7 +1,23 @@
 {
   "programacao": [
     "Domingo - Culto às 19h",
-    "Quarta - Estudo Bíblico às 20h"
+    "Quarta - Estudo Bíblico às 20h",
+    "Sexta - Reunião de Oração às 19h30"
   ],
-  "oracao": "Ore pela saúde dos irmãos e pelos novos convertidos."
+  "oracao": "Ore pelos enfermos da igreja e por sabedoria nas decisões ministeriais.",
+  "eventos": [
+    {
+      "title": "Culto de Celebração",
+      "start": "2025-05-12T19:00:00"
+    },
+    {
+      "title": "Estudo em Células",
+      "start": "2025-05-15T20:00:00"
+    },
+    {
+      "title": "Mutirão de Limpeza",
+      "start": "2025-05-17",
+      "allDay": true
+    }
+  ]
 }
