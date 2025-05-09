@@ -1,7 +1,7 @@
 ---
-mensagem: "O Senhor é o meu pastor; nada me faltará. (Salmo 23:1)"
-oracao: "Ore por nossos irmãos enfermos e por sabedoria nas decisões da liderança."
-- Culto de Domingo às 19h
-- Estudo Bíblico na quarta às 19h30
-- Ensaio do louvor sábado às 17h
+mensagem: "Seja bem-vindo à nossa celebração semanal! Que Deus abençoe sua vida."
+programacao:
+  - "Domingo - Culto às 19h"
+  - "Quarta - Estudo Bíblico às 19h30"
+oracao: "Ore por nossos missionários e pelas famílias da igreja."
 ---

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -120,64 +121,34 @@
       <p><strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
     </div>
     <button onclick="window.print()">🖨️ Imprimir</button>
-    <section id="mensagem">
-      <h2>Mensagem da Semana</h2>
-      <p>Carregando...</p>
-    </section>
-    <section id="programacao">
-      <h2>Programação</h2>
-      <ul></ul>
-    </section>
-    <section id="oracao">
-      <h2>Pedidos de Oração</h2>
-      <p>Carregando...</p>
-    </section>
+    <section id="mensagem"><h2>Mensagem da Semana</h2><p>Carregando...</p></section>
+    <section id="programacao"><h2>Programação</h2><ul></ul></section>
+    <section id="oracao"><h2>Pedidos de Oração</h2><p>Carregando...</p></section>
   </div>
-  <footer>
-    &copy; 2025 IBBV São Carlos. Todos os direitos reservados.
-  </footer>
+  <footer>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</footer>
   <script>
     const hoje = new Date();
     const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
-    const formatar = d => d.toLocaleDateString('pt-BR', {
-      day: 'numeric', month: 'long', year: 'numeric'
+    const domingo = new Date(hoje); domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo); sabado.setDate(domingo.getDate() + 6);
+    document.getElementById('semana').textContent =
+      `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
+
+    fetch('data/conteudo.md').then(res => res.text()).then(texto => {
+      const dados = /---([\s\S]*?)---/.exec(texto);
+      if (!dados) return;
+      const linhas = dados[1].split('\n').map(l => l.trim());
+      const dadosBoletim = { programacao: [] };
+      for (let linha of linhas) {
+        if (linha.startsWith('mensagem:')) dadosBoletim.mensagem = linha.split(':')[1].trim().replace(/^"|"$/g, '');
+        else if (linha.startsWith('oracao:')) dadosBoletim.oracao = linha.split(':')[1].trim().replace(/^"|"$/g, '');
+        else if (linha.startsWith('-')) dadosBoletim.programacao.push(linha.slice(1).trim());
+      }
+      document.querySelector('#mensagem p').textContent = dadosBoletim.mensagem;
+      const ul = document.querySelector('#programacao ul');
+      dadosBoletim.programacao.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
+      document.querySelector('#oracao p').textContent = dadosBoletim.oracao;
     });
-    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
-    fetch('data/conteudo.md')
-      .then(res => res.text())
-      .then(texto => {
-        const dados = /---([\s\S]*?)---/.exec(texto);
-        if (!dados) return;
-        const yaml = dados[1];
-        const linhas = yaml.split('\n').map(l => l.trim());
-        let campo = '';
-        const dadosBoletim = { programacao: [] };
-        for (let linha of linhas) {
-          if (linha.startsWith('mensagem:')) {
-            dadosBoletim.mensagem = linha.replace('mensagem:', '').trim().replace(/^"|"$/g, '');
-          } else if (linha.startsWith('oracao:')) {
-            dadosBoletim.oracao = linha.replace('oracao:', '').trim().replace(/^"|"$/g, '');
-          } else if (linha.startsWith('-')) {
-            dadosBoletim.programacao.push(linha.replace('-', '').trim());
-          }
-        }
-        document.querySelector('#mensagem p').textContent = dadosBoletim.mensagem;
-        const listaProgramacao = document.querySelector('#programacao ul');
-        listaProgramacao.innerHTML = '';
-        dadosBoletim.programacao.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          listaProgramacao.appendChild(li);
-        });
-        document.querySelector('#oracao p').textContent = dadosBoletim.oracao;
-      })
-      .catch(err => {
-        console.error('Erro ao carregar conteudo.md:', err);
-      });
   </script>
 </body>
 </html>
