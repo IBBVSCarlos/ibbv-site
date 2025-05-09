@@ -1,5 +1,264 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-<!-- (código HTML completo omitido para compactação aqui, mas ele está salvo no ambiente) -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boletim IBBV São Carlos</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <style>
+    :root {
+      --verde-claro: #66bb6a;
+      --verde-escuro: #2e7d32;
+      --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--fundo-gradiente);
+      color: #f0f0f0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      transition: background 0.5s ease;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      border-bottom: 2px solid var(--verde-claro);
+    }
+
+    header img {
+      width: 80px;
+      margin-bottom: 10px;
+      animation: zoomIn 1s ease forwards;
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2em;
+      color: var(--verde-claro);
+    }
+
+    header h2 {
+      margin: 0;
+      font-weight: normal;
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .semana {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    .container {
+      position: relative;
+      background: #1e1e1e;
+      color: #f0f0f0;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .marca-dagua {
+      position: absolute;
+      opacity: 0.04;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      pointer-events: none;
+    }
+
+    h2 {
+      color: var(--verde-claro);
+      border-bottom: 1px solid #555;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    button {
+      background: var(--verde-claro);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #4caf50;
+    }
+
+    #calendario {
+      background: #2e2e2e;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 30px;
+    }
+
+    .escala-item {
+      background: #2a2a2a;
+      border-left: 4px solid var(--verde-claro);
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+    }
+
+    .escala-item strong {
+      display: block;
+      font-size: 1.1em;
+      color: #fff;
+    }
+
+    .escala-item span {
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      background: #000;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding: 20px;
+      color: #ccc;
+      border-top: 1px solid #333;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--verde-claro);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      header { background: white; color: black; }
+      .container {
+        box-shadow: none;
+        border: none;
+        background: white;
+        color: black;
+        column-count: 3;
+        column-gap: 30px;
+      }
+      .container section, .container h2, .container p, .container ul {
+        break-inside: avoid;
+      }
+      img, iframe {
+        max-width: 100%;
+        height: auto !important;
+      }
+      button { display: none; }
+      .marca-dagua { opacity: 0.05; }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5em; }
+      .container { margin: 10px; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="semana" id="semana"></div>
+    <img src="logo_site.png" alt="Logo IBBV São Carlos">
+    <h1>Boletim Informativo</h1>
+    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
+  </header>
+
+  <div class="container">
+    <img src="logo_site.png" alt="Marca d'água" class="marca-dagua">
+    <button onclick="window.print()">🖨️ Imprimir</button>
+
+    <section id="versiculo">
+      <h2>Versículo do Dia</h2>
+      <p id="versiculo-texto">Carregando...</p>
+    </section>
+
+    <section id="programacao">
+      <h2>Programação</h2>
+      <ul><li>Carregando...</li></ul>
+    </section>
+
+    <section id="proximo-culto">
+      <h2>Próximo Culto</h2>
+      <img src="Domingo - 27-abr-25.png" alt="Próximo Culto" style="max-width:100%; border-radius: 8px;">
+    </section>
+
+    <section id="culto-online">
+      <h2>Culto Online</h2>
+      <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FIBBVSaoCarlos%2Flive" allowfullscreen></iframe>
+    </section>
+  </div>
+
+  <footer>
+    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
+
+    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
+
+    fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('versiculo-texto').textContent = `${data.text} — ${data.book.name} ${data.chapter}:${data.number}`;
+      })
+      .catch(() => {
+        document.getElementById('versiculo-texto').textContent = 'Não foi possível carregar o versículo.';
+      });
+  </script>
+</body>
 </html>
