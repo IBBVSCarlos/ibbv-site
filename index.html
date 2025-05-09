@@ -149,7 +149,36 @@
         padding: 15px;
       }
     }
-  </style>
+  
+#versiculo-conteudo {
+  background-color: #2e2e2e;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+#versiculo-conteudo .texto {
+  font-style: italic;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+#versiculo-conteudo .referencia {
+  font-weight: bold;
+  color: var(--verde-claro);
+  display: block;
+  margin-bottom: 10px;
+}
+
+#versiculo-conteudo .comentario {
+  font-size: 0.95em;
+  color: #cccccc;
+}
+
+</style>
 </head>
 <body>
   <header data-aos="fade-down">
@@ -165,7 +194,7 @@
 
     <section id="versiculo" class="fade-in" data-aos="fade-up">
       <h2>Versículo do Dia</h2>
-      <p>Carregando versículo...</p>
+      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
     </section>
 
     <section class="proximo-culto fade-in" data-aos="fade-up">
@@ -209,15 +238,20 @@
 
     document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
 
-    fetch('data/versiculos_do_ano.json')
-      .then(res => res.json())
-      .then(json => {
-        const versiculo = json[diaAno - 1];
-        document.querySelector('#versiculo p').textContent = `${versiculo.referencia} - "${versiculo.texto}"`;
-      })
-      .catch(() => {
-        document.querySelector('#versiculo p').textContent = 'Não foi possível carregar o versículo do dia.';
-      });
+    fetch('data/versiculos_completos.json')
+  .then(res => res.json())
+  .then(json => {
+    const versiculo = json[diaAno - 1];
+    const container = document.querySelector('#versiculo-conteudo');
+    container.innerHTML = `
+      <p class="texto">"${versiculo.texto}"</p>
+      <span class="referencia">— ${versiculo.referencia}</span>
+      <p class="comentario">${versiculo.comentario}</p>
+    `;
+  })
+  .catch(() => {
+    document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
+  });
 
     fetch('data/conteudo.json')
       .then(res => res.json())
