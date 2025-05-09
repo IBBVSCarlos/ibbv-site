@@ -11,7 +11,6 @@
       --verde-escuro: #2e7d32;
       --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
     }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -19,33 +18,30 @@
       color: #f0f0f0;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      transition: background 0.5s ease;
     }
-
     header {
       background: rgba(0, 0, 0, 0.6);
       text-align: center;
       padding: 20px;
       position: relative;
     }
-
     header img {
       width: 80px;
       margin-bottom: 10px;
+      animation: zoomIn 1s ease forwards;
     }
-
     header h1 {
       margin: 10px 0 5px;
       font-size: 2em;
       color: var(--verde-claro);
     }
-
     header h2 {
       margin: 0;
       font-weight: normal;
       font-size: 1.2em;
       color: #ccc;
     }
-
     .semana {
       position: absolute;
       top: 10px;
@@ -53,170 +49,130 @@
       color: #aaa;
       font-size: 0.9em;
     }
-
     .container {
       position: relative;
-      background: white;
-      color: #333;
+      background: #1e1e1e;
+      color: #f0f0f0;
       max-width: 800px;
       margin: 30px auto;
       padding: 20px;
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease forwards;
     }
-
     .marca-dagua {
       position: absolute;
-      opacity: 0.06;
+      opacity: 0.04;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       max-width: 80%;
       pointer-events: none;
     }
-
     h2 {
-      color: var(--verde-escuro);
-      border-bottom: 1px solid #ccc;
+      color: var(--verde-claro);
+      border-bottom: 1px solid #555;
       padding-bottom: 5px;
     }
-
     ul {
       padding-left: 20px;
     }
-
     button {
-      background: var(--verde-escuro);
+      background: var(--verde-claro);
       color: white;
       border: none;
       padding: 10px 15px;
       border-radius: 5px;
       cursor: pointer;
       margin-bottom: 20px;
+      transition: background 0.3s ease;
     }
-
+    button:hover {
+      background: #4caf50;
+    }
     footer {
       text-align: center;
       font-size: 0.8em;
       padding: 20px;
       color: #ccc;
     }
-
-    @media print {
-      body {
-        background: white;
-        color: black;
-      }
-      header {
-        background: white;
-        color: black;
-      }
-      .container {
-        box-shadow: none;
-        border: none;
-      }
-      button {
-        display: none;
-      }
-      .marca-dagua {
-        opacity: 0.05;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @media print {
+      body { background: white; color: black; }
+      header, .container { background: white; color: black; box-shadow: none; border: none; }
+      button, .marca-dagua { display: none; }
+    }
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-      .container {
-        margin: 10px;
-        padding: 15px;
-      }
+      header h1 { font-size: 1.5em; }
+      .container { margin: 10px; padding: 15px; }
     }
   </style>
 </head>
 <body>
-
   <header data-aos="fade-down">
     <div class="semana" id="semana"></div>
     <img src="logo_site.png" alt="Logo IBBV São Carlos" />
     <h1>Boletim Informativo</h1>
     <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
   </header>
-
   <div class="container">
     <img src="logo_site.png" alt="Marca d'água" class="marca-dagua" />
-
     <button onclick="window.print()">🖨️ Imprimir</button>
-
     <section id="mensagem" class="fade-in" data-aos="fade-up">
       <h2>Mensagem da Semana</h2>
       <p>Carregando...</p>
     </section>
-
     <section id="programacao" class="fade-in" data-aos="fade-up">
       <h2>Programação</h2>
       <ul></ul>
     </section>
-
     <section id="oracao" class="fade-in" data-aos="fade-up">
       <h2>Pedidos de Oração</h2>
       <p>Carregando...</p>
     </section>
   </div>
-
   <footer data-aos="fade-in">
     <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
     <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
   </footer>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
     const hoje = new Date();
     const diaDaSemana = hoje.getDay();
     const domingo = new Date(hoje);
     domingo.setDate(hoje.getDate() - diaDaSemana);
     const sabado = new Date(domingo);
     sabado.setDate(domingo.getDate() + 6);
-
     document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
-
-    fetch('data/conteudo.md')
-      .then(res => res.text())
-      .then(texto => {
-        const dados = /---([\s\S]*?)---/.exec(texto);
-        if (!dados) return;
-        const yaml = dados[1];
-        const linhas = yaml.split('\n').map(l => l.trim());
-        const dadosBoletim = { programacao: [] };
-
-        for (let linha of linhas) {
-          if (linha.startsWith('mensagem:')) {
-            dadosBoletim.mensagem = linha.replace('mensagem:', '').trim().replace(/^"|"$/g, '');
-          } else if (linha.startsWith('oracao:')) {
-            dadosBoletim.oracao = linha.replace('oracao:', '').trim().replace(/^"|"$/g, '');
-          } else if (linha.startsWith('-')) {
-            dadosBoletim.programacao.push(linha.replace('-', '').trim());
-          }
-        }
-
-        document.querySelector('#mensagem p').textContent = dadosBoletim.mensagem;
-
+    fetch('data/conteudo.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Arquivo JSON não encontrado');
+        return res.json();
+      })
+      .then(dadosBoletim => {
+        document.querySelector('#mensagem p').textContent = dadosBoletim.mensagem || 'Mensagem não disponível.';
         const listaProgramacao = document.querySelector('#programacao ul');
         listaProgramacao.innerHTML = '';
-        dadosBoletim.programacao.forEach(item => {
+        (dadosBoletim.programacao || []).forEach(item => {
           const li = document.createElement('li');
           li.textContent = item;
           listaProgramacao.appendChild(li);
         });
-
-        document.querySelector('#oracao p').textContent = dadosBoletim.oracao;
+        document.querySelector('#oracao p').textContent = dadosBoletim.oracao || 'Pedidos de oração não disponíveis.';
       })
       .catch(err => {
-        console.error('Erro ao carregar conteudo.md:', err);
+        console.error('Erro ao carregar conteudo.json:', err);
+        document.querySelectorAll('#mensagem p, #oracao p').forEach(el => el.textContent = 'Conteúdo não disponível.');
       });
   </script>
-
 </body>
 </html>
