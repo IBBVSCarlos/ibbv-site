@@ -223,8 +223,40 @@
     <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+// Calcula o próximo domingo
+const hoje2 = new Date();
+const diasAteDomingo = (7 - hoje2.getDay()) % 7;
+const proximoDomingo = new Date(hoje2);
+proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
+
+// Formata como DD/MM
+const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
+// Atualiza o título
+const tituloCulto = document.querySelector('.proximo-culto h2');
+if (tituloCulto) {
+  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
+}
+
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js">
+// Calcula o próximo domingo
+const hoje2 = new Date();
+const diasAteDomingo = (7 - hoje2.getDay()) % 7;
+const proximoDomingo = new Date(hoje2);
+proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
+
+// Formata como DD/MM
+const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
+// Atualiza o título
+const tituloCulto = document.querySelector('.proximo-culto h2');
+if (tituloCulto) {
+  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
+}
+
+</script>
   <script>
     AOS.init();
 
@@ -277,6 +309,23 @@
       .catch(err => {
         console.error('Erro ao carregar conteudo.json:', err);
       });
-  </script>
+  
+// Calcula o próximo domingo
+const hoje2 = new Date();
+const diasAteDomingo = (7 - hoje2.getDay()) % 7;
+const proximoDomingo = new Date(hoje2);
+proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
+
+// Formata como DD/MM
+const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
+// Atualiza o título
+const tituloCulto = document.querySelector('.proximo-culto h2');
+if (tituloCulto) {
+  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
+}
+
+</script>
 </body>
 </html>
+
