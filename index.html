@@ -44,14 +44,13 @@
       font-size: 1.2em;
       color: #ccc;
     }
-    
-.semana {
-  text-align: center;
-  margin-top: 10px;
-  color: #aaa;
-  font-size: 0.95em;
-}
-
+    .semana {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
     .container {
       position: relative;
       background: #1e1e1e;
@@ -239,10 +238,10 @@
 </head>
 <body>
   <header data-aos="fade-down">
-    <div class="semana" id="semana"></div>
     <img src="logo_site.png" alt="Logo IBBV São Carlos" />
     <h1>Boletim Informativo</h1>
     <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
+<div class="semana" id="semana">Semana de 11 a 17 de maio de 2025</div>
   </header>
 
   <div class="container">
@@ -336,7 +335,7 @@ fetch('data/aniversariantes.json')
       aniversariantes.forEach(pessoa => {
         const li = document.createElement('li');
         const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
-        li.textContent = `${pessoa.nome} - ${data}`;
+        li.textContent = pessoa.nome;
         ul.appendChild(li);
       });
     }
