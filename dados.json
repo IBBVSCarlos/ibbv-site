@@ -1,0 +1,15 @@
+
+{
+  "versiculo": {
+    "texto": "O Senhor é o meu pastor; nada me faltará.",
+    "referencia": "Salmos 23:1"
+  },
+  "aniversariantes": [
+    { "nome": "João Silva", "data": "12/05" },
+    { "nome": "Maria Oliveira", "data": "13/05" }
+  ],
+  "escala": [
+    { "data": "12/05", "ministerio": "Louvor", "responsavel": "Carlos" },
+    { "data": "13/05", "ministerio": "Recepção", "responsavel": "Ana" }
+  ]
+}

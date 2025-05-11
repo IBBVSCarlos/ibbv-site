@@ -1,58 +1,31 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boletim IBBV</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-        header {
-            background-color: #004080;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        .data-semana {
-            margin-top: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .container {
-            padding: 1rem;
-            max-width: 900px;
-            margin: auto;
-        }
-        .versiculo {
-            background-color: #f4f4f4;
-            border-left: 4px solid #3b82f6;
-            margin: 1rem auto;
-            padding: 1rem;
-            font-style: italic;
-            font-size: 1.1rem;
-            max-width: 700px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Boletim Semanal</h1>
-        <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-        <div class="data-semana">Semana de 12 a 18 de Maio de 2025</div>
+        <h1>Boletim Informativo</h1>
+        <h2>Igreja Batista de Boa Vista - São Carlos</h2>
     </header>
-    <div class="container">
-        <div class="versiculo">
-            "O Senhor é o meu pastor, nada me faltará." – Salmo 23:1
-        </div>
-        <!-- Outras seções do boletim entram aqui -->
-    </div>
+    <main>
+        <section id="versiculo" class="card"></section>
+        <section id="aniversariantes" class="card"></section>
+        <section id="escala" class="card"></section>
+        <section class="card contato">
+            <h3>Informações da Igreja</h3>
+            <p>Av. Henrique Gregory, 151 - São Carlos/SP</p>
+            <p>Contato: (16) 99205-3530</p>
+            <p>Email: ibbvsaocarlos@gmail.com</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 IBBV São Carlos</p>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,42 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+    color: #333;
+}
+
+header {
+    background: #2a4365;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    margin-top: 0;
+    color: #2a4365;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #e2e8f0;
+    color: #555;
+    font-size: 0.9rem;
+}
