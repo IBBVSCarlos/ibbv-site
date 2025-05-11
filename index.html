@@ -1,617 +1,461 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boletim IBBV São Carlos</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --verde-claro: #66bb6a;
-      --verde-escuro: #2e7d32;
-      --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--fundo-gradiente);
-      color: #f0f0f0;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      transition: background 0.5s ease;
-    }
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      text-align: center;
-      padding: 20px;
-      position: relative;
-    }
-    header img {
-      width: 80px;
-      margin-bottom: 10px;
-      animation: zoomIn 1s ease forwards;
-    }
-    header h1 {
-      margin: 10px 0 5px;
-      font-size: 2em;
-      color: var(--verde-claro);
-    }
-    header h2 {
-      margin: 0;
-      font-weight: normal;
-      font-size: 1.2em;
-      color: #ccc;
-    }
-    .semana {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      color: #aaa;
-      font-size: 0.9em;
-    }
-    .container {
-      position: relative;
-      background: #1e1e1e;
-      color: #f0f0f0;
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease forwards;
-    }
-    .marca-dagua {
-      position: absolute;
-      opacity: 0.04;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 80%;
-      pointer-events: none;
-    }
-    h2 {
-      color: var(--verde-claro);
-      border-bottom: 1px solid #555;
-      padding-bottom: 5px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    button {
-      background: var(--verde-claro);
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: #4caf50;
-    }
-    #calendario {
-      background: #2e2e2e;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 30px;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.8em;
-      padding: 20px;
-      color: #ccc;
-    }
-    .proximo-culto img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    @media print {
-      body {
-        background: white;
-        color: black;
-      }
-      header {
-        background: white;
-        color: black;
-      }
-      .container {
-        box-shadow: none;
-        border: none;
-        background: white;
-        color: black;
-      }
-      button {
-        display: none;
-      }
-      .marca-dagua {
-        opacity: 0.05;
-      }
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-      .container {
-        margin: 10px;
-        padding: 15px;
-      }
-    }
-  
-#versiculo-conteudo {
-  background-color: #2e2e2e;
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-size: 1.1em;
-  line-height: 1.6;
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boletim IBBV São Carlos</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --verde-claro: #66bb6a;
+            --verde-escuro: #2e7d32;
+            --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--fundo-gradiente);
+            color: #f0f0f0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background 0.5s ease;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        header img {
+            width: 80px;
+            margin-bottom: 10px;
+            animation: zoomIn 1s ease forwards;
+        }
+        header h1 {
+            margin: 10px 0 5px;
+            font-size: 2em;
+            color: var(--verde-claro);
+        }
+        header h2 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        .semana {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        .container {
+            position: relative;
+            background: #1e1e1e;
+            color: #f0f0f0;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease forwards;
+        }
+        .marca-dagua {
+            position: absolute;
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            pointer-events: none;
+        }
+        h2 {
+            color: var(--verde-claro);
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        button {
+            background: var(--verde-claro);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #4caf50;
+        }
+        #calendario {
+            background: #2e2e2e;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8em;
+            padding: 20px;
+            color: #ccc;
+        }
+        .proximo-culto img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            header {
+                background: white;
+                color: black;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                background: white;
+                color: black;
+            }
+            button {
+                display: none;
+            }
+            .marca-dagua {
+                opacity: 0.05;
+            }
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
 
-#versiculo-conteudo .texto {
-  font-style: italic;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #f9f9f9;
-}
+        #versiculo-conteudo {
+            background-color: #2e2e2e;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
 
-#versiculo-conteudo .referencia {
-  font-weight: bold;
-  color: var(--verde-claro);
-  display: block;
-  margin-bottom: 10px;
-}
+        #versiculo-conteudo .texto {
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #f9f9f9;
+        }
 
-#versiculo-conteudo .comentario {
-  font-size: 0.95em;
-  color: #cccccc;
-}
+        #versiculo-conteudo .referencia {
+            font-weight: bold;
+            color: var(--verde-claro);
+            display: block;
+            margin-bottom: 10px;
+        }
 
-
-.programacao-lista {
-  list-style: none;
-  padding-left: 0;
-}
-
-.programacao-lista li {
-  background: #2e2e2e;
-  margin-bottom: 8px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: #f0f0f0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  font-size: 1em;
-}
+        #versiculo-conteudo .comentario {
+            font-size: 0.95em;
+            color: #cccccc;
+        }
 
 
-#form-oracao {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
+        .programacao-lista {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#form-oracao input,
-#form-oracao textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  resize: vertical;
-}
-
-#form-oracao button {
-  background-color: var(--verde-claro);
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#form-oracao button:hover {
-  background-color: #4caf50;
-}
+        .programacao-lista li {
+            background: #2e2e2e;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #f0f0f0;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            font-size: 1em;
+        }
 
 
-#mensagem-envio {
-  transition: all 0.4s ease;
-  opacity: 0;
-}
+        #form-oracao {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
 
-#mensagem-envio.mostrar {
-  opacity: 1;
-}
+        #form-oracao label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ccc;
+            font-size: 0.9em;
+        }
 
-</style>
+        #form-oracao input,
+        #form-oracao textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            resize: vertical;
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        #form-oracao button {
+            background-color: var(--verde-claro);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #form-oracao button:hover {
+            background-color: #4caf50;
+        }
+
+
+        #mensagem-envio {
+            transition: all 0.4s ease;
+            opacity: 0;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        #mensagem-envio.mostrar {
+            opacity: 1;
+        }
+
+    </style>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <div class="semana" id="semana"></div>
-    <img src="logo_site.png" alt="Logo IBBV São Carlos" />
-    <h1>Boletim Informativo</h1>
-    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-  </header>
+    <header data-aos="fade-down">
+        <div class="semana" id="semana"></div>
+        <img src="logo_site.png" alt="Logo IBBV São Carlos" />
+        <h1>Boletim Informativo</h1>
+        <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
+    </header>
 
-  <div class="container">
-    <img src="logo_site.png" alt="Marca d'água" class="marca-dagua" />
-    <button onclick="window.print()">🖨️ Imprimir</button>
+    <div class="container">
+        <img src="logo_site.png" alt="Marca d'água" class="marca-dagua" />
+        <button onclick="window.print()">🖨️ Imprimir</button>
 
-    <section id="versiculo" class="fade-in" data-aos="fade-up">
-      <h2>Versículo do Dia</h2>
-      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
-    </section>
+        <section id="versiculo" class="fade-in" data-aos="fade-up">
+            <h2>Versículo do Dia</h2>
+            <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
+        </section>
 
-    <section class="proximo-culto fade-in" data-aos="fade-up">
-      <h2>Próximo Culto</h2>
-      <img src="culto_proximo.png" alt="Próximo Culto">
-    </section>
+        <section class="proximo-culto fade-in" data-aos="fade-up">
+            <h2>Próximo Culto</h2>
+            <img src="culto_proximo.png" alt="Próximo Culto">
+        </section>
 
-    <section id="programacao" class="fade-in" data-aos="fade-up">
-      <h2>Programação</h2>
-      <ul class="programacao-lista"></ul>
-    </section>
-
-    
+        <section id="programacao" class="fade-in" data-aos="fade-up">
+            <h2>Programação</h2>
+            <ul class="programacao-lista"></ul>
+        </section>
 <section id="aniversariantes" class="fade-in" data-aos="fade-up">
-  <h2>Aniversariantes da Semana</h2>
-  <ul class="programacao-lista" id="lista-aniversariantes">
-    <li>Carregando aniversariantes...</li>
-  </ul>
-</section>
+            <h2>Aniversariantes da Semana</h2>
+            <ul class="programacao-lista" id="lista-aniversariantes">
+                <li>Carregando aniversariantes...</li>
+            </ul>
+        </section>
 
-<section id="oracao" class="fade-in" data-aos="fade-up">
-<h2>Pedidos de Oração</h2>
-<p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
-<form id="form-oracao">
-  <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-  <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
-  <button type="submit">Enviar Pedido</button>
-  <p id="mensagem-envio" style="margin-top:10px; font-size:0.9em;"></p>
-</form>
+        <section id="oracao" class="fade-in" data-aos="fade-up">
+            <h2>Pedidos de Oração</h2>
+            <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
+            <form id="form-oracao">
+                <label for="nome">Seu nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                <label for="motivo">Escreva seu pedido:</label>
+                <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
+                <button type="submit">Enviar Pedido</button>
+                <p id="mensagem-envio"></p>
+            </form>
 
-    </section>
+        </section>
 
-    <section id="calendario" class="fade-in" data-aos="fade-up">
-      <h2>Calendário de Eventos</h2>
-      <div id="calendar"></div>
-    </section>
-  </div>
+        <section id="calendario" class="fade-in" data-aos="fade-up">
+            <h2>Calendário de Eventos</h2>
+            <div id="calendar"></div>
+        </section>
+    </div>
 
-  <footer data-aos="fade-in">
-    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
-  </footer>
+    <footer data-aos="fade-in">
+        <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+        <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+    </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
-// Calcula o próximo domingo
-const hoje2 = new Date();
-const diasAteDomingo = (7 - hoje2.getDay()) % 7;
-const proximoDomingo = new Date(hoje2);
-proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <script>
+        AOS.init();
 
-// Formata como DD/MM
-const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        function calcularProximoDomingo() {
+            const hoje = new Date();
+            const diasAteDomingo = (7 - hoje.getDay()) % 7;
+            const proximoDomingo = new Date(hoje);
+            proximoDomingo.setDate(hoje.getDate() + diasAteDomingo);
+            return proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        }
 
-// Atualiza o título
-const tituloCulto = document.querySelector('.proximo-culto h2');
-if (tituloCulto) {
-  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
-}
+        function atualizarTituloProximoCulto() {
+            const dataFormatada = calcularProximoDomingo();
+            const tituloCulto = document.querySelector('.proximo-culto h2');
+            if (tituloCulto) {
+                tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
+            }
+        }
 
+        function carregarAniversariantes() {
+            fetch('data/aniversariantes.json')
+                .then(res => res.json())
+                .then(lista => {
+                    const hoje = new Date();
+                    const diaDaSemana = hoje.getDay();
+                    const domingo = new Date(hoje);
+                    domingo.setDate(hoje.getDate() - diaDaSemana);
+                    const sabado = new Date(domingo);
+                    sabado.setDate(domingo.getDate() + 6);
 
-fetch('data/aniversariantes.json')
-  .then(res => res.json())
-  .then(lista => {
-    const hoje = new Date();
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
+                    const aniversariantes = lista.filter(pessoa => {
+                        const data = new Date(pessoa.data + 'T00:00:00');
+                        return data >= domingo && data <= sabado;
+                    });
 
-    const aniversariantes = lista.filter(pessoa => {
-      const data = new Date(pessoa.data + 'T00:00:00');
-      return data >= domingo && data <= sabado;
-    });
+                    const ul = document.getElementById('lista-aniversariantes');
+                    ul.innerHTML = '';
 
-    const ul = document.getElementById('lista-aniversariantes');
-    ul.innerHTML = '';
+                    if (aniversariantes.length === 0) {
+                        ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
+                    } else {
+                        aniversariantes.forEach(pessoa => {
+                            const li = document.createElement('li');
+                            const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
+                            li.textContent = `${pessoa.nome} - ${data}`;
+                            ul.appendChild(li);
+                        });
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
+                });
+        }
 
-    if (aniversariantes.length === 0) {
-      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
-    } else {
-      aniversariantes.forEach(pessoa => {
-        const li = document.createElement('li');
-        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
-        li.textContent = `${pessoa.nome} - ${data}`;
-        ul.appendChild(li);
-      });
-    }
-  })
-  .catch(() => {
-    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
-  });
+        document.getElementById('form-oracao').addEventListener('submit', function (e) {
+            e.preventDefault();
 
+            const nome = document.getElementById('nome').value.trim();
+            const motivo = document.getElementById('motivo').value.trim();
+            const mensagem = document.getElementById('mensagem-envio');
 
-document.getElementById('form-oracao').addEventListener('submit', function (e) {
-  e.preventDefault();
-  
-  const nome = document.getElementById('nome').value.trim();
-  const motivo = document.getElementById('motivo').value.trim();
-  const mensagem = document.getElementById('mensagem-envio');
+            if (!nome || !motivo) {
+                mensagem.textContent = "Por favor, preencha todos os campos.";
+                mensagem.style.color = "#ff5555";
+                mensagem.classList.add('mostrar');
+                setTimeout(() => mensagem.classList.remove('mostrar'), 3000);
+                return;
+            }
 
-  if (!nome || !motivo) {
-    mensagem.textContent = "Por favor, preencha todos os campos.";
-    mensagem.style.color = "#ff5555";
-    return;
-  }
-
-  fetch('https://script.google.com/macros/s/AKfycbyCwxBbDqHHaali9lByn1vhvuCnV830lWLIwLW_07nI-tmislO5dAGJbtzC-XMy624v/exec', {
-    method: 'POST',
-    body: JSON.stringify({ nome, motivo }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.resultado === "sucesso") {
-      mensagem.textContent = "Pedido enviado com sucesso!";
-      mensagem.style.color = "#66bb6a";
-      document.getElementById('form-oracao').reset();
-    } else {
-      mensagem.textContent = "Erro ao enviar. Tente novamente.";
-      mensagem.style.color = "#ff5555";
-    }
-  })
-  .catch(err => {
-    mensagem.textContent = "Erro na conexão. Verifique sua internet.";
-    mensagem.style.color = "#ff5555";
-  });
-});
-
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js">
-// Calcula o próximo domingo
-const hoje2 = new Date();
-const diasAteDomingo = (7 - hoje2.getDay()) % 7;
-const proximoDomingo = new Date(hoje2);
-proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
-
-// Formata como DD/MM
-const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-
-// Atualiza o título
-const tituloCulto = document.querySelector('.proximo-culto h2');
-if (tituloCulto) {
-  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
-}
-
-
-fetch('data/aniversariantes.json')
-  .then(res => res.json())
-  .then(lista => {
-    const hoje = new Date();
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
-
-    const aniversariantes = lista.filter(pessoa => {
-      const data = new Date(pessoa.data + 'T00:00:00');
-      return data >= domingo && data <= sabado;
-    });
-
-    const ul = document.getElementById('lista-aniversariantes');
-    ul.innerHTML = '';
-
-    if (aniversariantes.length === 0) {
-      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
-    } else {
-      aniversariantes.forEach(pessoa => {
-        const li = document.createElement('li');
-        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
-        li.textContent = `${pessoa.nome} - ${data}`;
-        ul.appendChild(li);
-      });
-    }
-  })
-  .catch(() => {
-    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
-  });
-
-
-document.getElementById('form-oracao').addEventListener('submit', function (e) {
-  e.preventDefault();
-  
-  const nome = document.getElementById('nome').value.trim();
-  const motivo = document.getElementById('motivo').value.trim();
-  const mensagem = document.getElementById('mensagem-envio');
-
-  if (!nome || !motivo) {
-    mensagem.textContent = "Por favor, preencha todos os campos.";
-    mensagem.style.color = "#ff5555";
-    return;
-  }
-
-  fetch('https://script.google.com/macros/s/AKfycbyCwxBbDqHHaali9lByn1vhvuCnV830lWLIwLW_07nI-tmislO5dAGJbtzC-XMy624v/exec', {
-    method: 'POST',
-    body: JSON.stringify({ nome, motivo }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.resultado === "sucesso") {
-      mensagem.textContent = "Pedido enviado com sucesso!";
-      mensagem.style.color = "#66bb6a";
-      document.getElementById('form-oracao').reset();
-    } else {
-      mensagem.textContent = "Erro ao enviar. Tente novamente.";
-      mensagem.style.color = "#ff5555";
-    }
-  })
-  .catch(err => {
-    mensagem.textContent = "Erro na conexão. Verifique sua internet.";
-    mensagem.style.color = "#ff5555";
-  });
-});
-
-</script>
-  <script>
-    AOS.init();
-
-    const hoje = new Date();
-    const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
-
-    document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
-
-    fetch('data/versiculos_completos.json')
-  .then(res => res.json())
-  .then(json => {
-    const versiculo = json[diaAno - 1];
-    const container = document.querySelector('#versiculo-conteudo');
-    container.innerHTML = `
-      <p class="texto">"${versiculo.texto}"</p>
-      <span class="referencia">— ${versiculo.referencia}</span>
-      <p class="comentario">${versiculo.comentario}</p>
-    `;
-  })
-  .catch(() => {
-    document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
-  });
-
-    fetch('data/conteudo.json')
-      .then(res => res.json())
-      .then(dados => {
-        const listaProgramacao = document.querySelector('#programacao ul');
-        listaProgramacao.innerHTML = '';
-        (dados.programacao || []).forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          listaProgramacao.appendChild(li);
+            fetch('https://script.google.com/macros/s/AKfycbyCwxBbDqHHaali9lByn1vhvuCnV830lWLIwLW_07nI-tmislO5dAGJbtzC-XMy624v/exec', {
+                method: 'POST',
+                body: JSON.stringify({ nome, motivo }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.resultado === "sucesso") {
+                    mensagem.textContent = "Pedido enviado com sucesso!";
+                    mensagem.style.color = "#66bb6a";
+                    mensagem.classList.add('mostrar');
+                    document.getElementById('form-oracao').reset();
+                    setTimeout(() => mensagem.classList.remove('mostrar'), 3000);
+                } else {
+                    mensagem.textContent = "Erro ao enviar. Tente novamente.";
+                    mensagem.style.color = "#ff5555";
+                    mensagem.classList.add('mostrar');
+                    setTimeout(() => mensagem.classList.remove('mostrar'), 3000);
+                }
+            })
+            .catch(err => {
+                mensagem.textContent = "Erro na conexão. Verifique sua internet.";
+                mensagem.style.color = "#ff5555";
+                mensagem.classList.add('mostrar');
+                setTimeout(() => mensagem.classList.remove('mostrar'), 3000);
+            });
         });
 
-        document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
+        const hoje = new Date();
+        const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
+        const diaDaSemana = hoje.getDay();
+        const domingo = new Date(hoje);
+        domingo.setDate(hoje.getDate() - diaDaSemana);
+        const sabado = new Date(domingo);
+        sabado.setDate(domingo.getDate() + 6);
 
-        const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-          initialView: 'dayGridMonth',
-          height: 500,
-          locale: 'pt-br',
-          events: dados.eventos || []
-        });
-        calendar.render();
-      })
-      .catch(err => {
-        console.error('Erro ao carregar conteudo.json:', err);
-      });
-  
-// Calcula o próximo domingo
-const hoje2 = new Date();
-const diasAteDomingo = (7 - hoje2.getDay()) % 7;
-const proximoDomingo = new Date(hoje2);
-proximoDomingo.setDate(hoje2.getDate() + diasAteDomingo);
+document.getElementById('semana').textContent = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
 
-// Formata como DD/MM
-const dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        fetch('data/versiculos_completos.json')
+            .then(res => res.json())
+            .then(json => {
+                const versiculo = json[diaAno - 1];
+                const container = document.querySelector('#versiculo-conteudo');
+                container.innerHTML = `
+                    <p class="texto">"${versiculo.texto}"</p>
+                    <span class="referencia">— ${versiculo.referencia}</span>
+                    <p class="comentario">${versiculo.comentario}</p>
+                `;
+            })
+            .catch(() => {
+                document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
+            });
 
-// Atualiza o título
-const tituloCulto = document.querySelector('.proximo-culto h2');
-if (tituloCulto) {
-  tituloCulto.textContent = `Próximo Culto (${dataFormatada} - 19h00)`;
-}
+        fetch('data/conteudo.json')
+            .then(res => res.json())
+            .then(dados => {
+                const listaProgramacao = document.querySelector('#programacao ul');
+                listaProgramacao.innerHTML = '';
+                (dados.programacao || []).forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    listaProgramacao.appendChild(li);
+                });
 
+                document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
 
-fetch('data/aniversariantes.json')
-  .then(res => res.json())
-  .then(lista => {
-    const hoje = new Date();
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
+                const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+                    initialView: 'dayGridMonth',
+                    height: 500,
+                    locale: 'pt-br',
+                    events: dados.eventos || []
+                });
+                calendar.render();
+            })
+            .catch(err => {
+                console.error('Erro ao carregar conteudo.json:', err);
+            });
 
-    const aniversariantes = lista.filter(pessoa => {
-      const data = new Date(pessoa.data + 'T00:00:00');
-      return data >= domingo && data <= sabado;
-    });
-
-    const ul = document.getElementById('lista-aniversariantes');
-    ul.innerHTML = '';
-
-    if (aniversariantes.length === 0) {
-      ul.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
-    } else {
-      aniversariantes.forEach(pessoa => {
-        const li = document.createElement('li');
-        const data = new Date(pessoa.data + 'T00:00:00').toLocaleDateString('pt-BR');
-        li.textContent = `${pessoa.nome} - ${data}`;
-        ul.appendChild(li);
-      });
-    }
-  })
-  .catch(() => {
-    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
-  });
-
-
-document.getElementById('form-oracao').addEventListener('submit', function (e) {
-  e.preventDefault();
-  
-  const nome = document.getElementById('nome').value.trim();
-  const motivo = document.getElementById('motivo').value.trim();
-  const mensagem = document.getElementById('mensagem-envio');
-
-  if (!nome || !motivo) {
-    mensagem.textContent = "Por favor, preencha todos os campos.";
-    mensagem.style.color = "#ff5555";
-    return;
-  }
-
-  fetch('https://script.google.com/macros/s/AKfycbyCwxBbDqHHaali9lByn1vhvuCnV830lWLIwLW_07nI-tmislO5dAGJbtzC-XMy624v/exec', {
-    method: 'POST',
-    body: JSON.stringify({ nome, motivo }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.resultado === "sucesso") {
-      mensagem.textContent = "Pedido enviado com sucesso!";
-      mensagem.style.color = "#66bb6a";
-      document.getElementById('form-oracao').reset();
-    } else {
-      mensagem.textContent = "Erro ao enviar. Tente novamente.";
-      mensagem.style.color = "#ff5555";
-    }
-  })
-  .catch(err => {
-    mensagem.textContent = "Erro na conexão. Verifique sua internet.";
-    mensagem.style.color = "#ff5555";
-  });
-});
-
-</script>
+        atualizarTituloProximoCulto();
+        carregarAniversariantes();
+    </script>
 </body>
-</html>
