@@ -101,6 +101,7 @@ document.getElementById('form-oracao').addEventListener('submit', function (e) {
 fetch('data/conteudo.json')
   .then(res => res.json())
   .then(dados => {
+    console.log('Eventos carregados:', dados.eventos);
     const listaProgramacao = document.querySelector('#programacao ul');
     listaProgramacao.innerHTML = (dados.programacao || []).map(item => `<li>${item}</li>`).join('');
     document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
