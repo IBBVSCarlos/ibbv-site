@@ -251,4 +251,14 @@ footer {
   height: 20px;
   vertical-align: middle;
   margin-right: 8px;
-}/* TODO: Inserir aqui o conteúdo original do CSS movido do HTML */
+}
+
+/* TODO: Inserir aqui o conteúdo original do CSS movido do HTML */
+.img-programacao {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
