@@ -104,14 +104,11 @@ fetch('data/conteudo.json')
     const listaProgramacao = document.querySelector('#programacao ul');
     listaProgramacao.innerHTML = (dados.programacao || []).map(item => `<li>${item}</li>`).join('');
     document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
-    const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-    initialView: 'dayGridMonth',
-    height: 500,
-    locale: 'pt-br',
-    events: [
-    { title: 'Teste Evento 1', start: '2025-05-15' },
-    { title: 'Teste Evento 2', start: '2025-05-20' }
-  ]
+const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+  initialView: 'dayGridMonth',
+  height: 500,
+  locale: 'pt-br',
+  events: dados.eventos || []
 });
 calendar.render();
   })
