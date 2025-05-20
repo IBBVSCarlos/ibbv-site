@@ -31,7 +31,7 @@ fetch('data/versiculos_completos.json')
     document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
   });
 
-// Aniversariantes da semana
+// Aniversariantes da semana (com ícone e sem data)
 fetch('data/aniversariantes.json')
   .then(res => res.json())
   .then(lista => {
@@ -41,13 +41,16 @@ fetch('data/aniversariantes.json')
     domingo.setDate(hoje.getDate() - diaDaSemana);
     const sabado = new Date(domingo);
     sabado.setDate(domingo.getDate() + 6);
+
     const aniversariantes = lista.filter(pessoa => {
-      const data = new Date(pessoa.data + 'T00:00:00');
+      const [dia, mes] = pessoa.data.split('/');
+      const data = new Date(hoje.getFullYear(), parseInt(mes) - 1, parseInt(dia));
       return data >= domingo && data <= sabado;
     });
+
     const ul = document.getElementById('lista-aniversariantes');
     ul.innerHTML = aniversariantes.length
-      ? aniversariantes.map(p => `<li>${p.nome} - ${new Date(p.data + 'T00:00:00').toLocaleDateString('pt-BR')}</li>`).join('')
+      ? aniversariantes.map(p => `<li><img src="img/icon_festa.png" alt="🎉" class="icone-aniversario"> ${p.nome}</li>`).join('')
       : '<li>Nenhum aniversariante nesta semana.</li>';
   })
   .catch(() => {
@@ -82,7 +85,7 @@ document.getElementById('form-oracao').addEventListener('submit', function (e) {
   });
 });
 
-// Calendário
+// Programação e eventos no calendário
 fetch('data/conteudo.json')
   .then(res => res.json())
   .then(dados => {
