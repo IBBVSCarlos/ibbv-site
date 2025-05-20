@@ -31,7 +31,7 @@ fetch('data/versiculos_completos.json')
     document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
   });
 
-// Aniversariantes da semana (com ícone e sem data)
+// Aniversariantes da semana (com ícone aleatório)
 fetch('data/aniversariantes.json')
   .then(res => res.json())
   .then(lista => {
@@ -48,9 +48,21 @@ fetch('data/aniversariantes.json')
       return data >= domingo && data <= sabado;
     });
 
+    // Lista de imagens de festa aleatórias (URLs externas)
+    const iconesFesta = [
+      'https://cdn-icons-png.flaticon.com/512/3159/3159066.png',
+      'https://cdn-icons-png.flaticon.com/512/869/869869.png',
+      'https://cdn-icons-png.flaticon.com/512/3461/3461807.png',
+      'https://cdn-icons-png.flaticon.com/512/524/524239.png',
+      'https://cdn-icons-png.flaticon.com/512/742/742751.png'
+    ];
+
     const ul = document.getElementById('lista-aniversariantes');
     ul.innerHTML = aniversariantes.length
-      ? aniversariantes.map(p => `<li><img src="img/icon_festa.png" alt="🎉" class="icone-aniversario"> ${p.nome}</li>`).join('')
+      ? aniversariantes.map(p => {
+          const iconURL = iconesFesta[Math.floor(Math.random() * iconesFesta.length)];
+          return `<li><img src="${iconURL}" alt="🎉" class="icone-aniversario"> ${p.nome}</li>`;
+        }).join('')
       : '<li>Nenhum aniversariante nesta semana.</li>';
   })
   .catch(() => {
