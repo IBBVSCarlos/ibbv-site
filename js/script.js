@@ -48,7 +48,6 @@ fetch('data/aniversariantes.json')
       return data >= domingo && data <= sabado;
     });
 
-    // Lista de imagens de festa aleatórias (URLs externas)
     const iconesFesta = [
       'https://cdn-icons-png.flaticon.com/512/3159/3159066.png',
       'https://cdn-icons-png.flaticon.com/512/869/869869.png',
@@ -102,15 +101,34 @@ fetch('data/conteudo.json')
   .then(res => res.json())
   .then(dados => {
     console.log('Eventos carregados:', dados.eventos);
+    
+    // URLs das imagens para cada evento, na mesma ordem da programação
+    const imagensProgramacao = [
+      'img/ebd_domingo.png',          // Imagem para Escola Bíblica Dominical
+      'img/culto_domingo_19h.png',    // Imagem para Culto do Domingo 19h (antes do "Próximo Culto")
+      'img/culto_terca_20h.png'       // Imagem para Culto de Oração Quarta 20h
+    ];
+
     const listaProgramacao = document.querySelector('#programacao ul');
-    listaProgramacao.innerHTML = (dados.programacao || []).map(item => `<li>${item}</li>`).join('');
+
+    // Montar os <li> com texto e imagem logo abaixo
+    listaProgramacao.innerHTML = (dados.programacao || []).map((item, idx) => {
+      const imgSrc = imagensProgramacao[idx] || '';
+      // Se existir imagem para o índice, insere logo abaixo do texto
+      return `<li>
+        <div>${item}</div>
+        ${imgSrc ? `<img src="${imgSrc}" alt="Imagem evento" class="img-programacao">` : ''}
+      </li>`;
+    }).join('');
+
     document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
-const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-  initialView: 'dayGridMonth',
-  height: 500,
-  locale: 'pt-br',
-  events: dados.eventos || []
-});
-calendar.render();
+
+    const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+      initialView: 'dayGridMonth',
+      height: 500,
+      locale: 'pt-br',
+      events: dados.eventos || []
+    });
+    calendar.render();
   })
   .catch(err => console.error('Erro ao carregar conteudo.json:', err));
