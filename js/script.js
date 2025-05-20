@@ -105,11 +105,14 @@ fetch('data/conteudo.json')
     listaProgramacao.innerHTML = (dados.programacao || []).map(item => `<li>${item}</li>`).join('');
     document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
     const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-      initialView: 'dayGridMonth',
-      height: 500,
-      locale: 'pt-br',
-      events: dados.eventos || []
-    });
-    calendar.render();
+    initialView: 'dayGridMonth',
+    height: 500,
+    locale: 'pt-br',
+    events: [
+    { title: 'Teste Evento 1', start: '2025-05-15' },
+    { title: 'Teste Evento 2', start: '2025-05-20' }
+  ]
+});
+calendar.render();
   })
   .catch(err => console.error('Erro ao carregar conteudo.json:', err));
