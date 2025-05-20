@@ -1,17 +1,14 @@
 {
   "programacao": [
+    "Escola Bíblica Dominical (EBD) Domingo às 09h"
     "Culto Domingo às 19h",
-    "Estudo Bíblico Quarta às 20h"
+    "Culto de Oração Quarta às 20h"
   ],
-  "oracao": "Ore por nossa comunidade e pelos missionários.",
+  "oracao": "Ore por nossas familias.",
   "eventos": [
     {
-      "title": "Encontro de Jovens",
-      "start": "2025-05-18"
-    },
-    {
-      "title": "Ceia do Senhor",
-      "start": "2025-06-02"
+      "title": "Maio - Mês da Familia",
+      "start": "2025-05-01"
     }
   ]
 }
