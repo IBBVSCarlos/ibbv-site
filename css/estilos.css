@@ -326,6 +326,49 @@ footer {
   opacity: 0;
   font-size: 0.9em;
   min-height: 1.2em;
+  color: var(--verde-claro);
+  text-align: center;
 }
 
-#mensagem
+/* Nova Programação com imagens em grid */
+.programacao-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.programacao-item {
+  position: relative;
+  width: 300px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.programacao-item img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.texto-sobreposto {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--texto-claro);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 1em;
+  max-width: 90%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease;
+}
+
+.programacao-item:hover .texto-sobreposto {
+  background-color: rgba(76, 175, 80, 0.8);
+}
