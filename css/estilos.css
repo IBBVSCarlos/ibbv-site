@@ -318,3 +318,14 @@ footer {
 }
 
 #mensagem
+
+/* Ajusta imagens da programação para não sair da caixa em telas pequenas */
+@media (max-width: 600px) {
+  .img-programacao {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box; /* evita overflow por padding/margin */
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
