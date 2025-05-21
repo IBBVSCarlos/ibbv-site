@@ -2,23 +2,38 @@
   --verde-claro: #66bb6a;
   --verde-escuro: #2e7d32;
   --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
+  --texto-claro: #f0f0f0;
+  --texto-secundario: #ccc;
+  --fundo-secundario: #2e2e2e;
+  --fundo-terciario: #1e1e1e;
+  --sombra-padrao: rgba(0, 0, 0, 0.5);
 }
 
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+/* Usar variáveis no body */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: var(--fundo-gradiente);
-  color: #f0f0f0;
+  color: var(--texto-claro);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  transition: background 0.5s ease;
+  transition: background 0.5s ease, color 0.5s ease;
+  line-height: 1.5;
 }
 
+/* Header */
 header {
   background: rgba(0, 0, 0, 0.6);
   text-align: center;
   padding: 20px;
   position: relative;
+  box-shadow: 0 2px 5px var(--sombra-padrao);
+  z-index: 10;
 }
 
 header img {
@@ -31,13 +46,15 @@ header h1 {
   margin: 10px 0 5px;
   font-size: 2em;
   color: var(--verde-claro);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 header h2 {
   margin: 0;
   font-weight: normal;
   font-size: 1.2em;
-  color: #ccc;
+  color: var(--texto-secundario);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .semana {
@@ -46,21 +63,24 @@ header h2 {
   right: 20px;
   color: #aaa;
   font-size: 0.9em;
+  font-style: italic;
 }
 
+/* Container principal */
 .container {
   position: relative;
-  background: #1e1e1e;
-  color: #f0f0f0;
+  background: var(--fundo-terciario);
+  color: var(--texto-claro);
   max-width: 800px;
   margin: 30px auto;
   padding: 20px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px var(--sombra-padrao);
   animation: fadeIn 1s ease forwards;
 }
 
+/* Marca d'água */
 .marca-dagua {
   position: absolute;
   opacity: 0.04;
@@ -69,18 +89,25 @@ header h2 {
   transform: translate(-50%, -50%);
   max-width: 80%;
   pointer-events: none;
+  user-select: none;
 }
 
+/* Títulos secundários */
 h2 {
   color: var(--verde-claro);
   border-bottom: 1px solid #555;
   padding-bottom: 5px;
+  margin-top: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
 
+/* Listas */
 ul {
   padding-left: 20px;
+  margin: 0;
 }
 
+/* Botões */
 button {
   background: var(--verde-claro);
   color: white;
@@ -89,28 +116,40 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  font-size: 1em;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background: #4caf50;
+  outline: none;
+  box-shadow: 0 0 8px #4caf50;
 }
 
+/* Calendário */
 #calendario {
-  background: #2e2e2e;
+  background: var(--fundo-secundario);
   border-radius: 10px;
   padding: 10px;
   margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Footer */
 footer {
   text-align: center;
   font-size: 0.8em;
   padding: 20px;
-  color: #ccc;
+  color: var(--texto-secundario);
+  user-select: none;
 }
 
-.proximo-culto img {
+/* Imagens da programação */
+.proximo-culto img,
+.img-programacao {
   max-width: 100%;
   width: 300px;
   height: auto;
@@ -119,8 +158,10 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Animações */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -131,6 +172,7 @@ footer {
   to { transform: scale(1); opacity: 1; }
 }
 
+/* Impressão */
 @media print {
   body {
     background: white;
@@ -154,6 +196,7 @@ footer {
   }
 }
 
+/* Responsividade */
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.5em;
@@ -164,13 +207,15 @@ footer {
   }
 }
 
+/* Versículo do dia */
 #versiculo-conteudo {
-  background-color: #2e2e2e;
+  background-color: var(--fundo-secundario);
   padding: 15px 20px;
   border-radius: 10px;
   margin-top: 10px;
   font-size: 1.1em;
   line-height: 1.6;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 #versiculo-conteudo .texto {
@@ -192,21 +237,35 @@ footer {
   color: #cccccc;
 }
 
+/* Programação */
 .programacao-lista {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 .programacao-lista li {
-  background: #2e2e2e;
+  background: var(--fundo-secundario);
   margin-bottom: 8px;
   padding: 10px 15px;
   border-radius: 8px;
-  color: #f0f0f0;
+  color: var(--texto-claro);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+/* Ícone aniversariantes */
+.icone-aniversario {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Formulário de oração */
 #form-oracao {
   display: flex;
   flex-direction: column;
@@ -221,6 +280,17 @@ footer {
   border-radius: 5px;
   font-size: 1em;
   resize: vertical;
+  background-color: #3a3a3a;
+  color: var(--texto-claro);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  transition: background-color 0.3s ease;
+}
+
+#form-oracao input:focus,
+#form-oracao textarea:focus {
+  background-color: #4caf50;
+  outline: none;
+  color: white;
 }
 
 #form-oracao button {
@@ -230,35 +300,21 @@ footer {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-#form-oracao button:hover {
+#form-oracao button:hover,
+#form-oracao button:focus {
   background-color: #4caf50;
+  outline: none;
 }
 
 #mensagem-envio {
   transition: all 0.4s ease;
   opacity: 0;
+  font-size: 0.9em;
+  min-height: 1.2em;
 }
 
-#mensagem-envio.mostrar {
-  opacity: 1;
-}
-
-/* Ícone na lista de aniversariantes */
-.icone-aniversario {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-/* TODO: Inserir aqui o conteúdo original do CSS movido do HTML */
-.img-programacao {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin-top: 8px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+#mensagem
