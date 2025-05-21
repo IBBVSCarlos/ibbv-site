@@ -1,138 +1,160 @@
-// Inicialização de animações
-AOS.init();
-
-// Função utilitária para obter o intervalo da semana atual
-function obterIntervaloSemana() {
-  const hoje = new Date();
-  const diaDaSemana = hoje.getDay();
-  const domingo = new Date(hoje);
-  domingo.setDate(hoje.getDate() - diaDaSemana);
-  const sabado = new Date(domingo);
-  sabado.setDate(domingo.getDate() + 6);
-  return { domingo, sabado };
-}
-
-// Atualiza a data da semana
-(function atualizarSemana() {
-  const { domingo, sabado } = obterIntervaloSemana();
-  const semanaTexto = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
-  document.getElementById('semana').textContent = semanaTexto;
-})();
-
-// Versículo do dia
-fetch('data/versiculos_completos.json')
-  .then(res => res.json())
-  .then(json => {
+document.addEventListener("DOMContentLoaded", () => {
+  // Atualiza data da semana no header
+  const semanaEl = document.getElementById("semana");
+  if (semanaEl) {
     const hoje = new Date();
-    const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
-    const versiculo = json[diaAno - 1] || {
-      texto: 'Versículo não encontrado.',
-      referencia: '',
-      comentario: ''
-    };
-    const container = document.querySelector('#versiculo-conteudo');
-    container.innerHTML = `
-      <p class="texto">"${versiculo.texto}"</p>
-      <span class="referencia">— ${versiculo.referencia}</span>
-      <p class="comentario">${versiculo.comentario}</p>
-    `;
-  })
-  .catch(() => {
-    document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
-  });
-
-// Aniversariantes da semana (com ícone aleatório)
-fetch('data/aniversariantes.json')
-  .then(res => res.json())
-  .then(lista => {
-    const { domingo, sabado } = obterIntervaloSemana();
-
-    const aniversariantes = lista.filter(pessoa => {
-      const [dia, mes] = pessoa.data.split('/');
-      const data = new Date(new Date().getFullYear(), parseInt(mes) - 1, parseInt(dia));
-      return data >= domingo && data <= sabado;
-    });
-
-    const iconesFesta = [
-      'https://cdn-icons-png.flaticon.com/512/3159/3159066.png',
-      'https://cdn-icons-png.flaticon.com/512/869/869869.png',
-      'https://cdn-icons-png.flaticon.com/512/3461/3461807.png',
-      'https://cdn-icons-png.flaticon.com/512/524/524239.png',
-      'https://cdn-icons-png.flaticon.com/512/742/742751.png'
-    ];
-
-    const ul = document.getElementById('lista-aniversariantes');
-    ul.innerHTML = aniversariantes.length
-      ? aniversariantes.map(p => {
-          const iconURL = iconesFesta[Math.floor(Math.random() * iconesFesta.length)];
-          return `<li><img src="${iconURL}" alt="🎉" class="icone-aniversario"> ${p.nome}</li>`;
-        }).join('')
-      : '<li>Nenhum aniversariante nesta semana.</li>';
-  })
-  .catch(() => {
-    document.getElementById('lista-aniversariantes').innerHTML = '<li>Erro ao carregar aniversariantes.</li>';
-  });
-
-// Formulário de oração
-document.getElementById('form-oracao').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const nome = document.getElementById('nome').value.trim();
-  const motivo = document.getElementById('motivo').value.trim();
-  const mensagem = document.getElementById('mensagem-envio');
-  if (!nome || !motivo) {
-    mensagem.textContent = "Por favor, preencha todos os campos.";
-    mensagem.style.color = "#ff5555";
-    return;
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    semanaEl.textContent = hoje.toLocaleDateString('pt-BR', options);
   }
-  fetch('https://script.google.com/macros/s/AKfycbyCwxBbDqHHaali9lByn1vhvuCnV830lWLIwLW_07nI-tmislO5dAGJbtzC-XMy624v/exec', {
-    method: 'POST',
-    body: JSON.stringify({ nome, motivo }),
-    headers: { 'Content-Type': 'application/json' }
-  })
-  .then(res => res.json())
-  .then(data => {
-    mensagem.textContent = data.resultado === "sucesso" ? "Pedido enviado com sucesso!" : "Erro ao enviar. Tente novamente.";
-    mensagem.style.color = data.resultado === "sucesso" ? "#66bb6a" : "#ff5555";
-    if (data.resultado === "sucesso") document.getElementById('form-oracao').reset();
-    setTimeout(() => mensagem.textContent = '', 5000);
-  })
-  .catch(() => {
-    mensagem.textContent = "Erro na conexão. Verifique sua internet.";
-    mensagem.style.color = "#ff5555";
-    setTimeout(() => mensagem.textContent = '', 5000);
-  });
-});
 
-// Programação e eventos no calendário
-fetch('data/conteudo.json')
-  .then(res => res.json())
-  .then(dados => {
-    console.log('Eventos carregados:', dados.eventos);
+  // Função para carregar JSON via fetch e inserir texto em elemento
+  async function carregarJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Erro ao carregar ${url}: ${response.status}`);
+    return response.json();
+  }
 
-    const imagensProgramacao = [
-      'img/ebd_domingo.png',
-      'img/culto_domingo.png',
-      'img/culto_quarta.png'
-    ];
+  // Carregar versículo do dia
+  carregarJson('data/versiculo.json')
+    .then(data => {
+      const versiculoConteudo = document.getElementById("versiculo-conteudo");
+      if (!versiculoConteudo) return;
 
-    const listaProgramacao = document.querySelector('#programacao ul');
+      versiculoConteudo.innerHTML = `
+        <span class="texto">"${data.texto}"</span>
+        <span class="referencia">${data.referencia}</span>
+        ${data.comentario ? `<span class="comentario">${data.comentario}</span>` : ''}
+      `;
+    })
+    .catch(err => console.error(err));
 
-    listaProgramacao.innerHTML = (dados.programacao || []).map((item, idx) => {
-      const imgSrc = imagensProgramacao[idx] || 'img/default_programa.png';
-      return `<li>
-        <div>${item}</div>
-        <img src="${imgSrc}" alt="Imagem evento" class="img-programacao">
-      </li>`;
-    }).join('');
+  // Carregar aniversariantes da semana
+  carregarJson('data/aniversariantes.json')
+    .then(data => {
+      const lista = document.getElementById("lista-aniversariantes");
+      if (!lista) return;
 
-    document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
+      lista.innerHTML = ''; // limpa
 
-    const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+      if (data.length === 0) {
+        lista.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
+        return;
+      }
+
+      data.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nome} (${item.data})`;
+        lista.appendChild(li);
+      });
+    })
+    .catch(err => console.error(err));
+
+  // Carregar programação
+  carregarJson('data/programacao.json')
+    .then(data => {
+      const programacaoLista = document.querySelector(".programacao-lista");
+      if (!programacaoLista) return;
+
+      programacaoLista.innerHTML = ''; // limpa
+
+      if (data.length === 0) {
+        programacaoLista.innerHTML = '<li>Sem programação para esta semana.</li>';
+        return;
+      }
+
+      data.forEach(evento => {
+        const li = document.createElement("li");
+        li.textContent = `${evento.dia} - ${evento.hora} - ${evento.descricao}`;
+        programacaoLista.appendChild(li);
+      });
+    })
+    .catch(err => console.error(err));
+
+  // Pedidos de oração: carregar e enviar
+  const oracaoPedidos = document.getElementById("oracao-pedidos");
+  const formOracao = document.getElementById("form-oracao");
+  const mensagemEnvio = document.getElementById("mensagem-envio");
+
+  async function carregarPedidos() {
+    try {
+      const data = await carregarJson('data/pedidos_oracao.json');
+      if (!oracaoPedidos) return;
+
+      if (data.length === 0) {
+        oracaoPedidos.textContent = 'Nenhum pedido de oração até o momento.';
+        return;
+      }
+
+      oracaoPedidos.innerHTML = data.map(pedido =>
+        `<p><strong>${pedido.nome}:</strong> ${pedido.motivo}</p>`
+      ).join('');
+    } catch (e) {
+      console.error(e);
+      if (oracaoPedidos) oracaoPedidos.textContent = 'Erro ao carregar pedidos.';
+    }
+  }
+
+  carregarPedidos();
+
+  if (formOracao) {
+    formOracao.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nome = formOracao.nome.value.trim();
+      const motivo = formOracao.motivo.value.trim();
+
+      if (!nome || !motivo) {
+        mensagemEnvio.textContent = 'Por favor, preencha todos os campos.';
+        mensagemEnvio.style.color = 'red';
+        return;
+      }
+
+      mensagemEnvio.textContent = 'Enviando...';
+      mensagemEnvio.style.color = 'var(--verde-claro)';
+
+      // Aqui você pode integrar com backend ou Google Sheets via API
+      // Como exemplo, simulo envio e atualização local:
+
+      try {
+        // Simulação de delay de envio
+        await new Promise(res => setTimeout(res, 1000));
+
+        // Atualiza localmente a lista (em produção, deve vir do servidor)
+        if (oracaoPedidos) {
+          oracaoPedidos.innerHTML += `<p><strong>${nome}:</strong> ${motivo}</p>`;
+        }
+
+        formOracao.reset();
+        mensagemEnvio.textContent = 'Pedido enviado com sucesso!';
+        mensagemEnvio.style.color = 'var(--verde-claro)';
+      } catch (err) {
+        console.error(err);
+        mensagemEnvio.textContent = 'Erro ao enviar pedido.';
+        mensagemEnvio.style.color = 'red';
+      }
+    });
+  }
+
+  // Inicializar FullCalendar
+  const calendarEl = document.getElementById('calendar');
+  if (calendarEl) {
+    const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      height: 500,
       locale: 'pt-br',
-      events: dados.eventos || []
+      events: 'data/eventos.json', // seu arquivo JSON com eventos
+      height: 'auto',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      themeSystem: 'standard'
     });
     calendar.render();
-  })
-  .catch(err => console.error('Erro ao carregar conteudo.json:', err));
+  }
+
+  // Inicializar AOS (animações)
+  if (window.AOS) {
+    AOS.init();
+  }
+});
