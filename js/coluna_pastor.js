@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("dados/coluna_pastor.json")
+  fetch("data/coluna_pastor.json")
     .then(res => res.json())
     .then(data => {
       const titulo = document.querySelector("#coluna-pastor h2");
