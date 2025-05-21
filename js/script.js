@@ -1,14 +1,20 @@
 // Inicialização de animações
 AOS.init();
 
-// Atualiza a data da semana
-(function atualizarSemana() {
+// Função utilitária para obter o intervalo da semana atual
+function obterIntervaloSemana() {
   const hoje = new Date();
   const diaDaSemana = hoje.getDay();
   const domingo = new Date(hoje);
   domingo.setDate(hoje.getDate() - diaDaSemana);
   const sabado = new Date(domingo);
   sabado.setDate(domingo.getDate() + 6);
+  return { domingo, sabado };
+}
+
+// Atualiza a data da semana
+(function atualizarSemana() {
+  const { domingo, sabado } = obterIntervaloSemana();
   const semanaTexto = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
   document.getElementById('semana').textContent = semanaTexto;
 })();
@@ -19,7 +25,11 @@ fetch('data/versiculos_completos.json')
   .then(json => {
     const hoje = new Date();
     const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
-    const versiculo = json[diaAno - 1];
+    const versiculo = json[diaAno - 1] || {
+      texto: 'Versículo não encontrado.',
+      referencia: '',
+      comentario: ''
+    };
     const container = document.querySelector('#versiculo-conteudo');
     container.innerHTML = `
       <p class="texto">"${versiculo.texto}"</p>
@@ -35,16 +45,11 @@ fetch('data/versiculos_completos.json')
 fetch('data/aniversariantes.json')
   .then(res => res.json())
   .then(lista => {
-    const hoje = new Date();
-    const diaDaSemana = hoje.getDay();
-    const domingo = new Date(hoje);
-    domingo.setDate(hoje.getDate() - diaDaSemana);
-    const sabado = new Date(domingo);
-    sabado.setDate(domingo.getDate() + 6);
+    const { domingo, sabado } = obterIntervaloSemana();
 
     const aniversariantes = lista.filter(pessoa => {
       const [dia, mes] = pessoa.data.split('/');
-      const data = new Date(hoje.getFullYear(), parseInt(mes) - 1, parseInt(dia));
+      const data = new Date(new Date().getFullYear(), parseInt(mes) - 1, parseInt(dia));
       return data >= domingo && data <= sabado;
     });
 
@@ -89,10 +94,12 @@ document.getElementById('form-oracao').addEventListener('submit', function (e) {
     mensagem.textContent = data.resultado === "sucesso" ? "Pedido enviado com sucesso!" : "Erro ao enviar. Tente novamente.";
     mensagem.style.color = data.resultado === "sucesso" ? "#66bb6a" : "#ff5555";
     if (data.resultado === "sucesso") document.getElementById('form-oracao').reset();
+    setTimeout(() => mensagem.textContent = '', 5000);
   })
   .catch(() => {
     mensagem.textContent = "Erro na conexão. Verifique sua internet.";
     mensagem.style.color = "#ff5555";
+    setTimeout(() => mensagem.textContent = '', 5000);
   });
 });
 
@@ -101,23 +108,20 @@ fetch('data/conteudo.json')
   .then(res => res.json())
   .then(dados => {
     console.log('Eventos carregados:', dados.eventos);
-    
-    // URLs das imagens para cada evento, na mesma ordem da programação
+
     const imagensProgramacao = [
-      'img/ebd_domingo.png',          // Imagem para Escola Bíblica Dominical
-      'img/culto_domingo.png',    // Imagem para Culto do Domingo 19h (antes do "Próximo Culto")
-      'img/culto_quarta.png'       // Imagem para Culto de Oração Quarta 20h
+      'img/ebd_domingo.png',
+      'img/culto_domingo.png',
+      'img/culto_quarta.png'
     ];
 
     const listaProgramacao = document.querySelector('#programacao ul');
 
-    // Montar os <li> com texto e imagem logo abaixo
     listaProgramacao.innerHTML = (dados.programacao || []).map((item, idx) => {
-      const imgSrc = imagensProgramacao[idx] || '';
-      // Se existir imagem para o índice, insere logo abaixo do texto
+      const imgSrc = imagensProgramacao[idx] || 'img/default_programa.png';
       return `<li>
         <div>${item}</div>
-        ${imgSrc ? `<img src="${imgSrc}" alt="Imagem evento" class="img-programacao">` : ''}
+        <img src="${imgSrc}" alt="Imagem evento" class="img-programacao">
       </li>`;
     }).join('');
 
