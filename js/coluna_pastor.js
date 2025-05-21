@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       const titulo = document.querySelector("#coluna-pastor h2");
-      const artigo = document.getElementById("mensagem-pastor");
+      const artigo = document.getElementById("conteudo-coluna");
 
       if (!titulo || !artigo) {
         console.warn("Elementos da Coluna do Pastor não encontrados no DOM.");
@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       titulo.textContent = data.titulo;
 
-      // Limpa o conteúdo antes de inserir
-      artigo.innerHTML = '';
+      artigo.innerHTML = ''; // limpa antes
 
       data.mensagem.forEach(paragrafo => {
         const p = document.createElement("p");
