@@ -105,8 +105,8 @@ fetch('data/conteudo.json')
     // URLs das imagens para cada evento, na mesma ordem da programação
     const imagensProgramacao = [
       'img/ebd_domingo.png',          // Imagem para Escola Bíblica Dominical
-      'img/culto_domingo_19h.png',    // Imagem para Culto do Domingo 19h (antes do "Próximo Culto")
-      'img/culto_terca_20h.png'       // Imagem para Culto de Oração Quarta 20h
+      'img/culto_domingo.png',    // Imagem para Culto do Domingo 19h (antes do "Próximo Culto")
+      'img/culto_quarta.png'       // Imagem para Culto de Oração Quarta 20h
     ];
 
     const listaProgramacao = document.querySelector('#programacao ul');
