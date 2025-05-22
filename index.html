@@ -1,93 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boletim IBBV São Carlos</title>
-
-  <!-- CSS externo -->
-  <link rel="stylesheet" href="estilos.css" />
-
-  <!-- AOS para animações -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-  <!-- FullCalendar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
-
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <header>
-    <img src="img/logo_ibbv.png" alt="Logo IBBV São Carlos" />
-    <h1>Igreja Batista de Boa Vista - São Carlos</h1>
-    <h2>Av Henrique Gregory, 151 - São Carlos/SP</h2>
-    <div class="semana" id="semana">Semana de ...</div>
+  <header data-aos="fade-down">
+    <img src="img/logo_site.png" alt="Logo IBBV São Carlos" />
+    <h1>Boletim Informativo</h1>
+    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
+    <div class="semana" id="semana">Semana atual</div>
   </header>
 
-  <main class="container" role="main" aria-label="Conteúdo principal do boletim">
-    <!-- Marca d'água -->
-    <img src="img/logo_ibbv.png" alt="Marca d'água IBBV" class="marca-dagua" aria-hidden="true" />
+  <div class="container">
+    <img src="img/logo_site.png" alt="Marca d'água" class="marca-dagua" />
+    <button onclick="window.print()">🖨️ Imprimir</button>
 
-    <!-- Versículo do dia -->
-    <section id="versiculo" aria-labelledby="titulo-versiculo">
-      <h2 id="titulo-versiculo">Versículo do Dia</h2>
-      <div id="versiculo-conteudo" aria-live="polite" aria-atomic="true">
-        <!-- Conteúdo carregado via JS -->
-      </div>
-    </section>
-    
-    <!-- Aniversariantes da semana -->
-    <section id="aniversariantes" aria-labelledby="titulo-aniversariantes">
-      <h2 id="titulo-aniversariantes">Aniversariantes da Semana</h2>
-      <ul id="lista-aniversariantes" role="list">
-        <!-- Lista carregada via JS -->
-      </ul>
+    <section id="versiculo" class="fade-in" data-aos="fade-up">
+      <h2>Versículo do Dia</h2>
+      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
     </section>
 
-    <!-- Programação -->
-    <section id="programacao" aria-labelledby="titulo-programacao">
-      <h2 id="titulo-programacao">Programação</h2>
-      <ul class="programacao-lista">
-        <!-- Programação carregada via JS -->
-      </ul>
-    </section>
-
-    <!-- Pedidos de Oração -->
-    <section id="oracao" aria-labelledby="titulo-oracao">
-      <h2 id="titulo-oracao">Pedidos de Oração</h2>
-      <p aria-live="polite" id="oracao-pedidos">Carregando pedidos...</p>
-
-      <form id="form-oracao" aria-describedby="mensagem-envio" novalidate>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" aria-label="Nome" required />
-        <input type="text" id="motivo" name="motivo" placeholder="Motivo da oração" aria-label="Motivo" required />
+   <section id="programacao" class="fade-in" data-aos="fade-up">
+  <h2>Programação</h2>
+  <div class="programacao-grid">
+    <div class="programacao-item">
+      <img src="img/culto_domingo.png" alt="Culto de Domingo">
+      <div class="texto-sobreposto">Domingo às 19h - Culto de Louvor</div>
+    </div>
+    <div class="programacao-item">
+      <img src="img/ebd_domingo.png" alt="Estudo Bíblico">
+      <div class="texto-sobreposto">Domingo às 09h - Estudo Bíblico</div>
+    </div>
+    <div class="programacao-item">
+      <img src="img/culto_quarta.png" alt="Culto de Oração">
+      <div class="texto-sobreposto">Quarta às 20h - Culto de Oração</div>
+    </div>
+  </div>
+</section>
+    <section id="oracao" class="fade-in" data-aos="fade-up">
+      <h2>Pedidos de Oração</h2>
+      <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
+      <form id="form-oracao">
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
         <button type="submit">Enviar Pedido</button>
-        <div id="mensagem-envio" role="alert" aria-live="assertive"></div>
+        <p id="mensagem-envio" style="margin-top:10px; font-size:0.9em;"></p>
       </form>
     </section>
 
-    <!-- Coluna do Pastor -->
-    <section id="coluna-pastor" aria-labelledby="titulo-coluna-pastor">
-      <h2 id="titulo-coluna-pastor">Coluna do Pastor</h2>
-      <div id="conteudo-coluna">
-        <!-- Conteúdo carregado via JS -->
-      </div>
+    <section id="coluna-pastor" class="fade-in" data-aos="fade-up">
+      <h2 id="titulo-coluna">Coluna do Pastor</h2>
+      <div id="conteudo-coluna"></div>
     </section>
+  </div>
 
-    <!-- Calendário -->
-    <section id="calendario" aria-label="Calendário de eventos">
-      <div id="calendar"></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Contato: (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+  <footer data-aos="fade-in">
+    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP 
+       <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
   </footer>
-
-  <!-- Scripts externos -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-
-  <!-- Scripts próprios -->
-  <script src="script.js"></script>
-  <script src="coluna_pastor.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/coluna_pastor.js"></script>
 </body>
 </html>

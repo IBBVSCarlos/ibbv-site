@@ -1,41 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
   fetch("data/coluna_pastor.json")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Erro ao carregar o arquivo JSON da Coluna do Pastor.");
-      }
-      return response.json();
-    })
+    .then(res => res.json())
     .then(data => {
-      const tituloEl = document.querySelector("#coluna-pastor h2");
-      const conteudoEl = document.getElementById("conteudo-coluna");
-      const assinaturaEl = document.querySelector(".coluna-pastor .assinatura");
+      const titulo = document.querySelector("#coluna-pastor h2");
+      const artigo = document.getElementById("conteudo-coluna");
 
-      if (!tituloEl || !conteudoEl) {
-        console.warn("Elementos esperados não foram encontrados no DOM.");
+      if (!titulo || !artigo) {
+        console.warn("Elementos da Coluna do Pastor não encontrados no DOM.");
         return;
       }
 
-      // Preenche o título
-      tituloEl.textContent = data.titulo || "Coluna do Pastor";
+      titulo.textContent = data.titulo;
 
-      // Limpa e preenche os parágrafos
-      conteudoEl.innerHTML = "";
-      if (Array.isArray(data.mensagem)) {
-        data.mensagem.forEach(paragrafo => {
-          const p = document.createElement("p");
-          p.textContent = paragrafo;
-          conteudoEl.appendChild(p);
-        });
-      }
+      artigo.innerHTML = ''; // limpa antes
 
-      // Adiciona assinatura se existir
-      if (assinaturaEl && data.assinatura) {
-        assinaturaEl.textContent = data.assinatura;
-      }
-
+      data.mensagem.forEach(paragrafo => {
+        const p = document.createElement("p");
+        p.textContent = paragrafo;
+        artigo.appendChild(p);
+      });
     })
     .catch(error => {
-      console.error("Erro ao carregar a Coluna do Pastor:", error.message);
+      console.error("Erro ao carregar a Coluna do Pastor:", error);
     });
 });
