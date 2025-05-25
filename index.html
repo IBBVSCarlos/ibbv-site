@@ -1,32 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boletim IBBV</title>
-  <link rel="stylesheet" href="estilos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boletim IBBV São Carlos</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <header>
-    <img src="imagens/logo.png" alt="Logo IBBV" />
-    <h1>Igreja Batista de Boa Vista</h1>
-    <h2>Boletim Informativo</h2>
-    <div class="semana" id="semana-info"></div>
+  <header data-aos="fade-down">
+    <img src="img/logo_site.png" alt="Logo IBBV São Carlos" />
+    <h1>Boletim Informativo</h1>
+    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
+    <div class="semana" id="semana">Semana atual</div>
   </header>
 
   <div class="container">
-    <section id="coluna-pastor">
-      <h2>Coluna do Pastor</h2>
-      <div id="conteudo-coluna"></div>
+    <img src="img/logo_site.png" alt="Marca d'água" class="marca-dagua" />
+    <button onclick="window.print()">🖨️ Imprimir</button>
+
+    <section id="versiculo" class="fade-in" data-aos="fade-up">
+      <h2>Versículo do Dia</h2>
+      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
+    </section>
+
+    <section class="proximo-culto fade-in" data-aos="fade-up">
+      <h2>Próximo Culto</h2>
+      <img src="img/culto_proximo.png" alt="Próximo Culto">
+    </section>
+
+    <section id="programacao" class="fade-in" data-aos="fade-up">
+      <h2>Programação</h2>
+      <ul class="programacao-lista"></ul>
+    </section>
+
+    <section id="aniversariantes" class="fade-in" data-aos="fade-up">
+      <h2>Aniversariantes da Semana</h2>
+      <ul class="programacao-lista" id="lista-aniversariantes">
+        <li>Carregando aniversariantes...</li>
+      </ul>
+    </section>
+
+    <section id="oracao" class="fade-in" data-aos="fade-up">
+      <h2>Pedidos de Oração</h2>
+      <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
+      <form id="form-oracao">
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
+        <button type="submit">Enviar Pedido</button>
+        <p id="mensagem-envio" style="margin-top:10px; font-size:0.9em;"></p>
+      </form>
+    </section>
+
+    <section id="calendario" class="fade-in" data-aos="fade-up">
+      <h2>Calendário de Eventos</h2>
+      <div id="calendar"></div>
     </section>
   </div>
 
-  <footer>
-    Igreja Batista de Boa Vista - São Carlos/SP<br />
-    Av. Henrique Gregory, 151 - São Carlos - Contato: (16) 99205-3530 - ibbvsaocarlos@gmail.com
+  <footer data-aos="fade-in">
+    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP 
+       <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="scripts/script.js"></script>
-  <script src="scripts/coluna_pastor.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
