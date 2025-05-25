@@ -1,264 +1,53 @@
-:root {
-  --verde-claro: #66bb6a;
-  --verde-escuro: #2e7d32;
-  --fundo-gradiente: linear-gradient(to bottom, #000000, var(--verde-escuro));
-}
-
+/* Estilos restaurados conforme layout bonito anterior */
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--fundo-gradiente);
+  background: linear-gradient(to bottom, #000, #2e7d32);
   color: #f0f0f0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  transition: background 0.5s ease;
+  margin: 0;
+  line-height: 1.5;
 }
 
 header {
-  background: rgba(0, 0, 0, 0.6);
   text-align: center;
+  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
-  position: relative;
 }
 
 header img {
   width: 80px;
-  margin-bottom: 10px;
-  animation: zoomIn 1s ease forwards;
 }
 
-header h1 {
-  margin: 10px 0 5px;
-  font-size: 2em;
-  color: var(--verde-claro);
+h1 {
+  color: #66bb6a;
 }
 
-header h2 {
-  margin: 0;
-  font-weight: normal;
-  font-size: 1.2em;
+.container {
+  max-width: 800px;
+  background: #1e1e1e;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  color: #66bb6a;
+  border-bottom: 1px solid #555;
+  padding-bottom: 5px;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
   color: #ccc;
+  padding: 20px;
 }
 
 .semana {
   position: absolute;
   top: 10px;
   right: 20px;
-  color: #aaa;
   font-size: 0.9em;
-}
-
-.container {
-  position: relative;
-  background: #1e1e1e;
-  color: #f0f0f0;
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 1s ease forwards;
-}
-
-.marca-dagua {
-  position: absolute;
-  opacity: 0.04;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 80%;
-  pointer-events: none;
-}
-
-h2 {
-  color: var(--verde-claro);
-  border-bottom: 1px solid #555;
-  padding-bottom: 5px;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-button {
-  background: var(--verde-claro);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #4caf50;
-}
-
-#calendario {
-  background: #2e2e2e;
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 30px;
-}
-
-footer {
-  text-align: center;
-  font-size: 0.8em;
-  padding: 20px;
-  color: #ccc;
-}
-
-.proximo-culto img {
-  max-width: 100%;
-  width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@media print {
-  body {
-    background: white;
-    color: black;
-  }
-  header {
-    background: white;
-    color: black;
-  }
-  .container {
-    box-shadow: none;
-    border: none;
-    background: white;
-    color: black;
-  }
-  button {
-    display: none;
-  }
-  .marca-dagua {
-    opacity: 0.05;
-  }
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.5em;
-  }
-  .container {
-    margin: 10px;
-    padding: 15px;
-  }
-}
-
-#versiculo-conteudo {
-  background-color: #2e2e2e;
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-size: 1.1em;
-  line-height: 1.6;
-}
-
-#versiculo-conteudo .texto {
   font-style: italic;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #f9f9f9;
-}
-
-#versiculo-conteudo .referencia {
-  font-weight: bold;
-  color: var(--verde-claro);
-  display: block;
-  margin-bottom: 10px;
-}
-
-#versiculo-conteudo .comentario {
-  font-size: 0.95em;
-  color: #cccccc;
-}
-
-.programacao-lista {
-  list-style: none;
-  padding-left: 0;
-}
-
-.programacao-lista li {
-  background: #2e2e2e;
-  margin-bottom: 8px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: #f0f0f0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  font-size: 1em;
-}
-
-#form-oracao {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-#form-oracao input,
-#form-oracao textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  resize: vertical;
-}
-
-#form-oracao button {
-  background-color: var(--verde-claro);
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#form-oracao button:hover {
-  background-color: #4caf50;
-}
-
-#mensagem-envio {
-  transition: all 0.4s ease;
-  opacity: 0;
-}
-
-#mensagem-envio.mostrar {
-  opacity: 1;
-}
-
-/* Ícone na lista de aniversariantes */
-.icone-aniversario {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-/* TODO: Inserir aqui o conteúdo original do CSS movido do HTML */
-.img-programacao {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin-top: 8px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #aaa;
 }

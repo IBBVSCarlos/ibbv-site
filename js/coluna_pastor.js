@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       titulo.textContent = data.titulo;
 
-      artigo.innerHTML = ''; // limpa antes
-
+      artigo.innerHTML = '';
       data.mensagem.forEach(paragrafo => {
         const p = document.createElement("p");
         p.textContent = paragrafo;

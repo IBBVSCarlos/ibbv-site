@@ -1,50 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boletim IBBV São Carlos</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletim IBBV</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
-    <header>
-        <h1>Boletim Informativo - IBBV São Carlos</h1>
-        <p>Av. Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    </header>
+  <header>
+    <img src="imagens/logo.png" alt="Logo IBBV" />
+    <h1>Igreja Batista de Boa Vista</h1>
+    <h2>Boletim Informativo</h2>
+    <div class="semana" id="semana-info"></div>
+  </header>
 
-    <main>
-        <section id="coluna-pastor">
-            <h2>Coluna do Pastor</h2>
-            <article>
-                <p>Queridos irmãos,</p>
-                <p>Que a paz do Senhor esteja com todos vocês. Nesta semana, quero compartilhar uma palavra de encorajamento sobre a importância da oração constante...</p>
-                <p>Permaneçamos firmes na fé, servindo com alegria.</p>
-                <p><strong>Pr. João Batista</strong></p>
-            </article>
-        </section>
+  <div class="container">
+    <section id="coluna-pastor">
+      <h2>Coluna do Pastor</h2>
+      <div id="conteudo-coluna"></div>
+    </section>
+  </div>
 
-        <section id="aniversariantes">
-            <h2>Aniversariantes da Semana</h2>
-            <ul id="lista-aniversariantes"></ul>
-        </section>
+  <footer>
+    Igreja Batista de Boa Vista - São Carlos/SP<br />
+    Av. Henrique Gregory, 151 - São Carlos - Contato: (16) 99205-3530 - ibbvsaocarlos@gmail.com
+  </footer>
 
-        <section id="ministerios">
-            <h2>Escala de Ministérios</h2>
-            <ul id="escala-ministerios"></ul>
-        </section>
-
-        <section id="versiculo">
-            <h2>Versículo da Semana</h2>
-            <blockquote id="versiculo-semana">
-                "O Senhor é o meu pastor; nada me faltará." – Salmos 23:1
-            </blockquote>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Igreja Batista de Boa Vista - São Carlos</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/coluna_pastor.js"></script>
 </body>
 </html>
