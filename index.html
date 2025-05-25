@@ -1,86 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boletim IBBV São Carlos</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boletim IBBV</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <script defer src="js/aniversariantes.js"></script>
+  <script defer src="js/coluna_pastor.js"></script>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <img src="img/logo_site.png" alt="Logo IBBV São Carlos" />
-    <h1>Boletim Informativo</h1>
-    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-    <div class="semana" id="semana">Semana atual</div>
+  <header>
+    <img src="img/logo.png" alt="Logo IBBV" />
+    <h1>Igreja Batista de Boa Vista</h1>
+    <h2>Boletim Informativo</h2>
+    <div class="semana">Semana de 26/05 a 01/06</div>
   </header>
 
-  <div class="container">
-    <img src="img/logo_site.png" alt="Marca d'água" class="marca-dagua" />
-    <button onclick="window.print()">🖨️ Imprimir</button>
+  <main class="container">
+    <img src="img/logo.png" alt="Marca d'água" class="marca-dagua" />
 
-    <section id="versiculo" class="fade-in" data-aos="fade-up">
-      <h2>Versículo do Dia</h2>
-      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
-    </section>
-
-    <!-- NOVA SEÇÃO: ANIVERSARIANTES DA SEMANA -->
-    <section id="aniversariantes" class="fade-in" data-aos="fade-up">
+    <section id="aniversariantes">
       <h2>Aniversariantes da Semana</h2>
-      <ul id="lista-aniversariantes">
-        <li>Carregando aniversariantes...</li>
-      </ul>
+      <ul id="lista-aniversariantes" class="programacao-lista"></ul>
     </section>
 
-    <section id="programacao" class="fade-in" data-aos="fade-up">
-      <h2>Programação</h2>
-      <div class="programacao-grid">
-        <div class="programacao-item">
-          <img src="img/culto_domingo.png" alt="Culto de Domingo">
-          <div class="texto-sobreposto">Domingo às 19h - Culto de Louvor</div>
-        </div>
-        <div class="programacao-item">
-          <img src="img/ebd_domingo.png" alt="Estudo Bíblico">
-          <div class="texto-sobreposto">Domingo às 09h - Estudo Bíblico</div>
-        </div>
-        <div class="programacao-item">
-          <img src="img/culto_quarta.png" alt="Culto de Oração">
-          <div class="texto-sobreposto">Quarta às 20h - Culto de Oração</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="oracao" class="fade-in" data-aos="fade-up">
-      <h2>Pedidos de Oração</h2>
-      <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
-<form id="form-oracao" method="POST" action="https://script.google.com/macros/s/AKfycbzNaG9EcYbl-kRCv057dzupINvD_TISiSKH4GB2T7ooHg417LDTOd5EzvPr9VePuWPa/exec" target="invisible-frame">
-  <input type="text" name="nome" placeholder="Seu nome" required>
-  <input type="text" name="assunto" placeholder="Cidade/Estado" required>
-  <textarea name="mensagem" rows="4" placeholder="Escreva seu pedido de oração" required></textarea>
-  <button type="submit">Enviar pedido</button>
-  <div id="mensagem-envio">Seu pedido foi enviado com sucesso!</div>
-  <iframe name="invisible-frame" style="display: none;"></iframe>
-</form>
-    </section>
-
-    <section id="coluna-pastor" class="fade-in" data-aos="fade-up">
-      <h2 id="titulo-coluna">Coluna do Pastor</h2>
+    <section id="coluna-pastor">
+      <h2>Coluna do Pastor</h2>
       <div id="conteudo-coluna"></div>
     </section>
-  </div>
+  </main>
 
-  <footer data-aos="fade-in">
-    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP 
-       <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+  <footer>
+    &copy; 2025 Igreja Batista de Boa Vista - São Carlos/SP
   </footer>
-  
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/coluna_pastor.js"></script>
-  <script src="js/aniversariantes.js"></script>
 </body>
 </html>
