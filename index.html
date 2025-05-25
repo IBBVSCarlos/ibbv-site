@@ -1,72 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boletim IBBV São Carlos</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boletim IBBV São Carlos</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header data-aos="fade-down">
-    <img src="img/logo_site.png" alt="Logo IBBV São Carlos" />
-    <h1>Boletim Informativo</h1>
-    <h2>IBBV - Igreja Batista de Boa Vista - São Carlos/SP</h2>
-    <div class="semana" id="semana">Semana atual</div>
-  </header>
+    <header>
+        <h1>Boletim Informativo - IBBV São Carlos</h1>
+        <p>Av. Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    </header>
 
-  <div class="container">
-    <img src="img/logo_site.png" alt="Marca d'água" class="marca-dagua" />
-    <button onclick="window.print()">🖨️ Imprimir</button>
+    <main>
+        <section id="coluna-pastor">
+            <h2>Coluna do Pastor</h2>
+            <article>
+                <p>Queridos irmãos,</p>
+                <p>Que a paz do Senhor esteja com todos vocês. Nesta semana, quero compartilhar uma palavra de encorajamento sobre a importância da oração constante...</p>
+                <p>Permaneçamos firmes na fé, servindo com alegria.</p>
+                <p><strong>Pr. João Batista</strong></p>
+            </article>
+        </section>
 
-    <section id="versiculo" class="fade-in" data-aos="fade-up">
-      <h2>Versículo do Dia</h2>
-      <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
-    </section>
+        <section id="aniversariantes">
+            <h2>Aniversariantes da Semana</h2>
+            <ul id="lista-aniversariantes"></ul>
+        </section>
 
-    <section class="proximo-culto fade-in" data-aos="fade-up">
-      <h2>Próximo Culto</h2>
-      <img src="img/culto_proximo.png" alt="Próximo Culto">
-    </section>
+        <section id="ministerios">
+            <h2>Escala de Ministérios</h2>
+            <ul id="escala-ministerios"></ul>
+        </section>
 
-    <section id="programacao" class="fade-in" data-aos="fade-up">
-      <h2>Programação</h2>
-      <ul class="programacao-lista"></ul>
-    </section>
+        <section id="versiculo">
+            <h2>Versículo da Semana</h2>
+            <blockquote id="versiculo-semana">
+                "O Senhor é o meu pastor; nada me faltará." – Salmos 23:1
+            </blockquote>
+        </section>
+    </main>
 
-    <section id="aniversariantes" class="fade-in" data-aos="fade-up">
-      <h2>Aniversariantes da Semana</h2>
-      <ul class="programacao-lista" id="lista-aniversariantes">
-        <li>Carregando aniversariantes...</li>
-      </ul>
-    </section>
+    <footer>
+        <p>&copy; 2025 Igreja Batista de Boa Vista - São Carlos</p>
+    </footer>
 
-    <section id="oracao" class="fade-in" data-aos="fade-up">
-      <h2>Pedidos de Oração</h2>
-      <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
-      <form id="form-oracao">
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-        <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
-        <button type="submit">Enviar Pedido</button>
-        <p id="mensagem-envio" style="margin-top:10px; font-size:0.9em;"></p>
-      </form>
-    </section>
-
-    <section id="calendario" class="fade-in" data-aos="fade-up">
-      <h2>Calendário de Eventos</h2>
-      <div id="calendar"></div>
-    </section>
-  </div>
-
-  <footer data-aos="fade-in">
-    <p><strong>Endereço:</strong> Av Henrique Gregory, 151 - São Carlos/SP 
-       <strong>Contato:</strong> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>&copy; 2025 IBBV São Carlos. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
-  <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
