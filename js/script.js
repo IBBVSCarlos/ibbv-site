@@ -1,20 +1,14 @@
 // Inicialização de animações
 AOS.init();
 
-// Função utilitária para obter o intervalo da semana atual
-function obterIntervaloSemana() {
+// Atualiza a data da semana
+(function atualizarSemana() {
   const hoje = new Date();
   const diaDaSemana = hoje.getDay();
   const domingo = new Date(hoje);
   domingo.setDate(hoje.getDate() - diaDaSemana);
   const sabado = new Date(domingo);
   sabado.setDate(domingo.getDate() + 6);
-  return { domingo, sabado };
-}
-
-// Atualiza a data da semana
-(function atualizarSemana() {
-  const { domingo, sabado } = obterIntervaloSemana();
   const semanaTexto = `Semana de ${domingo.getDate()} a ${sabado.getDate()} de ${sabado.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}`;
   document.getElementById('semana').textContent = semanaTexto;
 })();
@@ -25,11 +19,7 @@ fetch('data/versiculos_completos.json')
   .then(json => {
     const hoje = new Date();
     const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
-    const versiculo = json[diaAno - 1] || {
-      texto: 'Versículo não encontrado.',
-      referencia: '',
-      comentario: ''
-    };
+    const versiculo = json[diaAno - 1];
     const container = document.querySelector('#versiculo-conteudo');
     container.innerHTML = `
       <p class="texto">"${versiculo.texto}"</p>
@@ -41,32 +31,23 @@ fetch('data/versiculos_completos.json')
     document.querySelector('#versiculo-conteudo').innerHTML = '<p>Não foi possível carregar o versículo do dia.</p>';
   });
 
-// Aniversariantes da semana (com ícone aleatório)
+// Aniversariantes da semana
 fetch('data/aniversariantes.json')
   .then(res => res.json())
   .then(lista => {
-    const { domingo, sabado } = obterIntervaloSemana();
-
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const domingo = new Date(hoje);
+    domingo.setDate(hoje.getDate() - diaDaSemana);
+    const sabado = new Date(domingo);
+    sabado.setDate(domingo.getDate() + 6);
     const aniversariantes = lista.filter(pessoa => {
-      const [dia, mes] = pessoa.data.split('/');
-      const data = new Date(new Date().getFullYear(), parseInt(mes) - 1, parseInt(dia));
+      const data = new Date(pessoa.data + 'T00:00:00');
       return data >= domingo && data <= sabado;
     });
-
-    const iconesFesta = [
-      'https://cdn-icons-png.flaticon.com/512/3159/3159066.png',
-      'https://cdn-icons-png.flaticon.com/512/869/869869.png',
-      'https://cdn-icons-png.flaticon.com/512/3461/3461807.png',
-      'https://cdn-icons-png.flaticon.com/512/524/524239.png',
-      'https://cdn-icons-png.flaticon.com/512/742/742751.png'
-    ];
-
     const ul = document.getElementById('lista-aniversariantes');
     ul.innerHTML = aniversariantes.length
-      ? aniversariantes.map(p => {
-          const iconURL = iconesFesta[Math.floor(Math.random() * iconesFesta.length)];
-          return `<li><img src="${iconURL}" alt="🎉" class="icone-aniversario"> ${p.nome}</li>`;
-        }).join('')
+      ? aniversariantes.map(p => `<li>${p.nome} - ${new Date(p.data + 'T00:00:00').toLocaleDateString('pt-BR')}</li>`).join('')
       : '<li>Nenhum aniversariante nesta semana.</li>';
   })
   .catch(() => {
@@ -94,39 +75,20 @@ document.getElementById('form-oracao').addEventListener('submit', function (e) {
     mensagem.textContent = data.resultado === "sucesso" ? "Pedido enviado com sucesso!" : "Erro ao enviar. Tente novamente.";
     mensagem.style.color = data.resultado === "sucesso" ? "#66bb6a" : "#ff5555";
     if (data.resultado === "sucesso") document.getElementById('form-oracao').reset();
-    setTimeout(() => mensagem.textContent = '', 5000);
   })
   .catch(() => {
     mensagem.textContent = "Erro na conexão. Verifique sua internet.";
     mensagem.style.color = "#ff5555";
-    setTimeout(() => mensagem.textContent = '', 5000);
   });
 });
 
-// Programação e eventos no calendário
+// Calendário
 fetch('data/conteudo.json')
   .then(res => res.json())
   .then(dados => {
-    console.log('Eventos carregados:', dados.eventos);
-
-    const imagensProgramacao = [
-      'img/ebd_domingo.png',
-      'img/culto_domingo.png',
-      'img/culto_quarta.png'
-    ];
-
     const listaProgramacao = document.querySelector('#programacao ul');
-
-    listaProgramacao.innerHTML = (dados.programacao || []).map((item, idx) => {
-      const imgSrc = imagensProgramacao[idx] || 'img/default_programa.png';
-      return `<li>
-        <div>${item}</div>
-        <img src="${imgSrc}" alt="Imagem evento" class="img-programacao">
-      </li>`;
-    }).join('');
-
+    listaProgramacao.innerHTML = (dados.programacao || []).map(item => `<li>${item}</li>`).join('');
     document.querySelector('#oracao p').textContent = dados.oracao || 'Pedidos de oração não disponíveis.';
-
     const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
       initialView: 'dayGridMonth',
       height: 500,
