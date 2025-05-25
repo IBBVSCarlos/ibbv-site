@@ -84,3 +84,20 @@ footer {
     font-size: 1.3rem;
   }
 }
+#coluna-pastor h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#mensagem-pastor p {
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+#mensagem-pastor p.assinatura {
+  text-align: right;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 2rem;
+}
