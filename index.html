@@ -26,32 +26,43 @@
       <div id="versiculo-conteudo"><p class="texto">Carregando versículo...</p></div>
     </section>
 
-   <section id="programacao" class="fade-in" data-aos="fade-up">
-  <h2>Programação</h2>
-  <div class="programacao-grid">
-    <div class="programacao-item">
-      <img src="img/culto_domingo.png" alt="Culto de Domingo">
-      <div class="texto-sobreposto">Domingo às 19h - Culto de Louvor</div>
-    </div>
-    <div class="programacao-item">
-      <img src="img/ebd_domingo.png" alt="Estudo Bíblico">
-      <div class="texto-sobreposto">Domingo às 09h - Estudo Bíblico</div>
-    </div>
-    <div class="programacao-item">
-      <img src="img/culto_quarta.png" alt="Culto de Oração">
-      <div class="texto-sobreposto">Quarta às 20h - Culto de Oração</div>
-    </div>
-  </div>
-</section>
+    <!-- NOVA SEÇÃO: ANIVERSARIANTES DA SEMANA -->
+    <section id="aniversariantes" class="fade-in" data-aos="fade-up">
+      <h2>Aniversariantes da Semana</h2>
+      <ul id="lista-aniversariantes">
+        <li>Carregando aniversariantes...</li>
+      </ul>
+    </section>
+
+    <section id="programacao" class="fade-in" data-aos="fade-up">
+      <h2>Programação</h2>
+      <div class="programacao-grid">
+        <div class="programacao-item">
+          <img src="img/culto_domingo.png" alt="Culto de Domingo">
+          <div class="texto-sobreposto">Domingo às 19h - Culto de Louvor</div>
+        </div>
+        <div class="programacao-item">
+          <img src="img/ebd_domingo.png" alt="Estudo Bíblico">
+          <div class="texto-sobreposto">Domingo às 09h - Estudo Bíblico</div>
+        </div>
+        <div class="programacao-item">
+          <img src="img/culto_quarta.png" alt="Culto de Oração">
+          <div class="texto-sobreposto">Quarta às 20h - Culto de Oração</div>
+        </div>
+      </div>
+    </section>
+
     <section id="oracao" class="fade-in" data-aos="fade-up">
       <h2>Pedidos de Oração</h2>
       <p>Vamos orar juntos! Envie abaixo seu pedido de oração:</p>
-      <form id="form-oracao">
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-        <textarea id="motivo" name="motivo" placeholder="Escreva seu pedido..." required></textarea>
-        <button type="submit">Enviar Pedido</button>
-        <p id="mensagem-envio" style="margin-top:10px; font-size:0.9em;"></p>
-      </form>
+<form id="form-oracao" method="POST" action="https://script.google.com/macros/s/AKfycbzNaG9EcYbl-kRCv057dzupINvD_TISiSKH4GB2T7ooHg417LDTOd5EzvPr9VePuWPa/exec" target="invisible-frame">
+  <input type="text" name="nome" placeholder="Seu nome" required>
+  <input type="text" name="assunto" placeholder="Cidade/Estado" required>
+  <textarea name="mensagem" rows="4" placeholder="Escreva seu pedido de oração" required></textarea>
+  <button type="submit">Enviar pedido</button>
+  <div id="mensagem-envio">Seu pedido foi enviado com sucesso!</div>
+  <iframe name="invisible-frame" style="display: none;"></iframe>
+</form>
     </section>
 
     <section id="coluna-pastor" class="fade-in" data-aos="fade-up">
@@ -70,5 +81,6 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script src="js/script.js"></script>
   <script src="js/coluna_pastor.js"></script>
+  <script src="js/aniversariantes.js"></script>
 </body>
 </html>
