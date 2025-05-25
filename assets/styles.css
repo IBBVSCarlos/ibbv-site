@@ -1,153 +1,86 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Background fixo com degradê preto-verde */
 body {
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #000000, #004d00);
-  color: #d9f0d9;
+  color: #d4f8d4;
   min-height: 100vh;
-  line-height: 1.6;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  animation: backgroundFade 15s ease-in-out infinite alternate;
 }
 
-@keyframes backgroundFade {
-  0% { background: linear-gradient(135deg, #000000, #004d00); }
-  50% { background: linear-gradient(135deg, #001a00, #006600); }
-  100% { background: linear-gradient(135deg, #000000, #004d00); }
-}
-
-header, footer {
-  width: 100%;
+/* Container principal */
+.container {
   max-width: 900px;
-  text-align: center;
-  padding: 15px 10px;
-  background: rgba(0, 50, 0, 0.6);
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+}
+
+/* Caixa das seções com animação dinâmica */
+.section-box {
+  background: rgba(0, 77, 0, 0.75);
   border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 12px rgba(0, 128, 0, 0.4);
-  animation: fadeIn 1.5s ease forwards;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Logo da igreja */
-header img#logo-ibbv {
-  max-width: 180px;
-  width: 40vw;
-  height: auto;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
-  transition: transform 0.3s ease;
-}
-
-header img#logo-ibbv:hover {
-  transform: scale(1.05);
-}
-
-header h1 {
-  font-size: 2.4rem;
-  margin-bottom: 6px;
-  letter-spacing: 1.2px;
-}
-
-header p {
-  font-size: 1rem;
-  font-weight: 300;
-  opacity: 0.85;
-}
-
-main {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-section {
-  background: rgba(0, 50, 0, 0.5);
-  border-radius: 8px;
-  padding: 20px 25px;
-  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-  transform: translateY(15px);
-}
-
-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #00cc00;
-  padding-bottom: 6px;
-  letter-spacing: 0.8px;
-}
-
-section ul {
-  list-style: none;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-
-section ul li {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 128, 0, 0.15);
-  transition: background-color 0.3s ease;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
 }
-
-section ul li:last-child {
-  border-bottom: none;
+.section-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 153, 51, 0.8);
 }
 
-section ul li:hover {
-  background-color: rgba(0, 128, 0, 0.15);
+/* Títulos das seções */
+.section-box h2 {
+  margin-top: 0;
+  color: #a8e6a1;
+  border-bottom: 2px solid #006600;
+  padding-bottom: 0.3rem;
+  font-weight: 700;
+  font-size: 1.6rem;
 }
 
-footer p {
-  font-size: 0.9rem;
-  font-weight: 300;
-  opacity: 0.75;
+/* Logo */
+header {
+  text-align: center;
+  margin: 1rem 0;
+}
+header img {
+  max-width: 220px;
+  width: 60vw;
+  height: auto;
+  user-select: none;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+/* Versículo do dia */
+#versiculo {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
+  color: #c8f0c8;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 1.3rem 1rem;
+  background-color: #002200cc;
+  color: #a8c7a8;
+  font-size: 0.95rem;
+  margin-top: auto;
 }
 
 /* Responsividade */
 @media (max-width: 600px) {
-  body {
-    padding: 15px 10px;
+  .container {
+    padding: 1rem 1.2rem;
   }
-  header img#logo-ibbv {
-    max-width: 140px;
-    width: 50vw;
+  header img {
+    width: 80vw;
   }
-  header h1 {
-    font-size: 1.8rem;
-  }
-  section h2 {
-    font-size: 1.4rem;
-  }
-  section ul {
-    font-size: 1rem;
+  .section-box h2 {
+    font-size: 1.3rem;
   }
 }
