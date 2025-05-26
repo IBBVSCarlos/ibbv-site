@@ -9,7 +9,7 @@
 </head>
 <body>
   <header>
-    <img src="assets/logobbv.png" alt="Logotipo IBBV" />
+    <img src="assets/logibbv.png" alt="Logotipo IBBV" />
     <h1 class="boletim-titulo">Boletim Informativo IBBV</h1>
   </header>
 
@@ -45,10 +45,27 @@
     <!-- Outras seções podem ser adicionadas aqui mantendo o padrão -->
   </main>
 
-<footer>
-  <p>Av Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-  <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+<footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+  <div>
+    <p>Av Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+  </div>
+  <div style="text-align: right;">
+    <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix">
+      <img src="assets/pix_img.png" alt="Contribua via Pix" style="height: 60px;">
+    </a>
+    <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
+  </div>
 </footer>
+<script>
+  function copiarPix() {
+    const chavePix = "57722761000174";
+    navigator.clipboard.writeText(chavePix).then(() => {
+      alert("Chave Pix copiada com sucesso!");
+    });
+  }
+</script>
+
 <script src="assets/script.js"></script>
 </body>
 </html>
