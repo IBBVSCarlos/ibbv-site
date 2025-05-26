@@ -45,26 +45,45 @@
     <!-- Outras seções podem ser adicionadas aqui mantendo o padrão -->
   </main>
 
-<footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-  <div>
-    <p>Av Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
-  </div>
-  <div style="text-align: right;">
-    <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix">
-      <img src="assets/pix_img.png" alt="Contribua via Pix" style="height: 60px;">
-    </a>
-    <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
-  </div>
+<footer style="text-align: center; padding: 20px;">
+  <p>Av Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+  <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+
+  <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix" class="pix-link">
+    <img src="assets/pix_img.png" alt="Contribua via Pix" class="pix-img">
+  </a>
+  <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
 </footer>
+
 <script>
   function copiarPix() {
     const chavePix = "57722761000174";
     navigator.clipboard.writeText(chavePix).then(() => {
       alert("Chave Pix copiada com sucesso!");
+    }).catch(() => {
+      alert("Não foi possível copiar. Copie manualmente: " + chavePix);
     });
   }
 </script>
+
+<style>
+  .pix-img {
+    height: 60px;
+    margin-top: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pix-link:hover .pix-img {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 600px) {
+    .pix-img {
+      height: 50px;
+    }
+  }
+</style>
 
 <script src="assets/script.js"></script>
 </body>
