@@ -11,6 +11,9 @@ fetch('data/coluna_pastor.json')
 
     titulo.textContent = data.titulo;
 
+    // Limpa o conteúdo antes de adicionar os novos parágrafos
+    mensagemDiv.innerHTML = "";
+
     data.mensagem.forEach((paragrafo, index) => {
       const p = document.createElement('p');
       p.textContent = paragrafo;
