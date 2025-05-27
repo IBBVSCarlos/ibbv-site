@@ -78,8 +78,6 @@ async function carregarVersiculoDoDia() {
 }
 
 
-
-
 // Função para formatar a data no formato "dd/mm"
 function formatDate(date) {
   const d = date.getDate().toString().padStart(2, '0');
@@ -135,6 +133,35 @@ const aniversariantesSemana = aniversariantes.filter(item => {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+
+// Avisos IBBV
+
+function carregarAvisos() {
+  fetch('data/avisosibbv.json')
+    .then(response => response.json())
+    .then(data => {
+      const listaAvisos = document.getElementById('lista-avisos');
+
+      if (!listaAvisos || !data.avisos?.length) {
+        console.warn("Nenhum aviso encontrado.");
+        return;
+      }
+
+      // Limpa avisos anteriores antes de adicionar novos
+      listaAvisos.innerHTML = "";
+
+      data.avisos.forEach(aviso => {
+        const li = document.createElement('li');
+        li.textContent = aviso;
+        listaAvisos.appendChild(li);
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao carregar os avisos:', error);
+    });
+}
+// Chamar a função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarAvisos);
 
 
 // Função para carregar a Coluna do Pastor
