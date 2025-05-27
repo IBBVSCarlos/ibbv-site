@@ -90,13 +90,11 @@ async function carregarAniversariantesSemana() {
 }
 
 
-
-
     // Exibe aniversariantes na tela, marcando os aniversariantes do dia com "hoje!"
-lista.innerHTML = aniversariantesSemana.length
-  ? aniversariantesSemana.map(p => {
-      const [dia, mes] = p.data.split('/').map(Number);
-      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Criado dentro do .map()
+//lista.innerHTML = aniversariantesSemana.length
+//  ? aniversariantesSemana.map(p => {
+//      const [dia, mes] = p.data.split('/').map(Number);
+/*      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Criado dentro do .map()
 
       const hojeTexto = (dataAniv.getDate() === hoje.getDate() &&
                          dataAniv.getMonth() === hoje.getMonth() &&
@@ -111,12 +109,13 @@ lista.innerHTML = aniversariantesSemana.length
   } catch (error) {
     console.error("Erro ao carregar aniversariantes:", error);
   }
+    */
 }
 
 // Chama a função quando o DOM for carregado
 document.addEventListener('DOMContentLoaded', () => {
-  carregarAniversariantesSemana();
-  loadColunaPastor();
+    carregarAniversariantesSemana();
+    loadColunaPastor();
 });
 
 
