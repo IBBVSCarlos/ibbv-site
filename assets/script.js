@@ -28,10 +28,6 @@ async function carregarVersiculoDoDia() {
 }
 
 
-// Chama a função quando o DOM for carregado
-document.addEventListener('DOMContentLoaded', carregarVersiculoDoDia);
-
-
 
 
 // Função para formatar a data no formato "dd/mm"
@@ -59,11 +55,12 @@ async function carregarAniversariantesSemana() {
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
 
-    const aniversariantesSemana = aniversariantes.filter(item => {
-      const [dia, mes] = item.data.split('/').map(Number);
-      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
-      return dataAniv >= inicioSemana && dataAniv < fimSemana;
-    });
+const aniversariantesSemana = aniversariantes.filter(item => {
+  const [dia, mes] = item.data.split('/').map(Number);
+  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+  return dataAniv >= inicioSemana && dataAniv <= fimSemana;
+});
+
 
     // Array com emojis Unicode aleatórios
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
@@ -88,36 +85,6 @@ async function carregarAniversariantesSemana() {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
-
-
-    // Exibe aniversariantes na tela, marcando os aniversariantes do dia com "hoje!"
-//lista.innerHTML = aniversariantesSemana.length
-//  ? aniversariantesSemana.map(p => {
-//      const [dia, mes] = p.data.split('/').map(Number);
-/*      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Criado dentro do .map()
-
-      const hojeTexto = (dataAniv.getDate() === hoje.getDate() &&
-                         dataAniv.getMonth() === hoje.getMonth() &&
-                         dataAniv.getFullYear() === hoje.getFullYear()) 
-        ? " <strong>(hoje!)</strong>" 
-        : "";
-
-      return `<li>${p.nome}${hojeTexto}</li>`;
-    }).join('')
-  : '<li>Nenhum aniversariante nesta semana.</li>';
-
-  } catch (error) {
-    console.error("Erro ao carregar aniversariantes:", error);
-  }
-    */
-}
-
-// Chama a função quando o DOM for carregado
-document.addEventListener('DOMContentLoaded', () => {
-    carregarAniversariantesSemana();
-    loadColunaPastor();
-});
-
 
 
 // Função para carregar a Coluna do Pastor
@@ -153,12 +120,6 @@ async function loadColunaPastor() {
   }
 }
 
-// Inicialização quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', () => {
-  loadAniversariantesSemana();
-  loadColunaPastor();
-});
-
   // Função para o pix
 function copiarPix() {
     const chavePix = "57722761000174";
@@ -171,8 +132,21 @@ function copiarPix() {
         const pixLink = document.querySelector(".pix-link");
         pixLink.appendChild(mensagemPix); // Adiciona mensagem temporária
         
-        setTimeout(() => mensagemPix.remove(), 2500); // Remove após 2.5s
+        setTimeout(() => mensagemPix.classList.add("fade-out"), 2000);
+        setTimeout(() => mensagemPix.remove(), 2500);
+ 
     }).catch(() => {
         alert("Erro ao copiar. Copie manualmente: " + chavePix);
     });
 }
+
+// Chama as funções quando o DOM for carregado
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await carregarVersiculoDoDia();
+    await carregarAniversariantesSemana();
+    await loadColunaPastor();
+  } catch (error) {
+    console.error("Erro ao carregar o conteúdo:", error);
+  }
+});

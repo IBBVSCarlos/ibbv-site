@@ -9,15 +9,21 @@
 <body>
   <header>
     <img src="assets/logibbv.png" alt="Logotipo IBBV" />
-    <h1 class="boletim-titulo">Boletim Informativo IBBV</h1>
+    <h1 class="boletim-titulo" aria-label="Boletim Informativo da Igreja Batista de Boa Vista - São Carlos">
+  Boletim Informativo IBBV
+</h1>
+
   </header>
 
 <main class="container">
+
+  <!-- Aqui será inserido o versículo -->
 <section id="versiculo" class="section-box">
-  <div id="versiculo-conteudo"></div> <!-- Aqui será inserido o versículo -->
+  <div id="versiculo-conteudo"> <p>Carregando versículo...</p>
+  </div> 
 </section>
 
-
+<!-- Programação da IBBV -->
     <section id="programacao" class="section-box">
       <h2>Programação</h2>
       <ul>
@@ -28,6 +34,8 @@
         <li>Segunda 20h - Atletas de Cristo (quinzenal)</li>
       </ul>
     </section>
+
+<!-- Aniversariantes -->    
 <section id="aniversariantes" class="section-box">
   <h2>Aniversariantes da Semana</h2>
   <ul id="lista-aniversariantes" class="aniversariantes-lista">
@@ -41,17 +49,21 @@
 </section>
 
     <!-- Outras seções podem ser adicionadas aqui mantendo o padrão -->
+     
   </main>
 
 <footer>
   <p>Av Henrique Gregori, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
   <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
 
-  <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix" class="pix-link">
-    <img src="assets/pix_img.png" alt="Clique para copiar a chave Pix para Dízimos e Ofertas" class="pix-img">
-  </a>
-  <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
+  <div class="footer-info">
+    <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix" class="pix-link">
+      <img src="assets/pix_img.png" alt="Clique para copiar a chave Pix para Dízimos e Ofertas" class="pix-img">
+    </a>
+    <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
+  </div>
 </footer>
+
 
 <script src="assets/script.js" defer></script>
 
