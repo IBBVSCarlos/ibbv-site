@@ -1,16 +1,16 @@
 {
   "avisos": [
     {
-      "texto": "Reunião dos Atletas de Cristo 26/mai.",
-      "imagem": "assets/atletas.png"
+      "texto": "Maio - Mes da Familia",
+      "imagem": "img/familia.png"
     },
     {
       "texto": "Reunião dos Jovens 31/mai.",
-      "imagem": "assets/jovens.png"
+      "imagem": "img/jovens.png"
     },
     {
       "texto": "Bazar da IBBV 07/jun.",
-      "imagem": "assets/bazar.png"
+      "imagem": "img/bazar.png"
     }
   ]
 }
