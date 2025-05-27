@@ -8,21 +8,15 @@ function definirSemanaReferencia() {
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section-box");
 
-  // Verifica se há elementos para observar
-  if (!sections.length) {
-    console.warn("Nenhuma seção encontrada para a rolagem.");
-    return;
-  }
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      } else {
-        entry.target.classList.remove("show"); // Remove para testar melhor o efeito
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, 150); // Pequeno atraso para suavizar a entrada
       }
     });
-  }, { threshold: 0.1 }); // Ativa a animação quando 10% do elemento aparecer
+  }, { threshold: 0.15 }); // Ativa quando 15% do elemento estiver visível
 
   sections.forEach((section) => observer.observe(section));
 });
