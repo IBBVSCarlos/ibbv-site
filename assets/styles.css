@@ -49,11 +49,12 @@ header {
   margin: 1rem 0;
 }
 header img {
-  max-width: 220px;
-  width: 60vw;
+  max-width: 180px; /* Reduzindo a largura */
+  width: 50vw; /* Responsivo para telas menores */
   height: auto;
   user-select: none;
 }
+
 
 /* Versículo do dia */
 #versiculo {

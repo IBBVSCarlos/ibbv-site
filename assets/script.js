@@ -1,4 +1,25 @@
 // script.js
+// funçao para o header - semana atual
+function definirSemanaReferencia() {
+  const hoje = new Date();
+  const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
+  
+  // Último domingo
+  const domingo = new Date(hoje);
+  domingo.setDate(hoje.getDate() - diaSemana);
+  
+  // Próximo sábado
+  const sabado = new Date(domingo);
+  sabado.setDate(domingo.getDate() + 6);
+
+  // Formatando as datas para "dd de mês"
+  const opcoes = { day: 'numeric', month: 'long' };
+  const periodo = `Semana de ${domingo.toLocaleDateString('pt-BR', opcoes)} a ${sabado.toLocaleDateString('pt-BR', opcoes)}`;
+  
+  document.getElementById("semana-referencia").textContent = periodo;
+}
+// Chamando a função quando a página carrega
+document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
 // tras o versiculo do dia
