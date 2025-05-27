@@ -12,12 +12,20 @@ function definirSemanaReferencia() {
   const sabado = new Date(domingo);
   sabado.setDate(domingo.getDate() + 6);
 
-  // Formatando as datas para "dd de mês"
-  const opcoes = { day: 'numeric', month: 'long' };
-  const periodo = `Semana de ${domingo.toLocaleDateString('pt-BR', opcoes)} a ${sabado.toLocaleDateString('pt-BR', opcoes)}`;
-  
+  // Pegando o dia e o mês
+  const diaInicio = domingo.getDate();
+  const mesInicio = domingo.toLocaleDateString('pt-BR', { month: 'long' });
+  const diaFim = sabado.getDate();
+  const mesFim = sabado.toLocaleDateString('pt-BR', { month: 'long' });
+
+  // Se ambos os dias estão no mesmo mês, não repete o nome
+  const periodo = mesInicio === mesFim 
+    ? `Semana de ${diaInicio} a ${diaFim} de ${mesInicio}`
+    : `Semana de ${diaInicio} de ${mesInicio} a ${diaFim} de ${mesFim}`;
+
   document.getElementById("semana-referencia").textContent = periodo;
 }
+
 // Chamando a função quando a página carrega
 document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
