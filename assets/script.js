@@ -48,26 +48,47 @@ async function carregarAniversariantesSemana() {
     const aniversariantes = await res.json();
 
     const hoje = new Date();
-    const diaSemana = hoje.getDay(); // domingo=0, segunda=1, ...
+    const diaSemana = hoje.getDay();
     
-    // Define o início da semana como o último domingo
     const inicioSemana = new Date(hoje);
     inicioSemana.setDate(hoje.getDate() - diaSemana);
 
-    // Define o fim da semana como o próximo domingo
     const fimSemana = new Date(inicioSemana);
-    fimSemana.setDate(inicioSemana.getDate() + 6); // Último dia da semana será domingo
+    fimSemana.setDate(inicioSemana.getDate() + 6);
 
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
 
-    // Filtra os aniversariantes dentro do intervalo da semana
-const aniversariantesSemana = aniversariantes.filter(item => {
-  const [dia, mes] = item.data.split('/').map(Number);
-  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Apenas uma vez
+    const aniversariantesSemana = aniversariantes.filter(item => {
+      const [dia, mes] = item.data.split('/').map(Number);
+      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+      return dataAniv >= inicioSemana && dataAniv < fimSemana;
+    });
 
-  return dataAniv >= inicioSemana && dataAniv < fimSemana;
-});
+    // Array com emojis Unicode aleatórios
+    const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
+
+    lista.innerHTML = aniversariantesSemana.length
+      ? aniversariantesSemana.map(p => {
+          const [dia, mes] = p.data.split('/').map(Number);
+          const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+          const hojeTexto = (dataAniv.getDate() === hoje.getDate() &&
+                             dataAniv.getMonth() === hoje.getMonth() &&
+                             dataAniv.getFullYear() === hoje.getFullYear()) 
+            ? " <strong>(hoje!)</strong>" 
+            : "";
+          
+          // Escolhe um emoji aleatório
+          const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
+
+          return `<li>${emojiAleatorio} ${p.nome}${hojeTexto}</li>`;
+        }).join('')
+      : '<li>Nenhum aniversariante nesta semana.</li>';
+  } catch (error) {
+    console.error("Erro ao carregar aniversariantes:", error);
+  }
+}
+
 
 
 

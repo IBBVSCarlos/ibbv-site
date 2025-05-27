@@ -104,19 +104,9 @@ footer {
   margin-top: 2rem;
 }
 
-#aniversariantes {
-    background: rgba(0, 77, 0, 0.75); /* Mesmo fundo das outras seções */
-    border-radius: 8px;
-    padding: 1.2rem 1.5rem;
-    box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-}
+  /* aniversariantes */
 
-#aniversariantes h2 {
-    color: #a8e6a1; /* Mesmo tom usado nas outras seções */
-}
-
-
-.aniversariantes-lista {
+  .aniversariantes-lista {
   list-style: none;
   padding: 0;
 }
@@ -124,24 +114,36 @@ footer {
 .aniversariantes-lista li {
   margin: 6px 0;
   font-size: 1.1em;
-  color: #333;
+  color: #c8f0c8; /* Garantindo cor padronizada do site */
+  display: flex;
+  align-items: center; /* Alinha emoji e nome */
 }
+
+#aniversariantes h2 {
+    color: #a8e6a1; /* Mesmo tom usado nas outras seções */
+}
+
+.aniversariantes-lista li {
+  font-size: 1.1em;
+  color: #c8f0c8;
+  display: flex;
+  align-items: center;
+}
+
+.aniversariantes-lista li::before {
+  content: "🎉"; /* Pode ser qualquer emoji ou aleatório via JS */
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
 
 @media (max-width: 600px) {
     #aniversariantes {
         padding: 1rem;
     }
 }
-#aniversariantes {
-    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-}
 
-#aniversariantes:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
-}
-
-
+/* Imagem do Pix */
  .pix-img {
     height: 60px;
     margin-top: 10px;
