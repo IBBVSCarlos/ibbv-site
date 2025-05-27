@@ -1,9 +1,10 @@
 /* Efeito para aparecer o texto somente qdo entrar na área visivel */
 .section-box {
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(20px); /* Posição um pouco abaixo */
+  opacity: 1; /* TEMPORÁRIO, apenas para verificar se os containers estão aparecendo */
+  transform: none; /* Teste sem transformação */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 
 .section-box.show {
   opacity: 1; /* Faz o texto aparecer */

@@ -6,18 +6,27 @@ function definirSemanaReferencia() {
   
 // scrool na area visivel
 document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section-box");
+
+  // Verifica se há elementos para observar
+  if (!sections.length) {
+    console.warn("Nenhuma seção encontrada para a rolagem.");
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
+      } else {
+        entry.target.classList.remove("show"); // Remove para testar melhor o efeito
       }
     });
-  }, { threshold: 0.2 }); // O elemento se torna visível quando 20% dele aparecer
+  }, { threshold: 0.1 }); // Ativa a animação quando 10% do elemento aparecer
 
-  document.querySelectorAll(".section-box").forEach((section) => {
-    observer.observe(section);
-  });
+  sections.forEach((section) => observer.observe(section));
 });
+
 
 
   // Último domingo
