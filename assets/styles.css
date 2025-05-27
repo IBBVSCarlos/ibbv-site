@@ -105,19 +105,16 @@ footer {
 }
 
 #aniversariantes {
-  background: #f4fff8;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 40px auto;
-  max-width: 600px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
+    background: rgba(0, 77, 0, 0.75); /* Mesmo fundo das outras seções */
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
 }
 
 #aniversariantes h2 {
-  color: #2e7d32;
-  margin-bottom: 15px;
+    color: #a8e6a1; /* Mesmo tom usado nas outras seções */
 }
+
 
 .aniversariantes-lista {
   list-style: none;
@@ -128,6 +125,20 @@ footer {
   margin: 6px 0;
   font-size: 1.1em;
   color: #333;
+}
+
+@media (max-width: 600px) {
+    #aniversariantes {
+        padding: 1rem;
+    }
+}
+#aniversariantes {
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+#aniversariantes:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
 }
 
 
