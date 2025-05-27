@@ -32,6 +32,13 @@ body {
     box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
 }
 
+/* Semana Atual no Header */
+#semana-referencia {
+  font-size: 1.1rem; /* Diminuindo um pouco o tamanho */
+  text-align: center; /* Centralizando o texto */
+  font-weight: 600;
+  margin: 10px 0;
+}
 
 /* Títulos das seções */
 .section-box h2 {
