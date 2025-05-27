@@ -4,6 +4,22 @@ function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
   
+// scrool na area visivel
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 }); // O elemento se torna visível quando 20% dele aparecer
+
+  document.querySelectorAll(".section-box").forEach((section) => {
+    observer.observe(section);
+  });
+});
+
+
   // Último domingo
   const domingo = new Date(hoje);
   domingo.setDate(hoje.getDate() - diaSemana);
