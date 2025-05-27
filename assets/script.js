@@ -147,12 +147,24 @@ function carregarAvisos() {
         return;
       }
 
-      // Limpa avisos anteriores antes de adicionar novos
-      listaAvisos.innerHTML = "";
+      listaAvisos.innerHTML = ""; // Limpa avisos anteriores
 
       data.avisos.forEach(aviso => {
         const li = document.createElement('li');
-        li.textContent = aviso;
+        li.classList.add('aviso-item');
+
+        const texto = document.createElement('p');
+        texto.textContent = aviso.texto; // 🚀 Corrigido: agora exibe apenas o texto do aviso
+        li.appendChild(texto);
+
+        if (aviso.imagem) {
+          const img = document.createElement('img');
+          img.src = `img/${aviso.imagem}`; // Ajustado para a nova pasta
+          img.alt = "Imagem do aviso";
+          img.classList.add('aviso-img');
+          li.appendChild(img);
+        }
+
         listaAvisos.appendChild(li);
       });
     })
@@ -160,6 +172,7 @@ function carregarAvisos() {
       console.error('Erro ao carregar os avisos:', error);
     });
 }
+
 // Chamar a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarAvisos);
 
