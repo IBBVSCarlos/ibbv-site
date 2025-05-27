@@ -13,10 +13,12 @@ window.addEventListener("load", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        entry.target.classList.add("show"); // Adiciona a classe quando entra na tela
+      } else {
+        entry.target.classList.remove("show"); // Remove a classe quando sai da tela
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.2 });
 
   sections.forEach((section) => observer.observe(section));
 });
