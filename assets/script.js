@@ -7,13 +7,8 @@ function definirSemanaReferencia() {
 
   
 // scrool na area visivel
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const sections = document.querySelectorAll(".section-box");
-
-  if (!sections.length) {
-    console.warn("Nenhuma seção encontrada para a rolagem.");
-    return;
-  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

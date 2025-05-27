@@ -1,13 +1,13 @@
 /* Efeito para aparecer o texto somente qdo entrar na área visivel */
 .section-box {
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(30px) scale(0.98); /* Leve descida e redução */
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .section-box.show {
-  opacity: 1; /* Tornando visível */
-  transform: translateY(0) scale(1); /* Movendo para posição normal */
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 
