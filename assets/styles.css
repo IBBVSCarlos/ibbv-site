@@ -167,3 +167,11 @@ footer {
       height: 50px;
     }
   }
+
+  /* Coluna do Pastor */
+  .assinatura {
+  font-weight: bold;
+  font-style: italic;
+  text-align: right;
+  margin-top: 1.5rem;
+}
