@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     await carregarVersiculoDoDia();
     await carregarAniversariantesSemana();
-    await loadColunaPastor();
+/*    await loadColunaPastor(); -- Já está chamado no coluna_pastor.js */
   } catch (error) {
     console.error("Erro ao carregar o conteúdo:", error);
   }
