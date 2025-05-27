@@ -1,42 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-  fetch('data/versiculos.json')
-    .then(res => res.json())
-    .then(data => {
-      const hoje = new Date().toISOString().slice(0, 10);
-      const versiculoHoje = data.find(v => v.data === hoje);
-      const container = document.getElementById('versiculo-conteudo');
-      if (versiculoHoje) {
-        container.innerHTML = `<p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p><small>${versiculoHoje.comentario}</small>`;
-      } else {
-        container.textContent = 'Versículo não encontrado.';
-      }
-    });
-
-  fetch('data/aniversariantes.json')
-    .then(res => res.json())
-    .then(data => {
-      const hoje = new Date();
-      const inicio = new Date(hoje);
-      const fim = new Date(hoje);
-      fim.setDate(inicio.getDate() + 6);
-
-      const lista = document.getElementById('lista-aniversariantes');
-      const aniversariantes = data.filter(pessoa => {
-        const [ano, mes, dia] = pessoa.data.split('-').map(Number);
-        const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
-        return dataAniv >= inicio && dataAniv <= fim;
-      });
-
-      if (aniversariantes.length) {
-        lista.innerHTML = aniversariantes.map(p => `<li>${p.nome} ${p.complemento ? '(' + p.complemento + ')' : ''}</li>`).join('');
-      } else {
-        lista.innerHTML = '<li>Nenhum aniversariante nesta semana.</li>';
-      }
-    });
-});
-
-
 // script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+fetch('data/versiculos.json')
+  .then(res => res.json())
+  .then(data => {
+    const hoje = new Date().toISOString().slice(0, 10);
+    const versiculoHoje = data.find(v => v.data === hoje);
+    const container = document.getElementById('versiculo');
+
+    if (versiculoHoje) {
+      container.innerHTML = `<p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p><small>${versiculoHoje.comentario}</small>`;
+    } else {
+      container.textContent = 'Versículo não encontrado.';
+    }
+  })
+  .catch(error => console.error('Erro ao carregar versículo:', error));
 
 // Função para formatar a data no formato "dd/mm"
 function formatDate(date) {
@@ -46,46 +24,63 @@ function formatDate(date) {
 }
 
 // Função para obter os aniversariantes da semana
-async function loadAniversariantesSemana() {
+async function carregarAniversariantesSemana() {
   try {
     const res = await fetch('data/aniversariantes.json');
     const aniversariantes = await res.json();
 
     const hoje = new Date();
     const diaSemana = hoje.getDay(); // domingo=0, segunda=1, ...
-    // Começo da semana: domingo anterior
+    
+    // Define o início da semana como o último domingo
     const inicioSemana = new Date(hoje);
     inicioSemana.setDate(hoje.getDate() - diaSemana);
 
-    // Fim da semana: sábado seguinte
+    // Define o fim da semana como o próximo domingo
     const fimSemana = new Date(inicioSemana);
-    fimSemana.setDate(inicioSemana.getDate() + 6);
+    fimSemana.setDate(inicioSemana.getDate() + 6); // Último dia da semana será domingo
 
-    const aniversariantesSemana = aniversariantes.filter(item => {
-      const [dia, mes] = item.data.split('/').map(Number);
-      const dataAtualAno = new Date(hoje.getFullYear(), mes - 1, dia);
-      return dataAtualAno >= inicioSemana && dataAtualAno <= fimSemana;
-    });
+    const lista = document.getElementById("lista-aniversariantes");
+    if (!lista) return;
 
-    const container = document.getElementById('aniversariantes-semana');
-    if (!container) return;
+    // Filtra os aniversariantes dentro do intervalo da semana
+const aniversariantesSemana = aniversariantes.filter(item => {
+  const [dia, mes] = item.data.split('/').map(Number);
+  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Apenas uma vez
 
-    if (aniversariantesSemana.length === 0) {
-      container.innerHTML = '<p>Nenhum aniversariante nesta semana.</p>';
-      return;
-    }
+  return dataAniv >= inicioSemana && dataAniv < fimSemana;
+});
 
-    const ul = document.createElement('ul');
-    aniversariantesSemana.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item.nome;
-      ul.appendChild(li);
-    });
-    container.appendChild(ul);
+
+
+    // Exibe aniversariantes na tela, marcando os aniversariantes do dia com "hoje!"
+lista.innerHTML = aniversariantesSemana.length
+  ? aniversariantesSemana.map(p => {
+      const [dia, mes] = p.data.split('/').map(Number);
+      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia); // Criado dentro do .map()
+
+      const hojeTexto = (dataAniv.getDate() === hoje.getDate() &&
+                         dataAniv.getMonth() === hoje.getMonth() &&
+                         dataAniv.getFullYear() === hoje.getFullYear()) 
+        ? " <strong>(hoje!)</strong>" 
+        : "";
+
+      return `<li>${p.nome}${hojeTexto}</li>`;
+    }).join('')
+  : '<li>Nenhum aniversariante nesta semana.</li>';
+
   } catch (error) {
-    console.error('Erro ao carregar aniversariantes:', error);
+    console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+
+// Chama a função quando o DOM for carregado
+document.addEventListener('DOMContentLoaded', () => {
+  carregarAniversariantesSemana();
+  loadColunaPastor();
+});
+
+
 
 // Função para carregar a Coluna do Pastor
 async function loadColunaPastor() {
@@ -125,3 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
   loadAniversariantesSemana();
   loadColunaPastor();
 });
+
+  // Função para o pix
+function copiarPix() {
+    const chavePix = "57722761000174";
+    navigator.clipboard.writeText(chavePix).then(() => {
+        const mensagemPix = document.createElement("p");
+        mensagemPix.style.color = "#006600";
+        mensagemPix.style.fontWeight = "bold";
+        mensagemPix.textContent = "Chave Pix copiada!";
+        
+        const pixLink = document.querySelector(".pix-link");
+        pixLink.appendChild(mensagemPix); // Adiciona mensagem temporária
+        
+        setTimeout(() => mensagemPix.remove(), 2500); // Remove após 2.5s
+    }).catch(() => {
+        alert("Erro ao copiar. Copie manualmente: " + chavePix);
+    });
+}

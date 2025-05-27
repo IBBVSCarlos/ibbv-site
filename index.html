@@ -3,7 +3,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boletim IBBV São Carlos</title>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
@@ -13,7 +12,7 @@
     <h1 class="boletim-titulo">Boletim Informativo IBBV</h1>
   </header>
 
-  <main>
+<main class="container">
      <section id="versiculo" class="section-box">
       <h2>Versículo do Dia</h2>
       <p>“O Senhor é o meu pastor; nada me faltará.” (Salmo 23:1)</p>
@@ -27,64 +26,34 @@
         <li>Quarta 20h - Culto de Oração</li>
         <li>Sexta 20h - Ensaio do Louvor</li>
         <li>Segunda 20h - Atletas de Cristo (quinzenal)</li>
-        
       </ul>
     </section>
-    <section id="aniversariantes">
-      <h2>Aniversariantes da Semana</h2>
-      <ul>
-        <!-- Lista dinâmica de aniversariantes aqui -->
-      </ul>
-    </section>
+<section id="aniversariantes" class="section-box">
+  <h2>Aniversariantes da Semana</h2>
+  <ul id="lista-aniversariantes" class="aniversariantes-lista">
+    <!-- Conteúdo dinâmico será carregado aqui -->
+  </ul>
+</section>
 
 <section id="coluna-pastor" class="section-box">
-  <h2></h2>
+  <h2>Coluna do Pastor</h2>
   <div id="mensagem-pastor"></div>
 </section>
 
     <!-- Outras seções podem ser adicionadas aqui mantendo o padrão -->
   </main>
 
-<footer style="text-align: center; padding: 20px;">
-  <p>Av Henrique Gregory, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+<footer>
+  <p>Av Henrique Gregori, 151 - São Carlos/SP | (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
   <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
 
   <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix" class="pix-link">
-    <img src="assets/pix_img.png" alt="Contribua via Pix" class="pix-img">
+    <img src="assets/pix_img.png" alt="Clique para copiar a chave Pix para Dízimos e Ofertas" class="pix-img">
   </a>
   <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
 </footer>
 
-<script>
-  function copiarPix() {
-    const chavePix = "57722761000174";
-    navigator.clipboard.writeText(chavePix).then(() => {
-      alert("Chave Pix copiada com sucesso!");
-    }).catch(() => {
-      alert("Não foi possível copiar. Copie manualmente: " + chavePix);
-    });
-  }
-</script>
+<script src="assets/script.js" defer></script>
 
-<style>
-  .pix-img {
-    height: 60px;
-    margin-top: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .pix-link:hover .pix-img {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 600px) {
-    .pix-img {
-      height: 50px;
-    }
-  }
-</style>
-
-<script src="assets/script.js"></script>
 </body>
 </html>
