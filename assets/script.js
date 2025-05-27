@@ -178,6 +178,8 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 
 
 // Função para carregar a Coluna do Pastor
+
+/* old
 async function loadColunaPastor() {
   try {
     const res = await fetch('data/coluna_pastor.json');
@@ -209,6 +211,54 @@ async function loadColunaPastor() {
     console.error('Erro ao carregar coluna do pastor:', error);
   }
 }
+*/
+
+let indiceAtual = 0;
+let colunas = [];
+
+function carregarColunasPastor() {
+  fetch('data/coluna_pastor.json')
+    .then(response => response.json())
+    .then(data => {
+      colunas = data.colunas;
+      exibirColuna(indiceAtual);
+    })
+    .catch(error => console.error('Erro ao carregar colunas:', error));
+}
+
+function exibirColuna(indice) {
+  const titulo = document.querySelector('#coluna-pastor h2');
+  const mensagemDiv = document.getElementById('mensagem-pastor');
+
+  if (!titulo || !mensagemDiv || !colunas[indice]) return;
+
+  titulo.textContent = colunas[indice].titulo;
+  mensagemDiv.innerHTML = "";
+
+  colunas[indice].mensagem.forEach((paragrafo) => {
+    const p = document.createElement('p');
+    p.textContent = paragrafo;
+    mensagemDiv.appendChild(p);
+  });
+}
+
+document.getElementById("btnAnterior").addEventListener("click", () => {
+  if (indiceAtual > 0) {
+    indiceAtual--;
+    exibirColuna(indiceAtual);
+  }
+});
+
+document.getElementById("btnProximo").addEventListener("click", () => {
+  if (indiceAtual < colunas.length - 1) {
+    indiceAtual++;
+    exibirColuna(indiceAtual);
+  }
+});
+
+// Chamar a função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarColunasPastor);
+
 
   // Função para o pix
 function copiarPix() {
