@@ -1,5 +1,6 @@
 // script.js
 
+//versiculo do dia
 document.addEventListener('DOMContentLoaded', () => {
 fetch('data/versiculos.json')
   .then(res => res.json())
@@ -15,6 +16,39 @@ fetch('data/versiculos.json')
     }
   })
   .catch(error => console.error('Erro ao carregar versículo:', error));
+
+  // tras o versiculo do dia
+async function carregarVersiculoDoDia() {
+  try {
+    const res = await fetch('data/versiculos.json');
+    const versiculos = await res.json();
+
+    const hoje = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
+    const versiculoHoje = versiculos.find(v => v.data === hoje);
+
+    const container = document.getElementById('versiculo');
+    if (!container) return;
+
+    // Se encontrar o versículo do dia, exibe na página
+    if (versiculoHoje) {
+      container.innerHTML = `
+        <h2>Versículo do Dia</h2>
+        <p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p>
+        <small>${versiculoHoje.comentario}</small>
+      `;
+    } else {
+      container.innerHTML = '<h2>Versículo do Dia</h2><p>Versículo não encontrado.</p>';
+    }
+  } catch (error) {
+    console.error("Erro ao carregar versículo:", error);
+  }
+}
+
+// Chama a função quando o DOM for carregado
+document.addEventListener('DOMContentLoaded', carregarVersiculoDoDia);
+
+
+
 
 // Função para formatar a data no formato "dd/mm"
 function formatDate(date) {
