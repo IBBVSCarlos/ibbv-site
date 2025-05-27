@@ -1,21 +1,21 @@
 // script.js
 
 //versiculo do dia
-document.addEventListener('DOMContentLoaded', () => {
-fetch('data/versiculos.json')
-  .then(res => res.json())
-  .then(data => {
-    const hoje = new Date().toISOString().slice(0, 10);
-    const versiculoHoje = data.find(v => v.data === hoje);
-    const container = document.getElementById('versiculo');
+//document.addEventListener('DOMContentLoaded', () => {
+//fetch('data/versiculos.json')
+//  .then(res => res.json())
+//  .then(data => {
+//    const hoje = new Date().toISOString().slice(0, 10);
+//    const versiculoHoje = data.find(v => v.data === hoje);
+//    const container = document.getElementById('versiculo')//;
 
-    if (versiculoHoje) {
-      container.innerHTML = `<p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p><small>${versiculoHoje.comentario}</small>`;
-    } else {
-      container.textContent = 'Versículo não encontrado.';
-    }
-  })
-  .catch(error => console.error('Erro ao carregar versículo:', error));
+//    if (versiculoHoje) {
+//      container.innerHTML = `<p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p><small>${versiculoHoje.comentario}</small>`;
+//    } else {
+//      container.textContent = 'Versículo não encontrado.';
+//    }
+//  })
+//  .catch(error => console.error('Erro ao carregar versículo:', error));
 
   // tras o versiculo do dia
 async function carregarVersiculoDoDia() {
