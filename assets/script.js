@@ -3,20 +3,25 @@
 function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
+
+
   
 // scrool na area visivel
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section-box");
 
+  if (!sections.length) {
+    console.warn("Nenhuma seção encontrada para a rolagem.");
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add("show");
-        }, 150); // Pequeno atraso para suavizar a entrada
+        entry.target.classList.add("show");
       }
     });
-  }, { threshold: 0.15 }); // Ativa quando 15% do elemento estiver visível
+  }, { threshold: 0.15 });
 
   sections.forEach((section) => observer.observe(section));
 });
