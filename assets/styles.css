@@ -16,10 +16,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: #0a0a0a; /* Altere para qualquer cor desejada */
+  font-size: 18px; /* Ajuste o tamanho, se necessário */
+  font-weight: bold; /* Deixe o texto mais destacado */
   padding: 15px;
   border-radius: 10px;
   background-color: #f8f8f8; /* Destaque leve no fundo */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombreamento para realce */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombreamento para realce */
   margin-bottom: 20px;
   max-width: 90%; /* Garante que o aviso não ultrapasse a largura da tela */
 }
