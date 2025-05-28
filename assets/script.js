@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
         entry.target.classList.remove("show"); // Remove a classe quando sai da tela
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.2 });
 
   sections.forEach((section) => observer.observe(section));
 });

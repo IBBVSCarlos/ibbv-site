@@ -10,8 +10,15 @@
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
-  box-shadow: 0 4px 15px rgba(0, 153, 51, 0.4);
 }
+
+.section-box.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98); /* Sai descendo suavemente */
+  filter: blur(3px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out, filter 1s ease-in-out;
+}
+
 
 
 /* Ajuste de Imagens - Avisos */
