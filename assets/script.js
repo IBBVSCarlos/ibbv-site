@@ -133,6 +133,24 @@ const aniversariantesSemana = aniversariantes.filter(item => {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+// Função para carregar a Escala de Ministérios
+async function carregarEscalaMinisterios() {
+  try {
+    const res = await fetch('data/escalamin.json');
+    const escala = await res.json();
+
+    const listaEscala = document.getElementById("lista-escala");
+    if (!listaEscala) return;
+
+    listaEscala.innerHTML = escala.length
+      ? escala.map(ministerio => `<li><strong>${ministerio.nome}</strong>: ${ministerio.responsavel}</li>`).join('')
+      : '<li>Nenhuma escala disponível no momento.</li>';
+  } catch (error) {
+    console.error("Erro ao carregar escala de ministérios:", error);
+  }
+}
+// Chamando a função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
 // Avisos IBBV
 
