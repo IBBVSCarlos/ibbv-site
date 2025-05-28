@@ -4,8 +4,6 @@ function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
 
-
-  
 // scrool na area visivel
 window.addEventListener("load", () => {
   const sections = document.querySelectorAll(".section-box");
@@ -18,11 +16,10 @@ window.addEventListener("load", () => {
         entry.target.classList.remove("show"); // Remove a classe quando sai da tela
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.5 });
 
   sections.forEach((section) => observer.observe(section));
 });
-
 
 
   // Último domingo
@@ -109,7 +106,6 @@ const aniversariantesSemana = aniversariantes.filter(item => {
   return dataAniv >= inicioSemana && dataAniv <= fimSemana;
 });
 
-
     // Array com emojis Unicode aleatórios
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
 
@@ -133,6 +129,7 @@ const aniversariantesSemana = aniversariantes.filter(item => {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+
 // Função para carregar a Escala de Ministérios
 async function carregarEscalaMinisterios() {
   try {
@@ -142,18 +139,18 @@ async function carregarEscalaMinisterios() {
     const listaEscala = document.getElementById("lista-escala");
     if (!listaEscala) return;
 
-    listaEscala.innerHTML = escala.length
-      ? escala.map(ministerio => `<li><strong>${ministerio.nome}</strong>: ${ministerio.responsavel}</li>`).join('')
-      : '<li>Nenhuma escala disponível no momento.</li>';
+   listaEscala.innerHTML = escala.length
+  ? escala.map(ministerio => `<li><strong>${ministerio.nome}</strong>: ${ministerio.dias.join(', ')}</li>`).join('')
+  : '<li>Nenhuma escala disponível no momento.</li>';
   } catch (error) {
     console.error("Erro ao carregar escala de ministérios:", error);
   }
 }
+
 // Chamando a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
 // Avisos IBBV
-
 function carregarAvisos() {
   fetch('data/avisosibbv.json')
     .then(response => response.json())
@@ -195,42 +192,7 @@ function carregarAvisos() {
 document.addEventListener("DOMContentLoaded", carregarAvisos);
 
 
-// Função para carregar a Coluna do Pastor
-
-/* old
-async function loadColunaPastor() {
-  try {
-    const res = await fetch('data/coluna_pastor.json');
-    const coluna = await res.json();
-
-    const container = document.getElementById('coluna-pastor');
-    if (!container) return;
-
-    const titulo = document.createElement('h2');
-    titulo.textContent = coluna.titulo;
-    container.appendChild(titulo);
-
-    coluna.mensagem.forEach((paragrafo, index) => {
-      const p = document.createElement('p');
-      if (index === 0) {
-        p.style.fontWeight = 'bold'; // o primeiro parágrafo é o título do texto (separado)
-        p.textContent = paragrafo;
-      } else if (index === coluna.mensagem.length -1) {
-        p.style.fontWeight = 'bold';
-        p.style.fontStyle = 'italic'; // última linha assinatura
-        p.textContent = paragrafo;
-      } else {
-        p.style.textAlign = 'justify';
-        p.textContent = paragrafo;
-      }
-      container.appendChild(p);
-    });
-  } catch (error) {
-    console.error('Erro ao carregar coluna do pastor:', error);
-  }
-}
-*/
-
+// Função para carregar a Coluna do Pastor com historico
 let indiceAtual = 0;
 let colunas = [];
 
