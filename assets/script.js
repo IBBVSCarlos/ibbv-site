@@ -4,20 +4,24 @@ function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
 
-// Efeito de luz no logo do header 
+
+  // Efeito de luz no logo do header 
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifica se o usuário já visitou o site antes
+  // Verifica se o efeito já foi exibido antes
   if (!localStorage.getItem("logoEffectShown")) {
     const light = document.querySelector(".light-effect");
 
+    // Dispara a animação da luz
+    light.style.animation = "moveLight 2s linear";
+
+    // Quando a animação termina, oculta o efeito
     light.addEventListener("animationend", () => {
       light.style.transition = "0.5s ease-out";
       light.style.transform = "scale(2)";
       light.style.opacity = "0";
 
       setTimeout(() => {
-        light.style.transform = "scale(1)";
-        light.style.opacity = "1";
+        light.remove(); // Remove o elemento do DOM
       }, 500);
     });
 
