@@ -32,12 +32,12 @@
 }
 
 .aviso-img {
-  width: 80%; /* Ocupa todo o espaço disponível */
-  max-width: 250px; /* Limite para evitar imagens muito grandes */
-  height: auto; /* Mantém proporção */
-  border-radius: 10px; /* Cantos arredondados */
-  object-fit: cover; /* Ajusta a imagem para não distorcer */
+  width: 200px; /* Largura fixa */
+  height: 150px; /* Altura fixa */
+  object-fit: cover; /* Garante que a imagem se ajuste sem deformar */
+  border-radius: 10px; /* Mantém um visual suave */
 }
+
 
 
 /* Background fixo com degradê preto-verde */
