@@ -17,7 +17,7 @@
   height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 80%);
   filter: blur(10px);
-  animation: moveLight 2s linear forwards; /* "forwards" evita loop infinito */
+  animation: moveLight 5s linear forwards; /* "forwards" evita loop infinito */
 }
 
 @keyframes moveLight {
@@ -41,14 +41,11 @@
   transform: translateY(0);
 }
 
-
 .section-box.hide {
   opacity: 0;
-  transform: translateY(20px) scale(0.98); /* Sai descendo suavemente */
-  filter: blur(3px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out, filter 1s ease-in-out;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 
 
 /* Ajuste de Imagens - Avisos */
@@ -66,23 +63,18 @@
 
 /* Em telas grandes, deslocamos a imagem */
 .aviso-img {
-  width: 480px;
-  height: auto;
+  width: 100%; /* Ocupa todo o espaço disponível no container */
+  max-width: 480px; /* Limita o tamanho máximo */
+  height: auto; /* Mantém proporção */
   object-fit: cover;
   border-radius: 10px;
-  transform: translateX(-15px); /* Leve deslocamento */
 }
+
 
 /* Em telas menores, centralizamos */
 @media (max-width: 600px) {
-  .aviso-item {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .aviso-img {
-    transform: none;
-    width: 320px;
+    max-width: 90%;
   }
 }
 
