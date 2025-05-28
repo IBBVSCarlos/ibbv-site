@@ -17,14 +17,16 @@
   height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 80%);
   filter: blur(10px);
-  animation: moveLight 2s linear infinite;
+  animation: moveLight 2s linear forwards; /* "forwards" evita loop infinito */
 }
 
 @keyframes moveLight {
   0% { left: -100%; opacity: 0.3; }
   50% { left: 50%; opacity: 1; }
   100% { left: 150%; opacity: 0; }
+
 }
+
 
 
 /* Efeito para aparecer o texto somente qdo entrar na área visivel */
