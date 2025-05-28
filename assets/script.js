@@ -139,9 +139,10 @@ async function carregarEscalaMinisterios() {
     const listaEscala = document.getElementById("lista-escala");
     if (!listaEscala) return;
 
-   listaEscala.innerHTML = escala.length
-  ? escala.map(ministerio => `<li><strong>${ministerio.nome}</strong>: ${ministerio.dias.join(', ')}</li>`).join('')
-  : '<li>Nenhuma escala disponível no momento.</li>';
+    listaEscala.innerHTML = escala.length
+    ? escala.map(ministerio => `<li><strong>${ministerio.nome}</strong> - ${ministerio.atividade}: ${ministerio.dias.join(', ')}</li>`).join('')
+    : '<li>Nenhuma escala disponível no momento.</li>';
+
   } catch (error) {
     console.error("Erro ao carregar escala de ministérios:", error);
   }
