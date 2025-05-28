@@ -34,7 +34,7 @@
 .aviso-img {
   width: 200px; /* Largura fixa */
   height: 150px; /* Altura fixa */
-  object-fit: cover; /* Garante que a imagem se ajuste sem deformar */
+  object-fit: contain; /* Garante que a imagem se ajuste sem deformar */
   border-radius: 10px; /* Mantém um visual suave */
 }
 
