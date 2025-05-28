@@ -6,17 +6,24 @@ function definirSemanaReferencia() {
 
 // Efeito de luz no logo do header 
 document.addEventListener("DOMContentLoaded", () => {
-  const light = document.querySelector(".light-effect");
-  
-  light.addEventListener("animationend", () => {
-    light.style.transition = "0.5s ease-out";
-    light.style.transform = "scale(2)";
-    light.style.opacity = "0";
-    setTimeout(() => {
-      light.style.transform = "scale(1)";
-      light.style.opacity = "1";
-    }, 500);
-  });
+  // Verifica se o usuário já visitou o site antes
+  if (!localStorage.getItem("logoEffectShown")) {
+    const light = document.querySelector(".light-effect");
+
+    light.addEventListener("animationend", () => {
+      light.style.transition = "0.5s ease-out";
+      light.style.transform = "scale(2)";
+      light.style.opacity = "0";
+
+      setTimeout(() => {
+        light.style.transform = "scale(1)";
+        light.style.opacity = "1";
+      }, 500);
+    });
+
+    // Marca que o efeito já foi exibido
+    localStorage.setItem("logoEffectShown", "true");
+  }
 });
 
 
