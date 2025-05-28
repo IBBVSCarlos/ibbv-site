@@ -10,38 +10,38 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("logoEffectShown")) {
     const light = document.querySelector(".light-effect");
 
-    light.style.animation = "moveLight 2s linear forwards"; // Adicionando "forwards" para não reiniciar
+    // Aplica a animação apenas uma vez
+    light.style.animation = "moveLight 2s linear forwards";
 
     light.addEventListener("animationend", () => {
-      light.style.transition = "0.5s ease-out";
-      light.style.transform = "scale(2)";
-      light.style.opacity = "0";
-
       setTimeout(() => {
-        light.remove();
+        light.remove(); // Remove o efeito após executar
       }, 500);
     });
 
+    // Salva no localStorage para não repetir na próxima vez
     localStorage.setItem("logoEffectShown", "true");
   }
 });
+
 
 
   // scrool na area visivel
 window.addEventListener("load", () => {
   const sections = document.querySelectorAll(".section-box");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show"); // Adiciona a classe quando entra na tela
-      } else {
-        entry.target.classList.remove("show"); // Remove a classe quando sai da tela
-      }
-    });
-  }, { threshold: 0.2 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+}, { threshold: 0.05 }); // Agora ativa quando apenas 5% do container estiver visível
 
-  sections.forEach((section) => observer.observe(section));
+sections.forEach((section) => observer.observe(section));
+
 });
 
 
