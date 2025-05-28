@@ -7,25 +7,21 @@ function definirSemanaReferencia() {
 
   // Efeito de luz no logo do header 
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifica se o efeito já foi exibido antes
   if (!localStorage.getItem("logoEffectShown")) {
     const light = document.querySelector(".light-effect");
 
-    // Dispara a animação da luz
-    light.style.animation = "moveLight 2s linear";
+    light.style.animation = "moveLight 2s linear forwards"; // Adicionando "forwards" para não reiniciar
 
-    // Quando a animação termina, oculta o efeito
     light.addEventListener("animationend", () => {
       light.style.transition = "0.5s ease-out";
       light.style.transform = "scale(2)";
       light.style.opacity = "0";
 
       setTimeout(() => {
-        light.remove(); // Remove o elemento do DOM
+        light.remove();
       }, 500);
     });
 
-    // Marca que o efeito já foi exibido
     localStorage.setItem("logoEffectShown", "true");
   }
 });
