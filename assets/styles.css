@@ -17,7 +17,7 @@
   height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 80%);
   filter: blur(10px);
-  animation: moveLight 5s linear forwards; /* "forwards" evita loop infinito */
+  animation: moveLight 0.5s linear forwards; /* "forwards" evita loop infinito */
 }
 
 @keyframes moveLight {
@@ -50,6 +50,7 @@
 
 /* Ajuste de Imagens - Avisos */
 .aviso-item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,15 +62,27 @@
   max-width: 90%;
 }
 
-/* Em telas grandes, deslocamos a imagem */
 .aviso-img {
-  width: 100%; /* Ocupa todo o espaço disponível no container */
-  max-width: 480px; /* Limita o tamanho máximo */
-  height: auto; /* Mantém proporção */
+  width: 100%;
+  max-width: 480px;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
 }
 
+.aviso-texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para contraste */
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
 
 /* Em telas menores, centralizamos */
 @media (max-width: 600px) {
