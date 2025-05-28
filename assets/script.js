@@ -4,7 +4,23 @@ function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
 
-// scrool na area visivel
+// Efeito de luz no logo do header 
+document.addEventListener("DOMContentLoaded", () => {
+  const light = document.querySelector(".light-effect");
+  
+  light.addEventListener("animationend", () => {
+    light.style.transition = "0.5s ease-out";
+    light.style.transform = "scale(2)";
+    light.style.opacity = "0";
+    setTimeout(() => {
+      light.style.transform = "scale(1)";
+      light.style.opacity = "1";
+    }, 500);
+  });
+});
+
+
+  // scrool na area visivel
 window.addEventListener("load", () => {
   const sections = document.querySelectorAll(".section-box");
 
