@@ -1,17 +1,99 @@
 [
-  {
-    "nome": "Equipe de Louvor 1",
-    "dias": ["01/06/2025", "08/06/2025", "15/06/2025", "22/06/2025","29/06/2025"],
-    "atividade": "Louvor"
+{
+  "ministerio": "Culto Kids - Domingo",
+  "escalados": [
+    {
+      "dia": "01/06/2025",
+      "nome": "Tia da Salinha - X"
+    },
+    {
+      "dia": "08/06/2025",
+      "nome": "Tia da Salinha - Y"
+    },
+    {
+      "dia": "15/06/2025",
+      "nome": "Tia da Salinha - Z"
+    },
+    {
+      "dia": "22/06/2025",
+      "nome": "Tia da Salinha - W"
+    }
+  ]
+}
+{
+    "ministerio": "Louvor - Culto Domingo",
+    "escalados": [
+      {
+        "dia": "01/06/2025",
+        "nome": "Equipe de Louvor 1"
+      },
+      {
+        "dia": "08/06/2025",
+        "nome": "Equipe de Louvor 1"
+      },
+      {
+        "dia": "15/06/2025",
+        "nome": "Equipe de Louvor 1"
+      },
+      {
+        "dia": "22/06/2025",
+        "nome": "Equipe de Louvor 1"
+      },
+      {
+        "dia": "29/06/2025",
+        "nome": "Equipe de Louvor 1"
+      }
+    ]
   },
   {
-    "nome": "Irmao da repção",
-    "dias": ["01/06/2025", "08/06/2025", "15/06/2025", "22/06/2025","29/06/2025"],
-    "atividade": "Recepção"
-  },
-  {
-    "nome": "Tia da Salinha",
-    "dias": ["01/06/2025", "08/06/2025", "15/06/2025", "22/06/2025","29/06/2025"],
-    "atividade": "Cultinho"
+    "ministerio": "Recepção - Culto Domingo",
+    "escalados": [
+      {
+        "dia": "01/06/2025",
+        "nome": "Dé"
+      },
+      {
+        "dia": "08/06/2025",
+        "nome": "Flavio"
+      },
+      {
+        "dia": "15/06/2025",
+        "nome": "João"
+      },
+      {
+        "dia": "22/06/2025",
+        "nome": "Lane"
+      },
+      {
+        "dia": "29/06/2025",
+        "nome": "Helem"
+      }
+    ]
   }
+{
+    "ministerio": "Culto de Quarta-Feira",
+    "escalados": [
+            {
+        "dia": "01/06/2025",
+        "nome": "Railda"
+      },
+      {
+        "dia": "08/06/2025",
+        "nome": "Renato"
+      },
+      {
+        "dia": "15/06/2025",
+        "nome": "Rogerio"
+      },
+      {
+        "dia": "22/06/2025",
+        "nome": "Monica"
+      },
+      {
+        "dia": "29/06/2025",
+        "nome": "Léia"
+      }
+    ]
+  },
+
 ]
