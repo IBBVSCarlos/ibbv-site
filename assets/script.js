@@ -119,9 +119,6 @@ async function carregarAniversariantesSemana() {
 
     const fimSemana = new Date(inicioSemana);
     fimSemana.setDate(inicioSemana.getDate() + 7); // Agora inclui o domingo seguinte
-    
-  //  const fimSemana = new Date(inicioSemana);
-  //  fimSemana.setDate(inicioSemana.getDate() + 6);
 
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
@@ -155,6 +152,8 @@ const aniversariantesSemana = aniversariantes.filter(item => {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
+
 
 // Função para carregar a Escala de Ministérios
 async function carregarEscalaMinisterios() {
