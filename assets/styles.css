@@ -203,7 +203,9 @@ footer {
   font-size: 1.1rem;
   color: #c8f0c8;
   margin-top: 1rem;
+  line-height: 1.6; /* Melhora a legibilidade */
 }
+
 
 .navegacao-coluna {
   margin-top: 1rem;
