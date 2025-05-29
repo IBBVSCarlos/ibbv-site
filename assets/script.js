@@ -154,7 +154,6 @@ const aniversariantesSemana = aniversariantes.filter(item => {
 }
 document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
-
 // Função para carregar a Escala de Ministérios
 async function carregarEscalaMinisterios() {
   try {
@@ -258,3 +257,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error("Erro ao carregar o conteúdo:", error);
   }
 });
+carregarAniversariantesSemana();
