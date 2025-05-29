@@ -112,13 +112,15 @@ async function carregarAniversariantesSemana() {
     const aniversariantes = await res.json();
 
     const hoje = new Date();
-    const diaSemana = hoje.getDay();
-    
-    const inicioSemana = new Date(hoje);
-    inicioSemana.setDate(hoje.getDate() - diaSemana); // Sempre pega o último domingo
+const diaSemana = hoje.getDay();
 
-    const fimSemana = new Date(inicioSemana);
-    fimSemana.setDate(inicioSemana.getDate() + 7); // Agora inclui o domingo seguinte
+// Ajusta para pegar o domingo anterior
+const inicioSemana = new Date(hoje);
+inicioSemana.setDate(hoje.getDate() - diaSemana);
+
+// Define o fim da semana no próximo domingo (não sábado!)
+const fimSemana = new Date(inicioSemana);
+fimSemana.setDate(inicioSemana.getDate() + 7);
 
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
