@@ -75,8 +75,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para contraste */
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro translúcido */
+  color: #fff; /* Texto branco */
   padding: 10px 15px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -90,8 +90,6 @@
     max-width: 90%;
   }
 }
-
-
 
 
 /* Background fixo com degradê preto-verde */
