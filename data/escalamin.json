@@ -1,26 +1,26 @@
 [
-{
-  "ministerio": "Culto Kids - Domingo",
-  "escalados": [
-    {
-      "dia": "01/06/2025",
-      "nome": "Tia da Salinha - X"
-    },
-    {
-      "dia": "08/06/2025",
-      "nome": "Tia da Salinha - Y"
-    },
-    {
-      "dia": "15/06/2025",
-      "nome": "Tia da Salinha - Z"
-    },
-    {
-      "dia": "22/06/2025",
-      "nome": "Tia da Salinha - W"
-    }
-  ]
-}
-{
+  {
+    "ministerio": "Culto Kids - Domingo",
+    "escalados": [
+      {
+        "dia": "01/06/2025",
+        "nome": "Tia da Salinha - X"
+      },
+      {
+        "dia": "08/06/2025",
+        "nome": "Tia da Salinha - Y"
+      },
+      {
+        "dia": "15/06/2025",
+        "nome": "Tia da Salinha - Z"
+      },
+      {
+        "dia": "22/06/2025",
+        "nome": "Tia da Salinha - W"
+      }
+    ]
+  },
+  {
     "ministerio": "Louvor - Culto Domingo",
     "escalados": [
       {
@@ -69,11 +69,11 @@
         "nome": "Helem"
       }
     ]
-  }
-{
+  },
+  {
     "ministerio": "Culto de Quarta-Feira",
     "escalados": [
-            {
+      {
         "dia": "01/06/2025",
         "nome": "Railda"
       },
@@ -94,6 +94,5 @@
         "nome": "Léia"
       }
     ]
-  },
-
+  }
 ]
