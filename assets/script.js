@@ -133,12 +133,18 @@ async function carregarAniversariantesSemana() {
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
 
     // Filtrar os aniversariantes dentro do intervalo correto
-    const aniversariantesSemana = aniversariantes.filter(item => {
-      const [dia, mes] = item.data.split('/').map(Number);
-      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
-  
-      return dataAniv.getTime() >= inicioSemana.getTime() && dataAniv.getTime() <= fimSemana.getTime();
-    });
+const aniversariantesSemana = aniversariantes.filter(item => {
+  const [dia, mes] = item.data.split('/').map(Number);
+  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+
+  // Ajuste para garantir que a comparação use apenas a data (sem horário)
+  const dataAnivSemHorario = new Date(dataAniv.getFullYear(), dataAniv.getMonth(), dataAniv.getDate());
+  const inicioSemanaSemHorario = new Date(inicioSemana.getFullYear(), inicioSemana.getMonth(), inicioSemana.getDate());
+  const fimSemanaSemHorario = new Date(fimSemana.getFullYear(), fimSemana.getMonth(), fimSemana.getDate());
+
+  return dataAnivSemHorario >= inicioSemanaSemHorario && dataAnivSemHorario <= fimSemanaSemHorario;
+});
+
 
     console.log("Aniversariantes filtrados:", aniversariantesSemana); // Agora está definido antes do log!
 
