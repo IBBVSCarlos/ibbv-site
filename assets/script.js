@@ -157,27 +157,31 @@ const aniversariantesSemana = aniversariantes.filter(item => {
 async function carregarEscalaMinisterios() {
   try {
     const res = await fetch('data/escalamin.json');
+    if (!res.ok) throw new Error("Erro ao carregar JSON");
+
     const escala = await res.json();
 
     const listaEscala = document.getElementById("lista-escala");
     if (!listaEscala) return;
 
-    // Montando a estrutura corretamente com o novo formato do JSON
-    listaEscala.innerHTML = escala.length
+    listaEscala.innerHTML = escala.length 
       ? escala.map(ministerio => 
-          `<li><strong>${ministerio.ministerio}</strong><ul>
-            ${ministerio.escalados.map(pessoa => 
-              `<li>${pessoa.dia}: ${pessoa.nome}</li>`
-            ).join('')}
-          </ul></li>`).join('')
+          `<li><strong>${ministerio.ministerio}</strong>
+            <ul>
+              ${ministerio.escalados.map(pessoa => 
+                `<li>${pessoa.dia}: ${pessoa.nome}</li>`
+              ).join('')}
+            </ul>
+          </li>`
+        ).join('')
       : '<li>Nenhuma escala disponível no momento.</li>';
 
   } catch (error) {
     console.error("Erro ao carregar escala de ministérios:", error);
+    document.getElementById("lista-escala").innerHTML = '<li>Erro ao carregar escala.</li>';
   }
 }
 
-// Chamando a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
 // Avisos IBBV
