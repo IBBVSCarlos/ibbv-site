@@ -129,6 +129,9 @@ async function carregarAniversariantesSemana() {
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
 
+    // Array com emojis Unicode aleatórios
+    const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
+
     // Filtrar os aniversariantes dentro do intervalo correto
     const aniversariantesSemana = aniversariantes.filter(item => {
       const [dia, mes] = item.data.split('/').map(Number);
@@ -141,17 +144,6 @@ async function carregarAniversariantesSemana() {
 
     // Exibir aniversariantes na lista
     lista.innerHTML = aniversariantesSemana.length
-      ? aniversariantesSemana.map(p => `<li>🎉 ${p.nome}</li>`).join('')
-      : '<li>Nenhum aniversariante nesta semana.</li>';
-
-  } catch (error) {
-    console.error("Erro ao carregar aniversariantes:", error);
-  }
-}
-    // Array com emojis Unicode aleatórios
-    const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
-
-    lista.innerHTML = aniversariantesSemana.length
       ? aniversariantesSemana.map(p => {
           const [dia, mes] = p.data.split('/').map(Number);
           const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
@@ -160,17 +152,19 @@ async function carregarAniversariantesSemana() {
                              dataAniv.getFullYear() === hoje.getFullYear()) 
             ? " <strong>(hoje!)</strong>" 
             : "";
-          
+
           // Escolhe um emoji aleatório
           const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
 
           return `<li>${emojiAleatorio} ${p.nome}${hojeTexto}</li>`;
         }).join('')
       : '<li>Nenhum aniversariante nesta semana.</li>';
+
   } catch (error) {
     console.error("Erro ao carregar aniversariantes:", error);
   }
 }
+
 document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
 // Função para carregar a Escala de Ministérios
