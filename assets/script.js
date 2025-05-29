@@ -111,34 +111,43 @@ async function carregarAniversariantesSemana() {
     const res = await fetch('data/aniversariantes.json');
     const aniversariantes = await res.json();
 
-const hoje = new Date();
-const diaSemana = hoje.getDay();
+    const hoje = new Date();
+    const diaSemana = hoje.getDay();
 
-// Definir o início e fim da semana antes de usar nos logs
-const inicioSemana = new Date(hoje);
-inicioSemana.setDate(hoje.getDate() - diaSemana);
+    // Definir o início e fim da semana antes de usar nos logs
+    const inicioSemana = new Date(hoje);
+    inicioSemana.setDate(hoje.getDate() - diaSemana);
 
-const fimSemana = new Date(inicioSemana);
-fimSemana.setDate(inicioSemana.getDate() + 7);
+    const fimSemana = new Date(inicioSemana);
+    fimSemana.setDate(inicioSemana.getDate() + 7);
 
-// Agora os logs vão funcionar sem erro
-console.log("Início da semana:", inicioSemana.toDateString());
-console.log("Fim da semana:", fimSemana.toDateString());
-console.log("Aniversariantes carregados:", aniversariantes);
-console.log("Aniversariantes filtrados:", aniversariantesSemana);
+    // Agora os logs vão funcionar sem erro
+    console.log("Início da semana:", inicioSemana.toDateString());
+    console.log("Fim da semana:", fimSemana.toDateString());
+    console.log("Aniversariantes carregados:", aniversariantes);
 
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
 
-const aniversariantesSemana = aniversariantes.filter(item => {
-  const [dia, mes] = item.data.split('/').map(Number);
-  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+    // Filtrar os aniversariantes dentro do intervalo correto
+    const aniversariantesSemana = aniversariantes.filter(item => {
+      const [dia, mes] = item.data.split('/').map(Number);
+      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+  
+      return dataAniv.getTime() >= inicioSemana.getTime() && dataAniv.getTime() <= fimSemana.getTime();
+    });
 
-  // Usando `getTime()` para evitar erros de comparação
-  return dataAniv.getTime() >= inicioSemana.getTime() && dataAniv.getTime() <= fimSemana.getTime();
-});
+    console.log("Aniversariantes filtrados:", aniversariantesSemana); // Agora está definido antes do log!
 
+    // Exibir aniversariantes na lista
+    lista.innerHTML = aniversariantesSemana.length
+      ? aniversariantesSemana.map(p => `<li>🎉 ${p.nome}</li>`).join('')
+      : '<li>Nenhum aniversariante nesta semana.</li>';
 
+  } catch (error) {
+    console.error("Erro ao carregar aniversariantes:", error);
+  }
+}
     // Array com emojis Unicode aleatórios
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
 
