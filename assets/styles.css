@@ -76,7 +76,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro translúcido */
-  color: #fff; /* Texto branco */
+  /*color: #fff;  Texto branco */
+  color: #222;
   padding: 10px 15px;
   font-size: 1.2rem;
   font-weight: bold;
