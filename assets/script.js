@@ -132,8 +132,11 @@ console.log("Fim da semana:", fimSemana.toDateString());
 const aniversariantesSemana = aniversariantes.filter(item => {
   const [dia, mes] = item.data.split('/').map(Number);
   const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
-  return dataAniv >= inicioSemana && dataAniv <= fimSemana;
+
+  // Comparação com `.getTime()` para evitar problemas de fusos horários
+  return dataAniv.getTime() >= inicioSemana.getTime() && dataAniv.getTime() <= fimSemana.getTime();
 });
+
 
     // Array com emojis Unicode aleatórios
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
