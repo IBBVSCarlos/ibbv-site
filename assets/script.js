@@ -133,7 +133,7 @@ const aniversariantesSemana = aniversariantes.filter(item => {
   const [dia, mes] = item.data.split('/').map(Number);
   const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
 
-  // Comparação com `.getTime()` para evitar problemas de fusos horários
+  // Usando `getTime()` para evitar erros de comparação
   return dataAniv.getTime() >= inicioSemana.getTime() && dataAniv.getTime() <= fimSemana.getTime();
 });
 
