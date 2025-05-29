@@ -111,20 +111,21 @@ async function carregarAniversariantesSemana() {
     const res = await fetch('data/aniversariantes.json');
     const aniversariantes = await res.json();
 
-    const hoje = new Date();
-    const diaSemana = hoje.getDay();
+const hoje = new Date();
+const diaSemana = hoje.getDay();
 
-// Definir início e fim da semana antes dos `console.log()`
-    const inicioSemana = new Date(hoje);
-    inicioSemana.setDate(hoje.getDate() - diaSemana); // Sempre começa no último domingo
+// Definir o início e fim da semana antes de usar nos logs
+const inicioSemana = new Date(hoje);
+inicioSemana.setDate(hoje.getDate() - diaSemana);
 
-    const fimSemana = new Date(inicioSemana);
-    fimSemana.setDate(inicioSemana.getDate() + 7); // Agora inclui até o próximo domingo
+const fimSemana = new Date(inicioSemana);
+fimSemana.setDate(inicioSemana.getDate() + 7);
 
 // Agora os logs vão funcionar sem erro
 console.log("Início da semana:", inicioSemana.toDateString());
 console.log("Fim da semana:", fimSemana.toDateString());
-
+console.log("Aniversariantes carregados:", aniversariantes);
+console.log("Aniversariantes filtrados:", aniversariantesSemana);
 
     const lista = document.getElementById("lista-aniversariantes");
     if (!lista) return;
