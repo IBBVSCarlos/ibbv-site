@@ -267,6 +267,11 @@ footer {
     }
   }
 
+ /* Escala dos Ministérios*/ 
+  #escala-ministerios {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #escala-ministerios {
   background: rgba(0, 77, 0, 0.75);
   border-radius: 8px;
@@ -291,10 +296,13 @@ footer {
 
 #lista-escala li {
   font-size: 1.1rem;
-  color: #c8f0c8;
+  font-weight: 600; /* Deixa o texto mais destacado */
+  color: #c8f0c8; /* Mantém a mesma cor do site */
   margin: 6px 0;
   display: flex;
   align-items: center;
+  letter-spacing: 0.5px; /* Pequeno espaçamento para legibilidade */
+  line-height: 1.4; /* Melhora a organização visual */
 }
 
 #lista-escala li::before {
