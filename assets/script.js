@@ -227,6 +227,14 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 
 
 // Função para carregar a Coluna do Pastor com historico
+// 🔹 Função para sanitizar o texto, removendo caracteres especiais
+function sanitizarTexto(texto) {
+  return texto
+    .replace(/[\u201C\u201D]/g, '"')  // Substitui aspas inclinadas por aspas normais
+    .replace(/[\u2018\u2019]/g, "'")  // Substitui apóstrofos inclinados por apóstrofos normais
+    .replace(/\u2026/g, "..."); // Corrige reticências para padrão de três pontos
+}
+
 async function carregarColunaPastorTXT() {
   try {
     const res = await fetch('data/coluna_pastor.txt');
