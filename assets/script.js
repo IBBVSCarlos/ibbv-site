@@ -244,17 +244,25 @@ function exibirColuna(indice) {
   const titulo = document.querySelector('#coluna-pastor h2');
   const mensagemDiv = document.getElementById('mensagem-pastor');
 
-  if (!titulo || !mensagemDiv || !colunas[indice]) return;
+   if (!titulo || !mensagemDiv || !colunas.length || !colunas[indice]) {
+    console.warn("Dados ausentes ou índice inválido na Coluna do Pastor.");
+    return;
+  }
 
-  titulo.textContent = colunas[indice].titulo;
+titulo.textContent = colunas[indice].titulo;
   mensagemDiv.innerHTML = "";
-
-  colunas[indice].mensagem.forEach((paragrafo) => {
-    const p = document.createElement('p');
-    p.textContent = paragrafo;
-    mensagemDiv.appendChild(p);
-  });
+ // Certifique-se de que o conteúdo está presente antes de iterar
+  if (Array.isArray(colunas[indice].mensagem)) {
+    colunas[indice].mensagem.forEach((paragrafo) => {
+      const p = document.createElement('p');
+      p.textContent = paragrafo;
+      mensagemDiv.appendChild(p);
+    });
+  } else {
+    mensagemDiv.innerHTML = "<p>Conteúdo indisponível no momento.</p>";
+  }
 }
+
 
 document.getElementById("btnAnterior").addEventListener("click", () => {
   if (indiceAtual > 0) {
