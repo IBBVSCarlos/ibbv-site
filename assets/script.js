@@ -115,7 +115,7 @@ async function carregarAniversariantesSemana() {
     const diaSemana = hoje.getDay();
     
     const inicioSemana = new Date(hoje);
-    inicioSemana.setDate(hoje.getDate() - diaSemana);
+    inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 7 : diaSemana));
 
     const fimSemana = new Date(inicioSemana);
     fimSemana.setDate(inicioSemana.getDate() + 6);
