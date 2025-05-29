@@ -189,29 +189,56 @@ footer {
   }
 
 /* Coluna do Pastor */
-}
-#coluna-pastor h2 {
-  font-weight: bold;
+/* Estilização da Coluna do Pastor */
+#coluna-pastor {
   text-align: center;
-  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: rgba(0, 77, 0, 0.75);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
 }
-#mensagem-pastor p {
+
+#mensagem-pastor {
   text-align: justify;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #c8f0c8;
+  margin-top: 1rem;
 }
-#mensagem-pastor p.assinatura {
-  text-align: right;
-  font-weight: bold;
-  font-style: italic;
-  margin-top: 2rem;
+
+.navegacao-coluna {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
-  /* Coluna do Pastor */
-  .assinatura {
-  font-weight: bold;
-  font-style: italic;
-  text-align: right;
-  margin-top: 1.5rem;
+
+.navegacao-coluna button {
+  background-color: #006600;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
+
+.navegacao-coluna button:hover {
+  background-color: #009900;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  #mensagem-pastor {
+    font-size: 1rem;
+  }
+
+  .navegacao-coluna button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
 
   /* aniversariantes */
   .aniversariantes-lista {
