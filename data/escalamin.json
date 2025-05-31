@@ -4,28 +4,32 @@
     "escalados": [
       {
         "dia": "01/06/2025",
-        "nome": "Tia da Salinha - X"
+        "nome": "Rose"
       },
       {
         "dia": "08/06/2025",
-        "nome": "Tia da Salinha - Y"
+        "nome": "Jeferson"
       },
       {
         "dia": "15/06/2025",
-        "nome": "Tia da Salinha - Z"
+        "nome": "Monica"
       },
       {
         "dia": "22/06/2025",
-        "nome": "Tia da Salinha - W"
+        "nome": "Elisangela"
+      },
+      {
+        "dia": "29/06/2025",
+        "nome": "Lane"
       }
     ]
   },
   {
-    "ministerio": "Louvor - Culto Domingo",
+    "ministerio": "Cantina",
     "escalados": [
       {
         "dia": "01/06/2025",
-        "nome": "Equipe de Louvor 1"
+        "nome": "Helem"
       },
       {
         "dia": "08/06/2025",
