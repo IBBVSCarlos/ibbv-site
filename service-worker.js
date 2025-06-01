@@ -1,5 +1,4 @@
-//Service Worker.js
-
+/* Service Worker.js */
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open("ibbv-cache").then((cache) => {
