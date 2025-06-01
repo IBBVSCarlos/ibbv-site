@@ -1,6 +1,27 @@
 [
   {
-    "ministerio": "Culto Kids - Domingo",
+    "ministerio": "Recepção",
+    "escalados": [
+      {
+        "dia": "01/06/2025",
+        "nome": "Joselito (Dé)"
+      },
+      {
+        "dia": "08/06/2025",
+        "nome": "Flavio"
+      },
+      {
+        "dia": "15/06/2025",
+        "nome": "João"
+      },
+      {
+        "dia": "22/06/2025",
+        "nome": "Lane"
+      }
+    ]
+  },
+  {
+    "ministerio": "Culto Kids",
     "escalados": [
       {
         "dia": "01/06/2025",
@@ -25,77 +46,40 @@
     ]
   },
   {
+    "ministerio": "Culto de Quarta-Feira",
+    "escalados": [
+      {
+        "dia": "04/06/2025",
+        "nome": "Shirley"
+      },
+      {
+        "dia": "11/06/2025",
+        "nome": "Renato"
+      },
+      {
+        "dia": "18/06/2025",
+        "nome": "Railda"
+      },
+      {
+        "dia": "25/06/2025",
+        "nome": "Monica"
+      }
+    ]
+  },
+  {
     "ministerio": "Cantina",
     "escalados": [
       {
         "dia": "01/06/2025",
-        "nome": "Helem"
-      },
-      {
-        "dia": "08/06/2025",
-        "nome": "Equipe de Louvor 1"
+        "nome": "Railda/ Joseleno (Zé)/ Helem"
       },
       {
         "dia": "15/06/2025",
-        "nome": "Equipe de Louvor 1"
-      },
-      {
-        "dia": "22/06/2025",
-        "nome": "Equipe de Louvor 1"
+        "nome": "Iromar/ Daiane"
       },
       {
         "dia": "29/06/2025",
-        "nome": "Equipe de Louvor 1"
-      }
-    ]
-  },
-  {
-    "ministerio": "Recepção - Culto Domingo",
-    "escalados": [
-      {
-        "dia": "01/06/2025",
-        "nome": "Dé"
-      },
-      {
-        "dia": "08/06/2025",
-        "nome": "Flavio"
-      },
-      {
-        "dia": "15/06/2025",
-        "nome": "João"
-      },
-      {
-        "dia": "22/06/2025",
-        "nome": "Lane"
-      },
-      {
-        "dia": "29/06/2025",
-        "nome": "Helem"
-      }
-    ]
-  },
-  {
-    "ministerio": "Culto de Quarta-Feira",
-    "escalados": [
-      {
-        "dia": "01/06/2025",
-        "nome": "Railda"
-      },
-      {
-        "dia": "08/06/2025",
-        "nome": "Renato"
-      },
-      {
-        "dia": "15/06/2025",
-        "nome": "Rogerio"
-      },
-      {
-        "dia": "22/06/2025",
-        "nome": "Monica"
-      },
-      {
-        "dia": "29/06/2025",
-        "nome": "Léia"
+        "nome": "Railda/ Joseleno (Zé)/ Helem"
       }
     ]
   }
