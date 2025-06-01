@@ -1,0 +1,33 @@
+name: Atualizar Versículo do Dia
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Roda todos os dias à meia-noite UTC
+  workflow_dispatch:  # Permite rodar manualmente
+
+jobs:
+  update_versiculo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Repositório
+      uses: actions/checkout@v4
+
+    - name: Instalar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Instalar dependências
+      run: npm install
+
+    - name: Rodar Web Scraping
+      run: node scripts.js
+
+    - name: Commit e Push das mudanças
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add data/versiculos.json
+        git commit -m "Atualizando versículo do dia via GitHub Actions"
+        git push
