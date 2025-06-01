@@ -88,6 +88,33 @@ function exibirColunaPastor(colunas) {
 document.addEventListener("DOMContentLoaded", carregarColunaPastorTXT);
 
 
+async function verificarNovaColuna() {
+  try {
+    const res = await fetch("data/coluna_pastor.txt");
+    if (!res.ok) throw new Error("Erro ao carregar a Coluna do Pastor.");
+
+    const textoAtual = await res.text();
+    const ultimaColuna = localStorage.getItem("ultimaColunaPastor");
+
+    if (textoAtual !== ultimaColuna) {
+      localStorage.setItem("ultimaColunaPastor", textoAtual);
+
+      if ("serviceWorker" in navigator && "Notification" in window) {
+        navigator.serviceWorker.ready.then((registration) => {
+          registration.sync.register("nova-coluna-pastor");
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Erro ao verificar nova mensagem na Coluna do Pastor:", error);
+  }
+}
+
+// Verifica novas colunas regularmente
+setInterval(verificarNovaColuna, 60000);
+
+
+
 /*document.addEventListener("DOMContentLoaded", () => {
   fetch('data/coluna_pastor.json')
     .then(response => response.json())

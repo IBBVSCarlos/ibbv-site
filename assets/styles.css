@@ -167,6 +167,44 @@ header img {
   color: #c8f0c8;
 }
 
+/* Seçao Programaçao */
+.programacao-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.programacao-lista li {
+  font-size: 1.2em;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  color: #c8f0c8; /* Mantendo padrão de cor do site */
+}
+
+.programacao-lista li strong {
+  color: #a8e6a1; /* Destacando horário em verde claro */
+}
+
+.reunioes-quinzenais {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #ff9800; /* Tom diferente para separação */
+}
+
+/* Ícones antes dos itens */
+.programacao-lista li::before {
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
+#versiculo-conteudo p {
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+}
+
+
 /* Rodapé */
 footer {
   text-align: center;

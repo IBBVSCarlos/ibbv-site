@@ -1,4 +1,27 @@
 // script.js
+// script para ativar o PWA
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("✅ Service Worker registrado com sucesso!"))
+    .catch((error) => console.log("⚠️ Erro ao registrar Service Worker:", error));
+}
+
+function solicitarPermissaoNotificacao() {
+  if ("Notification" in window && "serviceWorker" in navigator) {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        console.log("✅ Permissão para notificações concedida!");
+      } else {
+        console.log("⚠️ Permissão negada pelo usuário.");
+      }
+    });
+  }
+}
+
+// Chamamos a função quando o site carrega
+document.addEventListener("DOMContentLoaded", solicitarPermissaoNotificacao);
+
+
 // funçao para o header - semana atual
 function definirSemanaReferencia() {
   const hoje = new Date();
@@ -72,30 +95,9 @@ document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
 // tras o versiculo do dia
-async function carregarVersiculoDoDia() {
-  try {
-    const res = await fetch('data/versiculos.json');
-    const versiculos = await res.json();
+const buscarVersiculoDoDia = require("./versiculos");
 
-    const hoje = new Date().toISOString().slice(0, 10);
-    const versiculoHoje = versiculos.find(v => v.data === hoje);
-
-    const container = document.getElementById('versiculo-conteudo'); // Corrigido!
-    if (!container) return;
-
-    if (versiculoHoje) {
-      container.innerHTML = `
-        <h2>Versículo do Dia</h2>
-        <p>"${versiculoHoje.texto}" <strong>(${versiculoHoje.referencia})</strong></p>
-        <small>${versiculoHoje.comentario}</small>
-      `;
-    } else {
-      container.innerHTML = '<h2>Versículo do Dia</h2><p>Versículo não encontrado.</p>';
-    }
-  } catch (error) {
-    console.error("Erro ao carregar versículo:", error);
-  }
-}
+buscarVersiculoDoDia();
 
 
 // Função para formatar a data no formato "dd/mm"
