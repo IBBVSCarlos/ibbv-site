@@ -1,7 +1,12 @@
 // script.js
 // script para ativar o PWA
 if ("serviceWorker" in navigator) {
+<<<<<<< HEAD
    navigator.serviceWorker.register("./service-worker.js")
+
+=======
+  navigator.serviceWorker.register("service-worker.js")
+>>>>>>> 5e1d9aa5b08a00826684b77ad43d0fb7b6f1ab44
     .then(() => console.log("✅ Service Worker registrado com sucesso!"))
     .catch((error) => console.log("⚠️ Erro ao registrar Service Worker:", error));
 }
@@ -46,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("logoEffectShown", "true");
   }
 });
+
 
 
   // scrool na area visivel
@@ -205,6 +211,7 @@ async function carregarEscalaMinisterios() {
     document.getElementById("lista-escala").innerHTML = '<li>Erro ao carregar escala.</li>';
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
