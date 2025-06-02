@@ -1,6 +1,11 @@
 import puppeteer from "puppeteer";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function buscarVersiculoDoDia() {
   const browser = await puppeteer.launch({ headless: "new" });
@@ -8,11 +13,12 @@ async function buscarVersiculoDoDia() {
   await page.goto("https://www.bibliaonline.com.br/acf");
 
   const versiculo = await page.evaluate(() => {
-    return document.querySelector(".versiculo").innerText.trim();
+    const versiculoElemento = document.querySelector(".versiculo");
+    return versiculoElemento ? versiculoElemento.innerText.trim() : null;
   });
 
   if (!versiculo) {
-    console.error("❌ Erro ao capturar versículo do dia.");
+    console.error("❌ Erro ao buscar versículo do dia.");
     await browser.close();
     return;
   }
@@ -30,6 +36,10 @@ async function buscarVersiculoDoDia() {
     fonte: "https://www.bibliaonline.com.br/acf",
     favorito: false
   };
+
+  if (!fs.existsSync("data")) {
+    fs.mkdirSync("data");
+  }
 
   const jsonPath = path.join(__dirname, "data/versiculos.json");
 
@@ -53,3 +63,4 @@ async function buscarVersiculoDoDia() {
 // Exportando a função para ser usada em scripts.js
 export default buscarVersiculoDoDia;
 
+console.log("✅ Versículo do dia foi atualizado!");

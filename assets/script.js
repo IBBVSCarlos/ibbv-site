@@ -94,9 +94,35 @@ sections.forEach((section) => observer.observe(section));
 document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
-// tras o versiculo do dia
-// import buscarVersiculoDoDia from "./versiculo.js";
-// buscarVersiculoDoDia();
+
+async function carregarVersiculo() {
+  try {
+    const response = await fetch("data/versiculos.json");
+    if (!response.ok) throw new Error("❌ Erro ao carregar versículo.");
+
+    const versiculos = await response.json();
+    const hoje = new Date().toISOString().slice(0, 10);
+    const versiculoDoDia = versiculos.find(v => v.data === hoje);
+
+    if (!versiculoDoDia) {
+      console.log("🚨 Nenhum versículo encontrado para hoje!");
+      return;
+    }
+
+    // Exibir na página
+    document.querySelector("#texto-versiculo").innerText = versiculoDoDia.texto;
+    document.querySelector("#referencia").innerText = versiculoDoDia.referencia;
+    document.querySelector("#comentario").innerText = versiculoDoDia.comentario;
+
+    console.log("✅ Versículo do dia carregado!");
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+// Chama a função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarVersiculo);
+
 
 
 // Função para formatar a data no formato "dd/mm"
