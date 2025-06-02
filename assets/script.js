@@ -1,7 +1,8 @@
 // script.js
 // script para ativar o PWA
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js")
+   navigator.serviceWorker.register("./service-worker.js")
+
     .then(() => console.log("✅ Service Worker registrado com sucesso!"))
     .catch((error) => console.log("⚠️ Erro ao registrar Service Worker:", error));
 }
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
 // tras o versiculo do dia
-const buscarVersiculoDoDia = require("./versiculos");
+import buscarVersiculoDoDia from "./versiculos.js";
 
 buscarVersiculoDoDia();
 
@@ -173,7 +174,14 @@ const aniversariantesSemana = aniversariantes.filter(item => {
   }
 }
 
-document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await carregarVersiculoDoDia();
+    await carregarAniversariantesSemana();
+  } catch (error) {
+    console.error("Erro ao carregar o conteúdo:", error);
+  }
+});
 
 // Função para carregar a Escala de Ministérios
 async function carregarEscalaMinisterios() {
@@ -182,27 +190,24 @@ async function carregarEscalaMinisterios() {
     if (!res.ok) throw new Error("Erro ao carregar JSON");
 
     const escala = await res.json();
+    if (!escala.length) throw new Error("Nenhuma escala disponível");
 
     const listaEscala = document.getElementById("lista-escala");
     if (!listaEscala) return;
 
-    listaEscala.innerHTML = escala.length 
-      ? escala.map(ministerio => 
-          `<li><strong>${ministerio.ministerio}</strong>
-            <ul>
-              ${ministerio.escalados.map(pessoa => 
-                `<li>${pessoa.dia}: ${pessoa.nome}</li>`
-              ).join('')}
-            </ul>
-          </li>`
-        ).join('')
-      : '<li>Nenhuma escala disponível no momento.</li>';
-
+    listaEscala.innerHTML = escala.map(ministerio => `
+      <li><strong>${ministerio.ministerio}</strong>
+        <ul>
+          ${ministerio.escalados.map(pessoa => `<li>${pessoa.dia}: ${pessoa.nome}</li>`).join('')}
+        </ul>
+      </li>
+    `).join('');
   } catch (error) {
     console.error("Erro ao carregar escala de ministérios:", error);
     document.getElementById("lista-escala").innerHTML = '<li>Erro ao carregar escala.</li>';
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
@@ -213,7 +218,7 @@ function carregarAvisos() {
     .then(data => {
       const listaAvisos = document.getElementById('lista-avisos');
 
-      if (!listaAvisos || !data.avisos?.length) {
+      if (!listaAvisos || !data.avisos || !data.avisos.length) {
         console.warn("Nenhum aviso encontrado.");
         return;
       }
