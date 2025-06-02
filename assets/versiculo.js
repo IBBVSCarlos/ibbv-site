@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
-const path = require("path");
+import puppeteer from "puppeteer";
+import fs from "fs";
+import path from "path";
 
 async function buscarVersiculoDoDia() {
   const browser = await puppeteer.launch({ headless: "new" });
@@ -51,4 +51,5 @@ async function buscarVersiculoDoDia() {
 }
 
 // Exportando a função para ser usada em scripts.js
-module.exports = buscarVersiculoDoDia;
+export default buscarVersiculoDoDia;
+
