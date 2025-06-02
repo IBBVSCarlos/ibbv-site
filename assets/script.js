@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
 // tras o versiculo do dia
-import buscarVersiculoDoDia from "./versiculos.js";
+import buscarVersiculoDoDia from "./versiculo.js";
 
 buscarVersiculoDoDia();
 
@@ -180,7 +180,7 @@ const aniversariantesSemana = aniversariantes.filter(item => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    await carregarVersiculoDoDia();
+//  await carregarVersiculoDoDia();
     await carregarAniversariantesSemana();
   } catch (error) {
     console.error("Erro ao carregar o conteúdo:", error);

@@ -21,7 +21,6 @@ jobs:
 - name: Instalar dependências com lockfile
   run: npm ci
 
-
     - name: Rodar Web Scraping
       run: node versiculo.js
 

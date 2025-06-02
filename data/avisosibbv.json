@@ -1,12 +1,16 @@
 {
   "avisos": [
     {
-      "texto": "Maio - Mês da Família",
-      "imagem": "familia.png"
+      "texto": "Bazar da IBBV",
+      "imagem": "bazar.png"
     },
     {
-      "texto": "Bazar da IBBV 07/jun.",
-      "imagem": "bazar.png"
+      "texto": "Encontro das Mulheres",
+      "imagem": "mcm.png"
+    },
+    {
+      "texto": "Reuniao dos Jovens",
+      "imagem": "jovens.png"
     }
   ]
 }
