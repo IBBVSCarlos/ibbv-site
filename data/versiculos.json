@@ -1,6 +1,6 @@
 [
   {
-    "data": "2026-06-01",
+    "data": "2025-06-01",
     "livro": "João",
     "capitulo": 8,
     "versiculo": 32,
@@ -12,7 +12,7 @@
     "favorito": false
   },
   {
-    "data": "2026-06-02",
+    "data": "2025-06-02",
     "livro": "Salmos",
     "capitulo": 23,
     "versiculo": 4,
