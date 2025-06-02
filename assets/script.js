@@ -94,8 +94,8 @@ sections.forEach((section) => observer.observe(section));
 document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
-
-async function carregarVersiculo() {
+	
+async function carregarVersiculoDoDia() {
   try {
     const response = await fetch("data/versiculos.json");
     if (!response.ok) throw new Error("❌ Erro ao carregar versículo.");
@@ -121,7 +121,7 @@ async function carregarVersiculo() {
 }
 
 // Chama a função ao carregar a página
-document.addEventListener("DOMContentLoaded", carregarVersiculo);
+document.addEventListener("DOMContentLoaded", carregarVersiculoDoDia);
 
 
 
