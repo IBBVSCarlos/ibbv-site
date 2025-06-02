@@ -93,35 +93,39 @@ sections.forEach((section) => observer.observe(section));
 // Chamando a função quando a página carrega
 document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
+
 //versiculo do dia
-	
-async function carregarVersiculoDoDia() {
+async function carregarVersiculo() {
   try {
-    const response = await fetch("data/versiculos.json");
+    const response = await fetch("./data/versiculos.json");
     if (!response.ok) throw new Error("❌ Erro ao carregar versículo.");
 
     const versiculos = await response.json();
     const hoje = new Date().toISOString().slice(0, 10);
+
     const versiculoDoDia = versiculos.find(v => v.data === hoje);
 
     if (!versiculoDoDia) {
       console.log("🚨 Nenhum versículo encontrado para hoje!");
+      document.querySelector("#versiculo-conteudo").innerHTML = "<p>❌ Nenhum versículo encontrado para hoje.</p>";
       return;
     }
 
-    // Exibir na página
-    document.querySelector("#texto-versiculo").innerText = versiculoDoDia.texto;
-    document.querySelector("#referencia").innerText = versiculoDoDia.referencia;
-    document.querySelector("#comentario").innerText = versiculoDoDia.comentario;
+    document.querySelector("#versiculo-conteudo").innerHTML = `
+      <p><strong>${versiculoDoDia.texto}</strong></p>
+      <p><em>${versiculoDoDia.referencia}</em></p>
+      <p>${versiculoDoDia.comentario}</p>
+    `;
 
     console.log("✅ Versículo do dia carregado!");
   } catch (error) {
     console.error(error.message);
+    document.querySelector("#versiculo-conteudo").innerHTML = "<p>❌ Erro ao carregar versículo.</p>";
   }
 }
 
 // Chama a função ao carregar a página
-document.addEventListener("DOMContentLoaded", carregarVersiculoDoDia);
+document.addEventListener("DOMContentLoaded", carregarVersiculo);
 
 
 
