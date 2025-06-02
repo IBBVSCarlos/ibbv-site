@@ -95,9 +95,8 @@ document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 //versiculo do dia
 // tras o versiculo do dia
-import buscarVersiculoDoDia from "./versiculo.js";
-
-buscarVersiculoDoDia();
+// import buscarVersiculoDoDia from "./versiculo.js";
+// buscarVersiculoDoDia();
 
 
 // Função para formatar a data no formato "dd/mm"
