@@ -1,3 +1,7 @@
+on:
+  schedule:
+    - cron: '0 13 * * *'  # Executa às 13h00 UTC (10h00 horário de Brasília)
+
 jobs:
   update_versiculo:
     runs-on: ubuntu-latest
