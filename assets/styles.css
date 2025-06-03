@@ -27,8 +27,6 @@
 
 }
 
-
-
 /* Efeito para aparecer o texto somente qdo entrar na área visivel */
 .section-box {
   opacity: 0;
@@ -159,7 +157,7 @@ header img {
 
 
 /* Versículo do dia */
-#versiculo {
+#versiculo, #versiculo-conteudo p {
   font-style: italic;
   font-weight: 600;
   font-size: 1.1rem;
@@ -281,7 +279,7 @@ footer {
 }
 
 
-  /* aniversariantes */
+/* aniversariantes */
   .aniversariantes-lista {
   list-style: none;
   padding: 0;
@@ -311,31 +309,30 @@ footer {
 }
 
 /* Imagem do Pix */
- .pix-img {
-    height: 60px;
-    margin-top: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.pix-img {
+  height: 24px;  /* ou o tamanho que achar melhor */
+  margin-top: 0; /* Pode remover ou ajustar */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .pix-link:hover .pix-img {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  .mensagem-pix {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+.mensagem-pix {
+  color: #2e7d32; /* Verde suave */
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 0.9em;
 }
 
 .mensagem-pix.fade-out {
   opacity: 0;
 }
-  @media (max-width: 600px) {
-    .pix-img {
-      height: 50px;
-    }
+@media (max-width: 600px) {
+  .pix-img {
+    height: 20px; /* menor que no desktop */
   }
+}
 
- /* Escala dos Ministérios*/ 
+
+/* Escala dos Ministérios*/ 
   #escala-ministerios {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -379,4 +376,37 @@ footer {
     font-size: 1rem;
     padding: 6px 10px;
   }
+}
+
+/* Programação */
+.programacao-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.programacao-lista li {
+  font-size: 1.1rem;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  color: #c8f0c8;
+}
+
+.programacao-lista li strong {
+  color: #a8e6a1; /* Destacando horário */
+  font-size: 1.2rem; /* Tornando os horários ligeiramente maiores */
+  font-weight: bold;
+}
+
+.programacao-lista li p {
+  margin-left: 8px; /* Separando horário do evento */
+  font-size: 1.1rem; /* Mantendo padrão de corpo */
+  color: #c8f0c8;
+}
+
+.reunioes-quinzenais {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff9800; /* Diferenciando visualmente */
+  margin-top: 15px;
 }

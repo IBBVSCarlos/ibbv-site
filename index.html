@@ -34,17 +34,16 @@
   </div> 
 </section>
 
-<!-- Programação da IBBV -->
 <section id="programacao" class="section-box">
   <h2>📅 Programação</h2>
   <ul class="programacao-lista">
-    <li>📅 <strong>Domingo 09h</strong> – Escola Bíblica Dominical</li>
-    <li>🙏 <strong>Domingo 19h</strong> – Culto de Adoração</li>
-    <li>🙏 <strong>Quarta-feira 20h</strong> – Culto de Oração</li>
-    <li>🎵 <strong>Sexta-feira 20h</strong> – Ensaio do Louvor</li>
+    <li>📅 <strong>Domingo 09h:</strong> <p>Escola Bíblica Dominical</p></li>
+    <li>🙏 <strong>Domingo 19h:</strong> <p>Culto de Adoração</p></li>
+    <li>🙏 <strong>Quarta-feira 20h:</strong> <p>Culto de Oração</p></li>
+    <li>🎵 <strong>Sexta-feira 20h:</strong> <p>Ensaio do Louvor</p></li>
     <p class="reunioes-quinzenais">✨ <strong>Reuniões Quinzenais:</strong></p>
-    <li>🏅 <strong>Segunda-feira 20h</strong> – Atletas de Cristo</li>
-    <li>🛐 <strong>2º e 4º Domingo do mês 11h</strong> – Reunião dos Jovens</li>
+    <li>🏅 <strong>Segunda-feira 20h:</strong> <p>Atletas de Cristo</p></li>
+    <li>🛐 <strong>2º e 4º Domingo do mês 11h:</strong> <p>Reunião dos Jovens</p></li>
   </ul>
 </section>
 
@@ -91,19 +90,23 @@
   </main>
 
 <footer>
-  <p>Av Henrique Gregori, 151 - São Carlos/SP </p>
-    <p> (16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>© 2025 IBBV São Carlos. </p>
-    <p>Todos os direitos reservados.</p>
+  <p>Av Henrique Gregori, 151 - São Carlos/SP</p>
+  <p>(16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+  <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
 
   <div class="footer-info">
-    <a href="#" onclick="copiarPix()" title="Clique para copiar a chave Pix" class="pix-link">
-      <img src="assets/pix_img.png" alt="Clique para copiar a chave Pix para Dízimos e Ofertas" class="pix-img">
-    </a>
-    <p style="font-size: 0.8em; color: #555;">CNPJ: 57722761000174</p>
+    <button id="btn-revelar-pix" class="pix-toggle-btn">
+      <img src="assets/pix_img.png" alt="Doar via Pix" class="pix-img" />
+      Doar via Pix
+    </button>
+
+    <div id="pix-info" class="hidden">
+      <p class="pix-chave">57722761000174</p>
+      <button onclick="copiarPix()" class="copiar-btn">Copiar chave Pix</button>
+      <p id="mensagem-copiado" class="mensagem-pix"></p>
+    </div>
   </div>
 </footer>
-
 
 <script src="assets/coluna_pastor.js" defer></script>
 <script type="module" src="assets/script.js"></script>

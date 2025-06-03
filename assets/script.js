@@ -27,46 +27,40 @@ function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = Domingo, 6 = Sábado
 
-
   // Efeito de luz no logo do header 
-document.addEventListener("DOMContentLoaded", () => {
-  if (!localStorage.getItem("logoEffectShown")) {
-    const light = document.querySelector(".light-effect");
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("logoEffectShown")) {
+      const light = document.querySelector(".light-effect");
 
-    // Aplica a animação apenas uma vez
-    light.style.animation = "moveLight 2s linear forwards";
+      // Aplica a animação apenas uma vez
+      light.style.animation = "moveLight 2s linear forwards";
+      light.addEventListener("animationend", () => {
+        setTimeout(() => {
+          light.remove(); // Remove o efeito após executar
+        }, 500);
+      });
 
-    light.addEventListener("animationend", () => {
-      setTimeout(() => {
-        light.remove(); // Remove o efeito após executar
-      }, 500);
-    });
-
-    // Salva no localStorage para não repetir na próxima vez
-    localStorage.setItem("logoEffectShown", "true");
-  }
-});
-
-
-
-  // scrool na area visivel
-window.addEventListener("load", () => {
-  const sections = document.querySelectorAll(".section-box");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    } else {
-      entry.target.classList.remove("show");
+      // Salva no localStorage para não repetir na próxima vez
+      localStorage.setItem("logoEffectShown", "true");
     }
   });
-}, { threshold: 0.05 }); // Agora ativa quando apenas 5% do container estiver visível
 
-sections.forEach((section) => observer.observe(section));
+  // scrool na area visivel
+  window.addEventListener("load", () => {
+    const sections = document.querySelectorAll(".section-box");
 
-});
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    }, { threshold: 0.05 }); // Agora ativa quando apenas 5% do container estiver visível
 
+    sections.forEach((section) => observer.observe(section));
+  });
 
   // Último domingo
   const domingo = new Date(hoje);
@@ -102,7 +96,6 @@ async function carregarVersiculo() {
 
     const versiculos = await response.json();
     const hoje = new Date().toISOString().slice(0, 10);
-
     const versiculoDoDia = versiculos.find(v => v.data === hoje);
 
     if (!versiculoDoDia) {
@@ -126,8 +119,6 @@ async function carregarVersiculo() {
 
 // Chama a função ao carregar a página
 document.addEventListener("DOMContentLoaded", carregarVersiculo);
-
-
 
 // Função para formatar a data no formato "dd/mm"
 function formatDate(date) {
@@ -164,18 +155,17 @@ async function carregarAniversariantesSemana() {
     const emojis = ["🎉", "🎂", "🥳", "🎊", "🍰", "🎈", "✨", "😃"];
 
     // Filtrar os aniversariantes dentro do intervalo correto
-const aniversariantesSemana = aniversariantes.filter(item => {
-  const [dia, mes] = item.data.split('/').map(Number);
-  const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
+    const aniversariantesSemana = aniversariantes.filter(item => {
+      const [dia, mes] = item.data.split('/').map(Number);
+      const dataAniv = new Date(hoje.getFullYear(), mes - 1, dia);
 
-  // Ajuste para garantir que a comparação use apenas a data (sem horário)
-  const dataAnivSemHorario = new Date(dataAniv.getFullYear(), dataAniv.getMonth(), dataAniv.getDate());
-  const inicioSemanaSemHorario = new Date(inicioSemana.getFullYear(), inicioSemana.getMonth(), inicioSemana.getDate());
-  const fimSemanaSemHorario = new Date(fimSemana.getFullYear(), fimSemana.getMonth(), fimSemana.getDate());
+      // Ajuste para garantir que a comparação use apenas a data (sem horário)
+      const dataAnivSemHorario = new Date(dataAniv.getFullYear(), dataAniv.getMonth(), dataAniv.getDate());
+      const inicioSemanaSemHorario = new Date(inicioSemana.getFullYear(), inicioSemana.getMonth(), inicioSemana.getDate());
+      const fimSemanaSemHorario = new Date(fimSemana.getFullYear(), fimSemana.getMonth(), fimSemana.getDate());
 
-  return dataAnivSemHorario >= inicioSemanaSemHorario && dataAnivSemHorario <= fimSemanaSemHorario;
-});
-
+      return dataAnivSemHorario >= inicioSemanaSemHorario && dataAnivSemHorario <= fimSemanaSemHorario;
+    });
 
     console.log("Aniversariantes filtrados:", aniversariantesSemana); // Agora está definido antes do log!
 
@@ -204,7 +194,6 @@ const aniversariantesSemana = aniversariantes.filter(item => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-//  await carregarVersiculoDoDia();
     await carregarAniversariantesSemana();
   } catch (error) {
     console.error("Erro ao carregar o conteúdo:", error);
@@ -236,7 +225,6 @@ async function carregarEscalaMinisterios() {
   }
 }
 
-
 document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
 
 // Avisos IBBV
@@ -261,54 +249,69 @@ function carregarAvisos() {
         texto.textContent = aviso.texto; // 🚀 Corrigido: agora exibe apenas o texto do aviso
         li.appendChild(texto);
 
-        if (aviso.imagem) {
-          const img = document.createElement('img');
-          img.src = `img/${aviso.imagem}`; // Ajustado para a nova pasta
-          img.alt = "Imagem do aviso";
-          img.classList.add('aviso-img');
-          li.appendChild(img);
-        }
-
         listaAvisos.appendChild(li);
       });
     })
-    .catch(error => {
-      console.error('Erro ao carregar os avisos:', error);
+    .catch(err => {
+      console.error('Erro ao carregar avisos:', err);
     });
 }
 
-// Chamar a função ao carregar a página
-document.addEventListener("DOMContentLoaded", carregarAvisos);
+document.addEventListener('DOMContentLoaded', carregarAvisos);
 
-
-  // Função para o pix
-function copiarPix() {
-    const chavePix = "57722761000174";
-    navigator.clipboard.writeText(chavePix).then(() => {
-        const mensagemPix = document.createElement("p");
-        mensagemPix.style.color = "#006600";
-        mensagemPix.style.fontWeight = "bold";
-        mensagemPix.textContent = "Chave Pix copiada!";
-        
-        const pixLink = document.querySelector(".pix-link");
-        pixLink.appendChild(mensagemPix); // Adiciona mensagem temporária
-        
-        setTimeout(() => mensagemPix.classList.add("fade-out"), 2000);
-        setTimeout(() => mensagemPix.remove(), 2500);
- 
-    }).catch(() => {
-        alert("Erro ao copiar. Copie manualmente: " + chavePix);
-    });
+// Função para copiar texto e mostrar mensagem temporária
+function copiarTexto(texto, mensagem) {
+  navigator.clipboard.writeText(texto).then(() => {
+    const msg = document.getElementById("msg-copiado");
+    if (!msg) return;
+    msg.textContent = mensagem;
+    msg.style.opacity = 1;
+    setTimeout(() => {
+      msg.style.opacity = 0;
+    }, 2000);
+  });
 }
 
-// Chama as funções quando o DOM for carregado
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    await carregarVersiculoDoDia();
-    await carregarAniversariantesSemana();
-/*    await loadColunaPastor(); -- Já está chamado no coluna_pastor.js */
-  } catch (error) {
-    console.error("Erro ao carregar o conteúdo:", error);
+// Toggle Pix (nova função)
+function togglePix() {
+  const pixBox = document.getElementById("pix-box");
+  if (!pixBox) return;
+
+  if (pixBox.style.display === "block") {
+    pixBox.style.display = "none";
+  } else {
+    pixBox.style.display = "block";
   }
+}
+
+// Copiar PIX Chave
+function copiarPix() {
+  const chavePix = document.getElementById("pix").textContent.trim();
+  copiarTexto(chavePix, "Chave PIX copiada!");
+}
+
+// Copiar CNPJ
+function copiarCNPJ() {
+  const cnpj = document.getElementById("cnpj").textContent.trim();
+  copiarTexto(cnpj, "CNPJ copiado!");
+}
+
+// Copiar Conta
+function copiarConta() {
+  const conta = document.getElementById("conta").textContent.trim();
+  copiarTexto(conta, "Conta copiada!");
+}
+
+// Eventos do Pix
+document.addEventListener("DOMContentLoaded", () => {
+  const btnPix = document.getElementById("btn-pix");
+  const pixBox = document.getElementById("pix-box");
+  const btnPixCopy = document.getElementById("btn-pix-copy");
+  const btnCnpjCopy = document.getElementById("btn-cnpj-copy");
+  const btnContaCopy = document.getElementById("btn-conta-copy");
+
+  if (btnPix) btnPix.addEventListener("click", togglePix);
+  if (btnPixCopy) btnPixCopy.addEventListener("click", copiarPix);
+  if (btnCnpjCopy) btnCnpjCopy.addEventListener("click", copiarCNPJ);
+  if (btnContaCopy) btnContaCopy.addEventListener("click", copiarConta);
 });
-carregarAniversariantesSemana();
