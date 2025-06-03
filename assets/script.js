@@ -245,12 +245,24 @@ function carregarAvisos() {
         const li = document.createElement('li');
         li.classList.add('aviso-item');
 
-        const texto = document.createElement('p');
-        texto.textContent = aviso.texto; // 🚀 Corrigido: agora exibe apenas o texto do aviso
-        li.appendChild(texto);
+        // Criar a imagem do aviso
+        const img = document.createElement('img');
+        img.src = aviso.imagem; // 🔥 Pegando a URL da imagem vinda do JSON
+        img.alt = aviso.texto; // 🔥 Texto alternativo para acessibilidade
+        img.classList.add('aviso-img'); // 🔥 Aplicando a classe CSS
 
+        // Criar o texto do aviso
+        const texto = document.createElement('p');
+        texto.textContent = aviso.texto;
+        texto.classList.add('aviso-texto');
+
+        // Adicionar imagem e texto ao aviso
+        li.appendChild(img);
+        li.appendChild(texto);
         listaAvisos.appendChild(li);
       });
+
+      console.log("✅ Avisos e imagens adicionados ao DOM!");
     })
     .catch(err => {
       console.error('Erro ao carregar avisos:', err);
@@ -258,6 +270,7 @@ function carregarAvisos() {
 }
 
 document.addEventListener('DOMContentLoaded', carregarAvisos);
+
 
 // Função para copiar texto e mostrar mensagem temporária
 function copiarTexto(texto, mensagem) {
