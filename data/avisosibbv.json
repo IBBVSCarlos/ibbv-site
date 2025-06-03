@@ -2,15 +2,15 @@
   "avisos": [
     {
       "texto": "Bazar da IBBV",
-      "imagem": "bazar.png"
+      "imagem": "img/bazar.png"
     },
     {
       "texto": "Encontro das Mulheres",
-      "imagem": "mcm.png"
+      "imagem": "img/mcm.png"
     },
     {
       "texto": "Reuniao dos Jovens",
-      "imagem": "jovens.png"
+      "imagem": "img/jovens.png"
     }
   ]
 }
