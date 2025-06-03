@@ -1,11 +1,11 @@
-/* Efeito de luz no logo do Header */
+/* --------------------------- EFEITO DE LUZ NO LOGO --------------------------- */
 .logo-container {
   position: relative;
   display: inline-block;
 }
 
 #logo {
-  width: 200px; /* Ajuste conforme necessário */
+  width: 200px;
   height: auto;
 }
 
@@ -17,21 +17,72 @@
   height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 80%);
   filter: blur(10px);
-  animation: moveLight 0.5s linear forwards; /* "forwards" evita loop infinito */
+  animation: moveLight 0.5s linear forwards;
 }
 
 @keyframes moveLight {
   0% { left: -100%; opacity: 0.3; }
   50% { left: 50%; opacity: 1; }
   100% { left: 150%; opacity: 0; }
-
 }
 
-/* Efeito para aparecer o texto somente qdo entrar na área visivel */
+/* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #000000, #006600);
+  color: #c0e6c0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+}
+
+header {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+header img {
+  max-width: 180px;
+  width: 50vw;
+  height: auto;
+  user-select: none;
+}
+
+#semana-referencia {
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1.3rem 1rem;
+  background-color: #002200cc;
+  color: #a8c7a8;
+  font-size: 0.95rem;
+  margin-top: auto;
+}
+
+/* --------------------------- SEÇÕES COM ANIMAÇÃO --------------------------- */
 .section-box {
   opacity: 0;
-  transform: translateY(20px); /* Reduzi o deslocamento inicial para ficar menos invasivo */
+  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  background: rgba(0, 77, 0, 0.75);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  cursor: default;
 }
 
 .section-box.show {
@@ -45,95 +96,11 @@
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-
-/* Avisos */
-
-.aviso-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: #f8f8f8a4;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 25px; /* Mais espaço entre os avisos */
-  max-width: 90%;
-  text-align: center; /* Centraliza o conteúdo */
-}
-
-/* Texto do aviso mais destacado */
-.aviso-texto {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px; /* Mais espaçamento entre texto e imagem */
-  color: #222;
-}
-
-/* Melhorando exibição das imagens */
-.aviso-img {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  object-fit: contain; /* Evita cortes na imagem */
-  border-radius: 12px;
-}
-
-/* Ajuste para telas menores */
-@media (max-width: 600px) {
-  .aviso-img {
-    max-width: 85%;
-  }
-
-  .aviso-texto {
-    font-size: 1.2rem;
-  }
-}
-
-
-/* Background fixo com degradê preto-verde */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #000000, #006600);
-  color: #c0e6c0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Container principal */
-.container {
-  max-width: 900px;
-  margin: 1.5rem auto;
-  padding: 1.5rem;
-}
-
-/* Caixa das seções com animação dinâmica */
-.section-box {
-  background: rgba(0, 77, 0, 0.75);
-  border-radius: 8px;
-  padding: 1.0rem 1.5rem;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-  cursor: default;
-}
-
 .section-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
 }
 
-/* Semana Atual no Header */
-#semana-referencia {
-  font-size: 1.1rem; /* Diminuindo um pouco o tamanho */
-  text-align: center; /* Centralizando o texto */
-  font-weight: 600;
-  margin: 10px 0;
-}
-
-/* Títulos das seções */
 .section-box h2 {
   margin-top: 0;
   color: #a8e6a1;
@@ -143,20 +110,7 @@ body {
   font-size: 1.6rem;
 }
 
-/* Logo */
-header {
-  text-align: center;
-  margin: 1rem 0;
-}
-header img {
-  max-width: 180px; /* Reduzindo a largura */
-  width: 50vw; /* Responsivo para telas menores */
-  height: auto;
-  user-select: none;
-}
-
-
-/* Versículo do dia */
+/* --------------------------- VERSÍCULO DO DIA --------------------------- */
 #versiculo, #versiculo-conteudo p {
   font-style: italic;
   font-weight: 600;
@@ -165,82 +119,70 @@ header img {
   color: #c8f0c8;
 }
 
-
-/* Seção Programação */
+/* --------------------------- PROGRAMAÇÃO --------------------------- */
 .programacao-lista {
   list-style: none;
   padding: 0;
 }
 
 .programacao-lista li {
-  font-size: 1.2em;
+  font-size: 1.1rem;
   padding: 8px 0;
+  display: flex;
+  align-items: center;
   color: #c8f0c8;
-  line-height: 1.5;
-  display: block; /* Garante layout em coluna */
-  width: 100%;
 }
 
-/* Destaque para horários */
 .programacao-lista li strong {
   color: #a8e6a1;
-  display: inline-block;
-  margin-bottom: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-/* Separador de reuniões */
+.programacao-lista li p {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  color: #c8f0c8;
+}
+
 .reunioes-quinzenais {
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: bold;
   margin-top: 15px;
   color: #ff9800;
 }
 
-/* Ícones antes dos itens (removido se usa emoji direto no HTML) */
-/* .programacao-lista li::before {
-  font-size: 1.5em;
-  margin-right: 8px;
-} */
-
-/* Ajustes para mobile */
-@media (max-width: 600px) {
-  .programacao-lista li {
-    display: block;
-  }
-}
-
-
-#versiculo-conteudo p {
-  font-size: 18px;
-  font-style: italic;
-  color: #555;
-}
-
-
-/* Rodapé */
-footer {
+/* --------------------------- AVISOS --------------------------- */
+.aviso-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f8f8f8a4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
+  max-width: 90%;
   text-align: center;
-  padding: 1.3rem 1rem;
-  background-color: #002200cc;
-  color: #a8c7a8;
-  font-size: 0.95rem;
-  margin-top: auto;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-  .container {
-    padding: 0.8rem 1rem;
-  }
-  header img {
-    width: 80vw;
-  }
-  .section-box h2 {
-    font-size: 1.3rem;
-  }
+.aviso-texto {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #222;
+}
 
-/* Coluna do Pastor */
-/* Estilização da Coluna do Pastor */
+.aviso-img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* --------------------------- COLUNA DO PASTOR --------------------------- */
 #coluna-pastor {
   text-align: center;
   padding: 1.5rem;
@@ -254,9 +196,8 @@ footer {
   font-size: 1.1rem;
   color: #c8f0c8;
   margin-top: 1rem;
-  line-height: 1.6; /* Melhora a legibilidade */
+  line-height: 1.6;
 }
-
 
 .navegacao-coluna {
   margin-top: 1rem;
@@ -280,84 +221,37 @@ footer {
   background-color: #009900;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-  #mensagem-pastor {
-    font-size: 1rem;
-  }
-
-  .navegacao-coluna button {
-    padding: 6px 10px;
-    font-size: 0.9rem;
-  }
-}
-
-
-/* aniversariantes */
-  .aniversariantes-lista {
+/* --------------------------- ANIVERSARIANTES --------------------------- */
+.aniversariantes-lista {
   list-style: none;
   padding: 0;
 }
+
 .aniversariantes-lista li {
   margin: 6px 0;
   font-size: 1.1em;
-  color: #c8f0c8; /* Garantindo cor padronizada do site */
+  color: #c8f0c8;
   display: flex;
-  align-items: center; /* Alinha emoji e nome */
-}
-
-#aniversariantes h2 {
-    color: #a8e6a1; /* Mesmo tom usado nas outras seções */
+  align-items: center;
 }
 
 .aniversariantes-lista li::before {
-  content: "🎉"; /* Pode ser qualquer emoji ou aleatório via JS */
+  content: "🎉";
   font-size: 1.5em;
   margin-right: 8px;
 }
 
-@media (max-width: 600px) {
-    #aniversariantes {
-        padding: 1rem;
-    }
+#aniversariantes h2 {
+  color: #a8e6a1;
 }
 
-/* Imagem do Pix */
-.pix-img {
-  height: 24px;  /* ou o tamanho que achar melhor */
-  margin-top: 0; /* Pode remover ou ajustar */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mensagem-pix {
-  color: #2e7d32; /* Verde suave */
-  font-weight: bold;
-  margin-top: 8px;
-  font-size: 0.9em;
-}
-
-.mensagem-pix.fade-out {
-  opacity: 0;
-}
-@media (max-width: 600px) {
-  .pix-img {
-    height: 20px; /* menor que no desktop */
-  }
-}
-
-
-/* Escala dos Ministérios*/ 
-  #escala-ministerios {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
+/* --------------------------- ESCALA DE MINISTÉRIOS --------------------------- */
 #escala-ministerios {
   background: rgba(0, 77, 0, 0.75);
   border-radius: 8px;
   padding: 1.2rem 1.5rem;
   margin-bottom: 1.8rem;
   box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 
 #escala-ministerios h2 {
@@ -374,53 +268,80 @@ footer {
 }
 
 #lista-escala li {
-  padding: 8px 12px; /* Mais confortável para leitura */
-  border-radius: 6px; /* Deixa mais suave */
-  background: rgba(0, 102, 0, 0.3); /* Fundo sutil para destacar cada item */
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(0, 102, 0, 0.3);
 }
 
-
 #lista-escala li::before {
-  content: "✅"; /* Ícone visual indicando responsabilidade */
+  content: "✅";
   font-size: 1.4rem;
   margin-right: 8px;
 }
+
+/* --------------------------- IMAGEM DO PIX --------------------------- */
+.pix-img {
+  height: 24px;
+  margin-top: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mensagem-pix {
+  color: #2e7d32;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+.mensagem-pix.fade-out {
+  opacity: 0;
+}
+
+/* --------------------------- RESPONSIVIDADE --------------------------- */
 @media (max-width: 600px) {
+  .container {
+    padding: 0.8rem 1rem;
+  }
+
+  header img {
+    width: 80vw;
+  }
+
+  .section-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .aviso-img {
+    max-width: 85%;
+  }
+
+  .aviso-texto {
+    font-size: 1.2rem;
+  }
+
+  #mensagem-pastor {
+    font-size: 1rem;
+  }
+
+  .navegacao-coluna button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .pix-img {
+    height: 20px;
+  }
+
+  #aniversariantes {
+    padding: 1rem;
+  }
+
   #lista-escala li {
     font-size: 1rem;
     padding: 6px 10px;
   }
-}
 
-/* Programação */
-.programacao-lista {
-  list-style: none;
-  padding: 0;
-}
-
-.programacao-lista li {
-  font-size: 1.1rem;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  color: #c8f0c8;
-}
-
-.programacao-lista li strong {
-  color: #a8e6a1; /* Destacando horário */
-  font-size: 1.2rem; /* Tornando os horários ligeiramente maiores */
-  font-weight: bold;
-}
-
-.programacao-lista li p {
-  margin-left: 8px; /* Separando horário do evento */
-  font-size: 1.1rem; /* Mantendo padrão de corpo */
-  color: #c8f0c8;
-}
-
-.reunioes-quinzenais {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #ff9800; /* Diferenciando visualmente */
-  margin-top: 15px;
+  .programacao-lista li {
+    display: block;
+  }
 }
