@@ -165,6 +165,7 @@ header img {
   color: #c8f0c8;
 }
 
+
 /* Seção Programação */
 .programacao-lista {
   list-style: none;
@@ -176,12 +177,15 @@ header img {
   padding: 8px 0;
   color: #c8f0c8;
   line-height: 1.5;
-  /* display: flex; REMOVIDO */
+  display: block; /* Garante layout em coluna */
+  width: 100%;
 }
 
 /* Destaque para horários */
 .programacao-lista li strong {
   color: #a8e6a1;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 /* Separador de reuniões */
@@ -192,11 +196,20 @@ header img {
   color: #ff9800;
 }
 
-/* Ícones antes dos itens */
-.programacao-lista li::before {
+/* Ícones antes dos itens (removido se usa emoji direto no HTML) */
+/* .programacao-lista li::before {
   font-size: 1.5em;
   margin-right: 8px;
+} */
+
+/* Ajustes para mobile */
+@media (max-width: 600px) {
+  .programacao-lista li {
+    display: block;
+  }
 }
+
+
 #versiculo-conteudo p {
   font-size: 18px;
   font-style: italic;
