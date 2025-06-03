@@ -1,18 +1,26 @@
 /* Service Worker.js */
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open("ibbv-cache").then((cache) => {
-      return cache.addAll([
+    caches.open("site-cache").then((cache) => {
+      const urlsToCache = [
         "/",
-        "/index.html",
         "/assets/styles.css",
         "/assets/script.js",
-        "/data/avisosibbv.json",
-        "/data/versiculos.json",
-        "/data/escalamin.json",
-        "/data/aniversariantes.json",
-        "/assets/logibbv.png"
-      ]);
+        "/assets/favicon.png"
+      ];
+
+      return Promise.all(
+        urlsToCache.map((url) => fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Erro ao buscar ${url}: ${response.statusText}`);
+            }
+            return cache.put(url, response);
+          })
+        )
+      );
+    }).catch((error) => {
+      console.error("Erro ao adicionar arquivos ao cache:", error);
     })
   );
 });
@@ -21,6 +29,8 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
+    }).catch((error) => {
+      console.error("Erro na busca de recurso:", error);
     })
   );
 });
@@ -35,4 +45,3 @@ self.addEventListener("sync", (event) => {
     );
   }
 });
-
