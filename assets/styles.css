@@ -1,8 +1,8 @@
 /* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
 body {
-  margin: 0;
+  margin: 0 !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #000000, #006600);
+  background: linear-gradient(135deg, #000000, #006600) !important;
   color: #c0e6c0;
   min-height: 100vh;
   display: flex;
@@ -16,40 +16,45 @@ body {
   padding: 1.5rem;
 }
 
-/* Removendo alinhamento central global */
+/* Removendo alinhamento central global e garantindo visibilidade */
 .section-box {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  background: rgba(0, 77, 0, 0.75);
+  opacity: 1; /* Antes estava iniciando transparente */
+  transform: none;
+  transition: none;
+  background: rgba(0, 77, 0, 0.85); /* Ajustando opacidade */
   border-radius: 8px;
   padding: 1rem 1.5rem;
   margin-bottom: 1.8rem;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
   cursor: default;
-  text-align: left; /* Impede centralização indevida */
+  text-align: left;
 }
 
-/* Títulos dentro das seções */
+/* Corrigindo repetição de ::selection */
+::selection {
+  background: rgba(127, 255, 255, 0.4);
+}
+
+/* --------------------------- TÍTULOS --------------------------- */
 .section-box h2 {
   color: #a8e6a1;
-  border-bottom: 2px solid #006600;
+  border-bottom: 2px solid #009900; /* Pequeno ajuste de cor */
   padding-bottom: 0.3rem;
   font-weight: 700;
   font-size: 1.6rem;
-  text-align: center; /* Apenas títulos devem ficar centralizados */
+  text-align: center;
 }
 
-/* --------------------------- CORREÇÃO DO TEXTO DA COLUNA DO PASTOR --------------------------- */
+/* --------------------------- COLUNA DO PASTOR --------------------------- */
 #coluna-pastor {
   padding: 1.5rem;
-  background: rgba(0, 77, 0, 0.75);
+  background: rgba(0, 77, 0, 0.85);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
 }
 
 #mensagem-pastor {
-  text-align: justify; /* Corrigindo alinhamento */
+  text-align: justify;
   font-size: 1.1rem;
   color: #c8f0c8;
   margin-top: 1rem;
@@ -60,16 +65,16 @@ body {
 #estatuto {
   margin-top: 2rem;
   padding: 1rem 1.5rem;
-  background: rgba(0, 77, 0, 0.75);
+  background: rgba(0, 77, 0, 0.85);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
 }
 
 #estatuto h2 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
   color: #a8e6a1;
-  border-bottom: 2px solid #006600;
+  border-bottom: 2px solid #009900;
   padding-bottom: 0.3rem;
   font-weight: 700;
 }
@@ -85,7 +90,7 @@ body {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: #006600;
+  background: #009900; /* Melhor visibilidade */
   color: #c0e6c0;
   text-decoration: none;
   border-radius: 6px;
@@ -94,5 +99,5 @@ body {
 }
 
 .btn-download:hover {
-  background: #009900;
+  background: #00cc00;
 }

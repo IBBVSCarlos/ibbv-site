@@ -89,43 +89,8 @@ document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
 
 //versiculo do dia
-async function carregarVersiculo() {
-  try {
-    const response = await fetch("./data/versiculos.json");
-    if (!response.ok) throw new Error("❌ Erro ao carregar versículo.");
 
-    const versiculos = await response.json();
-    const hoje = new Date().toISOString().slice(0, 10);
-    const versiculoDoDia = versiculos.find(v => v.data === hoje);
 
-    if (!versiculoDoDia) {
-      console.log("🚨 Nenhum versículo encontrado para hoje!");
-      document.querySelector("#versiculo-conteudo").innerHTML = "<p>❌ Nenhum versículo encontrado para hoje.</p>";
-      return;
-    }
-
-    document.querySelector("#versiculo-conteudo").innerHTML = `
-      <p><strong>${versiculoDoDia.texto}</strong></p>
-      <p><em>${versiculoDoDia.referencia}</em></p>
-      <p>${versiculoDoDia.comentario}</p>
-    `;
-
-    console.log("✅ Versículo do dia carregado!");
-  } catch (error) {
-    console.error(error.message);
-    document.querySelector("#versiculo-conteudo").innerHTML = "<p>❌ Erro ao carregar versículo.</p>";
-  }
-}
-
-// Chama a função ao carregar a página
-document.addEventListener("DOMContentLoaded", carregarVersiculo);
-
-// Função para formatar a data no formato "dd/mm"
-function formatDate(date) {
-  const d = date.getDate().toString().padStart(2, '0');
-  const m = (date.getMonth() + 1).toString().padStart(2, '0');
-  return `${d}/${m}`;
-}
 
 // Função para obter os aniversariantes da semana
 async function carregarAniversariantesSemana() {
