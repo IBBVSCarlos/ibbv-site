@@ -119,6 +119,17 @@ header {
   margin-bottom: 1rem;
 }
 
+#semana-referencia {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem; /* Espaço entre o título e a semana */
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.2);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
 /* --------------------------- FOOTER --------------------------- */
 footer {
   display: flex;
