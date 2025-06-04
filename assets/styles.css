@@ -345,3 +345,44 @@ footer {
     display: block;
   }
 }
+
+/* --------------------------- ESTATUTO --------------------------- */
+#estatuto {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 77, 0, 0.75); /* Igual às outras seções */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+}
+
+#estatuto h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #a8e6a1; /* A mesma cor dos títulos das seções */
+  border-bottom: 2px solid #006600;
+  padding-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+#estatuto p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #c8f0c8; /* Compatível com os textos de outras seções */
+}
+
+/* Botão para download do Estatuto (mantendo o efeito similar aos botões já existentes) */
+.btn-download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #006600; /* Verde que casa com o tema */
+  color: #c0e6c0;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-download:hover {
+  background: #009900;
+}

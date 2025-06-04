@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <title>Boletim IBBV São Carlos</title>
   <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 </head>
@@ -14,108 +14,109 @@
 <body>
   <div id="semana-referencia"></div>
 
-<header>
-	  <div class="logo-container">
-	    <img src="assets/logibbv.png" alt="Logotipo IBBV" id="logo">
-	    <div class="light-effect"></div>
-	  </div>
+  <header>
+    <div class="logo-container">
+      <img src="icons/logibbv.png" alt="Logotipo IBBV" id="logo">
+      <div class="light-effect"></div>
+    </div>
 
-	  <h1 class="boletim-titulo" aria-label="Boletim Informativo da Igreja Batista de Boa Vista - São Carlos">
-	    Boletim Informativo IBBV
-	  </h1>
-	</header>
+    <h1 class="boletim-titulo" aria-label="Boletim Informativo da Igreja Batista de Boa Vista - São Carlos">
+      Boletim Informativo IBBV
+    </h1>
+  </header>
 
-<main class="container">
- <!-- Inserir outras seções aqui, mantendo o padrão -->
+  <main class="container">
+    <!-- Versículo -->
+    <section id="versiculo" class="section-box">
+      <div id="versiculo-conteudo">
+        <p>Carregando versículo...</p>
+      </div>
+    </section>
 
-  <!-- Versículo -->
-<section id="versiculo" class="section-box">
-  <div id="versiculo-conteudo"> <p>Carregando versículo...</p>
-  </div> 
-</section>
+    <!-- Programação -->
+    <section id="programacao" class="section-box">
+      <h2>Programação</h2>
+      <ul class="programacao-lista">
+        <li>📅 <strong>Domingo 09h:</strong><br> Escola Bíblica Dominical</li>
+        <li>🙏 <strong>Domingo 19h:</strong><br> Culto de Adoração</li>
+        <li>🙏 <strong>Quarta-feira 20h:</strong><br> Culto de Oração</li>
+        <li>🎵 <strong>Sexta-feira 20h:</strong><br> Ensaio do Louvor</li>
+        <li class="reunioes-quinzenais">
+          <strong>Reuniões Quinzenais:</strong>
+        </li>
+        <li>🏅 <strong>Segunda-feira 20h:</strong><br> Atletas de Cristo</li>
+        <li>🛐 <strong>2º e 4º Domingo do mês 11h:</strong><br> Reunião dos Jovens</li>
+      </ul>
+    </section>
 
- <!-- Programaçao -->
-<section id="programacao" class="section-box">
-  <h2>Programação</h2>
-  <ul class="programacao-lista">
-    <li>📅 <strong>Domingo 09h:</strong><br> Escola Bíblica Dominical</li>
-    <li>🙏 <strong>Domingo 19h:</strong><br> Culto de Adoração</li>
-    <li>🙏 <strong>Quarta-feira 20h:</strong><br> Culto de Oração</li>
-    <li>🎵 <strong>Sexta-feira 20h:</strong><br> Ensaio do Louvor</li>
+    <!-- Avisos da IBBV -->
+    <section id="avisos" class="section-box">
+      <h2>Avisos</h2>
+      <ul id="lista-avisos" class="avisos-lista">
+        <!-- Conteúdo dinâmico será carregado aqui -->
+      </ul>
+    </section>
 
-    <li class="reunioes-quinzenais">
-      <strong>Reuniões Quinzenais:</strong>
-    </li>
+    <!-- A "Escala dos Ministérios" -->
+    <section id="escala-ministerios" class="section-box">
+      <h2>Escala de Ministérios</h2>
+      <ul id="lista-escala">
+        <li>Carregando escala...</li>
+        <!-- Conteúdo dinâmico será carregado aqui -->
+      </ul>
+    </section>
 
-    <li>🏅 <strong>Segunda-feira 20h:</strong><br> Atletas de Cristo</li>
-    <li>🛐 <strong>2º e 4º Domingo do mês 11h:</strong><br> Reunião dos Jovens</li>
-  </ul>
-</section>
+    <!-- Aniversariantes -->
+    <section id="aniversariantes" class="section-box">
+      <h2>Aniversariantes da Semana</h2>
+      <ul id="lista-aniversariantes" class="aniversariantes-lista">
+        <!-- Conteúdo dinâmico será carregado aqui -->
+      </ul>
+    </section>
 
+    <!-- Coluna do Pastor -->
+    <section id="coluna-pastor" class="section-box">
+      <h2>Coluna do Pastor</h2>
+      <div id="mensagem-pastor">
+        <p>Carregando conteúdo...</p>
+      </div>
+      <div class="navegacao-coluna">
+        <button id="btnAnterior">◀ Anterior</button>
+        <button id="btnProximo">Próximo ▶</button>
+      </div>
+    </section>
 
-
- <!-- Avisos da IBBV -->
-<section id="avisos" class="section-box">
-  <h2>Avisos</h2>
-  <ul id="lista-avisos" class="avisos-lista">
-    <!-- Conteúdo dinâmico será carregado aqui -->
-  </ul>
-</section>
-
-<!-- A "Escala dos Ministérios" -->
- <section id="escala-ministerios" class="section-box">
-  <h2>Escala de Ministérios</h2>
-  <ul id="lista-escala">
-    <li>Carregando escala...</li>
-    <!-- Conteúdo dinâmico será carregado aqui -->
-  </ul>
-</section>
-
-<!-- Aniversariantes -->    
-<section id="aniversariantes" class="section-box">
-  <h2>Aniversariantes da Semana</h2>
-  <ul id="lista-aniversariantes" class="aniversariantes-lista">
-    <!-- Conteúdo dinâmico será carregado aqui -->
-  </ul>
-</section>
-
-<!-- Coluna do Pastor -->
-<section id="coluna-pastor" class="section-box">
-  <h2>Coluna do Pastor</h2> <!-- Título fixo -->
-  <div id="mensagem-pastor">
-    <p>Carregando conteúdo...</p> <!-- Placeholder temporário -->
-  </div>
-  <div class="navegacao-coluna">
-    <button id="btnAnterior">◀ Anterior</button>
-    <button id="btnProximo">Próximo ▶</button>
-  </div>
-</section>
-
+    <!-- Estatuto da Igreja seção) -->
+    <section id="estatuto" class="section-box">
+      <h2>Estatuto da IBBV</h2>
+      <div id="conteudo-estatuto">
+        <p>Carregando Estatuto...</p>
+      </div>
+      <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
+    </section>
 
   </main>
 
-<footer>
-  <p>Av Henrique Gregori, 151 - São Carlos/SP</p>
-  <p>(16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-  <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+  <footer>
+    <p>Av Henrique Gregori, 151 - São Carlos/SP</p>
+    <p>(16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
+    <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
 
-  <div class="footer-info">
-    <button id="btn-revelar-pix" class="pix-toggle-btn">
-      <img src="assets/pix_img.png" alt="Doar via Pix" class="pix-img" />
-      Doar via Pix
-    </button>
+    <div class="footer-info">
+      <button id="btn-revelar-pix" class="pix-toggle-btn">
+        <img src="assets/pix_img.png" alt="Doar via Pix" class="pix-img" />
+        Doar via Pix
+      </button>
 
-    <div id="pix-info" class="hidden">
-      <p class="pix-chave">57722761000174</p>
-      <button onclick="copiarPix()" class="copiar-btn">Copiar chave Pix</button>
-      <p id="mensagem-copiado" class="mensagem-pix"></p>
+      <div id="pix-info" class="hidden">
+        <p class="pix-chave">57722761000174</p>
+        <button onclick="copiarPix()" class="copiar-btn">Copiar chave Pix</button>
+        <p id="mensagem-copiado" class="mensagem-pix"></p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="assets/coluna_pastor.js" defer></script>
-<script type="module" src="assets/script.js"></script>
-
- 
+  <script src="assets/coluna_pastor.js" defer></script>
+  <script type="module" src="assets/script.js"></script>
 </body>
 </html>

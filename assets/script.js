@@ -328,3 +328,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnCnpjCopy) btnCnpjCopy.addEventListener("click", copiarCNPJ);
   if (btnContaCopy) btnContaCopy.addEventListener("click", copiarConta);
 });
+
+// Código para carregar o conteúdo do Estatuto
+function carregarEstatuto() {
+  fetch('assets/estatuto.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('conteudo-estatuto').innerHTML = html;
+    })
+    .catch(err => {
+      console.error('Erro ao carregar o Estatuto:', err);
+      document.getElementById('conteudo-estatuto').innerHTML = '<p>Erro ao carregar o Estatuto.</p>';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  carregarEstatuto();
+});
