@@ -1,31 +1,3 @@
-/* --------------------------- EFEITO DE LUZ NO LOGO --------------------------- */
-.logo-container {
-  position: relative;
-  display: inline-block;
-}
-
-#logo {
-  width: 200px;
-  height: auto;
-}
-
-.light-effect {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 80%);
-  filter: blur(10px);
-  animation: moveLight 0.5s linear forwards;
-}
-
-@keyframes moveLight {
-  0% { left: -100%; opacity: 0.3; }
-  50% { left: 50%; opacity: 1; }
-  100% { left: 150%; opacity: 0; }
-}
-
 /* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
 body {
   margin: 0;
@@ -37,34 +9,14 @@ body {
   flex-direction: column;
 }
 
+/* Ajustando o container sem alinhamento forçado */
 .container {
   max-width: 900px;
   margin: 1.5rem auto;
   padding: 1.5rem;
 }
 
-header {
-  text-align: center;
-  margin: 1rem 0;
-}
-
-header img {
-  max-width: 180px;
-  width: 50vw;
-  height: auto;
-  user-select: none;
-}
-
-footer {
-  text-align: center;
-  padding: 1.3rem 1rem;
-  background-color: #002200cc;
-  color: #a8c7a8;
-  font-size: 0.95rem;
-  margin-top: auto;
-}
-
-/* --------------------------- SEÇÕES --------------------------- */
+/* Removendo alinhamento central global */
 .section-box {
   opacity: 0;
   transform: translateY(20px);
@@ -75,24 +27,33 @@ footer {
   margin-bottom: 1.8rem;
   box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
   cursor: default;
+  text-align: left; /* Impede centralização indevida */
 }
 
-.section-box.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
-}
-
+/* Títulos dentro das seções */
 .section-box h2 {
   color: #a8e6a1;
   border-bottom: 2px solid #006600;
   padding-bottom: 0.3rem;
   font-weight: 700;
   font-size: 1.6rem;
+  text-align: center; /* Apenas títulos devem ficar centralizados */
+}
+
+/* --------------------------- CORREÇÃO DO TEXTO DA COLUNA DO PASTOR --------------------------- */
+#coluna-pastor {
+  padding: 1.5rem;
+  background: rgba(0, 77, 0, 0.75);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
+}
+
+#mensagem-pastor {
+  text-align: justify; /* Corrigindo alinhamento */
+  font-size: 1.1rem;
+  color: #c8f0c8;
+  margin-top: 1rem;
+  line-height: 1.6;
 }
 
 /* --------------------------- ESTATUTO --------------------------- */
