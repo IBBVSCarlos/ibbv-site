@@ -1,86 +1,31 @@
+/* --------------------------- PADRONIZAÇÃO DE FONTES E ESTILOS --------------------------- */
+
+/* 🔥 Padronizando fonte e alinhamento em todas as seções */
+#versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  font-size: 1.1rem; /* Agora todas as seções têm o mesmo tamanho de fonte */
+  text-align: justify; /* Melhor leitura e harmonia */
+}
+
+/* 🔥 Ajustando títulos para ficarem proporcionais */
+h2 {
+  font-size: 1.4rem; /* Reduzindo um pouco para equilíbrio */
+  text-align: center;
+}
+
+/* 🔥 Uniformizando espaçamento das seções */
+.section-box {
+  padding: 1rem; /* Mantendo todas proporcionais */
+}
+
 /* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
-/* Ajuste global para garantir que tudo se adapte a qualquer dispositivo */
 html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden; /* Evita rolagem horizontal indesejada */
 }
 
-/* Garantir que o conteúdo do container se ajuste ao tamanho da tela */
-.container {
-  max-width: 90%;
-  width: auto;
-  margin: 1rem auto;
-  padding: 1rem;
-}
-
-/* Tornando seções flexíveis para se adaptarem ao espaço disponível */
-.section-box {
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-}
-
-/* Ajustando fonte para diferentes tamanhos de tela */
 body {
   font-size: calc(16px + 0.5vw); /* Ajuste dinâmico baseado na largura da tela */
-}
-
-/* Imagens devem sempre se ajustar ao tamanho disponível */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
-}
-
-/* Botões responsivos */
-button {
-  font-size: calc(14px + 0.3vw); /* Ajusta automaticamente conforme a tela */
-  padding: calc(0.5rem + 0.3vw);
-}
-
-@media screen and (min-width: 1600px) {
-  body {
-    font-size: 22px;
-  }
-
-  .container {
-    max-width: 1200px;
-  }
-
-  .section-box {
-    max-width: 1000px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-
-  .container {
-    max-width: 100%;
-    padding: 1rem;
-  }
-
-  .section-box {
-    width: 100%;
-    padding: 0.8rem;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 0.6rem;
-  }
-}
-	
-body {
-  margin: 0 !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #000000, #006600) !important;
   color: #c8f0c8;
@@ -90,9 +35,15 @@ body {
 }
 
 .container {
-  max-width: 900px;
-  margin: 1.5rem auto;
-  padding: 1.5rem;
+  max-width: 90%;
+  width: auto;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+/* --------------------------- SELEÇÃO DE TEXTO --------------------------- */
+::selection {
+  background: rgba(127, 255, 255, 0.4);
 }
 
 /* --------------------------- HEADER --------------------------- */
@@ -117,17 +68,6 @@ header {
   max-width: 80%;
   height: auto;
   margin-bottom: 1rem;
-}
-
-#semana-referencia {
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 0.5rem; /* Espaço entre o título e a semana */
-  color: #ffc107;
-  background: rgba(255, 193, 7, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
 }
 
 /* --------------------------- FOOTER --------------------------- */
@@ -155,58 +95,7 @@ footer {
   margin-bottom: 1rem;
 }
 
-/* --------------------------- RESPONSIVIDADE --------------------------- */
-@media screen and (max-width: 600px) {
-  #logo {
-    max-width: 90%; /* Ajusta o tamanho no celular */
-  }
-
-  .pix-img {
-    max-width: 100px; /* Reduz imagem do botão Pix */
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  #logo {
-    max-width: 60%; /* Ajusta tamanho da logo em telas grandes */
-  }
-
-  .pix-img {
-    max-width: 180px; /* Aumenta um pouco em telas grandes */
-  }
-}
-
-
-/* --------------------------- SEÇÕES PADRONIZADAS --------------------------- */
-.section-box {
-  opacity: 1;
-  transform: none;
-  transition: none;
-  background: rgba(0, 77, 0, 0.85);
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
-  cursor: default;
-  text-align: left;
-}
-
-/* --------------------------- SELEÇÃO DE TEXTO --------------------------- */
-::selection {
-  background: rgba(127, 255, 255, 0.4);
-}
-
-/* --------------------------- TÍTULOS --------------------------- */
-h2 {
-  color: #a8e6a1;
-  border-bottom: 2px solid #009900;
-  padding-bottom: 0.3rem;
-  font-weight: 700;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-/* ---------- TITULO DAS IMAGENS DOS AVISOS ---------- */
+/* --------------------------- TITULO DAS IMAGENS DOS AVISOS --------------------------- */
 .aviso-item {
   display: flex;
   flex-direction: column;
@@ -217,58 +106,11 @@ h2 {
 .aviso-texto {
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 0.8rem; /* Ajusta espaço entre texto e imagem */
+  margin-bottom: 0.8rem;
   color: #ffc107;
   background: rgba(255, 193, 7, 0.2);
   padding: 0.5rem;
   border-radius: 8px;
-}
-
-
-
-/* --------------------------- COLUNA DO PASTOR --------------------------- */
-#coluna-pastor {
-  padding: 1.5rem;
-  background: rgba(0, 77, 0, 0.85);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
-}
-
-#mensagem-pastor {
-  text-align: justify;
-  font-size: 1.1rem;
-  color: #c8f0c8;
-  margin-top: 1rem;
-  line-height: 1.6;
-}
-
-/* --------------------------- ESTATUTO --------------------------- */
-#estatuto {
-  display: none;
-  margin-top: 2rem;
-  padding: 1rem 1.5rem;
-  background: rgba(0, 77, 0, 0.85);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.6);
-}
-
-#estatuto h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: #a8e6a1;
-  border-bottom: 2px solid #009900;
-  padding-bottom: 0.3rem;
-  font-weight: 700;
-}
-
-/* --------------------------- BARRA DE PESQUISA --------------------------- */
-#pesquisa {
-  width: 100%;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  border: 2px solid #009900;
-  border-radius: 5px;
-  font-size: 1rem;
 }
 
 /* --------------------------- BOTÕES --------------------------- */
@@ -289,59 +131,23 @@ button:hover {
   background: #007700;
 }
 
-/* --------------------------- DESTAQUE NA PESQUISA --------------------------- */
-.highlight {
-  background-color: yellow;
-  font-weight: bold;
+/* --------------------------- RESPONSIVIDADE --------------------------- */
+@media screen and (max-width: 600px) {
+  #logo {
+    max-width: 90%;
+  }
+
+  .pix-img {
+    max-width: 100px;
+  }
 }
 
-/* --------------------------- MODO LEITURA --------------------------- */
-.modo-leitura {
-  font-size: 1.2rem;
-  line-height: 2;
-  background: #f5f5f5;
-  padding: 2rem;
-  border-radius: 8px;
-}
+@media screen and (min-width: 1600px) {
+  #logo {
+    max-width: 60%;
+  }
 
-/* --------------------------- MODAL DO ESTATUTO --------------------------- */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  z-index: 999;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
-  top: 50%;
-  position: absolute;
-  transform: translateY(-50%);
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.fechar {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #990000;
-  transition: color 0.3s;
-}
-
-.fechar:hover {
-  color: #ff0000;
+  .pix-img {
+    max-width: 180px;
+  }
 }
