@@ -1,4 +1,84 @@
 /* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
+/* Ajuste global para garantir que tudo se adapte a qualquer dispositivo */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+/* Garantir que o conteúdo do container se ajuste ao tamanho da tela */
+.container {
+  max-width: 90%;
+  width: auto;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+/* Tornando seções flexíveis para se adaptarem ao espaço disponível */
+.section-box {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Ajustando fonte para diferentes tamanhos de tela */
+body {
+  font-size: calc(16px + 0.5vw); /* Ajuste dinâmico baseado na largura da tela */
+}
+
+/* Imagens devem sempre se ajustar ao tamanho disponível */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+/* Botões responsivos */
+button {
+  font-size: calc(14px + 0.3vw); /* Ajusta automaticamente conforme a tela */
+  padding: calc(0.5rem + 0.3vw);
+}
+
+@media screen and (min-width: 1600px) {
+  body {
+    font-size: 22px;
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .section-box {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .section-box {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+}
+	
 body {
   margin: 0 !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -43,6 +123,20 @@ h2 {
   font-size: 1.6rem;
   text-align: center;
 }
+
+/* ---------- TITULO DAS IMAGENS DOS AVISOS ---------- */
+.aviso-texto {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.2);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+
 
 /* --------------------------- COLUNA DO PASTOR --------------------------- */
 #coluna-pastor {
