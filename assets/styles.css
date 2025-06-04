@@ -95,6 +95,77 @@ body {
   padding: 1.5rem;
 }
 
+/* --------------------------- HEADER --------------------------- */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* --------------------------- FOOTER --------------------------- */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0, 77, 0, 0.85);
+  border-radius: 8px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --------------------------- IMAGENS NO FOOTER --------------------------- */
+.pix-img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* --------------------------- RESPONSIVIDADE --------------------------- */
+@media screen and (max-width: 600px) {
+  #logo {
+    max-width: 90%; /* Ajusta o tamanho no celular */
+  }
+
+  .pix-img {
+    max-width: 100px; /* Reduz imagem do botão Pix */
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  #logo {
+    max-width: 60%; /* Ajusta tamanho da logo em telas grandes */
+  }
+
+  .pix-img {
+    max-width: 180px; /* Aumenta um pouco em telas grandes */
+  }
+}
+
+
 /* --------------------------- SEÇÕES PADRONIZADAS --------------------------- */
 .section-box {
   opacity: 1;
@@ -125,11 +196,17 @@ h2 {
 }
 
 /* ---------- TITULO DAS IMAGENS DOS AVISOS ---------- */
+.aviso-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .aviso-texto {
   font-weight: bold;
-  text-align: center;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Ajusta espaço entre texto e imagem */
   color: #ffc107;
   background: rgba(255, 193, 7, 0.2);
   padding: 0.5rem;
