@@ -310,3 +310,4 @@ function carregarEstatuto() {
 document.addEventListener('DOMContentLoaded', function() {
   carregarEstatuto();
 });
+
