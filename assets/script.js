@@ -295,19 +295,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Código para carregar o conteúdo do Estatuto
-function carregarEstatuto() {
-  fetch('assets/estatuto.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('conteudo-estatuto').innerHTML = html;
-    })
-    .catch(err => {
-      console.error('Erro ao carregar o Estatuto:', err);
-      document.getElementById('conteudo-estatuto').innerHTML = '<p>Erro ao carregar o Estatuto.</p>';
-    });
+async function carregarEstatuto() {
+  try {
+    const res = await fetch("assets/estatuto.html");
+    if (!res.ok) throw new Error("Erro ao carregar o Estatuto");
+
+    const html = await res.text();
+    const containerEstatuto = document.getElementById("conteudo-estatuto");
+
+    if (containerEstatuto) {
+      containerEstatuto.innerHTML = html; // Insere o conteúdo direto na seção
+      console.log("✅ Estatuto carregado no container!");
+    }
+  } catch (error) {
+    console.error("Erro ao carregar o Estatuto:", error);
+    document.getElementById("conteudo-estatuto").innerHTML = "<p>Erro ao carregar o Estatuto.</p>";
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  carregarEstatuto();
-});
+document.addEventListener("DOMContentLoaded", carregarEstatuto);
 
