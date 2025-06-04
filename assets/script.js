@@ -294,7 +294,22 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnContaCopy) btnContaCopy.addEventListener("click", copiarConta);
 });
 
-// Carregar Estatuto dinamicamente
+// Função para abrir o modal e carregar o Estatuto quando necessário
+document.getElementById("abrir-estatuto").addEventListener("click", function () {
+  document.getElementById("modalEstatuto").style.display = "block";
+  
+  // Evita recarregar o estatuto desnecessariamente
+  if (!document.getElementById("conteudo-estatuto").innerHTML.includes("<h2>")) {
+    carregarEstatuto();
+  }
+});
+
+// Função para fechar o modal
+function fecharEstatuto() {
+  document.getElementById("modalEstatuto").style.display = "none";
+}
+
+// Carregar Estatuto dinamicamente dentro do modal
 async function carregarEstatuto() {
   try {
     const res = await fetch("assets/estatuto.html");
@@ -313,13 +328,11 @@ async function carregarEstatuto() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", carregarEstatuto);
-
-// Função de pesquisa no estatuto
+// Função de pesquisa no Estatuto
 function buscarPalavra() {
   let termo = document.getElementById("pesquisa").value.toLowerCase();
   let estatutoTexto = document.getElementById("conteudo-estatuto").innerHTML;
-  
+
   let regex = new RegExp(`(${termo})`, "gi");
   let resultado = estatutoTexto.replace(regex, `<span class="highlight">$1</span>`);
 
@@ -330,13 +343,5 @@ function buscarPalavra() {
 function alternarLeitura() {
   let estatuto = document.getElementById("conteudo-estatuto");
   estatuto.classList.toggle("modo-leitura");
-}
-// Modal do Estatuto
-document.getElementById("abrir-estatuto").addEventListener("click", function() {
-  document.getElementById("modalEstatuto").style.display = "block";
-});
-
-function fecharEstatuto() {
-  document.getElementById("modalEstatuto").style.display = "none";
 }
 

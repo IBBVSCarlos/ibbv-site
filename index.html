@@ -4,7 +4,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
-
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
 
@@ -29,55 +29,118 @@
   </header>
 
   <main class="container">
-    <!-- Seções do site -->
+
+<!-- Versículo -->
     <section id="versiculo" class="section-box">
       <div id="versiculo-conteudo">
         <p>Carregando versículo...</p>
       </div>
     </section>
 
+<!-- Programação -->
     <section id="programacao" class="section-box">
       <h2>Programação</h2>
       <ul class="programacao-lista">
         <li>📅 <strong>Domingo 09h00:</strong> Escola Bíblica Dominical</li>
         <li>🙏 <strong>Domingo 19h00:</strong> Culto de Adoração</li>
         <li>🙏 <strong>Quarta-feira 20h00:</strong> Culto de Oração</li>
+        <li>🎵 <strong>Sexta-feira 20h00:</strong> Ensaio do Louvor</li>
+        <li class="reunioes-quinzenais"><strong>Reuniões Quinzenais:</strong></li>
+        <li>🏅 <strong>Segunda-feira 20h00:</strong> Atletas de Cristo</li>
+        <li>🛐 <strong>2º e 4º Domingo do mês 11h00:</strong> Reunião dos Jovens</li>
       </ul>
     </section>
 
-    <!-- Botão para abrir o estatuto no modal -->
-    <button id="abrir-estatuto">Ver Estatuto da IBBV</button>
+<!-- Avisos -->
+    <section id="avisos" class="section-box">
+      <h2>Avisos</h2>
+      <ul id="lista-avisos" class="avisos-lista">
+        <!-- Conteúdo dinâmico será carregado aqui -->
+      </ul>
+    </section>
 
-    <!-- Modal do Estatuto -->
-    <div id="modalEstatuto" class="modal">
-      <div class="modal-content">
-        <span class="fechar" onclick="fecharEstatuto()">&times;</span>
-        <h2>Estatuto da IBBV</h2>
-        <p>O estatuto define os princípios e organização da igreja. Para leitura completa, faça o download abaixo.</p>
+<!-- Escala de Ministérios -->
+    <section id="escala-ministerios" class="section-box">
+      <h2>Escala de Ministérios</h2>
+      <ul id="lista-escala">
+        <li>Carregando escala...</li>
+      </ul>
+    </section>
 
-        <!-- Índice de navegação -->
-        <ul>
-          <li><a href="assets/estatuto.html#capitulo1">Capítulo I - Denominação</a></li>
-          <li><a href="assets/estatuto.html#capitulo2">Capítulo II - Membros</a></li>
-          <li><a href="assets/estatuto.html#capitulo3">Capítulo III - Assembleia</a></li>
-        </ul>
+<!-- Aniversariantes -->
+    <section id="aniversariantes" class="section-box">
+      <h2>Aniversariantes da Semana</h2>
+      <ul id="lista-aniversariantes" class="aniversariantes-lista">
+        <!-- Conteúdo dinâmico será carregado aqui -->
+      </ul>
+    </section>
 
-        <!-- Local onde o estatuto será carregado -->
-        <div id="conteudo-estatuto">
-          <p>Carregando Estatuto...</p>
-        </div>
-
-        <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
+<!-- Coluna do Pastor -->
+    <section id="coluna-pastor" class="section-box">
+      <h2>Coluna do Pastor</h2>
+      <div id="mensagem-pastor">
+        <p>Carregando conteúdo...</p>
       </div>
-    </div>
+      <div class="navegacao-coluna">
+        <button id="btnAnterior">◀ Anterior</button>
+        <button id="btnProximo">Próximo ▶</button>
+      </div>
+    </section>
+
+<!-- Estatuto da Igreja Batista de Boa Vista -->
+<!-- Botão para abrir o estatuto -->
+<button id="abrir-estatuto">Ver Estatuto da IBBV</button>
+
+<!-- Modal do Estatuto -->
+<div id="modalEstatuto" class="modal">
+  <div class="modal-content">
+    <span class="fechar" onclick="fecharEstatuto()">&times;</span>
+    
+    <!-- Estatuto dentro de uma section -->
+    <section id="estatuto-modal">
+      <h2>Estatuto da IBBV</h2>
+      <p>O estatuto define os princípios e organização da igreja. Para leitura completa, faça o download abaixo.</p>
+
+      <!-- Índice de navegação -->
+      <ul>
+        <li><a href="assets/estatuto.html#capitulo1">Capítulo I - Denominação</a></li>
+        <li><a href="assets/estatuto.html#capitulo2">Capítulo II - Membros</a></li>
+        <li><a href="assets/estatuto.html#capitulo3">Capítulo III - Assembleia</a></li>
+      </ul>
+
+      <!-- Local onde o estatuto será carregado -->
+      <div id="conteudo-estatuto">
+        <p>Carregando Estatuto...</p>
+      </div>
+
+      <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
+    </section>
+  </div>
+</div>
+
+
   </main>
 
   <footer>
     <p>Av Henrique Gregori, 151 - São Carlos/SP</p>
     <p>(16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
     <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
+
+    <div class="footer-info">
+      <button id="btn-revelar-pix" class="pix-toggle-btn">
+        <img src="icons/pix_img.png" alt="Doar via Pix" class="pix-img" />
+        Doar via Pix
+      </button>
+
+      <div id="pix-info" class="hidden">
+        <p class="pix-chave">57722761000174</p>
+        <button onclick="copiarPix()" class="copiar-btn">Copiar chave Pix</button>
+        <p id="mensagem-copiado" class="mensagem-pix"></p>
+      </div>
+    </div>
   </footer>
 
-  <script src="assets/script.js"></script>
+  <script src="assets/coluna_pastor.js" defer></script>
+  <script type="module" src="assets/script.js"></script>
 </body>
 </html>
