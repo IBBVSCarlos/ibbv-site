@@ -55,13 +55,6 @@ header img {
   user-select: none;
 }
 
-#semana-referencia {
-  font-size: 1.1rem;
-  text-align: center;
-  font-weight: 600;
-  margin: 10px 0;
-}
-
 footer {
   text-align: center;
   padding: 1.3rem 1rem;
@@ -71,7 +64,7 @@ footer {
   margin-top: auto;
 }
 
-/* --------------------------- SEÇÕES COM ANIMAÇÃO --------------------------- */
+/* --------------------------- SEÇÕES --------------------------- */
 .section-box {
   opacity: 0;
   transform: translateY(20px);
@@ -81,7 +74,6 @@ footer {
   padding: 1rem 1.5rem;
   margin-bottom: 1.8rem;
   box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
   cursor: default;
 }
 
@@ -90,267 +82,24 @@ footer {
   transform: translateY(0);
 }
 
-.section-box.hide {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
 .section-box:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 153, 51, 0.6);
 }
 
 .section-box h2 {
-  margin-top: 0;
   color: #a8e6a1;
   border-bottom: 2px solid #006600;
   padding-bottom: 0.3rem;
   font-weight: 700;
   font-size: 1.6rem;
-}
-
-/* --------------------------- VERSÍCULO DO DIA --------------------------- */
-#versiculo, #versiculo-conteudo p {
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-top: 0.7rem;
-  color: #c8f0c8;
-}
-
-/* --------------------------- PROGRAMAÇÃO --------------------------- */
-.programacao-lista {
-  list-style: none;
-  padding: 0;
-}
-
-.programacao-lista li {
-  font-size: 1.1rem;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  color: #c8f0c8;
-}
-
-.programacao-lista li strong {
-  color: #a8e6a1;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.programacao-lista li p {
-  margin-left: 8px;
-  font-size: 1.1rem;
-  color: #c8f0c8;
-}
-
-.reunioes-quinzenais {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-top: 15px;
-  color: #ff9800;
-}
-
-/* --------------------------- AVISOS --------------------------- */
-.aviso-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: #f8f8f8a4;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 25px;
-  max-width: 90%;
-  text-align: center;
-}
-
-.aviso-texto {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-  color: #222;
-}
-
-.aviso-img {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-/* --------------------------- COLUNA DO PASTOR --------------------------- */
-#coluna-pastor {
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(0, 77, 0, 0.75);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-}
-
-#mensagem-pastor {
-  text-align: justify;
-  font-size: 1.1rem;
-  color: #c8f0c8;
-  margin-top: 1rem;
-  line-height: 1.6;
-}
-
-.navegacao-coluna {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.navegacao-coluna button {
-  background-color: #006600;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.navegacao-coluna button:hover {
-  background-color: #009900;
-}
-
-/* --------------------------- ANIVERSARIANTES --------------------------- */
-.aniversariantes-lista {
-  list-style: none;
-  padding: 0;
-}
-
-.aniversariantes-lista li {
-  margin: 6px 0;
-  font-size: 1.1em;
-  color: #c8f0c8;
-  display: flex;
-  align-items: center;
-}
-
-.aniversariantes-lista li::before {
-  content: "🎉";
-  font-size: 1.5em;
-  margin-right: 8px;
-}
-
-#aniversariantes h2 {
-  color: #a8e6a1;
-}
-
-/* --------------------------- ESCALA DE MINISTÉRIOS --------------------------- */
-#escala-ministerios {
-  background: rgba(0, 77, 0, 0.75);
-  border-radius: 8px;
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
-}
-
-#escala-ministerios h2 {
-  color: #a8e6a1;
-  border-bottom: 2px solid #006600;
-  padding-bottom: 0.3rem;
-  font-weight: 700;
-  font-size: 1.6rem;
-}
-
-#lista-escala {
-  list-style: none;
-  padding: 0;
-}
-
-#lista-escala li {
-  padding: 8px 12px;
-  border-radius: 6px;
-  background: rgba(0, 102, 0, 0.3);
-}
-
-#lista-escala li::before {
-  content: "✅";
-  font-size: 1.4rem;
-  margin-right: 8px;
-}
-
-/* --------------------------- IMAGEM DO PIX --------------------------- */
-.pix-img {
-  height: 24px;
-  margin-top: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mensagem-pix {
-  color: #2e7d32;
-  font-weight: bold;
-  margin-top: 8px;
-  font-size: 0.9em;
-}
-
-.mensagem-pix.fade-out {
-  opacity: 0;
-}
-
-/* --------------------------- RESPONSIVIDADE --------------------------- */
-@media (max-width: 600px) {
-  .container {
-    padding: 0.8rem 1rem;
-  }
-
-  header img {
-    width: 80vw;
-  }
-
-  .section-box h2 {
-    font-size: 1.3rem;
-  }
-
-  .aviso-img {
-    max-width: 85%;
-  }
-
-  .aviso-texto {
-    font-size: 1.2rem;
-  }
-
-  #mensagem-pastor {
-    font-size: 1rem;
-  }
-
-  .navegacao-coluna button {
-    padding: 6px 10px;
-    font-size: 0.9rem;
-  }
-
-  .pix-img {
-    height: 20px;
-  }
-
-  #aniversariantes {
-    padding: 1rem;
-  }
-
-  #lista-escala li {
-    font-size: 1rem;
-    padding: 6px 10px;
-  }
-
-  .programacao-lista li {
-    display: block;
-  }
 }
 
 /* --------------------------- ESTATUTO --------------------------- */
 #estatuto {
   margin-top: 2rem;
   padding: 1rem 1.5rem;
-  background: rgba(0, 77, 0, 0.75); /* Igual às outras seções */
+  background: rgba(0, 77, 0, 0.75);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 77, 0, 0.5);
 }
@@ -358,7 +107,7 @@ footer {
 #estatuto h2 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
-  color: #a8e6a1; /* A mesma cor dos títulos das seções */
+  color: #a8e6a1;
   border-bottom: 2px solid #006600;
   padding-bottom: 0.3rem;
   font-weight: 700;
@@ -367,15 +116,15 @@ footer {
 #estatuto p {
   line-height: 1.6;
   font-size: 1.1rem;
-  color: #c8f0c8; /* Compatível com os textos de outras seções */
+  color: #c8f0c8;
 }
 
-/* Botão para download do Estatuto (mantendo o efeito similar aos botões já existentes) */
+/* Botão de download */
 .btn-download {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: #006600; /* Verde que casa com o tema */
+  background: #006600;
   color: #c0e6c0;
   text-decoration: none;
   border-radius: 6px;
