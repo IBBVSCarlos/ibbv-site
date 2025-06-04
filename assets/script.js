@@ -331,4 +331,12 @@ function alternarLeitura() {
   let estatuto = document.getElementById("conteudo-estatuto");
   estatuto.classList.toggle("modo-leitura");
 }
+// Modal do Estatuto
+document.getElementById("abrir-estatuto").addEventListener("click", function() {
+  document.getElementById("modalEstatuto").style.display = "block";
+});
+
+function fecharEstatuto() {
+  document.getElementById("modalEstatuto").style.display = "none";
+}
 
