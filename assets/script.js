@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnContaCopy) btnContaCopy.addEventListener("click", copiarConta);
 });
 
-// Código para carregar o conteúdo do Estatuto
+// Carregar Estatuto dinamicamente
 async function carregarEstatuto() {
   try {
     const res = await fetch("assets/estatuto.html");
@@ -304,7 +304,7 @@ async function carregarEstatuto() {
     const containerEstatuto = document.getElementById("conteudo-estatuto");
 
     if (containerEstatuto) {
-      containerEstatuto.innerHTML = html; // Insere o conteúdo direto na seção
+      containerEstatuto.innerHTML = html;
       console.log("✅ Estatuto carregado no container!");
     }
   } catch (error) {
@@ -314,4 +314,21 @@ async function carregarEstatuto() {
 }
 
 document.addEventListener("DOMContentLoaded", carregarEstatuto);
+
+// Função de pesquisa no estatuto
+function buscarPalavra() {
+  let termo = document.getElementById("pesquisa").value.toLowerCase();
+  let estatutoTexto = document.getElementById("conteudo-estatuto").innerHTML;
+  
+  let regex = new RegExp(`(${termo})`, "gi");
+  let resultado = estatutoTexto.replace(regex, `<span class="highlight">$1</span>`);
+
+  document.getElementById("conteudo-estatuto").innerHTML = resultado;
+}
+
+// Modo leitura
+function alternarLeitura() {
+  let estatuto = document.getElementById("conteudo-estatuto");
+  estatuto.classList.toggle("modo-leitura");
+}
 

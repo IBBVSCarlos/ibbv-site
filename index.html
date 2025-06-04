@@ -2,11 +2,14 @@
 <html lang="pt-BR">
 <head>
   <link rel="manifest" href="manifest.json">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8" />
-  <title>Boletim IBBV São Carlos</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+
+  <title>Boletim IBBV São Carlos</title>
+
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 </head>
@@ -83,13 +86,36 @@
       </div>
     </section>
 
-    <!-- Estatuto da Igreja -->
+<!-- Estatuto da Igreja Batista de Boa Vista -->
 <section id="estatuto" class="section-box">
   <h2>Estatuto da IBBV</h2>
+  
+  <!-- Introdução -->
+  <p>O estatuto da Igreja Batista de Boa Vista define seus princípios, organização e funcionamento. Para leitura completa, faça o download abaixo.</p>
+
+  <!-- Barra de pesquisa -->
+  <input type="text" id="pesquisa" placeholder="Buscar no Estatuto">
+  <button onclick="buscarPalavra()">Buscar</button>
+
+  <!-- Botão modo leitura -->
+  <button onclick="alternarLeitura()">Modo Leitura</button>
+
+  <!-- Índice de navegação -->
+  <ul>
+    <li><a href="assets/estatuto.html#capitulo1">Capítulo I - Denominação</a></li>
+    <li><a href="assets/estatuto.html#capitulo2">Capítulo II - Membros</a></li>
+    <li><a href="assets/estatuto.html#capitulo3">Capítulo III - Assembleia</a></li>
+    <li><a href="assets/estatuto.html#capitulo4">Capítulo IV - Receita e Patrimônio</a></li>
+    <li><a href="assets/estatuto.html#capitulo5">Capítulo V - Ministério</a></li>
+    <li><a href="assets/estatuto.html#capitulo6">Capítulo VI - Disposições Gerais</a></li>
+  </ul>
+
+  <!-- Local onde o estatuto será carregado -->
   <div id="conteudo-estatuto">
     <p>Carregando Estatuto...</p>
   </div>
-      <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
+
+  <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
 </section>
 
   </main>
