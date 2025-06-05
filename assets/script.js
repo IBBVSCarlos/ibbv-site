@@ -161,23 +161,32 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 // =====================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  const botaoAbrir = document.getElementById("abrir-estatuto");
-  const modal = document.getElementById("modalEstatuto");
-  const estatutoContainer = document.getElementById("conteudo-estatuto");
+  setTimeout(() => { // 🔹 Pequeno delay para garantir que o DOM esteja pronto
+    const botaoAbrir = document.querySelector("#abrir-estatuto");
 
-  // 🔹 Verificando se todos os elementos existem antes de executar o código
-  if (!botaoAbrir || !modal || !estatutoContainer) {
-    console.warn("⚠️ Elementos necessários para o Estatuto não encontrados! Verifique o HTML.");
-    return;
-  }
-
-  botaoAbrir.addEventListener("click", () => {
-    modal.style.display = "block";
-
-    if (!estatutoContainer.innerHTML.includes("<h2>")) {
-      carregarEstatuto();
+    if (!botaoAbrir) {
+      console.error("❌ ERRO: O botão 'abrir-estatuto' não foi encontrado! Verifique o HTML.");
+      return;
     }
-  });
+
+    console.log("✅ Botão 'abrir-estatuto' encontrado! Adicionando evento...");
+    
+    botaoAbrir.addEventListener("click", () => {
+      const modal = document.querySelector("#modalEstatuto");
+
+      if (modal) {
+        modal.style.display = "block";
+
+        const estatutoContainer = document.querySelector("#conteudo-estatuto");
+        if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
+          carregarEstatuto();
+        }
+      } else {
+        console.warn("⚠️ Modal do Estatuto não encontrado!");
+      }
+    });
+  }, 300); // 🔥 Delay para garantir que o DOM carregue completamente
+});
 
   // 🔹 Fechar Estatuto pelo botão ou ao clicar fora do modal
   document.querySelectorAll(".btn-fechar").forEach(botao => {
