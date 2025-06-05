@@ -113,6 +113,7 @@ footer {
   text-align: center;
 }
 
+/* Texto dos avisos */
 .aviso-texto {
   font-weight: bold;
   font-size: 1.2rem;
@@ -122,6 +123,25 @@ footer {
   padding: 0.5rem;
   border-radius: 8px;
 }
+
+/* ------------------------CHARMINHO NAS IMAGENS DOS AVISOS------- */
+.aviso-img {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.aviso-img:hover {
+  transform: scale(1.05);
+}
+
+/* Ajustes para os links dos avisos */
+.aviso-item a {
+  display: inline-block;
+  text-decoration: none;
+}
+
 
 /* --------------------------- BOTÕES --------------------------- */
 button {

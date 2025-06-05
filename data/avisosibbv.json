@@ -2,15 +2,19 @@
   "avisos": [
     {
       "texto": "Bazar da IBBV - 07/Jun",
-      "imagem": "img/bazar.png"
+      "imagem": "img/bazar.png",
+      "linkAgenda": "https://calendar.app.google/VvYydcj13BgojFz77"
+    },
+
+    {
+      "texto": "Reunião dos Jovens - 08/Jun",
+      "imagem": "img/jovens.png",
+      "linkAgenda": "https://calendar.app.google/Da2oVSe2xr4wGgzV7"
     },
     {
-      "texto": "Encontro das Mulheres - 14/Jun ",
-      "imagem": "img/mcm.png"
-    },
-    {
-      "texto": "Reuniao dos Jovens - 08/Jun",
-      "imagem": "img/jovens.png"
+      "texto": "Encontro das Mulheres - 14/Jun",
+      "imagem": "img/mcm.png",
+      "linkAgenda": "https://calendar.app.google/hZr2WcZcSYKXEtfdA"
     }
   ]
 }
