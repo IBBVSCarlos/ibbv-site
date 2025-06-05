@@ -228,7 +228,6 @@ function buscarPalavra() {
   }
 }
 
-
 // =====================================
 // 💳 PIX - Copiar Chave & Alternar Visibilidade
 // =====================================
