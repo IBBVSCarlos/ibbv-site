@@ -165,7 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (botaoAbrir) {
     botaoAbrir.addEventListener("click", () => {
-      document.getElementById("modalEstatuto").style.display = "block";
+      const modal = document.getElementById("modalEstatuto");
+      modal.style.display = "block";
 
       const estatutoContainer = document.getElementById("conteudo-estatuto");
       if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
@@ -179,7 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 🔹 Fechar o Estatuto pelo botão ou ao clicar fora do modal
 function fecharEstatuto() {
-  document.getElementById("modalEstatuto").style.display = "none";
+  const modal = document.getElementById("modalEstatuto");
+  if (modal) modal.style.display = "none";
 }
 
 // 🔹 Fechar ao clicar fora da área do modal
@@ -187,8 +189,8 @@ document.addEventListener("click", (event) => {
   const modal = document.getElementById("modalEstatuto");
   const modalContent = document.querySelector(".modal-content");
 
-  // Fecha apenas se o clique ocorrer fora do conteúdo do modal
-  if (event.target === modal && !modalContent.contains(event.target)) {
+  // 🔥 Corrigido: fecha apenas se o clique for no fundo escuro
+  if (modal && event.target === modal) {
     fecharEstatuto();
   }
 });
@@ -202,7 +204,11 @@ async function carregarEstatuto() {
     const html = await res.text();
     const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-    if (estatutoContainer) estatutoContainer.innerHTML = html;
+    if (estatutoContainer) {
+      estatutoContainer.innerHTML = html;
+    } else {
+      console.warn("⚠️ Elemento 'conteudo-estatuto' não encontrado!");
+    }
   } catch (error) {
     console.error("Erro ao carregar o Estatuto:", error);
   }
@@ -210,10 +216,11 @@ async function carregarEstatuto() {
 
 // 🔹 Função de pesquisa no Estatuto
 function buscarPalavra() {
-  let termo = document.getElementById("pesquisa").value.toLowerCase();
-  let estatutoContainer = document.getElementById("conteudo-estatuto");
+  const pesquisaInput = document.getElementById("pesquisa");
+  const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-  if (estatutoContainer) {
+  if (pesquisaInput && estatutoContainer) {
+    const termo = pesquisaInput.value.toLowerCase();
     estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
       new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
     );
