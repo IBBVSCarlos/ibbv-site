@@ -163,20 +163,27 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 document.addEventListener("DOMContentLoaded", () => {
   const botaoAbrir = document.getElementById("abrir-estatuto");
 
-  if (botaoAbrir) {
-    botaoAbrir.addEventListener("click", () => {
-      const modal = document.getElementById("modalEstatuto");
+  if (!botaoAbrir) {
+    console.warn("⚠️ Elemento 'abrir-estatuto' não encontrado! Verifique se ele está no HTML.");
+    return; // 🔹 Sai da função se o botão não existir
+  }
+
+  botaoAbrir.addEventListener("click", () => {
+    const modal = document.getElementById("modalEstatuto");
+
+    if (modal) {
       modal.style.display = "block";
 
       const estatutoContainer = document.getElementById("conteudo-estatuto");
       if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
         carregarEstatuto();
       }
-    });
-  } else {
-    console.warn("⚠️ Elemento 'abrir-estatuto' não encontrado!");
-  }
+    } else {
+      console.warn("⚠️ Modal do Estatuto não encontrado!");
+    }
+  });
 });
+
 
 // 🔹 Fechar o Estatuto pelo botão ou ao clicar fora do modal
 function fecharEstatuto() {
