@@ -27,10 +27,9 @@
     Boletim Informativo IBBV
   </h1>
 
-  <!-- Semana Referência aqui -->
+  <!-- Semana Referência (Corrigido - mantendo apenas uma instância) -->
   <div id="semana-referencia">Carregando semana...</div>
 </header>
-
 
   <main class="container">
 
@@ -92,18 +91,28 @@
     </section>
 
 <!-- Estatuto da Igreja Batista de Boa Vista -->
+<section id="estatuto" class="section-box">
+  <h2>Estatuto da IBBV</h2>
+  
+  <p>O estatuto define os princípios e organização da igreja. Para leitura completa, clique no botão abaixo:</p>
+
+  <button id="abrir-estatuto" class="btn-estatuto" aria-label="Abrir Estatuto">📖 Ler Estatuto</button>
+</section>
+
 <!-- Modal do Estatuto -->
 <div id="modalEstatuto" class="modal">
   <div class="modal-content">
-    <span class="fechar" onclick="fecharEstatuto()">&times;</span>
+    <!-- Botão de fechamento do modal -->
+    <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar Estatuto</button>
     
     <h2>Estatuto da IBBV</h2>
     <p>O estatuto define os princípios e organização da igreja.</p>
+
     <div id="conteudo-estatuto">
       <p>Carregando Estatuto...</p>
     </div>
 
-    <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar Estatuto</button>
+    <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar</button>
   </div>
 </div>
 

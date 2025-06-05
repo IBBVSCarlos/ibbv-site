@@ -19,27 +19,59 @@ document.addEventListener("DOMContentLoaded", solicitarPermissaoNotificacao);
 // =====================================
 // 🎨 Header - Logo & Semana Referência
 // =====================================
+
+// Garantindo execução após o carregamento do DOM
+document.addEventListener("DOMContentLoaded", () => {
+  const semanaReferenciaElemento = document.getElementById("semana-referencia");
+
+  if (semanaReferenciaElemento) {
+    definirSemanaReferencia();
+  } else {
+    console.warn("⚠️ Elemento #semana-referencia não encontrado!");
+  }
+});
+
+// Função para definir a Semana Referência
 function definirSemanaReferencia() {
   const hoje = new Date();
   const diaSemana = hoje.getDay();
+
+  // Definir início e fim da semana corretamente
   const inicioSemana = new Date(hoje);
   inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1));
+
   const fimSemana = new Date(inicioSemana);
   fimSemana.setDate(inicioSemana.getDate() + 6);
-  const formatoData = data => data.toLocaleDateString("pt-BR", { day: "2-digit", month: "long" });
 
-  document.getElementById("semana-referencia").textContent =
-    `Semana referência: ${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
+  // Formatar a data para exibição
+  const formatoData = data =>
+    data.toLocaleDateString("pt-BR", { day: "2-digit", month: "long" });
+
+  const semanaTexto = `Semana referência: ${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
+
+  // Atualizar conteúdo somente se o elemento existir
+  const semanaReferenciaElemento = document.getElementById("semana-referencia");
+  if (semanaReferenciaElemento) {
+    semanaReferenciaElemento.textContent = semanaTexto;
+    console.log("✅ Semana referência definida:", semanaTexto);
+  } else {
+    console.warn("⚠️ Elemento #semana-referencia não encontrado!");
+  }
 }
-document.addEventListener("DOMContentLoaded", definirSemanaReferencia);
 
-// Efeito de luz no logo do header
+// =====================================
+// 🔥 Efeito de luz no logo do header
 document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("logoEffectShown")) {
     const light = document.querySelector(".light-effect");
-    light.style.animation = "moveLight 2s linear forwards";
-    light.addEventListener("animationend", () => setTimeout(() => light.remove(), 500));
-    localStorage.setItem("logoEffectShown", "true");
+
+    if (light) {
+      light.style.animation = "moveLight 2s linear forwards";
+      light.addEventListener("animationend", () => setTimeout(() => light.remove(), 500));
+      localStorage.setItem("logoEffectShown", "true");
+    } else {
+      console.warn("⚠️ Elemento .light-effect não encontrado!");
+    }
   }
 });
 
@@ -127,22 +159,30 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 // ✨ Estatuto - Modal & Pesquisa
 // =====================================
 
-// Abrir o Estatuto
-document.getElementById("abrir-estatuto").addEventListener("click", () => {
-  document.getElementById("modalEstatuto").style.display = "block";
-  
-  const estatutoContainer = document.getElementById("conteudo-estatuto");
-  if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
-    carregarEstatuto();
+// 🔹 Garantindo que o script seja executado após o carregamento do DOM
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoAbrir = document.getElementById("abrir-estatuto");
+
+  if (botaoAbrir) {
+    botaoAbrir.addEventListener("click", () => {
+      document.getElementById("modalEstatuto").style.display = "block";
+
+      const estatutoContainer = document.getElementById("conteudo-estatuto");
+      if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
+        carregarEstatuto();
+      }
+    });
+  } else {
+    console.warn("⚠️ Elemento 'abrir-estatuto' não encontrado!");
   }
 });
 
-// Fechar Estatuto pelo botão ou ao clicar fora do modal
+// 🔹 Fechar o Estatuto pelo botão ou ao clicar fora do modal
 function fecharEstatuto() {
   document.getElementById("modalEstatuto").style.display = "none";
 }
 
-// Fechar ao clicar fora da área do modal
+// 🔹 Fechar ao clicar fora da área do modal
 document.addEventListener("click", (event) => {
   const modal = document.getElementById("modalEstatuto");
   const modalContent = document.querySelector(".modal-content");
@@ -153,7 +193,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Carregar Estatuto dinamicamente dentro do modal
+// 🔹 Carregar Estatuto dinamicamente dentro do modal
 async function carregarEstatuto() {
   try {
     const res = await fetch("assets/estatuto.html");
@@ -161,14 +201,14 @@ async function carregarEstatuto() {
 
     const html = await res.text();
     const estatutoContainer = document.getElementById("conteudo-estatuto");
-    
+
     if (estatutoContainer) estatutoContainer.innerHTML = html;
   } catch (error) {
     console.error("Erro ao carregar o Estatuto:", error);
   }
 }
 
-// Função de pesquisa no Estatuto
+// 🔹 Função de pesquisa no Estatuto
 function buscarPalavra() {
   let termo = document.getElementById("pesquisa").value.toLowerCase();
   let estatutoContainer = document.getElementById("conteudo-estatuto");
