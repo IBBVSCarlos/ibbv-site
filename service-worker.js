@@ -2,23 +2,13 @@
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open("site-cache").then((cache) => {
-      const urlsToCache = [
-        "/",
-        "/assets/styles.css",
-        "/assets/script.js",
-        "/assets/favicon.png"
-      ];
-
-      return Promise.all(
-        urlsToCache.map((url) => fetch(url)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`Erro ao buscar ${url}: ${response.statusText}`);
-            }
-            return cache.put(url, response);
-          })
-        )
-      );
+      return cache.addAll([
+        "/", 
+        "/assets/styles.css", 
+        "/assets/script.js", 
+        "/assets/favicon.png",
+        "/offline.html" // Página offline alternativa
+      ]);
     }).catch((error) => {
       console.error("Erro ao adicionar arquivos ao cache:", error);
     })
@@ -28,9 +18,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    }).catch((error) => {
-      console.error("Erro na busca de recurso:", error);
+      return response || fetch(event.request).catch(() => caches.match("/offline.html"));
     })
   );
 });
@@ -40,7 +28,8 @@ self.addEventListener("sync", (event) => {
     event.waitUntil(
       self.registration.showNotification("Nova mensagem na Coluna do Pastor!", {
         body: "Confira o novo texto publicado!",
-        icon: "/assets/icon-192.png"
+        icon: "/assets/icon-192.png",
+        requireInteraction: true
       })
     );
   }
