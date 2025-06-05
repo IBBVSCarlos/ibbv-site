@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!botaoAbrir) {
     console.warn("⚠️ Elemento 'abrir-estatuto' não encontrado! Verifique se ele está no HTML.");
-    return; // 🔹 Impede que o código continue rodando caso o botão não exista
+    return; // 🔹 Impede que o código continue rodando se o botão não existir
   }
 
   botaoAbrir.addEventListener("click", () => {
