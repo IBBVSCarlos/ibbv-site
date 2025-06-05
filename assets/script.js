@@ -147,16 +147,16 @@ function carregarAvisos() {
     .then(res => res.json())
     .then(({ avisos }) => {
       const listaAvisos = document.getElementById('lista-avisos');
-      listaAvisos.innerHTML = avisos.length
-        ? avisos.map(({ texto, imagem, linkAgenda }) => `
-            <li class="aviso-item">
-              <a href="${linkAgenda}" target="_blank">
-                <img src="${imagem}" alt="${texto}" class="aviso-img">
-              </a>
-              <p class="aviso-texto">${texto}</p>
-            </li>
-          `).join("")
-        : '<li>Nenhum aviso disponível.</li>';
+listaAvisos.innerHTML = avisos.length
+  ? avisos.map(({ texto, imagem, linkAgenda }) => `
+      <li class="aviso-item">
+        <p class="aviso-texto">${texto}</p>
+        <a href="${linkAgenda}" target="_blank">
+          <img src="${imagem}" alt="${texto}" class="aviso-img">
+        </a>
+      </li>
+    `).join("")
+  : '<li>Nenhum aviso disponível.</li>';
     })
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
