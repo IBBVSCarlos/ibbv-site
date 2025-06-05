@@ -155,7 +155,6 @@ function carregarAvisos() {
 }
 document.addEventListener("DOMContentLoaded", carregarAvisos);
 
-
 // =====================================
 // ✨ Estatuto - Modal & Pesquisa
 // =====================================
@@ -183,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     botao.addEventListener("click", fecharEstatuto);
   });
 
-  // 🔹 Fechar ao clicar fora do conteúdo do modal
+  // 🔹 Fechar ao clicar fora da área do modal
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
       fecharEstatuto();
@@ -229,56 +228,7 @@ function buscarPalavra() {
   }
 }
 
-  // 🔹 Fechar Estatuto pelo botão ou ao clicar fora do modal
-  document.querySelectorAll(".btn-fechar").forEach(botao => {
-    botao.addEventListener("click", fecharEstatuto);
-  });
 
-  // 🔹 Fechar ao clicar fora da área do modal
-  document.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      fecharEstatuto();
-    }
-  });
-});
-
-// 🔹 Função para fechar o Estatuto
-function fecharEstatuto() {
-  const modal = document.getElementById("modalEstatuto");
-  if (modal) modal.style.display = "none";
-}
-
-// 🔹 Carregar Estatuto dinamicamente dentro do modal
-async function carregarEstatuto() {
-  try {
-    const res = await fetch("assets/estatuto.html");
-    if (!res.ok) throw new Error("Erro ao carregar o Estatuto");
-
-    const html = await res.text();
-    const estatutoContainer = document.getElementById("conteudo-estatuto");
-
-    if (estatutoContainer) {
-      estatutoContainer.innerHTML = html;
-    } else {
-      console.warn("⚠️ Elemento 'conteudo-estatuto' não encontrado!");
-    }
-  } catch (error) {
-    console.error("Erro ao carregar o Estatuto:", error);
-  }
-}
-
-// 🔹 Função de pesquisa no Estatuto
-function buscarPalavra() {
-  const pesquisaInput = document.getElementById("pesquisa");
-  const estatutoContainer = document.getElementById("conteudo-estatuto");
-
-  if (pesquisaInput && estatutoContainer) {
-    const termo = pesquisaInput.value.toLowerCase();
-    estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
-      new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
-    );
-  }
-}
 // =====================================
 // 💳 PIX - Copiar Chave & Alternar Visibilidade
 // =====================================
