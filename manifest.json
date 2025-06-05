@@ -2,7 +2,7 @@
   "name": "IBBV São Carlos",
   "short_name": "IBBV",
   "description": "Boletim e informações da Igreja Batista de Boa Vista - São Carlos",
-  "start_url": "/",
+  "start_url": "/ibbv-site/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#1abc9c",
