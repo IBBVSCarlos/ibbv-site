@@ -75,7 +75,7 @@ header {
 }
 
 #logo {
-  max-width: 80%;
+  max-width: 70%;
   height: auto;
   margin-bottom: 1rem;
 }
@@ -180,6 +180,12 @@ button:hover {
 
   .pix-img {
     max-width: 180px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .aviso-img {
+    max-width: 50%; /* Ajuste menor para telas pequenas */
   }
 }
 
