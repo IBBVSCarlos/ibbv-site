@@ -9,16 +9,6 @@
 /* 🔥 Ajustando títulos para ficarem proporcionais */
 h2 {
   font-size: 1.4rem; /* Reduzindo um pouco para equilíbrio */
-  text-align: center;
-}
-
-/* 🔥 Uniformizando espaçamento das seções */
-.section-box {
-  padding: 1rem; /* Mantendo todas proporcionais */
-}
-/* 🔹 Alinhando todos os títulos h2 à esquerda */
-h2 {
-  font-size: 1.4rem;
   text-align: left;
   color: #a8e6a1;
   border-bottom: 2px solid #009900;
@@ -26,6 +16,10 @@ h2 {
   font-weight: 700;
 }
 
+/* 🔥 Uniformizando espaçamento das seções */
+.section-box {
+  padding: 1rem; /* Mantendo todas proporcionais */
+}
 
 /* --------------------------- CONFIGURAÇÕES GERAIS --------------------------- */
 html, body {
@@ -51,11 +45,6 @@ body {
   padding: 1rem;
 }
 
-/* --------------------------- SELEÇÃO DE TEXTO --------------------------- */
-::selection {
-  background: rgba(127, 255, 255, 0.4);
-}
-
 /* --------------------------- HEADER --------------------------- */
 header {
   display: flex;
@@ -75,7 +64,7 @@ header {
 }
 
 #logo {
-  max-width: 70%;
+  max-width: 50%; /* Reduzi para deixar mais proporcional */
   height: auto;
   margin-bottom: 1rem;
 }
@@ -98,6 +87,12 @@ footer {
   align-items: center;
 }
 
+/* --------------------------- IMAGENS --------------------------- */
+img {
+  max-width: 80%; /* Limita o tamanho sem distorção */
+  height: auto;
+}
+
 /* --------------------------- IMAGENS NO FOOTER --------------------------- */
 .pix-img {
   max-width: 150px;
@@ -113,7 +108,6 @@ footer {
   text-align: center;
 }
 
-
 /* Texto dos avisos */
 .aviso-texto {
   font-weight: bold;
@@ -125,8 +119,9 @@ footer {
   border-radius: 8px;
 }
 
-/* ------------------------CHARMINHO NAS IMAGENS DOS AVISOS------- */
+/* --------------------------- IMAGENS DOS AVISOS --------------------------- */
 .aviso-img {
+  max-width: 60%; /* Reduzi para manter um equilíbrio visual */
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
@@ -137,12 +132,15 @@ footer {
   transform: scale(1.05);
 }
 
-/* Ajustes para os links dos avisos */
-.aviso-item a {
-  display: inline-block;
-  text-decoration: none;
+/* 🔹 Melhorando responsividade para telas menores */
+@media screen and (max-width: 600px) {
+  .aviso-img {
+    max-width: 50%;
+  }
+  #logo {
+    max-width: 40%;
+  }
 }
-
 
 /* --------------------------- BOTÕES --------------------------- */
 button {
@@ -162,35 +160,7 @@ button:hover {
   background: #007700;
 }
 
-/* --------------------------- RESPONSIVIDADE --------------------------- */
-@media screen and (max-width: 600px) {
-  #logo {
-    max-width: 90%;
-  }
-
-  .pix-img {
-    max-width: 100px;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  #logo {
-    max-width: 60%;
-  }
-
-  .pix-img {
-    max-width: 180px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .aviso-img {
-    max-width: 50%; /* Ajuste menor para telas pequenas */
-  }
-}
-
 /* --------------------------- ESTATUTO --------------------------- */
-/* 🔹 Padronizar links dentro da seção do Estatuto */
 .estatuto-links {
   list-style: none;
   padding: 0;
@@ -279,16 +249,4 @@ button:hover {
 
 .btn-fechar:hover {
   background: #770000;
-}
-
-/* 🔹 Melhorando responsividade */
-@media screen and (max-width: 600px) {
-  .modal-content {
-    width: 90%; /* 🔹 Ajusta para telas menores */
-    padding: 15px;
-  }
-
-  .btn-download {
-    font-size: 1rem; /* 🔹 Ajusta tamanho do botão em telas pequenas */
-  }
 }
