@@ -161,32 +161,73 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 // =====================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => { // 🔹 Pequeno delay para garantir que o DOM esteja pronto
-    const botaoAbrir = document.querySelector("#abrir-estatuto");
+  const botaoAbrir = document.getElementById("abrir-estatuto");
+  const modal = document.getElementById("modalEstatuto");
+  const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-    if (!botaoAbrir) {
-      console.error("❌ ERRO: O botão 'abrir-estatuto' não foi encontrado! Verifique o HTML.");
-      return;
+  if (!botaoAbrir || !modal || !estatutoContainer) {
+    console.warn("⚠️ Elementos do Estatuto não encontrados! Verifique o HTML.");
+    return;
+  }
+
+  botaoAbrir.addEventListener("click", () => {
+    modal.style.display = "block";
+
+    if (!estatutoContainer.innerHTML.includes("<h2>")) {
+      carregarEstatuto();
     }
+  });
 
-    console.log("✅ Botão 'abrir-estatuto' encontrado! Adicionando evento...");
-    
-    botaoAbrir.addEventListener("click", () => {
-      const modal = document.querySelector("#modalEstatuto");
+  // 🔹 Fechar Estatuto pelo botão de fechar
+  document.querySelectorAll(".btn-fechar").forEach(botao => {
+    botao.addEventListener("click", fecharEstatuto);
+  });
 
-      if (modal) {
-        modal.style.display = "block";
-
-        const estatutoContainer = document.querySelector("#conteudo-estatuto");
-        if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
-          carregarEstatuto();
-        }
-      } else {
-        console.warn("⚠️ Modal do Estatuto não encontrado!");
-      }
-    });
-  }, 300); // 🔥 Delay para garantir que o DOM carregue completamente
+  // 🔹 Fechar ao clicar fora do conteúdo do modal
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      fecharEstatuto();
+    }
+  });
 });
+
+// 🔹 Função para fechar o Estatuto
+function fecharEstatuto() {
+  const modal = document.getElementById("modalEstatuto");
+  if (modal) modal.style.display = "none";
+}
+
+// 🔹 Carregar Estatuto dinamicamente dentro do modal
+async function carregarEstatuto() {
+  try {
+    const res = await fetch("assets/estatuto.html");
+    if (!res.ok) throw new Error("Erro ao carregar o Estatuto");
+
+    const html = await res.text();
+    const estatutoContainer = document.getElementById("conteudo-estatuto");
+
+    if (estatutoContainer) {
+      estatutoContainer.innerHTML = html;
+    } else {
+      console.warn("⚠️ Elemento 'conteudo-estatuto' não encontrado!");
+    }
+  } catch (error) {
+    console.error("Erro ao carregar o Estatuto:", error);
+  }
+}
+
+// 🔹 Função de pesquisa no Estatuto
+function buscarPalavra() {
+  const pesquisaInput = document.getElementById("pesquisa");
+  const estatutoContainer = document.getElementById("conteudo-estatuto");
+
+  if (pesquisaInput && estatutoContainer) {
+    const termo = pesquisaInput.value.toLowerCase();
+    estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
+      new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
+    );
+  }
+}
 
   // 🔹 Fechar Estatuto pelo botão ou ao clicar fora do modal
   document.querySelectorAll(".btn-fechar").forEach(botao => {
