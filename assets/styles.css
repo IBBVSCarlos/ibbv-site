@@ -8,7 +8,7 @@
 
 /* 🔥 Ajustando títulos para ficarem proporcionais */
 h2 {
-  font-size: 1.4rem; /* Reduzindo um pouco para equilíbrio */
+  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Agora ajustável */
   text-align: left;
   color: #a8e6a1;
   border-bottom: 2px solid #009900;
@@ -29,7 +29,7 @@ html, body {
 }
 
 body {
-  font-size: calc(16px + 0.5vw); /* Ajuste dinâmico baseado na largura da tela */
+  font-size: calc(16px + 0.5vw);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #000000, #006600) !important;
   color: #c8f0c8;
@@ -43,6 +43,23 @@ body {
   width: auto;
   margin: 1rem auto;
   padding: 1rem;
+}
+
+/* --------------------------- AJUSTE AUTOMÁTICO DE TÍTULOS --------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-size: clamp(1.2rem, 5vw, 2rem); /* Ajustável automaticamente */
+  text-align: center;
+  white-space: nowrap; /* Impede quebra de linha */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 🔹 Ajuste específico para o título do site */
+.boletim-titulo {
+  font-size: clamp(1.4rem, 6vw, 2.5rem); /* Mantém legível em telas menores */
+  text-align: center;
+  font-weight: bold;
+  color: #a8e6a1;
 }
 
 /* --------------------------- HEADER --------------------------- */
@@ -64,7 +81,7 @@ header {
 }
 
 #logo {
-  max-width: 50%; /* Reduzi para deixar mais proporcional */
+  max-width: 50%; /* Ajustado para melhor proporção */
   height: auto;
   margin-bottom: 1rem;
 }
@@ -89,39 +106,13 @@ footer {
 
 /* --------------------------- IMAGENS --------------------------- */
 img {
-  max-width: 80%; /* Limita o tamanho sem distorção */
+  max-width: 80%;
   height: auto;
-}
-
-/* --------------------------- IMAGENS NO FOOTER --------------------------- */
-.pix-img {
-  max-width: 150px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-/* --------------------------- TITULO DAS IMAGENS DOS AVISOS --------------------------- */
-.aviso-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Texto dos avisos */
-.aviso-texto {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-  color: #ffc107;
-  background: rgba(255, 193, 7, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
 }
 
 /* --------------------------- IMAGENS DOS AVISOS --------------------------- */
 .aviso-img {
-  max-width: 60%; /* Reduzi para manter um equilíbrio visual */
+  max-width: 60%;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
@@ -132,13 +123,16 @@ img {
   transform: scale(1.05);
 }
 
-/* 🔹 Melhorando responsividade para telas menores */
+/* 🔹 Ajuste responsivo para telas menores */
 @media screen and (max-width: 600px) {
   .aviso-img {
     max-width: 50%;
   }
   #logo {
     max-width: 40%;
+  }
+  .boletim-titulo {
+    font-size: 1.2rem; /* Ajuste específico para telas pequenas */
   }
 }
 
@@ -164,7 +158,7 @@ button:hover {
 .estatuto-links {
   list-style: none;
   padding: 0;
-  text-align: left; /* 🔹 Alinhando os links à esquerda */
+  text-align: left;
 }
 
 .estatuto-links li {
@@ -172,7 +166,7 @@ button:hover {
 }
 
 .estatuto-links a {
-  font-size: 1.1rem; /* Mesmo tamanho das seções gerais */
+  font-size: 1.1rem;
   color: #a8e6a1;
   text-decoration: none;
   font-weight: bold;
@@ -181,28 +175,6 @@ button:hover {
 .estatuto-links a:hover {
   color: #009900;
   text-decoration: underline;
-}
-
-/* 🔹 Ajuste do botão separado */
-.estatuto-botao-container {
-  text-align: center;
-  margin-top: 1.5rem; /* 🔹 Mais espaço para melhorar a organização */
-}
-
-.btn-download {
-  display: inline-block;
-  padding: 0.8rem 1.2rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background: #009900;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out;
-}
-
-.btn-download:hover {
-  background: #007700;
 }
 
 /* --------------------------- MODAL DO ESTATUTO --------------------------- */
@@ -215,7 +187,7 @@ button:hover {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 999;
-  overflow: auto; /* 🔹 Evita que o conteúdo do modal estoure em telas pequenas */
+  overflow: auto;
 }
 
 /* 🔹 Ajustando largura do modal para melhor visualização */
@@ -236,7 +208,7 @@ button:hover {
 /* 🔹 Botão de Fechar Estatuto */
 .btn-fechar {
   display: block;
-  margin: 1.5rem auto; /* 🔹 Ajustado para melhor espaçamento */
+  margin: 1.5rem auto;
   padding: 0.8rem 1rem;
   background: #990000;
   color: white;
