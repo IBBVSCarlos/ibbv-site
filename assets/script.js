@@ -164,15 +164,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modalEstatuto");
   const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-  if (!botaoAbrir || !modal || !estatutoContainer) {
-    console.warn("⚠️ Elementos do Estatuto não encontrados! Verifique o HTML.");
+  if (!botaoAbrir) {
+    console.error("❌ ERRO: O botão 'abrir-estatuto' não foi encontrado! Verifique o HTML.");
     return;
   }
+
+  if (!modal) {
+    console.error("❌ ERRO: O modal 'modalEstatuto' não foi encontrado!");
+    return;
+  }
+
+  if (!estatutoContainer) {
+    console.warn("⚠️ Aviso: O conteúdo do Estatuto pode não carregar corretamente.");
+  }
+
+  console.log("✅ Elementos do Estatuto encontrados! Adicionando eventos...");
 
   botaoAbrir.addEventListener("click", () => {
     modal.style.display = "block";
 
-    if (!estatutoContainer.innerHTML.includes("<h2>")) {
+    if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
       carregarEstatuto();
     }
   });
@@ -193,7 +204,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // 🔹 Função para fechar o Estatuto
 function fecharEstatuto() {
   const modal = document.getElementById("modalEstatuto");
-  if (modal) modal.style.display = "none";
+  if (modal) {
+    modal.style.display = "none";
+    console.log("✅ Estatuto fechado com sucesso!");
+  } else {
+    console.warn("⚠️ Tentativa de fechar um modal inexistente.");
+  }
 }
 
 // 🔹 Carregar Estatuto dinamicamente dentro do modal
@@ -207,11 +223,12 @@ async function carregarEstatuto() {
 
     if (estatutoContainer) {
       estatutoContainer.innerHTML = html;
+      console.log("✅ Estatuto carregado corretamente!");
     } else {
       console.warn("⚠️ Elemento 'conteudo-estatuto' não encontrado!");
     }
   } catch (error) {
-    console.error("Erro ao carregar o Estatuto:", error);
+    console.error("❌ Erro ao carregar o Estatuto:", error);
   }
 }
 
@@ -220,12 +237,17 @@ function buscarPalavra() {
   const pesquisaInput = document.getElementById("pesquisa");
   const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-  if (pesquisaInput && estatutoContainer) {
-    const termo = pesquisaInput.value.toLowerCase();
-    estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
-      new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
-    );
+  if (!pesquisaInput || !estatutoContainer) {
+    console.warn("⚠️ Elementos de pesquisa não encontrados.");
+    return;
   }
+
+  const termo = pesquisaInput.value.toLowerCase();
+  estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
+    new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
+  );
+
+  console.log(`✅ Pesquisa realizada: "${termo}"`);
 }
 
 // =====================================
