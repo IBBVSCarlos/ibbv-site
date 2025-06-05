@@ -159,48 +159,43 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 // ✨ Estatuto - Modal & Pesquisa
 // =====================================
 
-// 🔹 Garantindo que o script seja executado após o carregamento do DOM
 document.addEventListener("DOMContentLoaded", () => {
   const botaoAbrir = document.getElementById("abrir-estatuto");
+  const modal = document.getElementById("modalEstatuto");
+  const estatutoContainer = document.getElementById("conteudo-estatuto");
 
-  if (!botaoAbrir) {
-    console.warn("⚠️ Elemento 'abrir-estatuto' não encontrado! Verifique se ele está no HTML.");
-    return; // 🔹 Impede que o código continue rodando se o botão não existir
+  // 🔹 Verificando se todos os elementos existem antes de executar o código
+  if (!botaoAbrir || !modal || !estatutoContainer) {
+    console.warn("⚠️ Elementos necessários para o Estatuto não encontrados! Verifique o HTML.");
+    return;
   }
 
   botaoAbrir.addEventListener("click", () => {
-    const modal = document.getElementById("modalEstatuto");
+    modal.style.display = "block";
 
-    if (modal) {
-      modal.style.display = "block";
+    if (!estatutoContainer.innerHTML.includes("<h2>")) {
+      carregarEstatuto();
+    }
+  });
 
-      const estatutoContainer = document.getElementById("conteudo-estatuto");
-      if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
-        carregarEstatuto();
-      }
-    } else {
-      console.warn("⚠️ Modal do Estatuto não encontrado!");
+  // 🔹 Fechar Estatuto pelo botão ou ao clicar fora do modal
+  document.querySelectorAll(".btn-fechar").forEach(botao => {
+    botao.addEventListener("click", fecharEstatuto);
+  });
+
+  // 🔹 Fechar ao clicar fora da área do modal
+  document.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      fecharEstatuto();
     }
   });
 });
 
-
-// 🔹 Fechar o Estatuto pelo botão ou ao clicar fora do modal
+// 🔹 Função para fechar o Estatuto
 function fecharEstatuto() {
   const modal = document.getElementById("modalEstatuto");
   if (modal) modal.style.display = "none";
 }
-
-// 🔹 Fechar ao clicar fora da área do modal
-document.addEventListener("click", (event) => {
-  const modal = document.getElementById("modalEstatuto");
-  const modalContent = document.querySelector(".modal-content");
-
-  // 🔥 Corrigido: fecha apenas se o clique for no fundo escuro
-  if (modal && event.target === modal) {
-    fecharEstatuto();
-  }
-});
 
 // 🔹 Carregar Estatuto dinamicamente dentro do modal
 async function carregarEstatuto() {
