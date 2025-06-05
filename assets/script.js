@@ -126,25 +126,58 @@ document.addEventListener("DOMContentLoaded", carregarAvisos);
 // =====================================
 // ✨ Estatuto - Modal & Pesquisa
 // =====================================
+
+// Abrir o Estatuto
 document.getElementById("abrir-estatuto").addEventListener("click", () => {
   document.getElementById("modalEstatuto").style.display = "block";
-  if (!document.getElementById("conteudo-estatuto").innerHTML.includes("<h2>")) carregarEstatuto();
+  
+  const estatutoContainer = document.getElementById("conteudo-estatuto");
+  if (estatutoContainer && !estatutoContainer.innerHTML.includes("<h2>")) {
+    carregarEstatuto();
+  }
 });
+
+// Fechar Estatuto pelo botão ou ao clicar fora do modal
 function fecharEstatuto() {
   document.getElementById("modalEstatuto").style.display = "none";
 }
+
+// Fechar ao clicar fora da área do modal
+document.addEventListener("click", (event) => {
+  const modal = document.getElementById("modalEstatuto");
+  const modalContent = document.querySelector(".modal-content");
+
+  // Fecha apenas se o clique ocorrer fora do conteúdo do modal
+  if (event.target === modal && !modalContent.contains(event.target)) {
+    fecharEstatuto();
+  }
+});
+
+// Carregar Estatuto dinamicamente dentro do modal
 async function carregarEstatuto() {
   try {
     const res = await fetch("assets/estatuto.html");
-    document.getElementById("conteudo-estatuto").innerHTML = await res.text();
+    if (!res.ok) throw new Error("Erro ao carregar o Estatuto");
+
+    const html = await res.text();
+    const estatutoContainer = document.getElementById("conteudo-estatuto");
+    
+    if (estatutoContainer) estatutoContainer.innerHTML = html;
   } catch (error) {
     console.error("Erro ao carregar o Estatuto:", error);
   }
 }
+
+// Função de pesquisa no Estatuto
 function buscarPalavra() {
   let termo = document.getElementById("pesquisa").value.toLowerCase();
-  document.getElementById("conteudo-estatuto").innerHTML =
-    document.getElementById("conteudo-estatuto").innerHTML.replace(new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`);
+  let estatutoContainer = document.getElementById("conteudo-estatuto");
+
+  if (estatutoContainer) {
+    estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
+      new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
+    );
+  }
 }
 
 // =====================================

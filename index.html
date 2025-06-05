@@ -92,33 +92,18 @@
     </section>
 
 <!-- Estatuto da Igreja Batista de Boa Vista -->
-<!-- Botão para abrir o estatuto -->
-<button id="abrir-estatuto">Ver Estatuto da IBBV</button>
-
 <!-- Modal do Estatuto -->
 <div id="modalEstatuto" class="modal">
   <div class="modal-content">
     <span class="fechar" onclick="fecharEstatuto()">&times;</span>
     
-    <!-- Estatuto dentro de uma section -->
-    <section id="estatuto-modal">
-      <h2>Estatuto da IBBV</h2>
-      <p>O estatuto define os princípios e organização da igreja. Para leitura completa, faça o download abaixo.</p>
+    <h2>Estatuto da IBBV</h2>
+    <p>O estatuto define os princípios e organização da igreja.</p>
+    <div id="conteudo-estatuto">
+      <p>Carregando Estatuto...</p>
+    </div>
 
-      <!-- Índice de navegação -->
-      <ul>
-        <li><a href="assets/estatuto.html#capitulo1">Capítulo I - Denominação</a></li>
-        <li><a href="assets/estatuto.html#capitulo2">Capítulo II - Membros</a></li>
-        <li><a href="assets/estatuto.html#capitulo3">Capítulo III - Assembleia</a></li>
-      </ul>
-
-      <!-- Local onde o estatuto será carregado -->
-      <div id="conteudo-estatuto">
-        <p>Carregando Estatuto...</p>
-      </div>
-
-      <a href="assets/estatuto.pdf" download class="btn-download">Baixar Estatuto (PDF)</a>
-    </section>
+    <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar Estatuto</button>
   </div>
 </div>
 
