@@ -108,7 +108,7 @@ footer {
 /* --------------------------- TITULO DAS IMAGENS DOS AVISOS --------------------------- */
 .aviso-item {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
