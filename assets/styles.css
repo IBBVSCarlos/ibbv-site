@@ -6,14 +6,16 @@ html, body {
   width: 100%;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: calc(16px + 0.5vw);
+  font-size: clamp(16px, 1.5vw, 20px);
   background: linear-gradient(135deg, #000000, #006600);
-  color: #c8f0c8;
+  color: #e0ffe0;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /* --------------------------- HEADER --------------------------- */
 header {
   background-color: #004400cc;
@@ -74,6 +76,29 @@ header {
   color: #ccffcc;
   font-weight: 500;
 }
+.titulo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  flex: 1 1 300px;
+}
+
+@media screen and (max-width: 480px) {
+  .titulo-container {
+    gap: 0.1rem;
+  }
+
+  .boletim-titulo {
+    margin-bottom: 0;
+  }
+
+  #semana-referencia {
+    margin-top: 0;
+    font-size: 0.9rem;
+  }
+}
 
 /* --------------------------- MAIN CONTAINER --------------------------- */
 .container {
@@ -91,7 +116,7 @@ header {
   background: rgba(0, 77, 0, 0.85);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   color: #d0f0d0;
 }
 
@@ -150,6 +175,10 @@ h2 {
   display: block;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal-content {
   background: #fff;
   max-width: 600px;
@@ -176,7 +205,7 @@ h2 {
 
 /* Botão fechar modal */
 .btn-fechar {
-  background: #990000;
+  background: #006600;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -189,7 +218,7 @@ h2 {
 }
 
 .btn-fechar:hover {
-  background: #770000;
+  background: #004400;
 }
 
 /* --------------------------- BOTÕES GERAIS --------------------------- */
@@ -206,10 +235,12 @@ button {
   font-size: 1rem;
   font-weight: 600;
 }
-
-button:hover {
-  background: #007700;
-}
+  button:hover,
+  button:focus,
+  a:hover,
+  a:focus {
+  outline: 2px solid #00ff00;
+  }
 
 /* --------------------------- FOOTER --------------------------- */
 footer {
@@ -291,35 +322,8 @@ footer a:focus {
   .section-box {
     padding: 1rem;
   }
-}
-
-@media screen and (max-width: 480px) {
-  header {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .logo-container {
-    width: 60px;
-    height: 60px;
-  }
-
-.boletim-titulo {
-  font-size: 1.2rem;
-  line-height: 1.2;
-  margin-bottom: 0.2rem;
-  text-align: center;
-  white-space: normal;
-}
-
-  .programacao-item .hora {
-    min-width: 110px;
-    font-size: 1rem;
-  }
-}
 
 /* Melhorias adicionais para telas pequenas */
-@media screen and (max-width: 768px) {
   h2 {
     font-size: 1.3rem;
     text-align: center;
@@ -351,8 +355,21 @@ footer a:focus {
     margin: 0.5rem 0;
   }
 }
-
 @media screen and (max-width: 480px) {
+  header {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .logo-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .programacao-item .hora {
+    min-width: 110px;
+    font-size: 1rem;
+  }
   h2 {
     font-size: 1.1rem;
   }
@@ -370,11 +387,10 @@ footer a:focus {
   }
 
   .section-box img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin: 0.5rem 0;
-  }
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
   footer {
     font-size: 0.9rem;
@@ -383,11 +399,11 @@ footer a:focus {
   .social-links a {
     font-size: 1.2rem;
   }
-}
 
-@media screen and (max-width: 480px) {
   #semana-referencia {
     font-size: 0.95rem;
     margin-top: 0.2rem;
   }
+
 }
+
