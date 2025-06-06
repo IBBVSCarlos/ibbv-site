@@ -47,7 +47,7 @@ function definirSemanaReferencia() {
   const formatoData = data =>
     data.toLocaleDateString("pt-BR", { day: "2-digit", month: "long" });
 
-  const semanaTexto = `Semana: ${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
+  const semanaTexto = ${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
 
   // Atualizar conteúdo somente se o elemento existir
   const semanaReferenciaElemento = document.getElementById("semana-referencia");

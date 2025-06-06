@@ -6,7 +6,7 @@
   text-align: justify; /* Melhor leitura e harmonia */
 }
 
-/* 🔥 Ajustando títulos para ficarem proporcionais */
+/* 🔥 Ajustando títulos para ficarem proporcionais 
 h2 {
   font-size: clamp(1.2rem, 4vw, 1.8rem); /* Agora ajustável */
   text-align: left;
@@ -14,7 +14,23 @@ h2 {
   border-bottom: 2px solid #009900;
   padding-bottom: 0.3rem;
   font-weight: 700;
+}*/
+
+/* 🔥 Ajuste de tamanhos proporcionais e alinhamento */
+#versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  text-align: justify;
 }
+
+/* 🔥 Ajuste refinado de títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+
 
 /* 🔥 Uniformizando espaçamento das seções */
 .section-box {
@@ -84,6 +100,43 @@ header {
   max-width: 50%; /* Ajustado para melhor proporção */
   height: auto;
   margin-bottom: 1rem;
+}
+
+/* 🔥 Estilizando programação */
+.programacao-item {
+  display: flex;
+  align-items: center;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #009900;
+}
+
+.hora {
+  font-weight: bold;
+  color: #a8e6a1;
+  min-width: 150px;
+}
+
+.icone {
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+.descricao {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* 🔹 Ajuste responsivo */
+@media screen and (max-width: 600px) {
+  .programacao-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .icone {
+    margin-bottom: 5px;
+  }
 }
 
 /* --------------------------- FOOTER --------------------------- */
