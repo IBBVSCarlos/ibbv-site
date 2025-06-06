@@ -47,7 +47,7 @@ function definirSemanaReferencia() {
   const formatoData = data =>
     data.toLocaleDateString("pt-BR", { day: "2-digit", month: "long" });
 
-  const semanaTexto = ${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
+  const semanaTexto = `${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
 
   // Atualizar conteúdo somente se o elemento existir
   const semanaReferenciaElemento = document.getElementById("semana-referencia");
@@ -147,16 +147,16 @@ function carregarAvisos() {
     .then(res => res.json())
     .then(({ avisos }) => {
       const listaAvisos = document.getElementById('lista-avisos');
-listaAvisos.innerHTML = avisos.length
-  ? avisos.map(({ texto, imagem, linkAgenda }) => `
-      <li class="aviso-item">
-        <p class="aviso-texto">${texto}</p>
-        <a href="${linkAgenda}" target="_blank">
-          <img src="${imagem}" alt="${texto}" class="aviso-img">
-        </a>
-      </li>
-    `).join("")
-  : '<li>Nenhum aviso disponível.</li>';
+      listaAvisos.innerHTML = avisos.length
+        ? avisos.map(({ texto, imagem, linkAgenda }) => `
+          <li class="aviso-item">
+            <p class="aviso-texto">${texto}</p>
+            <a href="${linkAgenda}" target="_blank">
+              <img src="${imagem}" alt="${texto}" class="aviso-img">
+            </a>
+          </li>
+        `).join("")
+        : '<li>Nenhum aviso disponível.</li>';
     })
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
@@ -250,6 +250,12 @@ function buscarPalavra() {
   }
 
   const termo = pesquisaInput.value.toLowerCase();
+
+  // Remove highlights anteriores
+  estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/gi, "$1");
+
+  if (termo.trim() === "") return;
+
   estatutoContainer.innerHTML = estatutoContainer.innerHTML.replace(
     new RegExp(`(${termo})`, "gi"), `<span class="highlight">$1</span>`
   );
@@ -264,9 +270,20 @@ function copiarTexto(texto, mensagem) {
   navigator.clipboard.writeText(texto).then(() => alert(mensagem));
 }
 function copiarPix() {
-  copiarTexto(document.getElementById("pix").textContent.trim(), "Chave PIX copiada!");
+  const pixElemento = document.getElementById("pix");
+  if (pixElemento) {
+    copiarTexto(pixElemento.textContent.trim(), "Chave PIX copiada!");
+  } else {
+    alert("Chave PIX não encontrada.");
+  }
 }
-document.getElementById("btn-pix").addEventListener("click", () => {
-  document.getElementById("pix-box").style.display = "block";
-});
 
+document.addEventListener("DOMContentLoaded", () => {
+  const btnPix = document.getElementById("btn-pix");
+  if (btnPix) {
+    btnPix.addEventListener("click", () => {
+      const pixBox = document.getElementById("pix-box");
+      if (pixBox) pixBox.style.display = "block";
+    });
+  }
+});

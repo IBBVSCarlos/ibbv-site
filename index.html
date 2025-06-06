@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="manifest" href="manifest.json">
-  <link rel="manifest" href="icons/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
  
@@ -13,6 +12,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="IBBV">
 
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <title>Boletim IBBV São Carlos</title>
 
@@ -102,9 +103,8 @@
         <p>Carregando conteúdo...</p>
       </div>
       <div class="navegacao-coluna">
-        <button id="btnAnterior">◀ Anterior</button>
-        <button id="btnProximo">Próximo ▶</button>
-      </div>
+   <button id="btnAnterior" aria-controls="mensagem-pastor">◀ Anterior</button>
+   <button id="btnProximo" aria-controls="mensagem-pastor">Próximo ▶</button>      </div>
     </section>
 
 <!-- Estatuto da Igreja Batista de Boa Vista 
@@ -127,7 +127,6 @@
     <div id="conteudo-estatuto">
       <p>Carregando Estatuto...</p>
     </div>
-  <button id="abrir-estatuto" class="btn-estatuto" aria-label="Abrir Estatuto">📖 Ler Estatuto</button>
   <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar Estatuto</button>
 
     <!--button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar</button>-->
@@ -137,24 +136,35 @@
 
   </main>
 
-  <footer>
-    <p>Av Henrique Gregori, 151 - São Carlos/SP</p>
-    <p>(16) 99205-3530 | ibbvsaocarlos@gmail.com</p>
-    <p>© 2025 IBBV São Carlos. Todos os direitos reservados.</p>
-
-    <div class="footer-info">
-      <button id="btn-revelar-pix" class="pix-toggle-btn">
-        <img src="icons/pix_img.png" alt="Doar via Pix" class="pix-img" />
-        Doar via Pix
-      </button>
-
-      <div id="pix-info" class="hidden">
-        <p class="pix-chave">57722761000174</p>
-        <button onclick="copiarPix()" class="copiar-btn">Copiar chave Pix</button>
-        <p id="mensagem-copiado" class="mensagem-pix"></p>
-      </div>
+<footer>
+  <p>© 2025 Igreja Batista de Boa Vista - São Carlos</p>
+  <p>
+    <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
+    (16) 99205-3530
+  </p>
+  <div class="social-links">
+    <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="http://instagram.com/ibbvsaocarlos" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@IBBVSaoCarlos" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+   </div>
+<div class="doacoes-pix">
+    <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
+      💳 Dízimos e Ofertas
+    </button>
+    <div id="pix-box" class="pix-box" hidden>
+      <p>Chave PIX:</p>
+      <code id="pix" tabindex="0">seu-email-ou-celular@exemplo.com</code>
+      <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
     </div>
-  </footer>
+</div>
+
+</footer>
 
   <script src="assets/versiculo.js" defer></script>
   <script src="assets/coluna_pastor.js" defer></script>
