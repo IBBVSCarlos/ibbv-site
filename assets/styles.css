@@ -13,10 +13,13 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* compensa a altura do header */
 }
+
 /* --------------------------- HEADER --------------------------- */
+
 header {
   background-color: #004400cc;
   padding: 1rem 2rem;
@@ -56,6 +59,13 @@ header {
   z-index: -1;
 }
 
+.titulo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .boletim-titulo {
   flex: 1 1 300px;
   font-family: 'Georgia', serif;
@@ -67,47 +77,25 @@ header {
   text-shadow: 1px 1px 3px #003300;
 }
 
-/* Semana Referência */
-#semana-referencia {
+.semana-referencia {
   width: 100%;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   font-style: italic;
   color: #ccffcc;
   font-weight: 500;
-}
-.titulo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem; /* reduzido do padrão */
-}
-
-@media screen and (max-width: 480px) {
-  .titulo-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem; /* controla o espaçamento vertical */
-    margin: 0;
-    padding: 0;
-  }
-
-  .boletim-titulo {
-    font-size: 1.2rem;
-    line-height: 1;
-    margin: -12px;
-    padding: 0;
-  }
-
-  #semana-referencia {
-    margin: -20px;
-    padding: 0;
-    font-size: 10.5px;
-    line-height: 0;
-  }
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  background-color: rgba(0, 68, 0, 0.4);
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  display: inline-block;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* --------------------------- MAIN CONTAINER --------------------------- */
+/* --------------------------- CONTAINER PRINCIPAL --------------------------- */
+
 .container {
   flex: 1;
   max-width: 900px;
@@ -119,15 +107,27 @@ header {
 }
 
 /* --------------------------- SECTION BOX --------------------------- */
+
 .section-box {
   background: rgba(0, 77, 0, 0.85);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   color: #d0f0d0;
+  position: relative; /* necessário para ::before funcionar */
+  z-index: 0;
+}
+.section-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(circle, #00ff0099 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.15;
 }
 
-/* Títulos das seções */
 h2 {
   font-family: 'Georgia', serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -137,15 +137,16 @@ h2 {
   margin-bottom: 1rem;
   font-weight: 700;
   text-align: left;
+  text-shadow: 1px 1px 2px #003300;
 }
 
-/* Parágrafos e textos justificados nas seções */
 #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   text-align: justify;
 }
 
-/* Programação: itens alinhados com ícones */
+/* Programação com ícones */
+
 .programacao-item {
   display: flex;
   align-items: center;
@@ -165,12 +166,12 @@ h2 {
   font-size: 1.2rem;
 }
 
-/* --------------------------- MODAL DO ESTATUTO --------------------------- */
+/* --------------------------- MODAL --------------------------- */
+
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.75);
   z-index: 9999;
   overflow-y: auto;
@@ -210,7 +211,6 @@ body.modal-open {
   color: #333;
 }
 
-/* Botão fechar modal */
 .btn-fechar {
   background: #006600;
   color: white;
@@ -229,11 +229,12 @@ body.modal-open {
 }
 
 /* --------------------------- BOTÕES GERAIS --------------------------- */
+
 button {
   padding: 0.5rem 1rem;
   background: #009900;
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: inherit;
   border: none;
   cursor: pointer;
   margin-top: 0.5rem;
@@ -242,14 +243,17 @@ button {
   font-size: 1rem;
   font-weight: 600;
 }
-  button:hover,
-  button:focus,
-  a:hover,
-  a:focus {
-  outline: 2px solid #00ff00;
-  }
+
+button:hover,
+button:focus-visible,
+a:hover,
+a:focus-visible {
+  outline: 2px dashed #00ff00;
+  outline-offset: 2px;
+}
 
 /* --------------------------- FOOTER --------------------------- */
+
 footer {
   background-color: #003300cc;
   color: #b9f0b9;
@@ -279,7 +283,6 @@ footer a:focus {
   text-decoration: underline;
 }
 
-/* Redes sociais no footer */
 .social-links {
   margin-top: 0.6rem;
   display: flex;
@@ -290,15 +293,17 @@ footer a:focus {
 .social-links a {
   color: #a8e6a1;
   font-size: 1.5rem;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.3s ease;
 }
 
 .social-links a:hover,
 .social-links a:focus {
   color: #00cc00;
+  transform: scale(1.2);
 }
 
 /* --------------------------- RESPONSIVO --------------------------- */
+
 @media screen and (max-width: 768px) {
   header {
     justify-content: center;
@@ -310,19 +315,13 @@ footer a:focus {
     height: 80px;
   }
 
-  #logo {
-    border-radius: 10px;
+  .boletim-titulo {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    white-space: normal;
   }
 
-.boletim-titulo {
-  font-size: 1.4rem;
-  line-height: 1.2;
-  margin-bottom: 0.2rem;
-  white-space: normal;
-}
-
   .container {
-    width: 95%;
     margin: 1.5rem auto;
   }
 
@@ -330,7 +329,6 @@ footer a:focus {
     padding: 1rem;
   }
 
-/* Melhorias adicionais para telas pequenas */
   h2 {
     font-size: 1.3rem;
     text-align: center;
@@ -362,6 +360,7 @@ footer a:focus {
     margin: 0.5rem 0;
   }
 }
+
 @media screen and (max-width: 480px) {
   header {
     flex-direction: column;
@@ -374,26 +373,23 @@ footer a:focus {
     height: 60px;
   }
 
-.titulo-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  gap: 0.2rem; /* reduzido, opcional */
-}
+  .titulo-container {
+    flex-direction: row;
+    gap: 0.2rem;
+  }
 
-.boletim-titulo {
-  margin: -12px;
-  padding: 0;
-  line-height: 1;
-}
+  .boletim-titulo {
+    font-size: 1.2rem;
+    margin: -12px 0 0;
+    padding: 0;
+    line-height: 1;
+  }
 
-#semana-referencia {
-  margin: 0;
-  padding: 0;
-  line-height: 1.2;
-}
+  .semana-referencia {
+    font-size: 10.5px;
+    padding: 0.2rem 0.5rem;
+    line-height: 1.2;
+  }
 
   h2 {
     font-size: 1.1rem;
@@ -414,9 +410,5 @@ footer a:focus {
 
   footer {
     font-size: 0.9rem;
-  }
-
-  .social-links a {
-    font-size: 1.2rem;
   }
 }
