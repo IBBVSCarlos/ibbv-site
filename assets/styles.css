@@ -363,7 +363,7 @@ footer a:focus {
 @media screen and (max-width: 480px) {
   header {
     flex-direction: column;
-    gap: 0.4rem; /* reduz ainda mais o espaço entre logo e textos */
+    gap: 0.2rem;
     padding: 0.8rem 1rem;
   }
 
@@ -372,31 +372,41 @@ footer a:focus {
     height: 60px;
   }
 
-  .programacao-item .hora {
-    min-width: 110px;
-    font-size: 1rem;
-  }
-  h2 {
-    font-size: 1.1rem;
+  .titulo-container {
+    gap: 0.1rem;
   }
 
   .boletim-titulo {
     font-size: 1.2rem;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
   }
 
-  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  #semana-referencia {
     font-size: 0.95rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 1.1rem;
   }
 
   .section-box {
     padding: 0.8rem;
   }
 
-  .section-box img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+    font-size: 0.95rem;
+  }
+
+  .programacao-item .hora {
+    min-width: 110px;
+    font-size: 1rem;
+  }
 
   footer {
     font-size: 0.9rem;
@@ -405,11 +415,4 @@ footer a:focus {
   .social-links a {
     font-size: 1.2rem;
   }
-
-  #semana-referencia {
-    font-size: 0.95rem;
-    margin-top: 0.2rem;
-  }
-
 }
-
