@@ -91,7 +91,10 @@ header {
   }
 
   .boletim-titulo {
-    margin-bottom: 0;
+    margin-bottom: 0; /* ou até 0.2rem */
+  }
+  #semana-referencia {
+    margin-top: 0.1rem; /* reduzir para um valor menor */
   }
 
   #semana-referencia {
