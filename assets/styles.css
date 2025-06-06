@@ -93,6 +93,48 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
+.divider {
+  width: 2px;
+  background-color: #00aa00;
+  height: 60px;
+  align-self: center;
+  border-radius: 1px;
+  margin: 0 1.5rem;
+  box-shadow: 0 0 5px #00cc00;
+  animation: glowPulse 3s infinite alternate ease-in-out;
+  transition: background-color 0.3s ease;
+}
+
+/* Animação suave de brilho pulsante */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 5px #00cc00;
+    background-color: #009900;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ff00;
+    background-color: #00cc00;
+  }
+  100% {
+    box-shadow: 0 0 5px #00cc00;
+    background-color: #009900;
+  }
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+  .divider {
+    height: 50px;
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .divider {
+    height: 40px;
+    margin: 0 0.7rem;
+  }
+}
 
 /* --------------------------- CONTAINER PRINCIPAL --------------------------- */
 
