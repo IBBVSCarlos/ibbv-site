@@ -1,86 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
- 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1abc9c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="IBBV">
+  <meta name="msapplication-TileColor" content="#ffffff">
 
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon.png">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <title>Boletim IBBV São Carlos</title>
-
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
-  <!-- div id="semana-referencia" -->
+  <header>
+    <div class="logo-container">
+      <img src="icons/logibbv.png" alt="Logotipo da Igreja Batista de Boa Vista" id="logo">
+      <div class="light-effect"></div>
+    </div>
 
-<header>
-  <div class="logo-container">
-    <img src="icons/logibbv.png" alt="Logotipo IBBV" id="logo">
-    <div class="light-effect"></div>
-  </div>
+    <h1 class="boletim-titulo" aria-label="Boletim Informativo da Igreja Batista de Boa Vista - São Carlos">
+      Boletim Informativo IBBV
+    </h1>
 
-  <h1 class="boletim-titulo" aria-label="Boletim Informativo da Igreja Batista de Boa Vista - São Carlos">
-    Boletim Informativo IBBV
-  </h1>
-
-  <!-- Semana Referência (Corrigido - mantendo apenas uma instância) -->
-  <div id="semana-referencia"><!--Carregando semana... --></div>
-</header>
+    <div id="semana-referencia" aria-live="polite"></div>
+  </header>
 
   <main class="container">
 
-<!-- Versículo -->
-    <section id="versiculo" class="section-box">
-    <div id="versiculo-conteudo">
-      <p>Carregando versículo...</p>
-    </div>
+    <!-- Versículo -->
+    <section id="versiculo" class="section-box" aria-labelledby="versiculo">
+      <div id="versiculo-conteudo">
+        <p>Carregando versículo...</p>
+      </div>
     </section>
 
-<!-- Programação -->
-<section id="programacao" class="section-box">
-  <h2>Programação</h2>
-  <div class="programacao-item">
-    <span class="hora">Domingo 09h00:</span> <span class="icone">📅</span> <span class="descricao">Escola Bíblica Dominical</span>
-  </div>
-  <div class="programacao-item">
-    <span class="hora">Domingo 19h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Adoração</span>
-  </div>
-  <div class="programacao-item">
-    <span class="hora">Quarta-feira 20h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Oração</span>
-  </div>
-  <div class="programacao-item">
-    <span class="hora">Sexta-feira 20h00:</span> <span class="icone">🎵</span> <span class="descricao">Ensaio do Louvor</span>
-  </div>
-  
-  <h3>Reuniões Quinzenais:</h3>
-  <div class="programacao-item">
-    <span class="hora">Segunda-feira 20h00:</span> <span class="icone">🏅</span> <span class="descricao">Atletas de Cristo</span>
-  </div>
-  <div class="programacao-item">
-    <span class="hora">2º e 4º Domingo do mês 11h00:</span> <span class="icone">🛐</span> <span class="descricao">Reunião dos Jovens</span>
-  </div>
-</section>
+    <!-- Programação -->
+    <section id="programacao" class="section-box">
+      <h2>Programação</h2>
+      <div class="programacao-item">
+        <span class="hora">Domingo 09h00:</span> <span class="icone">📅</span> <span class="descricao">Escola Bíblica Dominical</span>
+      </div>
+      <div class="programacao-item">
+        <span class="hora">Domingo 19h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Adoração</span>
+      </div>
+      <div class="programacao-item">
+        <span class="hora">Quarta-feira 20h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Oração</span>
+      </div>
+      <div class="programacao-item">
+        <span class="hora">Sexta-feira 20h00:</span> <span class="icone">🎵</span> <span class="descricao">Ensaio do Louvor</span>
+      </div>
 
-<!-- Avisos -->
+      <h3>Reuniões Quinzenais:</h3>
+      <div class="programacao-item">
+        <span class="hora">Segunda-feira 20h00:</span> <span class="icone">🏅</span> <span class="descricao">Atletas de Cristo</span>
+      </div>
+      <div class="programacao-item">
+        <span class="hora">2º e 4º Domingo do mês 11h00:</span> <span class="icone">🛐</span> <span class="descricao">Reunião dos Jovens</span>
+      </div>
+    </section>
+
+    <!-- Avisos -->
     <section id="avisos" class="section-box">
       <h2>Avisos</h2>
-      <ul id="lista-avisos" class="avisos-lista">
+      <ul id="lista-avisos" class="avisos-lista" aria-live="polite">
         <!-- Conteúdo dinâmico será carregado aqui -->
       </ul>
     </section>
 
-<!-- Escala de Ministérios -->
+    <!-- Escala de Ministérios -->
     <section id="escala-ministerios" class="section-box">
       <h2>Escala de Ministérios</h2>
       <ul id="lista-escala">
@@ -88,87 +83,72 @@
       </ul>
     </section>
 
-<!-- Aniversariantes -->
+    <!-- Aniversariantes -->
     <section id="aniversariantes" class="section-box">
       <h2>Aniversariantes da Semana</h2>
-      <ul id="lista-aniversariantes" class="aniversariantes-lista">
+      <ul id="lista-aniversariantes" class="aniversariantes-lista" aria-live="polite">
         <!-- Conteúdo dinâmico será carregado aqui -->
       </ul>
     </section>
 
-<!-- Coluna do Pastor -->
+    <!-- Coluna do Pastor -->
     <section id="coluna-pastor" class="section-box">
       <h2>Coluna do Pastor</h2>
       <div id="mensagem-pastor">
         <p>Carregando conteúdo...</p>
       </div>
       <div class="navegacao-coluna">
-   <button id="btnAnterior" aria-controls="mensagem-pastor">◀ Anterior</button>
-   <button id="btnProximo" aria-controls="mensagem-pastor">Próximo ▶</button>      </div>
+        <button id="btnAnterior" aria-controls="mensagem-pastor">◀ Anterior</button>
+        <button id="btnProximo" aria-controls="mensagem-pastor">Próximo ▶</button>
+      </div>
     </section>
 
-<!-- Estatuto da Igreja Batista de Boa Vista 
-<section id="estatuto" class="section-box">
-  <h2>Estatuto da IBBV</h2>
-  
-  <p>O estatuto define os princípios e organização da igreja. Para leitura completa, clique no botão abaixo:</p>
-
-  <button id="abrir-estatuto" class="btn-estatuto" aria-label="Abrir Estatuto">📖 Ler Estatuto</button>
-
-</section>-->
-
-<!-- Modal do Estatuto -->
-<div id="modalEstatuto" class="modal">
-  <div class="modal-content">
-    
-    <h2>Estatuto da IBBV</h2>
-    <p>O estatuto define os princípios e organização da igreja.</p>
-
-    <div id="conteudo-estatuto">
-      <p>Carregando Estatuto...</p>
+    <!-- Modal do Estatuto -->
+    <div id="modalEstatuto" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-estatuto">
+      <div class="modal-content">
+        <h2 id="titulo-estatuto">Estatuto da IBBV</h2>
+        <p>O estatuto define os princípios e organização da igreja.</p>
+        <div id="conteudo-estatuto">
+          <p>Carregando Estatuto...</p>
+        </div>
+        <button onclick="fecharEstatuto()" class="btn-fechar" aria-label="Fechar Estatuto">❌ Fechar Estatuto</button>
+      </div>
     </div>
-  <button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar Estatuto</button>
-
-    <!--button onclick="fecharEstatuto()" class="btn-fechar">❌ Fechar</button>-->
-  </div>
-</div>
-
 
   </main>
 
-<footer>
-  <p>© 2025 Igreja Batista de Boa Vista - São Carlos</p>
-  <p>
-    <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
-    (16) 99205-3530
-  </p>
-  <div class="social-links">
-    <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="http://instagram.com/ibbvsaocarlos" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.youtube.com/@IBBVSaoCarlos" target="_blank" aria-label="YouTube">
-      <i class="fab fa-youtube"></i>
-    </a>
-   </div>
-<div class="doacoes-pix">
-    <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
-      💳 Dízimos e Ofertas
-    </button>
-    <div id="pix-box" class="pix-box" hidden>
-      <p>Chave PIX:</p>
-      <code id="pix" tabindex="0">seu-email-ou-celular@exemplo.com</code>
-      <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
+  <footer>
+    <p>© 2025 Igreja Batista de Boa Vista - São Carlos</p>
+    <p>
+      <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
+      (16) 99205-3530
+    </p>
+    <div class="social-links">
+      <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="http://instagram.com/ibbvsaocarlos" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@IBBVSaoCarlos" target="_blank" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
     </div>
-</div>
 
-</footer>
+    <div class="doacoes-pix">
+      <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
+        💳 Dízimos e Ofertas
+      </button>
+      <div id="pix-box" class="pix-box" hidden>
+        <p>Chave PIX:</p>
+        <code id="pix" tabindex="0">chavepix@exemplo.com</code>
+        <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
+      </div>
+    </div>
+  </footer>
 
   <script src="assets/versiculo.js" defer></script>
   <script src="assets/coluna_pastor.js" defer></script>
   <script src="assets/script.js" defer></script>
-
 </body>
 </html>

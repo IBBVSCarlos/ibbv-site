@@ -276,9 +276,12 @@ footer a:focus {
     border-radius: 10px;
   }
 
-  .boletim-titulo {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-  }
+.boletim-titulo {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  white-space: normal;
+}
 
   .container {
     width: 95%;
@@ -301,13 +304,90 @@ footer a:focus {
     height: 60px;
   }
 
-  .boletim-titulo {
-    font-size: 1.4rem;
-    white-space: normal;
-  }
+.boletim-titulo {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  text-align: center;
+  white-space: normal;
+}
 
   .programacao-item .hora {
     min-width: 110px;
     font-size: 1rem;
+  }
+}
+
+/* Melhorias adicionais para telas pequenas */
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+    font-size: 1rem;
+  }
+
+  .programacao-item {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .programacao-item .icone {
+    font-size: 1rem;
+  }
+
+  .programacao-item .hora {
+    min-width: auto;
+    font-size: 1rem;
+  }
+
+  .section-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .boletim-titulo {
+    font-size: 1.2rem;
+  }
+
+  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+    font-size: 0.95rem;
+  }
+
+  .section-box {
+    padding: 0.8rem;
+  }
+
+  .section-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #semana-referencia {
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
   }
 }
