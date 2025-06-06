@@ -87,20 +87,24 @@ header {
 
 @media screen and (max-width: 480px) {
   .titulo-container {
-    gap: 0; /* remove espaço vertical interno */
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem; /* controla o espaçamento vertical */
+    margin: 0;
+    padding: 0;
   }
 
   .boletim-titulo {
     font-size: 1.2rem;
     line-height: 1.1;
     margin: 0;
-    white-space: normal;
+    padding: 0;
   }
 
   #semana-referencia {
-    font-size: 0.95rem;
     margin: 0;
     padding: 0;
+    font-size: 0.95rem;
     line-height: 1.1;
   }
 }
