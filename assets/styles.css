@@ -104,3 +104,66 @@ body {
     font-size: 1.2rem;
   }
 }
+/* --------------------------- MODAL DO ESTATUTO --------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  overflow: auto;
+}
+
+/* 🔹 Ajustando largura do modal para melhor visualização */
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* --------------------------- BOTÕES --------------------------- */
+button {
+  padding: 0.5rem 1rem;
+  background: #009900;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #007700;
+}
+
+/* 🔹 Botão de Fechar Estatuto */
+.btn-fechar {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 0.8rem 1rem;
+  background: #990000;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-fechar:hover {
+  background: #770000;
+}
+
