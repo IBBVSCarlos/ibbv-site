@@ -78,34 +78,26 @@ header {
 }
 .titulo-container {
   display: flex;
-/*  flex-direction: column; */
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  flex: 1 1 300px;
+  gap: 1rem; /* reduzido do padrão */
 }
 
 @media screen and (max-width: 480px) {
   .titulo-container {
     flex-direction: column;
-    align-items: center;
-    gap: 0.2rem; /* controla o espaçamento vertical */
-    margin: 0;
-    padding: 0;
+    gap: 0.3rem; /* pequeno espaço vertical no mobile */
   }
 
   .boletim-titulo {
-    font-size: 1.2rem;
-    line-height: 1.1;
+    font-size: 1.3rem;
+    line-height: 1.2;
     margin: 0;
-    padding: 0;
   }
 
   #semana-referencia {
-    margin: 0;
-    padding: 0;
     font-size: 0.95rem;
-    line-height: 1.1;
+    margin: 0;
   }
 }
 
