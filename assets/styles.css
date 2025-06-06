@@ -87,19 +87,21 @@ header {
 
 @media screen and (max-width: 480px) {
   .titulo-container {
-    gap: 0.1rem;
+    gap: 0; /* remove espaço vertical interno */
   }
 
   .boletim-titulo {
-    margin-bottom: 0; /* ou até 0.2rem */
-  }
-  #semana-referencia {
-    margin-top: 0.1rem; /* reduzir para um valor menor */
+    font-size: 1.2rem;
+    line-height: 1.1;
+    margin: 0;
+    white-space: normal;
   }
 
   #semana-referencia {
-    margin-top: 0;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
   }
 }
 
@@ -361,7 +363,8 @@ footer a:focus {
 @media screen and (max-width: 480px) {
   header {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.4rem; /* reduz ainda mais o espaço entre logo e textos */
+    padding: 0.8rem 1rem;
   }
 
   .logo-container {
