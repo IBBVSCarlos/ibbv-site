@@ -86,18 +86,24 @@ header {
 @media screen and (max-width: 480px) {
   .titulo-container {
     flex-direction: column;
-    gap: 0.3rem; /* pequeno espaço vertical no mobile */
+    align-items: center;
+    gap: 0.2rem; /* controla o espaçamento vertical */
+    margin: 0;
+    padding: 0;
   }
 
   .boletim-titulo {
-    font-size: 1.3rem;
-    line-height: 1.2;
+    font-size: 1.2rem;
+    line-height: 1.1;
     margin: 0;
+    padding: 0;
   }
 
   #semana-referencia {
-    font-size: 0.95rem;
     margin: 0;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.1;
   }
 }
 
@@ -368,25 +374,27 @@ footer a:focus {
     height: 60px;
   }
 
-  .titulo-container {
-    gap: 0;
-    padding: 0;
-    margin: 0;
-  }
+.titulo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem; /* pequeno espaço vertical no mobile */
+}
 
-  .boletim-titulo {
-    font-size: 1.2rem;
-    line-height: 1.1;
-    margin: 0;
-    padding: 0;
-    white-space: normal;
-  }
+.boletim-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+  text-align: center;
+}
 
-  #semana-referencia {
-    margin: 0;
-    padding: 0;
-    line-height: 1.1;
-  }
+#semana-referencia {
+  font-size: 1rem;
+  line-height: 1.2;
+  margin: 0;
+}
 
   h2 {
     font-size: 1.1rem;
