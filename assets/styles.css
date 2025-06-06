@@ -373,7 +373,9 @@ footer a:focus {
   }
 
   .titulo-container {
-    gap: 0.1rem;
+    gap: 0;
+    padding: 0;
+    margin: 0;
   }
 
   .boletim-titulo {
@@ -385,7 +387,6 @@ footer a:focus {
   }
 
   #semana-referencia {
-    font-size: 0.95rem;
     margin: 0;
     padding: 0;
     line-height: 1.1;
