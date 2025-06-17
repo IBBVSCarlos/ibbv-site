@@ -192,7 +192,7 @@ h2 {
   text-shadow: 1px 1px 3px #002222;
 }
 
-#versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+#devocional, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   text-align: justify;
 }
@@ -454,7 +454,7 @@ footer a:focus {
     text-align: center;
   }
 
-  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  #devocional, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
     font-size: 1rem;
   }
 
@@ -519,7 +519,7 @@ footer a:focus {
     padding: 0.8rem;
   }
 
-  #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  #devocional, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
     font-size: 0.95rem;
   }
 
