@@ -1,4 +1,4 @@
-// data/devocional.js
+// assets/devocional.js
 
 document.addEventListener("DOMContentLoaded", async () => {
   const hoje = new Date();
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const semanaAno = obterSemanaDoAno(inicioSemana);
 
   try {
-    const res = await fetch("data/devocional-semana.json");
+    const res = await fetch("./data/devocional-semana.json");
     if (!res.ok) throw new Error("Arquivo JSON não encontrado ou erro ao carregar");
 
     const dados = await res.json();
