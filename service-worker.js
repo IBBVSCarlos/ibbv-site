@@ -1,12 +1,13 @@
 // service-worker.js
 
-const CACHE_NAME = "site-cache-v2"; // Atualize o número ao trocar arquivos
+const CACHE_NAME = "site-cache-v2"; 
+
 const PRECACHE_URLS = [
-  "/", 
-  "assets/styles.css", 
-  "assets/script.js", 
-  "icons/favicon.png",
-  "offline.html"
+  './', 
+  './assets/styles.css', 
+  './assets/script.js', 
+  './icons/favicon.png',
+  './offline.html'
 ];
 
 // Instala o SW e pré-carrega os arquivos
