@@ -381,7 +381,21 @@ iframe {
     width: 100%;
   }
 }
+.btn-estatuto {
+  background: #1abc9c;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
 
+.btn-estatuto:hover {
+  background: #16a085;
+}
 /* --------------------------- BOTÕES GERAIS --------------------------- */
 
 button {
