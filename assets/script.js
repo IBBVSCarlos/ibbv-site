@@ -43,21 +43,28 @@ function definirSemanaReferencia() {
   const fimSemana = new Date(inicioSemana);
   fimSemana.setDate(inicioSemana.getDate() + 6);
 
-  // Formatar a data para exibição
-  const formatoData = data =>
-    data.toLocaleDateString("pt-BR", { day: "2-digit", month: "long" });
+  // Obter os nomes dos meses
+  const opcoesDiaMes = { day: "2-digit", month: "long" };
+  const inicioFormatado = inicioSemana.toLocaleDateString("pt-BR", opcoesDiaMes);
+  const fimFormatado = fimSemana.toLocaleDateString("pt-BR", opcoesDiaMes);
+  const mesInicio = inicioSemana.toLocaleDateString("pt-BR", { month: "long" });
+  const mesFim = fimSemana.toLocaleDateString("pt-BR", { month: "long" });
 
-  const semanaTexto = `${formatoData(inicioSemana)} a ${formatoData(fimSemana)}`;
+  // Ajuste na exibição do nome do mês
+  const semanaTexto = mesInicio === mesFim
+    ? `${inicioSemana.getDate()} a ${fimSemana.getDate()} de ${mesInicio}`
+    : `${inicioFormatado} a ${fimFormatado}`;
 
-  // Atualizar conteúdo somente se o elemento existir
+  // Atualizar conteúdo no elemento
   const semanaReferenciaElemento = document.getElementById("semana-referencia");
   if (semanaReferenciaElemento) {
     semanaReferenciaElemento.textContent = semanaTexto;
-    console.log("✅ Semana referência definida:", semanaTexto);
+    console.log("✅ Semana referência ajustada:", semanaTexto);
   } else {
     console.warn("⚠️ Elemento #semana-referencia não encontrado!");
   }
 }
+
 
 // =====================================
 // 🔥 Efeito de luz no logo do header
