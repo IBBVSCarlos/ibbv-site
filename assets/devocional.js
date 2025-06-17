@@ -1,17 +1,22 @@
-// assets/devocional.js
+// data/devocional.js
 
 document.addEventListener("DOMContentLoaded", async () => {
   const hoje = new Date();
   const diaSemana = hoje.getDay(); // 0 = domingo, 1 = segunda, etc.
-  const inicioSemana = new Date(hoje);
-  inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1)); // segunda-feira da semana
 
-  const semanaAno = obterSemanaDoAno(inicioSemana); // mesmo princípio do cabeçalho
+  // Calcula a segunda-feira da semana atual (considerando domingo como 0)
+  const inicioSemana = new Date(hoje);
+  inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1)); 
+
+  const semanaAno = obterSemanaDoAno(inicioSemana);
 
   try {
-    const res = await fetch("assets/devocional-semanal.json");
+    const res = await fetch("data/devocional-semana.json");
+    if (!res.ok) throw new Error("Arquivo JSON não encontrado ou erro ao carregar");
+
     const dados = await res.json();
-    const devocional = dados[`semana${semanaAno}`];
+    const chaveSemana = `semana${semanaAno}`;
+    const devocional = dados[chaveSemana];
 
     if (devocional) {
       document.getElementById("devocional-titulo").textContent = devocional.titulo;
@@ -23,12 +28,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   } catch (erro) {
     console.error("Erro ao carregar devocional:", erro);
+    document.getElementById("conteudo-devocional").innerHTML = '<p>Erro ao carregar devocional. Tente novamente mais tarde.</p>';
   }
 });
 
-// Função compatível com o padrão da sua semana
+// Função para calcular a semana do ano considerando segunda como primeiro dia da semana
 function obterSemanaDoAno(data) {
-  const primeiroDiaAno = new Date(data.getFullYear(), 0, 1);
-  const dias = Math.floor((data - primeiroDiaAno) / (24 * 60 * 60 * 1000));
-  return Math.ceil((dias + primeiroDiaAno.getDay() + 1) / 7);
+  // Ajusta para o dia da semana: segunda=0, domingo=6
+  const dia = data.getDay() === 0 ? 6 : data.getDay() - 1;
+  const dataCorrigida = new Date(data);
+  dataCorrigida.setDate(dataCorrigida.getDate() - dia); // última segunda
+
+  const primeiroDiaAno = new Date(dataCorrigida.getFullYear(), 0, 1);
+  const primeiroDiaAnoDia = primeiroDiaAno.getDay() === 0 ? 6 : primeiroDiaAno.getDay() - 1;
+
+  // Ajusta primeiro dia do ano para a primeira segunda-feira
+  const primeiroSegundaAno = new Date(primeiroDiaAno);
+  primeiroSegundaAno.setDate(primeiroDiaAno.getDate() + (7 - primeiroDiaAnoDia));
+
+  const diff = dataCorrigida - primeiroSegundaAno;
+  const msPorSemana = 7 * 24 * 60 * 60 * 1000;
+
+  return diff >= 0 ? Math.floor(diff / msPorSemana) + 1 : 1;
 }
