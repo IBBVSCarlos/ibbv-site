@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Corrige para sempre começar na segunda-feira
   inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1));  
 
-  const semanaAno = obterSemanaReferencia(inicioSemana); // 🔄 Mudando função para garantir alinhamento com script.js
+  const semanaAno = obterSemanaReferencia(inicioSemana);
   console.log("🗓️ Semana do ano ajustada (devocional.js):", semanaAno);
 
   try {
@@ -39,12 +39,15 @@ function obterSemanaReferencia(data) {
   const primeiroDiaAno = new Date(data.getFullYear(), 0, 1);
   const diaSemanaPrimeiro = primeiroDiaAno.getDay();
 
-  // Ajustar para a primeira segunda-feira do ano
+  // Corrige para garantir que a primeira segunda-feira do ano seja o ponto inicial correto
   const primeiroSegunda = new Date(primeiroDiaAno);
-  primeiroSegunda.setDate(primeiroDiaAno.getDate() + (diaSemanaPrimeiro === 0 ? 1 : 8 - diaSemanaPrimeiro));
+  primeiroSegunda.setDate(primeiroDiaAno.getDate() + (diaSemanaPrimeiro <= 1 ? 1 : 8 - diaSemanaPrimeiro));
 
   const diff = data - primeiroSegunda;
   const msPorSemana = 7 * 24 * 60 * 60 * 1000;
+  const semanaCorrigida = Math.floor(diff / msPorSemana) + 1;
 
-  return Math.floor(diff / msPorSemana) + 1;
+  console.log(`🛠 Depuração: Data analisada = ${data.toLocaleDateString("pt-BR")}, Semana corrigida = ${semanaCorrigida}`);
+
+  return semanaCorrigida;
 }
