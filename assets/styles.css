@@ -313,7 +313,7 @@ body.modal-open {
 .modal-content {
   background: #eefcf9;
   width: 100%;
-  max-width: 500px; /* Reduzido para tamanho mais próximo das imagens da seção Avisos */
+  max-width: 400px; /* Reduzido para tamanho mais próximo das imagens da seção Avisos */
   margin: auto;
   padding: 2rem;
   border-radius: 16px;
@@ -388,7 +388,7 @@ body.modal-open {
   box-shadow: 0 4px 10px rgba(0, 68, 68, 0.2);
 }
 
-.btn-fechar:hover {
+.btn-fechar:hover, .btn-fechar:focus-visible {
   background: #30a18c;
   color: #fff;
   box-shadow: 0 6px 14px rgba(0, 68, 68, 0.4);
