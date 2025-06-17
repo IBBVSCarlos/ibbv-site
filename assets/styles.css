@@ -313,7 +313,7 @@ body.modal-open {
 .modal-content {
   background: #eefcf9;
   width: 100%;
-  max-width: 400px; /* Reduzido para tamanho mais próximo das imagens da seção Avisos */
+  max-width: 300px; /* Reduzido para tamanho mais próximo das imagens da seção Avisos */
   margin: auto;
   padding: 2rem;
   border-radius: 16px;
