@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1)); 
 
   const semanaAno = obterSemanaDoAno(inicioSemana);
+  console.log("🗓️ Semana do ano:", semanaAno);
 
   try {
     const res = await fetch("./data/devocional-semana.json");
@@ -16,7 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const dados = await res.json();
     const chaveSemana = `semana${semanaAno}`;
+    console.log("🔑 Chave usada para buscar:", chaveSemana);
+    
     const devocional = dados[chaveSemana];
+    console.log("📖 Devocional retornado:", devocional); // 👈 agora está no lugar certo
 
     if (devocional) {
       document.getElementById("devocional-titulo").textContent = devocional.titulo;
@@ -34,7 +38,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Função para calcular a semana do ano considerando segunda como primeiro dia da semana
 function obterSemanaDoAno(data) {
-  // Ajusta para o dia da semana: segunda=0, domingo=6
   const dia = data.getDay() === 0 ? 6 : data.getDay() - 1;
   const dataCorrigida = new Date(data);
   dataCorrigida.setDate(dataCorrigida.getDate() - dia); // última segunda
@@ -42,7 +45,6 @@ function obterSemanaDoAno(data) {
   const primeiroDiaAno = new Date(dataCorrigida.getFullYear(), 0, 1);
   const primeiroDiaAnoDia = primeiroDiaAno.getDay() === 0 ? 6 : primeiroDiaAno.getDay() - 1;
 
-  // Ajusta primeiro dia do ano para a primeira segunda-feira
   const primeiroSegundaAno = new Date(primeiroDiaAno);
   primeiroSegundaAno.setDate(primeiroDiaAno.getDate() + (7 - primeiroDiaAnoDia));
 
