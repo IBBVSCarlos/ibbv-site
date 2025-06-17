@@ -50,24 +50,24 @@
     <section id="programacao" class="section-box">
       <h2>Programação</h2>
       <div class="programacao-item">
-        <span class="hora">Domingo 09h00:</span> <span class="icone">📅</span> <span class="descricao">Escola Bíblica Dominical</span>
+        <span class="hora">Domingo 09h00:</span> <span class="icone"></span> <span class="descricao">📅 Escola Bíblica Dominical</span>
       </div>
       <div class="programacao-item">
-        <span class="hora">Domingo 19h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Adoração</span>
+        <span class="hora">Domingo 19h00:</span> <span class="icone"></span> <span class="descricao">🙏 Culto de Adoração</span>
       </div>
       <div class="programacao-item">
-        <span class="hora">Quarta-feira 20h00:</span> <span class="icone">🙏</span> <span class="descricao">Culto de Oração</span>
+        <span class="hora">Quarta-feira 20h00:</span> <span class="icone"></span> <span class="descricao">🙏 Culto de Oração</span>
       </div>
       <div class="programacao-item">
-        <span class="hora">Sexta-feira 20h00:</span> <span class="icone">🎵</span> <span class="descricao">Ensaio do Louvor</span>
+        <span class="hora">Sexta-feira 20h00:</span> <span class="icone"></span> <span class="descricao">🎵 Ensaio do Louvor</span>
       </div>
 
       <h3>Reuniões Quinzenais:</h3>
       <div class="programacao-item">
-        <span class="hora">Segunda-feira 20h00:</span> <span class="icone">🏅</span> <span class="descricao">Atletas de Cristo</span>
+        <span class="hora">Segunda-feira 20h00:</span> <span class="icone"></span> <span class="descricao">🏅 Atletas de Cristo</span>
       </div>
       <div class="programacao-item">
-        <span class="hora">2º e 4º Domingo do mês 10h45:</span> <span class="icone">🛐</span> <span class="descricao">Reunião dos Jovens</span>
+        <span class="hora">2º e 4º Domingo do mês 10h45:</span> <span class="icone"></span> <span class="descricao">🛐 Reunião dos Jovens</span>
       </div>
     </section>
 
@@ -107,17 +107,31 @@
       </div>
     </section>
 
-    <!-- Modal do Estatuto -->
-    <div id="modalEstatuto" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-estatuto">
-      <div class="modal-content">
-        <h2 id="titulo-estatuto">Estatuto da IBBV</h2>
-        <p>O estatuto define os princípios e organização da igreja.</p>
-        <div id="conteudo-estatuto">
-          <p>Carregando Estatuto...</p>
-        </div>
-        <button onclick="fecharEstatuto()" class="btn-fechar" aria-label="Fechar Estatuto">❌ Fechar Estatuto</button>
-      </div>
-    </div>
+<!-- Modal do Estatuto -->
+<div id="modalEstatuto" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-estatuto">
+  <div class="modal-content">
+    <h2 id="titulo-estatuto">Estatuto da IBBV</h2>
+    
+    <!-- PDF incorporado -->
+    <iframe 
+      src="assets/estatuto.pdf" 
+      width="100%" 
+      height="500" 
+      style="border: none; border-radius: 8px; box-shadow: 0 0 10px #003;">
+    </iframe>
+
+    <!-- Link de fallback -->
+    <p style="text-align: center; margin-top: 0.5rem;">
+      <a href="assets/estatuto.pdf" target="_blank" rel="noopener" style="color: #3FBF9F;">
+        📄 Abrir em nova aba / Baixar PDF
+      </a>
+    </p>
+
+    <button onclick="fecharEstatuto()" class="btn-fechar" aria-label="Fechar Estatuto">
+      ❌ Fechar Estatuto
+    </button>
+  </div>
+</div>
 
   </main>
 
