@@ -7,8 +7,8 @@ html, body {
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: clamp(16px, 1.5vw, 20px);
-  background: linear-gradient(135deg, #002200, #33aa33);
-  color: #cfeecf;
+  background: linear-gradient(135deg, #003322, #2C6A6A);
+  color: #C0E6C0;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,14 @@ html {
 /* --------------------------- HEADER --------------------------- */
 
 header {
-  background-color: #004400cc;
+  background-color: #004455cc;
   padding: 1rem 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  border-bottom: 3px solid #00aa00;
+  border-bottom: 3px solid #3FBF9F;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -53,7 +53,7 @@ header {
   width: 116px;
   height: 116px;
   border-radius: 50%;
-  background: radial-gradient(circle, #80ff80cc, transparent 60%);
+  background: radial-gradient(circle, #3FBF9Fcc, transparent 60%);
   pointer-events: none;
   filter: blur(6px);
   z-index: -1;
@@ -112,30 +112,21 @@ header {
 
 .divider {
   width: 2px;
-  background-color: #00aa00;
+  background-color: #3FBF9F;
   height: 60px;
   align-self: center;
   border-radius: 1px;
   margin: 0 1.5rem;
-  box-shadow: 0 0 5px #00cc00;
+  box-shadow: 0 0 5px #3FBF9F;
   animation: glowPulse 3s infinite alternate ease-in-out;
   transition: background-color 0.3s ease;
 }
 
 /* Animação suave de brilho pulsante */
 @keyframes glowPulse {
-  0% {
-    box-shadow: 0 0 5px #00cc00;
-    background-color: #009900;
-  }
-  50% {
-    box-shadow: 0 0 15px #00ff00;
-    background-color: #00cc00;
-  }
-  100% {
-    box-shadow: 0 0 5px #00cc00;
-    background-color: #009900;
-  }
+    0% {box-shadow: 0 0 5px #3FBF9F; background-color: #2C6A6A;}
+   50% {box-shadow: 0 0 15px #3FBF9F; background-color: #458A8A;}
+  100% { box-shadow: 0 0 5px #3FBF9F; background-color: #2C6A6A;}
 }
 
 /* Responsividade para telas menores */
@@ -190,13 +181,13 @@ header {
 h2 {
   font-family: 'Georgia', serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: #a8e6a1;
-  border-bottom: 3px solid #009900;
+  color: #A8E6D2;
+  border-bottom: 3px solid #3FBF9F;
   padding-bottom: 0.4rem;
   margin-bottom: 1rem;
   font-weight: 700;
   text-align: left;
-  text-shadow: 1px 1px 2px #003300;
+  text-shadow: 1px 1px 3px #002222;
 }
 
 #versiculo, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
@@ -291,7 +282,7 @@ body.modal-open {
 
 button {
   padding: 0.5rem 1rem;
-  background: #009900;
+  background: #2C6A6A;
   color: white;
   font-family: inherit;
   border: none;
@@ -307,6 +298,7 @@ button:hover,
 button:focus-visible,
 a:hover,
 a:focus-visible {
+  background: #458A8A;
   outline: 2px dashed #00ff00;
   outline-offset: 2px;
 }
@@ -314,8 +306,8 @@ a:focus-visible {
 /* --------------------------- FOOTER --------------------------- */
 
 footer {
-  background-color: #003300cc;
-  color: #b9f0b9;
+  background-color: #002822cc;
+  color: #A8E6D2;
   padding: 1.2rem 1rem;
   text-align: center;
   font-family: 'Georgia', serif;
@@ -338,7 +330,7 @@ footer a {
 
 footer a:hover,
 footer a:focus {
-  color: #00cc00;
+  color: #3FBF9F;
   text-decoration: underline;
 }
 
@@ -357,7 +349,7 @@ footer a:focus {
 
 .social-links a:hover,
 .social-links a:focus {
-  color: #00cc00;
+  color: #3FBF9F;
   transform: scale(1.2);
 }
 
