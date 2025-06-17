@@ -1,4 +1,4 @@
-service-worker.js
+// service-worker.js
 
 const CACHE_NAME = "site-cache-v2"; // Atualize o número ao trocar arquivos
 const PRECACHE_URLS = [
