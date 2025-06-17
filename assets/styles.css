@@ -175,10 +175,10 @@ header {
   position: absolute;
   inset: 0;
   border-radius: 12px;
-  background: radial-gradient(circle, #00ff00aa 0%, transparent 70%);
+  background: radial-gradient(circle, #66ff9966 0%, transparent 70%);
   z-index: -1;
-  filter: blur(18px);
-  opacity: 0.12;
+  filter: blur(20px);
+  opacity: 0.08;
 }
 
 h2 {
