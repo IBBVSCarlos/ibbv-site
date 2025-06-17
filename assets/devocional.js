@@ -17,6 +17,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const chaveSemana = `semana${semanaAno}`;
     console.log("🔑 Chave usada para buscar:", chaveSemana);
 
+    // 📅 Garantir que a semana correta está sendo usada
+    if (semanaAno === 25) {
+      console.log("✅ Semana 25 identificada corretamente!");
+    } else {
+      console.warn(`⚠️ Atenção: Semana identificada = ${semanaAno}, esperado = 25!`);
+    }
+
     const devocional = dados[chaveSemana];
     console.log("📖 Devocional retornado:", devocional);
 
@@ -39,7 +46,7 @@ function obterSemanaCorrigida(data) {
   const primeiroDiaAno = new Date(data.getFullYear(), 0, 1);
   const diaSemanaPrimeiro = primeiroDiaAno.getDay();
 
-  // Ajusta para a primeira segunda-feira do ano
+  // Ajustar para a primeira segunda-feira do ano
   const primeiroSegunda = new Date(primeiroDiaAno);
   primeiroSegunda.setDate(primeiroDiaAno.getDate() + (diaSemanaPrimeiro === 0 ? 1 : 8 - diaSemanaPrimeiro));
 
