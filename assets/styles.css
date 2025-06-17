@@ -285,8 +285,8 @@ h2 {
 .btn-aviso:hover {
   background: rgba(0, 77, 0, 0.9);
 }
-/* --------------------------- MODAL ESTATUTO --------------------------- */
 
+/* --------------------------- MODAL ESTATUTO --------------------------- */
 .modal {
   display: none;
   position: fixed;
@@ -296,6 +296,12 @@ h2 {
   overflow-y: auto;
   padding: 2rem 1rem;
   box-sizing: border-box;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .modal.active {
@@ -308,14 +314,17 @@ body.modal-open {
 
 .modal-content {
   background: #fff;
-  max-width: 600px;
-  margin: 3rem auto;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   color: #222;
   position: relative;
   text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -345,6 +354,18 @@ body.modal-open {
 
 .btn-fechar:hover {
   background: #004400;
+}
+
+/* Responsividade extra para telas menores */
+@media screen and (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-fechar {
+    width: 100%;
+  }
 }
 
 /* --------------------------- BOTÕES GERAIS --------------------------- */
