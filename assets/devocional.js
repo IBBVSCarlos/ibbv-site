@@ -1,15 +1,13 @@
-// assets/devocional.js
-
 document.addEventListener("DOMContentLoaded", async () => {
   const hoje = new Date();
-  const diaSemana = hoje.getDay(); // 0 = domingo, 1 = segunda, etc.
-
-  // Calcula a segunda-feira da semana atual (considerando domingo como 0)
   const inicioSemana = new Date(hoje);
-  inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1)); 
+  const diaSemana = hoje.getDay();
 
-  const semanaAno = obterSemanaDoAno(inicioSemana);
-  console.log("🗓️ Semana do ano:", semanaAno);
+  // Corrige para sempre começar na segunda-feira
+  inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1));  
+
+  const semanaAno = obterSemanaISO(inicioSemana);
+  console.log("🗓️ Semana ISO do ano:", semanaAno);
 
   try {
     const res = await fetch("./data/devocional-semana.json");
@@ -18,9 +16,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const dados = await res.json();
     const chaveSemana = `semana${semanaAno}`;
     console.log("🔑 Chave usada para buscar:", chaveSemana);
-    
+
     const devocional = dados[chaveSemana];
-    console.log("📖 Devocional retornado:", devocional); // 👈 agora está no lugar certo
+    console.log("📖 Devocional retornado:", devocional);
 
     if (devocional) {
       document.getElementById("devocional-titulo").textContent = devocional.titulo;
@@ -36,20 +34,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// Função para calcular a semana do ano considerando segunda como primeiro dia da semana
-function obterSemanaDoAno(data) {
-  const dia = data.getDay() === 0 ? 6 : data.getDay() - 1;
+// 📅 Função para calcular a semana do ano pelo padrão ISO 8601
+function obterSemanaISO(data) {
   const dataCorrigida = new Date(data);
-  dataCorrigida.setDate(dataCorrigida.getDate() - dia); // última segunda
+  dataCorrigida.setHours(0, 0, 0, 0);
 
-  const primeiroDiaAno = new Date(dataCorrigida.getFullYear(), 0, 1);
-  const primeiroDiaAnoDia = primeiroDiaAno.getDay() === 0 ? 6 : primeiroDiaAno.getDay() - 1;
+  // Obtém o dia da semana (segunda-feira = 1, domingo = 7)
+  const diaSemanaISO = dataCorrigida.getDay() === 0 ? 7 : dataCorrigida.getDay();
 
-  const primeiroSegundaAno = new Date(primeiroDiaAno);
-  primeiroSegundaAno.setDate(primeiroDiaAno.getDate() + (7 - primeiroDiaAnoDia));
+  // Ajusta a data para a quinta-feira da mesma semana (ISO 8601 exige isso)
+  dataCorrigida.setDate(dataCorrigida.getDate() + (4 - diaSemanaISO));
 
-  const diff = dataCorrigida - primeiroSegundaAno;
+  const primeiroDiaAno = new Date(dataCorrigida.getFullYear(), 0, 4); // 4 de Janeiro é base ISO
+  const diff = dataCorrigida - primeiroDiaAno;
   const msPorSemana = 7 * 24 * 60 * 60 * 1000;
 
-  return diff >= 0 ? Math.floor(diff / msPorSemana) + 1 : 1;
+  return Math.floor(diff / msPorSemana) + 1;
 }
