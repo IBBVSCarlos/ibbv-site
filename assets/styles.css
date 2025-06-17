@@ -7,8 +7,8 @@ html, body {
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: clamp(16px, 1.5vw, 20px);
-  background: linear-gradient(135deg, #000000, #006600);
-  color: #e0ffe0;
+  background: linear-gradient(135deg, #002200, #33aa33);
+  color: #cfeecf;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@ header {
   width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 0 15px #00aa00aa;
+  box-shadow: 0 0 12px #66ff66aa;
 }
 
 .light-effect {
