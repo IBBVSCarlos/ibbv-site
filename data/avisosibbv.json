@@ -1,20 +1,20 @@
 {
   "avisos": [
     {
-      "texto": "Bazar da IBBV - 07/Jun",
-      "imagem": "img/bazar.png",
-      "linkAgenda": "https://calendar.app.google/VvYydcj13BgojFz77"
+      "texto": "Reunião de Homens - 21/Jun - 19h30",
+      "imagem": "img/umm.png",
+      "linkAgenda": "https://calendar.app.google/zZtDDRRWMDwHFEtZ8"
     },
 
     {
-      "texto": "Reunião dos Jovens - 08/Jun",
-      "imagem": "img/jovens.png",
-      "linkAgenda": "https://calendar.app.google/Da2oVSe2xr4wGgzV7"
+      "texto": "Reunião de Mulheres - 21/Jun - 19h30",
+      "imagem": "img/mcm.png",
+      "linkAgenda": "https://calendar.app.google/PbXotPEcUvQbitBB8"
     },
     {
-      "texto": "Encontro das Mulheres - 14/Jun",
-      "imagem": "img/mcm.png",
-      "linkAgenda": "https://calendar.app.google/hZr2WcZcSYKXEtfdA"
+      "texto": "Reunião de Jovens - 22/Jun - 11h30",
+      "imagem": "img/ujb.png",
+      "linkAgenda": "https://calendar.app.google/ipzHYaBWVkyAv43Z6"
     }
   ]
 }
