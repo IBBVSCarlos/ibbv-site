@@ -2,18 +2,18 @@
   "avisos": [
     {
       "texto": "Reunião de Homens - 21/Jun - 19h30",
-      "imagem": "img/umm.png",
+      "imagem": "img/UMM.png",
       "linkAgenda": "https://calendar.app.google/zZtDDRRWMDwHFEtZ8"
     },
 
     {
       "texto": "Reunião de Mulheres - 21/Jun - 19h30",
-      "imagem": "img/mcm.png",
+      "imagem": "img/MCM.png",
       "linkAgenda": "https://calendar.app.google/PbXotPEcUvQbitBB8"
     },
     {
       "texto": "Reunião de Jovens - 22/Jun - 10h45",
-      "imagem": "img/ujb.png",
+      "imagem": "img/UJB.png",
       "linkAgenda": "https://calendar.app.google/ipzHYaBWVkyAv43Z6"
     }
   ]
