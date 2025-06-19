@@ -757,3 +757,28 @@ footer a:focus {
   background: #267d7d;
   box-shadow: 0 6px 12px rgba(38, 125, 125, 0.8);
 }
+
+/* --------------------------- PIX --------------------------- */
+.msg-copiado {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2e7d32; /* verde escuro */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none; /* evita interação quando invisível */
+}
+
+.msg-copiado.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
