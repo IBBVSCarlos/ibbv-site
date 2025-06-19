@@ -208,3 +208,29 @@ footer a:focus {
     padding-top: 1rem;
   }
 }
+#devocional {
+  margin-top: 2em;
+}
+
+.titulo-devocional {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2e7d32;
+}
+
+.versiculo-devocional {
+  font-style: italic;
+  font-size: 1.1em;
+  margin: 0.5em 0;
+  border-left: 4px solid #2e7d32;
+  padding-left: 1em;
+}
+
+.referencia-devocional {
+  font-weight: 500;
+  color: #555;
+}
+
+.mensagem-devocional {
+  margin-top: 1em;
+}
