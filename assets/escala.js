@@ -33,9 +33,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       `;
       document.body.appendChild(modal);
+
+      // ✅ Fecha o modal ao clicar fora do conteúdo
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
     });
 
-    // Adiciona eventos de clique para abrir modais
+    // Abre o modal ao clicar no ícone correspondente
     document.querySelectorAll(".escala-item").forEach(item => {
       item.addEventListener("click", () => {
         const modalId = item.dataset.modal;
