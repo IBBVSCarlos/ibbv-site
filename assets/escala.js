@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       "Recepção": "modal-recepcao",
       "Culto Kids": "modal-kids",
       "Cantina": "modal-cantina",
-      "Quarta-Feira": "modal-quarta"
+      "Culto de Quarta-Feira": "modal-quarta"
     };
 
     // Cria os modais dinamicamente
