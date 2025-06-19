@@ -45,3 +45,19 @@ async function carregarDevocional() {
     document.getElementById("conteudo-devocional").innerHTML = '<p>Erro ao carregar devocional. Tente novamente mais tarde.</p>';
   }
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  definirSemanaReferencia();
+  carregarProgramacao();
+  carregarAvisos();
+  carregarAniversariantesSemana();
+  carregarColunasDoPastor();
+  carregarDevocional(); // 👈 incluído aqui!
+
+  const btnImprimir = document.getElementById('print-now');
+  if (btnImprimir) {
+    btnImprimir.addEventListener('click', () => {
+      window.print();
+    });
+  }
+});
