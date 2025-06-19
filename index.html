@@ -97,36 +97,27 @@
 <!---------------------------------------------------------- Escala de Ministérios com ícones clicáveis ------------------------------------->
 <section id="escala-ministerios" class="section-box">
   <h2>Escala de Ministérios</h2>
-  <div class="ministerios-grid">
-    <div class="ministerio-item" data-ministerio="Recepção">
-      <img src="assets/img/ministerio_icon_1.webp" alt="Recepção">
+  <div class="escala-grid">
+    <div class="escala-item" data-modal="modal-recepcao">
+      <img src="images/icon-recepcao.png" alt="Ícone Recepção">
       <p>Recepção</p>
     </div>
-    <div class="ministerio-item" data-ministerio="Culto Kids">
-      <img src="assets/img/ministerio_icon_2.webp" alt="Culto Kids">
+    <div class="escala-item" data-modal="modal-kids">
+      <img src="images/icon-kids.png" alt="Ícone Culto Kids">
       <p>Culto Kids</p>
     </div>
-    <div class="ministerio-item" data-ministerio="Cantina">
-      <img src="assets/img/ministerio_icon_3.webp" alt="Cantina">
+    <div class="escala-item" data-modal="modal-cantina">
+      <img src="images/icon-cantina.png" alt="Ícone Cantina">
       <p>Cantina</p>
     </div>
-    <div class="ministerio-item" data-ministerio="Quarta-feira">
-      <img src="assets/img/ministerio_icon_4.webp" alt="Culto Quarta-feira">
-      <p>Quarta-feira</p>
+    <div class="escala-item" data-modal="modal-quarta">
+      <img src="images/icon-quarta.png" alt="Ícone Quarta-feira">
+      <p>Quarta-Feira</p>
     </div>
   </div>
 </section>
 
-<!---------------------------------------------------------------------- Modal da Escala ------------------------------------------------->
-<div id="modalEscala" class="modal">
-  <div class="modal-content">
-    <span class="btn-fechar" id="fecharModal">Fechar</span>
-    <h2 id="modalTitulo">Escala</h2>
-    <ul id="modalLista"></ul>
-  </div>
-</div>
-
-<!-- Aniversariantes -->
+<!--------------------------------------------------------------------- Aniversariantes -------------------------------------------------->
     <section id="aniversariantes" class="section-box">
       <h2>Aniversariantes da Semana</h2>
       <ul id="lista-aniversariantes" class="aniversariantes-lista" aria-live="polite">
@@ -217,5 +208,6 @@
   <script src="assets/devocional.js" defer></script>
   <script src="assets/coluna_pastor.js" defer></script>
   <script src="assets/script.js" defer></script>
+  <script src="assets/escala.js" defer></script>
 </body>
 </html>
