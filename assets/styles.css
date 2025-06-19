@@ -1,3 +1,8 @@
+Pular para o conteúdo
+Histórico de chats
+
+Você disse:
+me ajuda com o esquema de cores do site:
 /* --------------------------- PADRONIZAÇÃO GERAL --------------------------- */
 
 html, body {
@@ -615,4 +620,456 @@ footer a:focus {
 .btn-estatuto:hover {
   background: #16a085;
   box-shadow: 0 6px 12px rgba(22, 160, 133, 0.8);
+}
+O ChatGPT disse:
+Memória salva atualizada
+Seu site já está com uma paleta bem coesa e agradável, centrada em tons naturais e tranquilos — com foco em verde escuro, verde água, azul petróleo e tons pastéis esverdeados. Abaixo estão sugestões para refinar e padronizar ainda mais o esquema de cores, além de manter harmonia e acessibilidade visual:
+
+🎨 Paleta Base (conforme seu CSS atual)
+Elemento	Cor (hex)	Descrição
+Fundo geral	#003322 → #2C6A6A	Gradiente verde escuro para azul petróleo
+Destaques verdes	#3FBF9F	Verde água vibrante, usado em bordas/botões
+Texto claro	#C0E6C0	Verde muito claro para textos padrão
+Título / contraste	#A8E6A1	Verde pastel, bom para contraste em títulos
+Sombras / efeitos	#003300, #002222	Verdes escuros e azulados para sombras/textos fortes
+Modais / fundo claro	#eefcf9	Branco esverdeado (neutro claro)
+✅ Recomendações de Ajuste (harmonia + legibilidade)
+Uniformizar Tons para Consistência
+
+Use o #3FBF9F como cor primária para ação (botões, links ativos).
+
+Use #2C6A6A ou #004455 como base de fundos escuros e headers.
+
+Tons Secundários / Complementares
+
+Pode incorporar toques de laranja queimado (#FF9966) ou amarelo pálido (#FFEEAA) em detalhes (como ícones ou badges) para contraste quente.
+
+Texto em fundos escuros
+
+Mantenha #C0E6C0 para texto padrão, mas use #FFFFFF (com sombra sutil) para áreas que exigem mais contraste.
+
+Tons para Feedback (acessibilidade + UX)
+
+Função	Cor sugerida
+Sucesso	#66CC99
+Aviso	#FFCC66
+Erro	#FF6666
+Informação	#66CCCC
+🌗 Modo Claro (se quiser futuramente)
+Para um modo claro com a mesma identidade:
+
+Fundo: #eefcf9 ou #f0fff4
+
+Texto principal: #004422
+
+Botões primários: #3FBF9F
+
+Sombras em rgba(0, 68, 68, 0.2)
+
+🧪 Ferramenta de Inspiração
+Quer testar ao vivo? Use Coolors com sua paleta base. Dá para gerar variações e exportar códigos rapidamente.
+
+Se quiser, posso criar uma tabela final com variáveis CSS (:root { --cor-principal: ... }) para facilitar ajustes futuros. Deseja isso?
+
+Você disse:
+preciso de uma paleta mais leve para os olhos
+O ChatGPT disse:
+Ótimo! Se o objetivo é uma paleta mais leve para os olhos, mantendo a identidade atual (verde escuro, verde água, azul petróleo), podemos criar uma versão com tons mais suaves, claros e aconchegantes — ideal para leitura prolongada e acessibilidade.
+
+🌿 Nova Paleta Suave (Soft UI)
+Esses tons oferecem contraste adequado, mas são menos agressivos visualmente:
+
+Finalidade	Cor nova sugerida	Nome comum
+Fundo base	#eafaf1	Verde menta muito claro
+Texto principal	#1f3b2c	Verde floresta escuro (para contraste)
+Verde suave	#a8e6cf	Verde água pastel
+Azul petróleo claro	#b2dfdb	Azul esverdeado claro
+Destaque sutil	#c6f1e7	Verde piscina
+Título (primário)	#00897b	Verde petróleo moderado
+Link ativo / ação	#4db6ac	Verde água médio
+Fundo box	#f4fff9	Branco com toque de verde
+Sombra leve	rgba(0, 50, 40, 0.1)	Sombra esverdeada leve
+🎨 Sugestão de :root com variáveis CSS
+:root {
+  --cor-fundo: #eafaf1;
+  --cor-texto: #1f3b2c;
+  --cor-box: #f4fff9;
+  --cor-primaria: #4db6ac;
+  --cor-destaque: #00897b;
+  --cor-verde-suave: #a8e6cf;
+  --cor-azul-suave: #b2dfdb;
+  --cor-hover: #00796b;
+  --cor-link: #3fbf9f;
+  --sombra-suave: 0 4px 12px rgba(0, 50, 40, 0.1);
+}
+💡 Exemplos de aplicação no seu CSS
+Troque o fundo geral:
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+Em section-box, use:
+
+.section-box {
+  background: var(--cor-box);
+  color: var(--cor-texto);
+  box-shadow: var(--sombra-suave);
+}
+Botões:
+
+button {
+  background: var(--cor-primaria);
+  color: white;
+}
+
+button:hover {
+  background: var(--cor-hover);
+}
+✅ Benefícios dessa nova paleta
+Mais clara, leve e agradável para leitura;
+
+Mantém a identidade visual (tons de verde e azul);
+
+Maior acessibilidade (especialmente para visão sensível ou ambientes com luz forte);
+
+Pode ser usada para um "modo claro" ou como tema padrão.
+
+Se quiser, posso montar um trecho inteiro do seu CSS atualizado com essas cores. Deseja que eu atualize um trecho específico (como body, .section-box, header, etc.) com essa nova paleta?
+
+Você disse:
+gostei inclusive da ideia do root... aplique e retorne o código completo, por favor
+O ChatGPT disse:
+Excelente! Abaixo está a versão completa do seu CSS atualizada com:
+
+Variáveis CSS no :root
+
+Adaptação de cores para uma paleta mais leve e suave
+
+Melhoria de contraste com tons naturais
+
+Preservação do layout original, com foco em legibilidade e conforto visual
+
+✅ CSS Atualizado com Paleta Leve e Variáveis
+:root {
+  --cor-fundo: #eafaf1;
+  --cor-texto: #1f3b2c;
+  --cor-box: #f4fff9;
+  --cor-primaria: #4db6ac;
+  --cor-destaque: #00897b;
+  --cor-verde-suave: #a8e6cf;
+  --cor-azul-suave: #b2dfdb;
+  --cor-hover: #00796b;
+  --cor-link: #3fbf9f;
+  --sombra-suave: 0 4px 12px rgba(0, 50, 40, 0.1);
+}
+
+/* --------------------------- PADRONIZAÇÃO GERAL --------------------------- */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: clamp(16px, 1.5vw, 20px);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
+/* --------------------------- HEADER --------------------------- */
+
+header {
+  background-color: var(--cor-primaria);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-bottom: 3px solid var(--cor-link);
+  box-shadow: var(--sombra-suave);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.logo-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+#logo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--cor-verde-suave);
+}
+
+.light-effect {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cor-link), transparent 60%);
+  pointer-events: none;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.titulo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 250px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.boletim-titulo {
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--cor-destaque);
+  text-shadow: 1px 1px 3px #b2dfdb;
+}
+
+#semana-referencia {
+  font-style: italic;
+  color: var(--cor-destaque);
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  background-color: #d7f5e6;
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  max-width: fit-content;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+/* --------------------------- CONTAINER PRINCIPAL --------------------------- */
+
+.container {
+  flex: 1;
+  max-width: 900px;
+  width: 95%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --------------------------- SECTION BOX --------------------------- */
+
+.section-box {
+  background: var(--cor-box);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+  color: var(--cor-texto);
+  position: relative;
+  z-index: 0;
+}
+
+.section-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(circle, var(--cor-verde-suave) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.08;
+}
+
+h2 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--cor-destaque);
+  border-bottom: 3px solid var(--cor-link);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Conteúdo principal */
+#devocional, #programacao, #avisos, #escala-ministerios, #aniversariantes, #coluna-pastor, #estatuto {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  text-align: justify;
+}
+
+/* --------------------------- Programação com Ícones --------------------------- */
+
+.programacao-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.programacao-item .hora {
+  min-width: 130px;
+  font-weight: 700;
+  color: var(--cor-destaque);
+}
+
+.programacao-item .icone {
+  font-size: 1.2rem;
+}
+
+/* --------------------------- Modal Estatuto --------------------------- */
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-content {
+  background: #ffffff;
+  color: var(--cor-texto);
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--sombra-suave);
+  position: relative;
+  text-align: center;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  border: 2px solid var(--cor-link);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--cor-destaque);
+  font-family: 'Georgia', serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 1px var(--cor-verde-suave);
+}
+
+.modal-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.modal-content iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 300px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--cor-link);
+}
+
+/* --------------------------- Botões --------------------------- */
+
+button,
+.btn-fechar,
+.btn-estatuto,
+.btn-aviso {
+  padding: 0.5rem 1rem;
+  background: var(--cor-primaria);
+  color: white;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: var(--sombra-suave);
+}
+
+button:hover,
+.btn-fechar:hover,
+.btn-estatuto:hover,
+.btn-aviso:hover {
+  background: var(--cor-hover);
+}
+
+a:hover,
+a:focus-visible {
+  outline: 2px dashed var(--cor-link);
+  outline-offset: 2px;
+}
+
+/* --------------------------- Footer --------------------------- */
+
+footer {
+  background-color: #d2f1e6;
+  color: var(--cor-texto);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  user-select: none;
+}
+
+footer a {
+  color: var(--cor-destaque);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--cor-link);
+  text-decoration: underline;
+}
+
+.social-links a {
+  color: var(--cor-destaque);
+  font-size: 1.5rem;
+  transition: color 0.3s ease-in-out, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--cor-link);
+  transform: scale(1.2);
 }
