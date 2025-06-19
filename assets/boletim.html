@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boletim Semanal - Igreja Batista de Boa Vista</title>
+
+  <link rel="stylesheet" href="boletim.css" />
+  <script src="imprimir.js" defer></script>
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="Logo Igreja Batista de Boa Vista" />
+  <h1>Boletim Semanal</h1>
+  <p id="semana-atual">Semana de ...</p>
+  <p><a href="../index.html" aria-label="Voltar à página inicial">← Voltar à página inicial</a></p>
+</header>
+
+  <main id="conteudo">
+    <section id="programacao">
+      <h2>Programação da Semana</h2>
+      <ul>
+        <li>Domingo - Culto 10h</li>
+        <li>Quarta - Oração 19h</li>
+        <!-- Complete com sua programação -->
+      </ul>
+    </section>
+
+    <section id="avisos">
+      <h2>Avisos</h2>
+      <ul>
+        <li>Encontro de casais no sábado</li>
+        <li>...</li>
+      </ul>
+    </section>
+
+    <section id="aniversariantes">
+      <h2>Aniversariantes</h2>
+      <ul>
+        <li>Seg 17/06 - Maria Silva</li>
+        <li>Qua 19/06 - João Paulo</li>
+      </ul>
+    </section>
+
+    <section id="devocional">
+      <h2>Devocional</h2>
+      <p>"E conhecereis a verdade..."</p>
+    </section>
+
+    <section id="coluna-do-pastor-container">
+      <h2>Coluna do Pastor</h2>
+      <label for="coluna-select">Escolha o texto da Coluna do Pastor:</label>
+      <select id="coluna-select" aria-label="Selecione texto da Coluna do Pastor"></select>
+      <article id="coluna-pastor" tabindex="0" aria-live="polite" style="margin-top: 1em; border-left: 4px solid #2e7d32; padding-left: 1em;">
+        <!-- Texto carregado dinamicamente -->
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Av. Henrique Gregori, 151 – Boa Vista, São Carlos/SP</p>
+    <p>
+      <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
+      (16) 99205-3530
+    </p>
+    <p>
+      <strong>Chave PIX para Dízimos e Ofertas:</strong><br />
+      57.722.761/0001-74 — Igreja Batista de Boa Vista — Banco X
+    </p>
+  </footer>
+
+  <button id="print-now" aria-label="Imprimir boletim" style="position: fixed; bottom: 20px; right: 20px; background: #2e7d32; color: white; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.3); font-size: 16px;">
+    🖨️ Imprimir
+  </button>
+</body>
+</html>
