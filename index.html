@@ -193,16 +193,24 @@
   </a>
 </div>
 
-    <div class="doacoes-pix">
-      <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
-        💳 Dízimos e Ofertas
-      </button>
-      <div id="pix-box" class="pix-box" hidden>
-        <p>Chave PIX - Igreja Batista de Boa Vista:</p>
-        <code id="pix" tabindex="0"> 57.722.761/0001-74</code>
-        <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
-      </div>
-    </div>
+    
+<!-- BOTAO PIX -->
+<div class="doacoes-pix">
+  <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
+    💳 Dízimos e Ofertas
+  </button>
+  <div id="pix-box" class="pix-box" hidden>
+    <p>Chave PIX - Igreja Batista de Boa Vista:</p>
+    <code id="pix" tabindex="0">57.722.761/0001-74</code>
+    <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
+  </div>
+</div>
+
+<!-- Mensagem de confirmação da cópia -->
+<div id="msg-copiado" class="msg-copiado" aria-live="polite" style="display:none;">
+  <!-- Conteúdo inserido via JavaScript -->
+</div>
+    
   </footer>
 
   <script src="assets/devocional.js" defer></script>
