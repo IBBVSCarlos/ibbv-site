@@ -94,15 +94,39 @@
       </ul>
     </section>
 
-    <!-- Escala de Ministérios -->
-    <section id="escala-ministerios" class="section-box">
-      <h2>Escala de Ministérios</h2>
-      <ul id="lista-escala">
-        <li>Carregando escala...</li>
-      </ul>
-    </section>
+<!---------------------------------------------------------- Escala de Ministérios com ícones clicáveis ------------------------------------->
+<section id="escala-ministerios" class="section-box">
+  <h2>Escala de Ministérios</h2>
+  <div class="ministerios-grid">
+    <div class="ministerio-item" data-ministerio="Recepção">
+      <img src="assets/img/ministerio_icon_1.webp" alt="Recepção">
+      <p>Recepção</p>
+    </div>
+    <div class="ministerio-item" data-ministerio="Culto Kids">
+      <img src="assets/img/ministerio_icon_2.webp" alt="Culto Kids">
+      <p>Culto Kids</p>
+    </div>
+    <div class="ministerio-item" data-ministerio="Cantina">
+      <img src="assets/img/ministerio_icon_3.webp" alt="Cantina">
+      <p>Cantina</p>
+    </div>
+    <div class="ministerio-item" data-ministerio="Quarta-feira">
+      <img src="assets/img/ministerio_icon_4.webp" alt="Culto Quarta-feira">
+      <p>Quarta-feira</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Aniversariantes -->
+<!---------------------------------------------------------------------- Modal da Escala ------------------------------------------------->
+<div id="modalEscala" class="modal">
+  <div class="modal-content">
+    <span class="btn-fechar" id="fecharModal">Fechar</span>
+    <h2 id="modalTitulo">Escala</h2>
+    <ul id="modalLista"></ul>
+  </div>
+</div>
+
+<!-- Aniversariantes -->
     <section id="aniversariantes" class="section-box">
       <h2>Aniversariantes da Semana</h2>
       <ul id="lista-aniversariantes" class="aniversariantes-lista" aria-live="polite">
