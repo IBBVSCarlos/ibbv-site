@@ -336,7 +336,7 @@ h2 {
   margin: 0;
   font-weight: 600;
   color: #d8fff2;
-  text-shadow: 1px 1px 2px #003322;
+  text-shadow: 1px 1px 1px #003322;
   word-break: break-word;
   hyphens: auto;
 }
