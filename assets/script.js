@@ -127,25 +127,11 @@ async function carregarAniversariantesSemana() {
 }
 document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
-// =====================================
-// 🛐 Escala de Ministérios
-// =====================================
-async function carregarEscalaMinisterios() {
-  try {
-    const res = await fetch('data/escalamin.json');
-    const escala = await res.json();
-    const listaEscala = document.getElementById("lista-escala");
 
-    listaEscala.innerHTML = escala.map(({ ministerio, escalados }) => `
-      <li><strong>${ministerio}</strong>
-        <ul>${escalados.map(({ dia, nome }) => `<li>${dia}: ${nome}</li>`).join('')}</ul>
-      </li>`).join('');
-  } catch (error) {
-    console.error("Erro ao carregar escala de ministérios:", error);
-    document.getElementById("lista-escala").innerHTML = '<li>Erro ao carregar escala.</li>';
-  }
-}
-document.addEventListener("DOMContentLoaded", carregarEscalaMinisterios);
+// =====================================
+// 🛐 Escala de Ministérios - vem do escala.js
+// =====================================
+
 
 // =====================================
 // 📢 Avisos IBBV
