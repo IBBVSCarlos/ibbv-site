@@ -309,47 +309,53 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1.5rem;
   justify-items: center;
-  align-items: center;
-  margin-top: 1rem;
+  text-align: center;
 }
 
 .escala-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 160px;
+}
+
+.escala-item img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.escala-item p {
+  margin: 0;
+  font-weight: 600;
+  color: #d8fff2;
+  text-shadow: 1px 1px 2px #003322;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .escala-item:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0, 255, 170, 0.3);
 }
 
-.escala-item img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.escala-item span {
-  margin-top: 0.5rem;
-  font-weight: bold;
-  color: var(--color-text-primary, #C0E6C0);
-  font-size: 1rem;
-}
-
-/* Modal individual */
-
+/* Modal para cada ministério */
 .modal-escala {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   display: none;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 9999;
 }
 
@@ -358,44 +364,96 @@ h2 {
 }
 
 .modal-escala-content {
-  background: rgba(255, 255, 255, 0.95);
-  color: #003322;
+  background: #eefcf9;
+  color: #003333;
   padding: 2rem;
   border-radius: 16px;
-  max-width: 400px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0, 68, 68, 0.5);
+  max-width: 90%;
+  width: 300px;
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .modal-escala-content h3 {
   margin-top: 0;
+  color: #007766;
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .modal-escala-content ul {
-  list-style: none;
-  padding-left: 0;
+  padding-left: 0.5rem;
+  text-align: left;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .modal-escala-content li {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .modal-close {
   position: absolute;
-  top: 8px;
+  top: 12px;
   right: 12px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background: none;
+  background: #3FBF9F;
+  color: white;
   border: none;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  padding: 0.4rem 0.7rem;
   cursor: pointer;
-  color: #333;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  background: #2fa893;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+  .escala-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .escala-item {
+    padding: 0.8rem;
+    max-width: 140px;
+  }
+
+  .escala-item img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .escala-item p {
+    font-size: 0.9rem;
+  }
+
+  .modal-escala-content {
+    padding: 1.2rem;
+    width: 90%;
+    max-width: 260px;
+  }
+
+  .modal-escala-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-escala-content ul {
+    font-size: 0.95rem;
+  }
+
+  .modal-close {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
 }
 
 /* --------------------------- MODAL ESTATUTO --------------------------- */
