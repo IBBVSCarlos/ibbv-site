@@ -129,11 +129,6 @@ document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
 
 // =====================================
-// 🛐 Escala de Ministérios - vem do escala.js
-// =====================================
-
-
-// =====================================
 // 📢 Avisos IBBV
 // =====================================
 function carregarAvisos() {
@@ -238,13 +233,38 @@ function fecharEstatuto() {
 // =====================================
 // 💳 PIX - Copiar Chave & Alternar Visibilidade
 // =====================================
-function copiarTexto(texto, mensagem) {
-  navigator.clipboard.writeText(texto).then(() => alert(mensagem));
+
+function mostrarMensagemCopiada(chave, igreja, banco) {
+  const msgBox = document.getElementById("msg-copiado");
+  if (!msgBox) return;
+
+  msgBox.innerHTML = `
+    <strong>Chave copiada:</strong><br>
+    ${chave}<br>
+    ${igreja}<br>
+    ${banco}
+  `;
+
+  msgBox.classList.add("show");
+
+  setTimeout(() => {
+    msgBox.classList.remove("show");
+  }, 3000);
 }
+
 function copiarPix() {
   const pixElemento = document.getElementById("pix");
   if (pixElemento) {
-    copiarTexto(pixElemento.textContent.trim(), "Chave PIX copiada!");
+    const chave = pixElemento.textContent.trim();
+    navigator.clipboard.writeText(chave).then(() => {
+      mostrarMensagemCopiada(
+        chave,
+        "Igreja Batista de Boa Vista",
+        "CCM SICOOB CREDIACISC"
+      );
+    }).catch(() => {
+      alert("Não foi possível copiar a chave PIX.");
+    });
   } else {
     alert("Chave PIX não encontrada.");
   }
@@ -255,7 +275,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnPix) {
     btnPix.addEventListener("click", () => {
       const pixBox = document.getElementById("pix-box");
-      if (pixBox) pixBox.style.display = "block";
+      if (pixBox) {
+        pixBox.removeAttribute("hidden");
+        pixBox.style.display = "block";
+      }
     });
+  }
+
+  const btnCopiarPix = document.getElementById("btn-copiar-pix");
+  if (btnCopiarPix) {
+    btnCopiarPix.addEventListener("click", copiarPix);
   }
 });
