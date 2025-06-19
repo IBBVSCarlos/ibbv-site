@@ -27,6 +27,34 @@ function definirSemanaReferencia() {
   }
 }
 
+// ==============================
+// 📖 Devocional da Semana
+// ==============================
+async function carregarDevocional() {
+  try {
+    const res = await fetch('data/devocional.json'); // você pode usar outro nome se quiser
+    const dados = await res.json();
+
+    const hoje = new Date();
+    const diaSemana = hoje.getDay();
+    const inicioSemana = new Date(hoje);
+    inicioSemana.setDate(hoje.getDate() - (diaSemana === 0 ? 6 : diaSemana - 1));
+
+    // Procurar devocional correspondente à semana (baseado no ISO ou data de início)
+    const devocionalAtual = dados.find(d => new Date(d.inicio) <= hoje && new Date(d.fim) >= hoje);
+
+    const devocionalElemento = document.getElementById("texto-devocional");
+    if (devocionalAtual && devocionalElemento) {
+      devocionalElemento.textContent = devocionalAtual.texto;
+    } else {
+      devocionalElemento.textContent = "Devocional não disponível para esta semana.";
+    }
+  } catch (error) {
+    console.error("Erro ao carregar devocional:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", carregarDevocional);
 // =====================================
 // 🎉 Carregar aniversariantes da semana (adaptado)
 // =====================================
