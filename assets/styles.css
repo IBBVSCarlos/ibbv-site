@@ -213,19 +213,28 @@ h2 {
   margin-bottom: 0.6rem;
   font-weight: 500;
   font-size: 1.1rem;
+  flex-wrap: nowrap; /* evita quebra de linha */
 }
 
 .programacao-item .hora {
   min-width: 130px;
   font-weight: 700;
-  color: var(--color-text-secondary); /* mantém padrão da cor secundária */
+  color: var(--color-text-secondary);
+  flex-shrink: 0; /* evita encolher */
 }
 
 .programacao-item .icone {
-  font-size: 1.3rem; /* ajustado para ícones FontAwesome */
-  color: #3FBF9F; /* verde água, igual paleta */
+  font-size: 1.3rem;
+  color: #3FBF9F;
   flex-shrink: 0;
   margin: 0 0.4rem;
+}
+
+.programacao-item .descricao {
+  flex: 1; /* ocupa o restante do espaço */
+  white-space: nowrap; /* impede quebra de linha */
+  overflow: hidden;
+  text-overflow: ellipsis; /* caso o texto seja muito longo, aparece reticências */
 }
 
 /* --------------------------- AVISOS --------------------------- */
