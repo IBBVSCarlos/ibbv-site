@@ -14,10 +14,10 @@ function mostrarMensagemCopiada(chave, igreja, banco) {
   `;
 
   msgBox.classList.add("show");
-
   setTimeout(() => {
-    msgBox.classList.remove("show");
+  msgBox.classList.remove("show");
   }, 3000);
+  
 }
 
 function copiarPix() {
