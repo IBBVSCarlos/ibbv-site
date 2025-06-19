@@ -164,58 +164,76 @@
 
   </main>
 
-  <footer>
-    <p>© 2025 Igreja Batista de Boa Vista - São Carlos</p>
-    <p>
-      <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
-      (16) 99205-3530
-    </p>
-    <!-- Botão Estatuto centralizado -->
+<footer>
+  <!-- Identidade da Igreja -->
+  <p>© 2025 Igreja Batista de Boa Vista - São Carlos</p>
+
+  <!-- Endereço e Contato -->
+  <p>
+    Av. Henrique Gregori, 151 – Boa Vista, São Carlos/SP<br>
+    <a href="mailto:ibbvsaocarlos@gmail.com">ibbvsaocarlos@gmail.com</a> |
+    (16) 99205-3530
+  </p>
+
+  <!-- Botões Estatuto e Imprimir Boletim -->
   <div class="estatuto-footer">
     <button id="abrir-estatuto" class="btn-estatuto" aria-haspopup="dialog" aria-controls="modalEstatuto">
       📄 Estatuto IBBV
     </button>
+    <button id="btn-imprimir-boletim" class="btn-imprimir" aria-label="Imprimir boletim">
+      🖨️ Imprimir Boletim
+    </button>
   </div>
-    
-<!-- Social Links -->
-<div class="social-links">
-  <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="https://instagram.com/ibbvsaocarlos" target="_blank" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.youtube.com/@IBBVSaoCarlos" target="_blank" aria-label="YouTube">
-    <i class="fab fa-youtube"></i>
-  </a>
-  <a href="https://chat.whatsapp.com/8x4ChFg1Tlm2IEpffmRkkp" target="_blank" aria-label="Grupo no WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-</div>
 
-    
-<!-- BOTAO PIX -->
-<div class="doacoes-pix">
-  <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
-    💳 Dízimos e Ofertas
-  </button>
-  <div id="pix-box" class="pix-box" hidden>
-    <p>Chave PIX - Igreja Batista de Boa Vista:</p>
-    <code id="pix" tabindex="0">57.722.761/0001-74</code>
-    <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
+  <!-- Redes sociais -->
+  <div class="social-links">
+    <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://instagram.com/ibbvsaocarlos" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@IBBVSaoCarlos" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://chat.whatsapp.com/8x4ChFg1Tlm2IEpffmRkkp" target="_blank" aria-label="Grupo no WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
   </div>
-</div>
 
-<!-- Container da mensagem -->
-<div id="msg-copiado" class="msg-copiado" aria-live="polite"></div>
-    
-  </footer>
+  <!-- Botão e caixa PIX -->
+  <div class="doacoes-pix">
+    <button id="btn-pix" aria-expanded="false" aria-controls="pix-box" aria-label="Mostrar chave PIX">
+      💳 Dízimos e Ofertas
+    </button>
+    <div id="pix-box" class="pix-box" hidden>
+      <p>Chave PIX - Igreja Batista de Boa Vista:</p>
+      <code id="pix" tabindex="0">57.722.761/0001-74</code>
+      <button id="btn-copiar-pix" aria-label="Copiar chave PIX">Copiar</button>
+    </div>
+  </div>
+
+  <!-- Mensagem de confirmação PIX -->
+  <div id="msg-copiado" class="msg-copiado" aria-live="polite"></div>
+</footer>
 
   <script src="assets/devocional.js" defer></script>
   <script src="assets/coluna_pastor.js" defer></script>
   <script src="assets/script.js" defer></script>
   <script src="assets/escala.js" defer></script>
   <script src="assets/funcpix.js" defer></script>
+
+<!-- Scripts Impressao do Boletim -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnImprimir = document.getElementById("btn-imprimir-boletim");
+    if (btnImprimir) {
+      btnImprimir.addEventListener("click", () => {
+        window.open("assets/boletim.html", "_blank");
+      });
+    }
+  });
+</script>
   
 </body>
 </html>
