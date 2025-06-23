@@ -43,21 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnPix && pixBox) {
     btnPix.addEventListener("click", () => {
-      const visivel = pixBox.style.display === "block";
+      const aberto = pixBox.classList.contains("visible");
 
-      if (visivel) {
-        pixBox.classList.remove("fade-in");
+      if (aberto) {
+        pixBox.classList.remove("visible", "fade-in");
         pixBox.classList.add("fade-out");
-        setTimeout(() => {
-          pixBox.setAttribute("hidden", "");
-          pixBox.style.display = "none";
-        }, 300); // bate com a duração da animação
         btnPix.textContent = "💳 Dízimos e Ofertas";
       } else {
-        pixBox.removeAttribute("hidden");
-        pixBox.style.display = "block";
         pixBox.classList.remove("fade-out");
-        pixBox.classList.add("fade-in");
+        pixBox.classList.add("visible", "fade-in");
         btnPix.textContent = "❌ Fechar chave PIX";
       }
     });
@@ -68,4 +62,3 @@ document.addEventListener("DOMContentLoaded", () => {
     btnCopiarPix.addEventListener("click", copiarPix);
   }
 });
-
