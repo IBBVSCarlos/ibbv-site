@@ -135,7 +135,7 @@ header {
   display: inline-block;
 }
 
-/* --------------------------- CONTAINER PRINCIPAL --------------------------- */
+/* -------------------------------------------- CONTAINER PRINCIPAL ----------------------------------------------- */
 
 .container {
   flex: 1;
@@ -158,7 +158,7 @@ header {
   overflow-x: hidden;
 }
 
-/* --------------------------- SECTION BOX --------------------------- */
+/* ------------------------------------------------------------- SECTION BOX ---------------------------------------------- */
 
 .section-box {
   background: var(--color-glass-bg);
@@ -205,7 +205,7 @@ h2 {
   color: var(--color-text-primary);
 }
 
-/* ------------------------------ Programação com ícones ---------------------------------------------- */
+/* ------------------------------------------------------------------------- Programação com ícones ---------------------------------------------- */
 .programacao-item {
   display: flow-root;
   align-items: center;
@@ -233,7 +233,7 @@ h2 {
 }
 
 
-/* --------------------------- AVISOS --------------------------- */
+/* -------------------------------------------------------------------- AVISOS --------------------------------------------------------------------- */
 .imagem-modal {
   position: fixed;
   top: 0;
@@ -302,7 +302,7 @@ h2 {
   background: rgba(0, 77, 0, 0.9);
 }
 
-/* --------------------------- ESCALA DE MINISTÉRIOS --------------------------- */
+/* --------------------------------------------------------------------- ESCALA DE MINISTÉRIOS ---------------------------------------------------------------- */
 
 .escala-grid {
   display: grid;
@@ -456,7 +456,7 @@ h2 {
   }
 }
 
-/* --------------------------- MODAL ESTATUTO --------------------------- */
+/* --------------------------------------------------------------------------- MODAL ESTATUTO --------------------------- */
 .modal {
   opacity: 0;
   visibility: hidden;
@@ -543,7 +543,7 @@ body.modal-open {
   }
 }
 
-/* --------------------------- BOTÕES DOCUMENTOS --------------------------- */
+/* -------------------------------------------------------------------- BOTÕES DOCUMENTOS --------------------------- */
 
 .documentos-botoes {
   display: flex;
@@ -581,7 +581,7 @@ body.modal-open {
 }
 
 
-/* --------------------------- FOOTER --------------------------- */
+/* --------------------------------------------------------------- FOOTER ---------------------------------------------------- */
 
 footer {
   background-color: var(--color-header-footer-bg);
@@ -787,9 +787,23 @@ footer a:focus {
   pointer-events: none; /* evita interação quando invisível */
   visibility: hidden;   /* nova forma de esconder sem quebrar a transição */
 }
+#pix-box {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
 
 .msg-copiado.show {
   opacity: 1;
-  pointer-events: auto;
   visibility: visible;
+  transform: translateY(-8px);
+  transition: opacity 0.4s ease, transform 0.3s ease;
 }
+
