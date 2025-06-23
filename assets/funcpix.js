@@ -15,9 +15,8 @@ function mostrarMensagemCopiada(chave, igreja, banco) {
 
   msgBox.classList.add("show");
   setTimeout(() => {
-  msgBox.classList.remove("show");
+    msgBox.classList.remove("show");
   }, 5000);
-  
 }
 
 function copiarPix() {
@@ -40,12 +39,26 @@ function copiarPix() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnPix = document.getElementById("btn-pix");
-  if (btnPix) {
+  const pixBox = document.getElementById("pix-box");
+
+  if (btnPix && pixBox) {
     btnPix.addEventListener("click", () => {
-      const pixBox = document.getElementById("pix-box");
-      if (pixBox) {
+      const visivel = pixBox.style.display === "block";
+
+      if (visivel) {
+        pixBox.classList.remove("fade-in");
+        pixBox.classList.add("fade-out");
+        setTimeout(() => {
+          pixBox.setAttribute("hidden", "");
+          pixBox.style.display = "none";
+        }, 300); // bate com a duração da animação
+        btnPix.textContent = "💳 Dízimos e Ofertas";
+      } else {
         pixBox.removeAttribute("hidden");
         pixBox.style.display = "block";
+        pixBox.classList.remove("fade-out");
+        pixBox.classList.add("fade-in");
+        btnPix.textContent = "❌ Fechar chave PIX";
       }
     });
   }
@@ -55,3 +68,4 @@ document.addEventListener("DOMContentLoaded", () => {
     btnCopiarPix.addEventListener("click", copiarPix);
   }
 });
+
