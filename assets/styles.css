@@ -824,9 +824,8 @@ footer a:focus {
 /* Quando visível: */
 #pix-box.visible {
   opacity: 1;
-  max-height: 500px;
+  max-height: 300px;
 }
-
 
 .fade-in {
   opacity: 1;
