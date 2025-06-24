@@ -302,6 +302,13 @@ h2 {
   background: rgba(0, 77, 0, 0.9);
 }
 
+@media (min-width: 768px) {
+  .imagem-modal-conteudo img {
+    max-width: 60vw; /* Ajuste menor para telas grandes */
+    max-height: 60vh;
+  }
+}
+
 /* --------------------------------------------------------------------- ESCALA DE MINISTÉRIOS ---------------------------------------------------------------- */
 
 .escala-grid {
