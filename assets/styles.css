@@ -207,7 +207,7 @@ h2 {
 
 @media screen and (min-width: 768px) {
   .section-box img {
-    max-width: 80%;
+    max-width: 90%;
     height: auto;
     padding: 1rem; /* Adiciona espaçamento */
   }
@@ -215,7 +215,7 @@ h2 {
 
 @media screen and (min-width: 1080px) {
   .section-box img {
-    max-width: 60%;
+    max-width: 75%;
     padding: 1.5rem; /* Espaçamento maior */
   }
 }
