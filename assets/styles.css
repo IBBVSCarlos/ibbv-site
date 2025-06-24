@@ -456,93 +456,6 @@ h2 {
   }
 }
 
-/* --------------------------------------------------------------------------- MODAL ESTATUTO --------------------------- */
-.modal {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 9999;
-  overflow-y: auto;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
-}
-
-.modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-body.modal-open {
-  overflow: hidden;
-}
-
-.modal-content {
-  background: #eefcf9;
-  width: 100%;
-  max-width: 300px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 68, 68, 0.5);
-  color: #003333;
-  position: relative;
-  text-align: center;
-
-  max-height: calc(100vh - 6rem);
-  overflow-y: auto;
-  border: 2px solid var(--color-accent);
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  color: #007766;
-  font-family: 'Georgia', serif;
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 1px #aaffee;
-}
-
-.modal-content p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #224444;
-}
-
-.modal-content iframe {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 300px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 0 10px var(--color-accent)99;
-}
-
-/* Responsividade */
-@media screen and (max-width: 480px) {
-  .modal-content {
-    padding: 1.2rem;
-    font-size: 0.95rem;
-    max-height: calc(100vh - 2rem);
-  }
-
-  .modal-content iframe {
-    aspect-ratio: 4 / 3;
-    max-height: 240px;
-  }
-
-  .btn-fechar {
-    width: 100%;
-  }
-}
-
 /* -------------------------------------------------------------------- BOTÕES DOCUMENTOS --------------------------- */
 
 .documentos-botoes {
@@ -745,29 +658,6 @@ footer a:focus {
   }
 }
 
-/* --------------------------- ESTATUTO --------------------------- */
-.estatuto-footer {
-  text-align: center;
-  margin: 1.5rem 0;
-}
-
-.btn-estatuto {
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.75rem 1.8rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 8px rgba(51, 153, 153, 0.6);
-}
-
-.btn-estatuto:hover {
-  background: #267d7d;
-  box-shadow: 0 6px 12px rgba(38, 125, 125, 0.8);
-}
 
 /* --------------------------- PIX --------------------------- */
 #btn-pix {
