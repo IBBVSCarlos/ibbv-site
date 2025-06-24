@@ -269,6 +269,8 @@ h2 {
   max-height: 90vh;
   width: auto;
   height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(0,0,0,0.5);
 }
 
 .imagem-modal-conteudo img {
