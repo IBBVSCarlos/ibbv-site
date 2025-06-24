@@ -140,56 +140,21 @@
 <section id="documentos-igreja" class="section-box">
   <h2>Documentos da Igreja</h2>
   <div class="documentos-botoes">
-    <button id="abrir-estatuto" class="btn-estatuto" aria-haspopup="dialog" aria-controls="modalEstatuto">
+    <a href="assets/estatuto_h.html" class="btn-estatuto" target="_blank" rel="noopener">
       📄 Estatuto IBBV
-    </button>
+    </a>
     <a href="assets/catecismo.html" class="btn-estatuto" target="_blank" rel="noopener">
       📘 Catecismo IBBV
     </a>
   </div>
 </section>
 
-<!-- Modal do Estatuto -->
-<div id="modalEstatuto" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-estatuto">
-  <div class="modal-content">
-    <h2 id="titulo-estatuto">Estatuto da IBBV</h2>
-    
-    <!-- PDF incorporado -->
-    <iframe 
-      src="assets/estatuto.pdf" 
-      width="100%" 
-      height="500" 
-      style="border: none; border-radius: 8px; box-shadow: 0 0 10px #003;">
-    </iframe>
-
-    <!-- Link de fallback -->
-    <p style="text-align: center; margin-top: 0.5rem;">
-      <a href="assets/estatuto.pdf" target="_blank" rel="noopener" style="color: #3FBF9F;">
-        📄 Abrir em nova aba / Baixar PDF
-      </a>
-    </p>
-
-    <button onclick="fecharEstatuto()" class="btn-fechar" aria-label="Fechar Estatuto">
-      ❌ Fechar
-    </button>
-  </div>
-</div>
 
   </main>
 
 <footer>
 
-  <!-- Botões Estatuto e Imprimir Boletim 
-  <div class="estatuto-footer">
-    <button id="abrir-estatuto" class="btn-estatuto" aria-haspopup="dialog" aria-controls="modalEstatuto">
-      📄 Estatuto IBBV
-    </button>
-    <!-- button id="btn-imprimir-boletim" class="btn-imprimir" aria-label="Imprimir boletim"
-      🖨️ Imprimir Boletim
-    </button>
-  </div> -->
-
-  <!-- Redes sociais -->
+  <!------------------------------------------------------------------------ Redes sociais ------------------------------------------------------>
   <div class="social-links">
     <a href="https://facebook.com/ibbvsaocarlos" target="_blank" aria-label="Facebook">
       <i class="fab fa-facebook-f"></i>
@@ -238,18 +203,6 @@
   <script src="assets/script.js" defer></script>
   <script src="assets/escala.js" defer></script>
   <script src="assets/funcpix.js" defer></script>
-
-<!-- Scripts Impressao do Boletim 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnImprimir = document.getElementById("btn-imprimir-boletim");
-    if (btnImprimir) {
-      btnImprimir.addEventListener("click", () => {
-        window.open("assets/boletim.html", "_blank");
-      });
-    }
-  });
-</script> -->
   
 </body>
 </html>
