@@ -48,8 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (aberto) {
         pixBox.classList.remove("visible", "fade-in");
         pixBox.classList.add("fade-out");
+        setTimeout(() => {
+          pixBox.setAttribute("hidden", "true");
+          pixBox.style.display = "none";
+        }, 300); // Espera a animação antes de esconder
         btnPix.textContent = "💳 Dízimos e Ofertas";
       } else {
+        pixBox.removeAttribute("hidden");
+        pixBox.style.display = "block";
         pixBox.classList.remove("fade-out");
         pixBox.classList.add("visible", "fade-in");
         btnPix.textContent = "❌ Fechar chave PIX";
