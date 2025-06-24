@@ -265,8 +265,10 @@ h2 {
 
 .imagem-modal-conteudo {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
 }
 
 .imagem-modal-conteudo img {
