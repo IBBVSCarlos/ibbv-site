@@ -205,6 +205,22 @@ h2 {
   color: var(--color-text-primary);
 }
 
+@media screen and (min-width: 768px) {
+  .section-box img {
+    max-width: 80%;
+    height: auto;
+    padding: 1rem; /* Adiciona espaçamento */
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .section-box img {
+    max-width: 60%;
+    padding: 1.5rem; /* Espaçamento maior */
+  }
+}
+
+
 /* ------------------------------------------------------------------------- Programação com ícones ---------------------------------------------- */
 .programacao-item {
   display: flow-root;
@@ -301,14 +317,6 @@ h2 {
 .btn-aviso:hover {
   background: rgba(0, 77, 0, 0.9);
 }
-
-@media (min-width: 768px) {
-  .imagem-modal-conteudo img {
-    max-width: 60vw; /* Ajuste menor para telas grandes */
-    max-height: 60vh;
-  }
-}
-
 /* --------------------------------------------------------------------- ESCALA DE MINISTÉRIOS ---------------------------------------------------------------- */
 
 .escala-grid {
