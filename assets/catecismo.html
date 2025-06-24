@@ -198,13 +198,14 @@
   <label for="data"><strong>Data:</strong></label>
   <input type="date" id="data" name="data" required>
 
-  <button id="salvar-compromisso">Salvar Compromisso</button>
+  <button id="salvar-compromisso">Firmar Compromisso</button>
 
   <p id="mensagem-sucesso" style="display: none; color: green; font-weight: bold; margin-top: 1rem;">
     ✅ Compromisso registrado com sucesso!
   </p>
 </div>
 
+  
 <script>
   document.getElementById("salvar-compromisso").addEventListener("click", function() {
     const nome = document.getElementById("assinatura").value.trim();
@@ -215,20 +216,19 @@
       return;
     }
 
-    // URL do Web App do Google Apps Script
-    const url = "https://script.google.com/macros/s/AKfycbyMDxOUd-Q65mzgJyUunyjGN_chkWeHdVIkxw1zyz00oHH525hXMQnG9LFUd_sNsxya/exec";
+    // URL do Web App do Google Apps Script (ATUALIZE COM A NOVA URL!)
+    const url = "https://script.google.com/macros/s/AKfycbxS86WLc8WdqKEIXTM48ifeBMPbnHXVrM_tsu3dYlYLUQ1uZ0owk53UJmeykUysncfb/exec";
 
     // Dados a serem enviados
-    const dados = new FormData();
-    dados.append("nome", nome);
-    dados.append("data", data);
+    const dados = JSON.stringify({ nome: nome, data: data });
 
     fetch(url, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: dados
-    }).then(response => response.text())
-      .then(texto => {
-        console.log("Resposta do servidor:", texto);
+    }).then(response => response.json())
+      .then(data => {
+        console.log("Resposta do servidor:", data);
         document.getElementById("mensagem-sucesso").style.display = "block";
       })
       .catch(error => {
@@ -237,6 +237,7 @@
       });
   });
 </script>
+
 
 
   <footer>
