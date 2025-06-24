@@ -27,6 +27,7 @@ app.post("/proxy", async (req, res) => {
     const data = await response.text();
     res.send(data);
   } catch (error) {
+    console.error("❌ Erro ao conectar ao Google Apps Script:", error);
     res.status(500).send("❌ Erro ao conectar ao Google Apps Script.");
   }
 });
