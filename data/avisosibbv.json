@@ -1,5 +1,12 @@
 {
   "avisos": [
+        {
+      "texto": "Cantina - 29/Jun - 21h30",
+      "imagem": "img/CANTINA.jpg",
+      "linkAgenda": "",
+      "expiraEm": "2025-06-29",
+      "executaEm": "2025-06-29"
+    },
     {
       "texto": "Reunião de Homens - 04/Jul - 20h00",
       "imagem": "img/UMM.png",
