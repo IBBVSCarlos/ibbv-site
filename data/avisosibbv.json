@@ -1,21 +1,27 @@
 {
   "avisos": [
+        {
+      "texto": "Atletas de Cristo - 07/Jul - 20h00",
+      "imagem": "img/ATL.png",
+      "linkAgenda": "",
+      "expiraEm": "2025-07-08"
+    },
     {
       "texto": "Reunião de Homens - 21/Jun - 19h30",
       "imagem": "img/UMM.png",
-      "linkAgenda": "https://calendar.app.google/zZtDDRRWMDwHFEtZ8",
-      "expiraEm": "2025-06-22"
+      "linkAgenda": "",
+      "expiraEm": "2025-07-05"
     },
     {
-      "texto": "Reunião de Mulheres - 21/Jun - 19h30",
-      "imagem": "img/MCM.png",
-      "linkAgenda": "https://calendar.app.google/PbXotPEcUvQbitBB8",
-      "expiraEm": "2025-06-22"
+      "texto": "Santa Ceia - 13/Jul - 09h00",
+      "imagem": "img/CEIA.png",
+      "linkAgenda": "",
+      "expiraEm": "2025-07-14"
     },
     {
       "texto": "Reunião de Jovens - 22/Jun - 10h45",
       "imagem": "img/UJB.png",
-      "linkAgenda": "https://calendar.app.google/ipzHYaBWVkyAv43Z6",
+      "linkAgenda": "",
       "expiraEm": "2025-06-23"
     },
     {
