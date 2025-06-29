@@ -209,7 +209,7 @@ function iniciarContador(dataEvento, elementoId) {
     if (!el) return;
 
     if (distancia <= 0) {
-      el.textContent = '🎉 Hoje é o evento!';
+      el.textContent = '🎉 É Hoje!!';
       el.removeAttribute('data-status');
       return;
     }
