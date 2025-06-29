@@ -136,21 +136,18 @@ function carregarAvisos() {
     .then(res => res.json())
     .then(({ avisos }) => {
       const hoje = new Date();
-      hoje.setHours(0, 0, 0, 0); // considerar só a data, não a hora
+      hoje.setHours(0, 0, 0, 0);
 
       const listaAvisos = document.getElementById('lista-avisos');
 
       const avisosValidos = avisos
         .filter(aviso => {
-          const executa = new Date(aviso.executaEm);
-          executa.setHours(0, 0, 0, 0); // início do dia do evento
+          const [ano, mes, dia] = aviso.executaEm.split('-').map(Number);
 
-          const expira = new Date(aviso.executaEm);
-          expira.setHours(23, 59, 59, 999); // fim do dia do evento
+          const executa = new Date(ano, mes - 1, dia, 0, 0, 0, 0);
+          const expira = new Date(ano, mes - 1, dia, 23, 59, 59, 999);
 
-          const limitePublicacao = new Date(aviso.executaEm);
-          limitePublicacao.setDate(limitePublicacao.getDate() - 7);
-          limitePublicacao.setHours(0, 0, 0, 0);
+          const limitePublicacao = new Date(ano, mes - 1, dia - 7, 0, 0, 0, 0);
 
           return hoje >= limitePublicacao && hoje <= expira;
         })
@@ -242,8 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Notification.requestPermission();
   }
 });
-
-
 
 // =====================================
 // 🔍 Ampliar imagem
