@@ -129,25 +129,26 @@ document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
 
 // =====================================
-// 📢 Avisos IBBV (com expiração + destaque + notificação)
+// 📢 Avisos IBBV (com expiração automática via executaEm)
 // =====================================
 function carregarAvisos() {
   fetch('data/avisosibbv.json')
     .then(res => res.json())
     .then(({ avisos }) => {
       const hoje = new Date();
+      hoje.setHours(0, 0, 0, 0); // zera hora para evitar bugs de comparação
+
       const listaAvisos = document.getElementById('lista-avisos');
 
       const avisosValidos = avisos
         .filter(aviso => {
-          const expiracao = new Date(aviso.expiraEm);
-          expiracao.setHours(23, 59, 59, 999);
-
           const executa = new Date(aviso.executaEm);
-          const limitePublicacao = new Date(executa);
+          executa.setHours(23, 59, 59, 999); // última hora do dia do evento
+
+          const limitePublicacao = new Date(aviso.executaEm);
           limitePublicacao.setDate(limitePublicacao.getDate() - 7);
 
-          return hoje <= expiracao && hoje >= limitePublicacao;
+          return hoje >= limitePublicacao && hoje <= executa;
         })
         .sort((a, b) => new Date(a.executaEm) - new Date(b.executaEm));
 
@@ -171,22 +172,19 @@ function carregarAvisos() {
                 </div>
               </li>
             `;
-        }).join("")
+          }).join("")
         : '<li>Nenhum aviso disponível.</li>';
 
       avisosValidos.forEach((aviso, index) => iniciarContador(aviso.executaEm, `contador-${index}`));
 
-      // Verificação de avisos novos e notificações
+      // Detecta avisos novos e avisa o usuário
       const ultimosAvisos = JSON.stringify(avisosValidos.map(a => a.texto));
       const anteriores = localStorage.getItem('avisos-vistos');
 
       if (anteriores && ultimosAvisos !== anteriores) {
-        // Enviar notificação de novos avisos
         if ("Notification" in window && Notification.permission === "granted") {
           new Notification("📣 Novos avisos disponíveis no IBBV!");
         }
-
-        // Vibração discreta em dispositivos móveis
         if ("vibrate" in navigator) {
           navigator.vibrate(200);
         }
@@ -203,9 +201,7 @@ function iniciarContador(dataEvento, elementoId) {
   function atualizar() {
     const agora = new Date();
     const distancia = alvo - agora;
-
     const el = document.getElementById(elementoId);
-
     if (!el) return;
 
     if (distancia <= 0) {
@@ -238,11 +234,11 @@ function iniciarContador(dataEvento, elementoId) {
 document.addEventListener("DOMContentLoaded", () => {
   carregarAvisos();
 
-  // Solicitar permissão para notificações se aplicável
   if ("Notification" in window && Notification.permission !== "granted") {
     Notification.requestPermission();
   }
 });
+
 
 
 // =====================================
