@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
 
 // =====================================
-// 📢 Avisos IBBV (com expiração automática)
+// 📢 Avisos IBBV (com expiração + destaque + notificação)
 // =====================================
 function carregarAvisos() {
   fetch('data/avisosibbv.json')
@@ -138,34 +138,112 @@ function carregarAvisos() {
       const hoje = new Date();
       const listaAvisos = document.getElementById('lista-avisos');
 
-      const avisosValidos = avisos.filter(aviso => {
-        const expiracao = new Date(aviso.expiraEm);
-        return hoje <= expiracao;
-      });
+      const avisosValidos = avisos
+        .filter(aviso => {
+          const expiracao = new Date(aviso.expiraEm);
+          expiracao.setHours(23, 59, 59, 999);
+
+          const executa = new Date(aviso.executaEm);
+          const limitePublicacao = new Date(executa);
+          limitePublicacao.setDate(limitePublicacao.getDate() - 7);
+
+          return hoje <= expiracao && hoje >= limitePublicacao;
+        })
+        .sort((a, b) => new Date(a.executaEm) - new Date(b.executaEm));
 
       listaAvisos.innerHTML = avisosValidos.length
-        ? avisosValidos.map(({ texto, imagem, linkAgenda }) => `
-          <li class="aviso-item">
-            <p class="aviso-texto">${texto}</p>
-            ${imagem ? `<img src="${imagem}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagem}')">` : ''}
-            <div class="aviso-botoes">
-              ${imagem ? `
-              <a href="${imagem}" download class="btn-aviso" title="Baixar imagem">
-                📥 Baixar
-              </a>` : ''}
-              ${linkAgenda ? `
-              <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
-                📅 Colocar na Agenda
-              </a>` : ''}
-            </div>
-          </li>
-        `).join("")
+        ? avisosValidos.map(({ texto, imagem, linkAgenda, executaEm }, index) => {
+            const idContador = `contador-${index}`;
+            return `
+              <li class="aviso-item">
+                <p class="aviso-texto">${texto}</p>
+                ${imagem ? `<img src="${imagem}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagem}')">` : ''}
+                <div class="aviso-contador" id="${idContador}">⏳ Carregando...</div>
+                <div class="aviso-botoes">
+                  ${imagem ? `
+                  <a href="${imagem}" download class="btn-aviso" title="Baixar imagem">
+                    📥 Baixar
+                  </a>` : ''}
+                  ${linkAgenda ? `
+                  <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
+                    📅 Colocar na Agenda
+                  </a>` : ''}
+                </div>
+              </li>
+            `;
+        }).join("")
         : '<li>Nenhum aviso disponível.</li>';
+
+      avisosValidos.forEach((aviso, index) => iniciarContador(aviso.executaEm, `contador-${index}`));
+
+      // Verificação de avisos novos e notificações
+      const ultimosAvisos = JSON.stringify(avisosValidos.map(a => a.texto));
+      const anteriores = localStorage.getItem('avisos-vistos');
+
+      if (anteriores && ultimosAvisos !== anteriores) {
+        // Enviar notificação de novos avisos
+        if ("Notification" in window && Notification.permission === "granted") {
+          new Notification("📣 Novos avisos disponíveis no IBBV!");
+        }
+
+        // Vibração discreta em dispositivos móveis
+        if ("vibrate" in navigator) {
+          navigator.vibrate(200);
+        }
+      }
+
+      localStorage.setItem('avisos-vistos', ultimosAvisos);
     })
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
 
-document.addEventListener("DOMContentLoaded", carregarAvisos);
+function iniciarContador(dataEvento, elementoId) {
+  const alvo = new Date(dataEvento + 'T00:00:00');
+
+  function atualizar() {
+    const agora = new Date();
+    const distancia = alvo - agora;
+
+    const el = document.getElementById(elementoId);
+
+    if (!el) return;
+
+    if (distancia <= 0) {
+      el.textContent = '🎉 Hoje é o evento!';
+      el.removeAttribute('data-status');
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    el.textContent = `⏳ Faltam ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+    if (dias <= 1) {
+      el.setAttribute('data-status', 'urgente');
+    } else if (dias <= 3) {
+      el.setAttribute('data-status', 'moderado');
+    } else {
+      el.setAttribute('data-status', 'leve');
+    }
+
+    setTimeout(atualizar, 1000);
+  }
+
+  atualizar();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  carregarAvisos();
+
+  // Solicitar permissão para notificações se aplicável
+  if ("Notification" in window && Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
+});
+
 
 // =====================================
 // 🔍 Ampliar imagem
