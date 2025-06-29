@@ -1,34 +1,39 @@
 {
   "avisos": [
-        {
+    {
       "texto": "Atletas de Cristo - 07/Jul - 20h00",
       "imagem": "img/ATL.png",
-      "linkAgenda": "",
-      "expiraEm": "2025-07-08"
+      "linkAgenda": "https://calendar.app.google/84ELRY1F6FTMze6G8",
+      "expiraEm": "2025-07-07",
+      "executaEm": "2025-07-07"
     },
     {
-      "texto": "Reunião de Homens - 21/Jun - 19h30",
+      "texto": "Reunião de Homens - 04/Jul - 20h00",
       "imagem": "img/UMM.png",
-      "linkAgenda": "",
-      "expiraEm": "2025-07-05"
+      "linkAgenda": "https://calendar.app.google/a7e51HQwx1jeAmAn7",
+      "expiraEm": "2025-07-05",
+      "executaEm": "2025-06-21"
     },
     {
-      "texto": "Santa Ceia - 13/Jul - 09h00",
+      "texto": "Ceia - 13/Jul - 09h00",
       "imagem": "img/CEIA.png",
-      "linkAgenda": "",
-      "expiraEm": "2025-07-14"
+      "linkAgenda": "https://calendar.app.google/6tBigFs9ckaCFHeKA",
+      "expiraEm": "2025-07-13",
+      "executaEm": "2025-07-13"
     },
     {
-      "texto": "Reunião de Jovens - 22/Jun - 10h45",
+      "texto": "Reunião de Jovens - 13/Jul - 10h45",
       "imagem": "img/UJB.png",
       "linkAgenda": "",
-      "expiraEm": "2025-06-23"
+      "expiraEm": "2025-07-13",
+      "executaEm": "2025-07-13"
     },
     {
       "texto": "Reunião de Mulheres - 04/Jul - 20h00",
       "imagem": "img/MCM.png",
       "linkAgenda": "https://calendar.app.google/pcfBiBrVwfigqRth9",
-      "expiraEm": "2025-07-05"
+      "expiraEm": "2025-07-05",
+      "executaEm": "2025-07-04"
     }
   ]
 }
