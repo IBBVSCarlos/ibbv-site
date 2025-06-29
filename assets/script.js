@@ -129,26 +129,30 @@ document.addEventListener("DOMContentLoaded", carregarAniversariantesSemana);
 
 
 // =====================================
-// 📢 Avisos IBBV (com expiração automática via executaEm)
+// 📢 Avisos IBBV (com expiração dinâmica via executaEm)
 // =====================================
 function carregarAvisos() {
   fetch('data/avisosibbv.json')
     .then(res => res.json())
     .then(({ avisos }) => {
       const hoje = new Date();
-      hoje.setHours(0, 0, 0, 0); // zera hora para evitar bugs de comparação
+      hoje.setHours(0, 0, 0, 0); // considerar só a data, não a hora
 
       const listaAvisos = document.getElementById('lista-avisos');
 
       const avisosValidos = avisos
         .filter(aviso => {
           const executa = new Date(aviso.executaEm);
-          executa.setHours(23, 59, 59, 999); // última hora do dia do evento
+          executa.setHours(0, 0, 0, 0); // início do dia do evento
+
+          const expira = new Date(aviso.executaEm);
+          expira.setHours(23, 59, 59, 999); // fim do dia do evento
 
           const limitePublicacao = new Date(aviso.executaEm);
           limitePublicacao.setDate(limitePublicacao.getDate() - 7);
+          limitePublicacao.setHours(0, 0, 0, 0);
 
-          return hoje >= limitePublicacao && hoje <= executa;
+          return hoje >= limitePublicacao && hoje <= expira;
         })
         .sort((a, b) => new Date(a.executaEm) - new Date(b.executaEm));
 
@@ -165,7 +169,7 @@ function carregarAvisos() {
                   <a href="${imagem}" download class="btn-aviso" title="Baixar imagem">
                     📥 Baixar
                   </a>` : ''}
-                  ${linkAgenda ? `
+                  ${linkAgenda && linkAgenda.trim() !== "" ? `
                   <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
                     📅 Colocar na Agenda
                   </a>` : ''}
@@ -177,7 +181,6 @@ function carregarAvisos() {
 
       avisosValidos.forEach((aviso, index) => iniciarContador(aviso.executaEm, `contador-${index}`));
 
-      // Detecta avisos novos e avisa o usuário
       const ultimosAvisos = JSON.stringify(avisosValidos.map(a => a.texto));
       const anteriores = localStorage.getItem('avisos-vistos');
 
@@ -185,6 +188,7 @@ function carregarAvisos() {
         if ("Notification" in window && Notification.permission === "granted") {
           new Notification("📣 Novos avisos disponíveis no IBBV!");
         }
+
         if ("vibrate" in navigator) {
           navigator.vibrate(200);
         }
