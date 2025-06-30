@@ -158,7 +158,7 @@ function carregarAvisos() {
             const idContador = `contador-${index}`;
             return `
               <li class="aviso-item">
-                <p class="aviso-texto">${texto}</p>
+                <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
                 ${imagem ? `<img src="${imagem}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagem}')">` : ''}
                 <div class="aviso-contador" id="${idContador}">⏳ Carregando...</div>
                 <div class="aviso-botoes">
