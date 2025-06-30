@@ -3,20 +3,20 @@
     "ministerio": "Recepção",
     "escalados": [
       {
-        "dia": "01/06/2025",
+        "dia": "06/07/2025",
         "nome": "Joselito (Dé)"
       },
       {
-        "dia": "08/06/2025",
+        "dia": "13/07/2025",
         "nome": "Flavio"
       },
       {
-        "dia": "15/06/2025",
-        "nome": "João"
+        "dia": "20/07/2025",
+        "nome": "Zane"
       },
       {
-        "dia": "22/06/2025",
-        "nome": "Lane"
+        "dia": "27/07/2025",
+        "nome": "João"
       }
     ]
   },
@@ -24,24 +24,20 @@
     "ministerio": "Culto Kids",
     "escalados": [
       {
-        "dia": "01/06/2025",
-        "nome": "Rose"
-      },
-      {
-        "dia": "08/06/2025",
+        "dia": "06/07/2025",
         "nome": "Jeferson"
       },
       {
-        "dia": "15/06/2025",
+        "dia": "13/07/2025",
         "nome": "Monica"
       },
       {
-        "dia": "22/06/2025",
-        "nome": "Elisangela"
+        "dia": "20/07/2025",
+        "nome": "Lane"
       },
       {
-        "dia": "29/06/2025",
-        "nome": "Lane"
+        "dia": "27/07/2025",
+        "nome": "Rose"
       }
     ]
   },
@@ -49,20 +45,24 @@
     "ministerio": "Culto de Quarta-Feira",
     "escalados": [
       {
-        "dia": "04/06/2025",
-        "nome": "Shirley"
-      },
-      {
-        "dia": "11/06/2025",
+        "dia": "02/07/2025",
         "nome": "Renato"
       },
       {
-        "dia": "18/06/2025",
-        "nome": "Railda"
+        "dia": "09/07/2025",
+        "nome": "Shirley"
       },
       {
-        "dia": "25/06/2025",
+        "dia": "16/07/2025",
         "nome": "Monica"
+      },
+      {
+        "dia": "23/07/2025",
+        "nome": "Railda"
+      },
+            {
+        "dia": "30/07/2025",
+        "nome": "Leo"
       }
     ]
   },
@@ -70,16 +70,8 @@
     "ministerio": "Cantina",
     "escalados": [
       {
-        "dia": "01/06/2025",
-        "nome": "Railda/ Joseleno (Zé)/ Helem"
-      },
-      {
-        "dia": "15/06/2025",
-        "nome": "Iromar/ Daiane"
-      },
-      {
-        "dia": "29/06/2025",
-        "nome": "Railda/ Joseleno (Zé)/ Helem"
+        "dia": "13/07/2025",
+        "nome": "Iromar/ Daiane/ Helem"
       }
     ]
   }
