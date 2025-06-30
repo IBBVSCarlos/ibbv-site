@@ -168,7 +168,7 @@ function carregarAvisos() {
                   </a>` : ''}
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
                   <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
-                    📅 Colocar na Agenda
+                    📅 Agendar
                   </a>` : ''}
                 </div>
               </li>
