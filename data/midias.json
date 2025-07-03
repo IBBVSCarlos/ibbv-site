@@ -1,19 +1,12 @@
 [
   {
-    "id": "290625",
-    "tipo": "imagem",
-    "uso": "projecao",
-    "arquivo": "data/midia/projecao/290625.png",
-    "extensao": "png",
-    "descricao": "Imagem para projeção na igreja - Culto de 29-06-2025"
-  },
-  {
-    "id": "290625",
+    "id": "BAZAR",
     "tipo": "video",
     "uso": "stories",
-    "arquivo": "data/midia/stories/290625.mp4",
+    "arquivo": "data/midia/stories/BAZAR.mp4",
     "extensao": "mp4",
-    "descricao": "Video para divulgação nos stories - Culto de 29-06-2025"
+    "descricao": "Video para divulgação nos Stories de redes sociais - Bazar IBBV",
+    "data": "2025-07-03"
   },
   {
     "id": "BAZAR",
@@ -21,14 +14,25 @@
     "uso": "projecao",
     "arquivo": "data/midia/projecao/BAZAR.png",
     "extensao": "png",
-    "descricao": "Imagem para projeção na Igreja - Bazar IBBV"
+    "descricao": "Imagem para projeção na Igreja - Bazar IBBV",
+    "data": "2025-07-03"
   },
   {
-    "id": "BAZAR",
+    "id": "290625",
     "tipo": "video",
     "uso": "stories",
-    "arquivo": "data/midia/stories/BAZAR.mp4",
+    "arquivo": "data/midia/stories/290625.mp4",
     "extensao": "mp4",
-    "descricao": "Video para divulgação nos Stories de redes sociais - Bazar IBBV"
+    "descricao": "Video para divulgação nos stories - Culto de 29-06-2025",
+    "data": "2025-06-20"
+  },
+  {
+    "id": "290625",
+    "tipo": "imagem",
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/290625.png",
+    "extensao": "png",
+    "descricao": "Imagem para projeção na igreja - Culto de 29-06-2025",
+    "data": "2025-06-20"
   }
 ]
