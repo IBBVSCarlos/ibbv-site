@@ -6,6 +6,52 @@
   <title>Projeção - Mídia IBBV</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-conteudo {
+      background: white;
+      padding: 1rem;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .modal-conteudo img,
+    .modal-conteudo video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .modal-fechar {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #444;
+    }
+
+    .midia-thumbnail {
+      cursor: pointer;
+      max-width: 100%;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 
 <body>
@@ -23,30 +69,39 @@
     </section>
   </main>
 
-  <!-- Modal para imagem ampliada -->
-  <div class="imagem-modal" id="imagemModal" style="display: none;">
-    <div class="imagem-modal-conteudo">
-      <span class="imagem-modal-fechar" onclick="fecharModal()">&times;</span>
-      <img id="imagemModalConteudo" src="" alt="Visualização da mídia">
+  <!-- 🔳 Modal Unificado -->
+  <div class="modal" id="modalMidia">
+    <div class="modal-conteudo">
+      <span class="modal-fechar" onclick="fecharModal()">&times;</span>
+      <div id="modalMidiaConteudo"></div>
     </div>
   </div>
 
   <script>
-    function abrirModal(src) {
-      const modal = document.getElementById('imagemModal');
-      const img = document.getElementById('imagemModalConteudo');
-      img.src = src;
+    function abrirModalMidia(tipo, src) {
+      const modal = document.getElementById('modalMidia');
+      const conteudo = document.getElementById('modalMidiaConteudo');
+
+      if (tipo === "imagem") {
+        conteudo.innerHTML = `<img src="${src}" alt="Visualização da mídia">`;
+      } else if (tipo === "video") {
+        conteudo.innerHTML = `
+          <video controls autoplay>
+            <source src="${src}" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>`;
+      }
+
       modal.style.display = 'flex';
     }
 
     function fecharModal() {
-      document.getElementById('imagemModal').style.display = 'none';
+      const modal = document.getElementById('modalMidia');
+      modal.style.display = 'none';
+      document.getElementById('modalMidiaConteudo').innerHTML = "";
     }
 
-    // ================================
-    // 🔁 Carregar Mídias para Projeção
-    // ================================
-    const USO_ATUAL = "projecao"; // pode trocar por "stories" em outra página
+    const USO_ATUAL = "projecao";
 
     fetch("../data/midias.json")
       .then(res => res.json())
@@ -55,13 +110,14 @@
 
         midias
           .filter(item => item.uso === USO_ATUAL)
+          .sort((a, b) => new Date(b.data) - new Date(a.data))
           .forEach(item => {
             const div = document.createElement("div");
             div.className = "aviso-item";
 
             if (item.tipo === "imagem") {
               div.innerHTML = `
-                <img src="../${item.arquivo}" alt="${item.descricao}" class="midia-thumbnail" onclick="abrirModal('../${item.arquivo}')">
+                <img src="../${item.arquivo}" alt="${item.descricao}" class="midia-thumbnail" onclick="abrirModalMidia('imagem', '../${item.arquivo}')">
                 <div class="aviso-botoes">
                   <a href="../${item.arquivo}" class="btn-aviso" download>
                     <i class="fa-solid fa-download"></i> Baixar Imagem
@@ -70,9 +126,8 @@
             } else if (item.tipo === "video") {
               const mime = item.extensao === "mp4" ? "video/mp4" : `video/${item.extensao}`;
               div.innerHTML = `
-                <video width="100%" controls>
+                <video class="midia-thumbnail" onclick="abrirModalMidia('video', '../${item.arquivo}')">
                   <source src="../${item.arquivo}" type="${mime}">
-                  Seu navegador não suporta reprodução de vídeo.
                 </video>
                 <div class="aviso-botoes">
                   <a href="../${item.arquivo}" class="btn-aviso" download>
