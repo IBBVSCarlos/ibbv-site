@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeção - Mídia IBBV</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <h1 style="text-align: center; margin-top: 1.5rem;">🎥 Mídias para Projeção nos Cultos</h1>
+  </header>
+
+  <main class="container" style="padding: 1rem 2rem;">
+    <section class="section-box">
+      <p>Aqui estão as artes e vídeos utilizados nas projeções do templo. Fique à vontade para baixar os arquivos para uso durante os cultos ou eventos especiais.</p>
+      
+      <div class="avisos-lista">
+
+        <!-- ITEM DE MÍDIA -->
+        <div class="aviso-item">
+          <img src="midias/projecao_exemplo.jpg" alt="Projeção exemplo" class="midia-thumbnail" onclick="abrirModal('midias/projecao_exemplo.jpg')">
+          <div class="aviso-botoes">
+            <a href="midias/projecao_exemplo.jpg" class="btn-aviso" download>
+              <i class="fa-solid fa-download"></i> Baixar Imagem
+            </a>
+          </div>
+        </div>
+
+        <!-- ITEM DE VÍDEO -->
+        <div class="aviso-item">
+          <video width="100%" controls>
+            <source src="midias/video_proj_exemplo.mp4" type="video/mp4">
+            Seu navegador não suporta reprodução de vídeo.
+          </video>
+          <div class="aviso-botoes">
+            <a href="midias/video_proj_exemplo.mp4" class="btn-aviso" download>
+              <i class="fa-solid fa-download"></i> Baixar Vídeo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal para imagem ampliada -->
+  <div class="imagem-modal" id="imagemModal" style="display: none;">
+    <div class="imagem-modal-conteudo">
+      <span class="imagem-modal-fechar" onclick="fecharModal()">&times;</span>
+      <img id="imagemModalConteudo" src="" alt="Visualização da mídia">
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(src) {
+      const modal = document.getElementById('imagemModal');
+      const img = document.getElementById('imagemModalConteudo');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function fecharModal() {
+      document.getElementById('imagemModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+
+<script>
+  const CATEGORIA_ATUAL = "projecao"; // OU "stories"
+
+fetch("../data/midias.json")
+
+    .then(res => res.json())
+    .then(midias => {
+      const container = document.querySelector(".avisos-lista");
+      midias
+        .filter(item => item.categoria === CATEGORIA_ATUAL)
+        .forEach(item => {
+          const div = document.createElement("div");
+          div.className = "aviso-item";
+
+          if (item.tipo === "imagem") {
+            div.innerHTML = `
+              <img src="${item.arquivo}" alt="${item.descricao}" class="midia-thumbnail" onclick="abrirModal('${item.arquivo}')">
+              <div class="aviso-botoes">
+                <a href="${item.arquivo}" class="btn-aviso" download>
+                  <i class="fa-solid fa-download"></i> Baixar Imagem
+                </a>
+              </div>`;
+          } else if (item.tipo === "video") {
+            div.innerHTML = `
+              <video width="100%" controls>
+                <source src="${item.arquivo}" type="video/mp4">
+                Seu navegador não suporta reprodução de vídeo.
+              </video>
+              <div class="aviso-botoes">
+                <a href="${item.arquivo}" class="btn-aviso" download>
+                  <i class="fa-solid fa-download"></i> Baixar Vídeo
+                </a>
+              </div>`;
+          }
+
+          container.appendChild(div);
+        });
+    });
+</script>
