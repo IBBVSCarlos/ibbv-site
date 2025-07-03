@@ -156,14 +156,19 @@ function carregarAvisos() {
       listaAvisos.innerHTML = avisosValidos.length
         ? avisosValidos.map(({ texto, imagem, linkAgenda, executaEm }, index) => {
             const idContador = `contador-${index}`;
+
+            // Caminho exibido (prévia) e caminho real (sem 'a')
+            const imagemPreview = imagem; // já vem como 'data/avisos/aXYZ.png'
+            const imagemReal = imagem ? imagem.replace(/^.*\/a/, 'img/') : '';
+
             return `
               <li class="aviso-item">
                 <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
-                ${imagem ? `<img src="${imagem}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagem}')">` : ''}
+                ${imagem ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ''}
                 <div class="aviso-contador" id="${idContador}">⏳ Carregando...</div>
                 <div class="aviso-botoes">
                   ${imagem ? `
-                  <a href="${imagem}" download class="btn-aviso" title="Baixar imagem">
+                  <a href="${imagemReal}" download class="btn-aviso" title="Baixar imagem">
                     📥 Baixar
                   </a>` : ''}
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
@@ -196,6 +201,9 @@ function carregarAvisos() {
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
 
+// =====================================
+// ⏳ Contador regressivo
+// =====================================
 function iniciarContador(dataEvento, elementoId) {
   const alvo = new Date(dataEvento + 'T00:00:00');
 
@@ -232,6 +240,9 @@ function iniciarContador(dataEvento, elementoId) {
   atualizar();
 }
 
+// =====================================
+// ▶️ Início
+// =====================================
 document.addEventListener("DOMContentLoaded", () => {
   carregarAvisos();
 
