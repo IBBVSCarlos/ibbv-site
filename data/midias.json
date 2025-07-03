@@ -5,7 +5,7 @@
     "uso": "projecao",
     "arquivo": "data/midia/projecao/290625.png",
     "extensao": "png",
-    "descricao": "CULTO 29-JUN-2025"
+    "descricao": "Imagem para projeção na igreja - Culto de 29-06-2025"
   },
   {
     "id": "290625",
@@ -13,7 +13,7 @@
     "uso": "stories",
     "arquivo": "data/midia/stories/290625.mp4",
     "extensao": "mp4",
-    "descricao": "Chamada Conferência de Jovens"
+    "descricao": "Video para divulgação nos stories - Culto de 29-06-2025"
   },
   {
     "id": "BAZAR",
@@ -21,14 +21,14 @@
     "uso": "projecao",
     "arquivo": "data/midia/projecao/BAZAR.png",
     "extensao": "png",
-    "descricao": "Arte para Culto de Oração"
+    "descricao": "Imagem para projeção na Igreja - Bazar IBBV"
   },
   {
     "id": "BAZAR",
     "tipo": "video",
     "uso": "stories",
-    "arquivo": "data/midia/stories/BAZAR.png",
-    "extensao": "png",
-    "descricao": "Introdução visual de culto"
+    "arquivo": "data/midia/stories/BAZAR.mp4",
+    "extensao": "mp4",
+    "descricao": "Video para divulgação nos Stories de redes sociais - Bazar IBBV"
   }
 ]
