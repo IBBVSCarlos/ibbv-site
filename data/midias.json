@@ -1,26 +1,34 @@
 [
   {
+    "id": "290625",
     "tipo": "imagem",
-    "arquivo": "midias/story_escola.jpg",
-    "descricao": "Divulgação EBD Julho",
-    "categoria": "stories"
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/290625.png",
+    "extensao": "png",
+    "descricao": "CULTO 29-JUN-2025"
   },
   {
+    "id": "290625",
     "tipo": "video",
-    "arquivo": "midias/video_conferencia.mp4",
-    "descricao": "Chamada Conferência de Jovens",
-    "categoria": "stories"
+    "uso": "stories",
+    "arquivo": "data/midia/stories/290625.mp4",
+    "extensao": "mp4",
+    "descricao": "Chamada Conferência de Jovens"
   },
   {
+    "id": "BAZAR",
     "tipo": "imagem",
-    "arquivo": "midias/projecao_culto_oracao.jpg",
-    "descricao": "Arte para Culto de Oração",
-    "categoria": "projecao"
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/BAZAR.png",
+    "extensao": "png",
+    "descricao": "Arte para Culto de Oração"
   },
   {
+    "id": "BAZAR",
     "tipo": "video",
-    "arquivo": "midias/projecao_intro_culto.mp4",
-    "descricao": "Introdução visual de culto",
-    "categoria": "projecao"
+    "uso": "stories",
+    "arquivo": "data/midia/stories/BAZAR.png",
+    "extensao": "png",
+    "descricao": "Introdução visual de culto"
   }
 ]
