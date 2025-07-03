@@ -2,37 +2,37 @@
   "avisos": [
     {
       "texto": "Cantina - 29/Jun - 21h30",
-      "imagem": "img/CANTINA.jpg",
+      "imagem": "data/avisos/aCANTINA.jpg",
       "linkAgenda": "",
       "executaEm": "2025-06-29"
     },
     {
       "texto": "Reunião de Homens - 04/Jul - 20h00",
-      "imagem": "img/UMM.png",
+      "imagem": "data/avisos/aUMM.png",
       "linkAgenda": "https://calendar.app.google/a7e51HQwx1jeAmAn7",
       "executaEm": "2025-07-04"
     },
     {
       "texto": "Reunião de Mulheres - 04/Jul - 20h00",
-      "imagem": "img/MCM.png",
+      "imagem": "data/avisos/aMCM.png",
       "linkAgenda": "https://calendar.app.google/pcfBiBrVwfigqRth9",
       "executaEm": "2025-07-04"
     },
     {
       "texto": "Atletas de Cristo - 07/Jul - 20h00",
-      "imagem": "img/ATL.png",
+      "imagem": "data/avisos/aATL.png",
       "linkAgenda": "https://calendar.app.google/84ELRY1F6FTMze6G8",
       "executaEm": "2025-07-07"
     },
     {
       "texto": "Ceia - 13/Jul - 09h00",
-      "imagem": "img/CEIA.png",
+      "imagem": "data/avisos/aCEIA.png",
       "linkAgenda": "https://calendar.app.google/6tBigFs9ckaCFHeKA",
       "executaEm": "2025-07-13"
     },
     {
       "texto": "Reunião de Jovens - 13/Jul - 10h45",
-      "imagem": "img/UJB.png",
+      "imagem": "data/avisos/aUJB.png",
       "linkAgenda": "",
       "executaEm": "2025-07-13"
     }
