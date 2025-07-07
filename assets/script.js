@@ -266,3 +266,41 @@ function ampliarImagem(src) {
   document.body.appendChild(modal);
 }
 
+// =====================================
+// CAMPANHAS IBBV
+// =====================================
+
+function carregarCampanhas() {
+  fetch('data/campanhasibbv.json')
+    .then(res => res.json())
+    .then(({ campanhas }) => {
+      const listaCampanhas = document.getElementById('lista-campanhas');
+
+      listaCampanhas.innerHTML = campanhas.length
+        ? campanhas.map(({ texto, imagem, linkAgenda }) => {
+            const imagemPreview = imagem;
+            const imagemReal = imagem ? imagem.replace(/^.*\/c/, 'img/') : '';
+
+            return `
+              <li class="aviso-item">
+                <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
+                ${imagem ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ''}
+                <div class="aviso-botoes">
+                  ${imagem ? `
+                  <a href="${imagemReal}" download class="btn-aviso" title="Baixar imagem">
+                    📥 Baixar
+                  </a>` : ''}
+                  ${linkAgenda && linkAgenda.trim() !== "" ? `
+                  <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
+                    📅 Agendar
+                  </a>` : ''}
+                </div>
+              </li>
+            `;
+          }).join("")
+        : '<li>Nenhuma campanha no momento.</li>';
+    })
+    .catch(err => console.error('Erro ao carregar campanhas:', err));
+}
+
+document.addEventListener("DOMContentLoaded", carregarCampanhas);
