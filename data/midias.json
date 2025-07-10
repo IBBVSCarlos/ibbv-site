@@ -1,5 +1,23 @@
 [
   {
+    "id": "CEIA",
+    "tipo": "video",
+    "uso": "stories",
+    "arquivo": "data/midia/stories/CEIA.mp4",
+    "extensao": "mp4",
+    "descricao": "Video para divulgação nos Stories de redes sociais - Ceia do Senhor",
+    "data": "2025-07-13"
+  },
+    {
+    "id": "CEIA",
+    "tipo": "imagem",
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/CEIA.png",
+    "extensao": "png",
+    "descricao": "Imagem para projeção na Igreja - CEIA DO SENHOR",
+    "data": "2025-07-13"
+  },
+  {
     "id": "BAZAR",
     "tipo": "video",
     "uso": "stories",
