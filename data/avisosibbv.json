@@ -1,10 +1,10 @@
 {
   "avisos": [
         {
-      "texto": "Bazar IBBV - 12/Jul - 09h00 às 13h00",
+      "texto": "Bazar IBBV - 06/Set - 09h00 às 13h00",
       "imagem": "data/avisos/aBAZAR.png",
-      "linkAgenda": "https://calendar.app.google/93jv6pdT4jAqVdXh7",
-      "executaEm": "2025-07-12"
+      "linkAgenda": "https://calendar.app.google/JZgpGyZ9PCBQ73728",
+      "executaEm": "2025-09-06"
     },
     {
       "texto": "Cantina - 12 e 13/Jul",
@@ -27,8 +27,8 @@
     {
       "texto": "Atletas de Cristo - 21/Jul - 20h00",
       "imagem": "data/avisos/aATL.png",
-      "linkAgenda": "https://calendar.app.google/84ELRY1F6FTMze6G8",
-      "executaEm": "2025-07-07"
+      "linkAgenda": "https://calendar.app.google/bmzyCsbRC6sWtQdn9",
+      "executaEm": "2025-07-21"
     },
     {
       "texto": "Ceia - 13/Jul - 09h00",
