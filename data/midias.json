@@ -44,6 +44,24 @@
     "descricao": "Video para divulgação nos stories - Culto",
     "data": "2025-07-27"
   },
+      {
+    "id": "aviso",
+    "tipo": "imagem",
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/Avisos.png",
+    "extensao": "png",
+    "descricao": "Imagem para projeção",
+    "data": "2025-08-03"
+  },
+      {
+    "id": "cantina",
+    "tipo": "imagem",
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/Cantina.png",
+    "extensao": "png",
+    "descricao": "Imagem para projeção",
+    "data": "2025-08-03"
+  },
     {
     "id": "mes",
     "tipo": "imagem",
