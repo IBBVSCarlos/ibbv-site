@@ -44,13 +44,22 @@
     "descricao": "Video para divulgação nos stories - Culto",
     "data": "2025-07-27"
   },
-  {
-    "id": "270725",
+    {
+    "id": "mes",
     "tipo": "imagem",
     "uso": "projecao",
-    "arquivo": "data/midia/projecao/270725.png",
+    "arquivo": "data/midia/projecao/WALL_JOVENS.png",
     "extensao": "png",
-    "descricao": "Imagem para projeção na igreja - Culto de 27/Jul",
-    "data": "2025-07-27"
+    "descricao": "Imagem para projeção na igreja Tema do Culto",
+    "data": "2025-08-03"
+  },
+  {
+    "id": "CULTO",
+    "tipo": "imagem",
+    "uso": "projecao",
+    "arquivo": "data/midia/projecao/WALL_CULTO.png",
+    "extensao": "png",
+    "descricao": "Imagem para projeção na igreja Tema do Culto",
+    "data": "2025-08-03"
   }
 ]
