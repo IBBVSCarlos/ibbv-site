@@ -1,6 +1,6 @@
 // eventos.js
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("assets/eventos.json")
+  fetch("data/eventos.json")
     .then(response => response.json())
     .then(eventos => {
       const container = document.getElementById("lista-eventos");
