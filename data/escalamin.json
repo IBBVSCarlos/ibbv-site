@@ -3,20 +3,24 @@
     "ministerio": "Recepção",
     "escalados": [
       {
-        "dia": "06/07/2025",
-        "nome": "Joselito (Dé)"
-      },
-      {
-        "dia": "13/07/2025",
-        "nome": "Flavio"
-      },
-      {
-        "dia": "20/07/2025",
+        "dia": "03/08/2025",
         "nome": "Zane"
       },
       {
-        "dia": "27/07/2025",
+        "dia": "10/08/2025",
+        "nome": "Flavio"
+      },
+      {
+        "dia": "17/08/2025",
+        "nome": "Dé"
+      },
+      {
+        "dia": "24/08/2025",
         "nome": "João"
+      },
+            {
+        "dia": "31/08/2025",
+        "nome": "Zane"
       }
     ]
   },
@@ -24,20 +28,24 @@
     "ministerio": "Culto Kids",
     "escalados": [
       {
-        "dia": "06/07/2025",
-        "nome": "Jeferson"
-      },
-      {
-        "dia": "13/07/2025",
-        "nome": "Monica"
-      },
-      {
-        "dia": "20/07/2025",
+        "dia": "03/08/2025",
         "nome": "Lane"
       },
       {
-        "dia": "27/07/2025",
+        "dia": "10/08/2025",
+        "nome": "Monica"
+      },
+      {
+        "dia": "17/08/2025",
+        "nome": "Jeferson"
+      },
+      {
+        "dia": "24/08/2025",
         "nome": "Rose"
+      },
+           {
+        "dia": "31/08/2025",
+        "nome": "Lane"
       }
     ]
   },
@@ -45,24 +53,20 @@
     "ministerio": "Culto de Quarta-Feira",
     "escalados": [
       {
-        "dia": "02/07/2025",
-        "nome": "Renato"
-      },
-      {
-        "dia": "09/07/2025",
+        "dia": "06/08/2025",
         "nome": "Shirley"
       },
       {
-        "dia": "16/07/2025",
-        "nome": "Monica"
+        "dia": "13/08/2025",
+        "nome": "Renato"
       },
       {
-        "dia": "23/07/2025",
+        "dia": "20/08/2025",
         "nome": "Railda"
       },
-            {
-        "dia": "30/07/2025",
-        "nome": "Leo"
+      {
+        "dia": "27/08/2025",
+        "nome": "Monica"
       }
     ]
   },
@@ -70,8 +74,12 @@
     "ministerio": "Cantina",
     "escalados": [
       {
-        "dia": "13/07/2025",
+        "dia": "10/08/2025",
         "nome": "Iromar/ Daiane/ Helem"
+      },
+            {
+        "dia": "24/08/2025",
+        "nome": "Railda/ Zé/ Helem"
       }
     ]
   }
