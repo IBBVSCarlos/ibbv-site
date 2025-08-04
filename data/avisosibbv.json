@@ -1,11 +1,5 @@
 {
   "avisos": [
-            {
-      "texto": "VI Congresso da Juventude PIBA - 23/Ago - 19h00 (inscrição no link da agenda abaixo)",
-      "imagem": "data/avisos/aCONGRESSO_J.jpg",
-      "linkAgenda": "https://docs.google.com/forms/d/e/1FAIpQLSfbDzbJu-37diZ2V3weLYKemv5e5emG_JA5g3SMRoEV6hR3PQ/viewform?usp=header",
-      "executaEm": "2025-08-23"
-    },
         {
       "texto": "Bazar IBBV - 06/Set - 09h00 às 13h00",
       "imagem": "data/avisos/aBAZAR.png",
