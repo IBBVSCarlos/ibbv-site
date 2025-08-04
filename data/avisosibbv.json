@@ -3,7 +3,7 @@
         {
       "texto": "Bazar IBBV - 06/Set - 09h00 às 13h00",
       "imagem": "data/avisos/aBAZAR.png",
-      "linkAgenda": "https://calendar.app.google/JZgpGyZ9PCBQ73728",
+      "linkAgenda": "https://calendar.app.google/prVYJFc5r2Jetcci9",
       "executaEm": "2025-09-06"
     },
     {
@@ -12,10 +12,16 @@
       "linkAgenda": "",
       "executaEm": "2025-08-03"
     },
+        {
+      "texto": "Reunião de Jovens - 24/Ago - 10h45",
+      "imagem": "data/avisos/aUJB.png",
+      "linkAgenda": "https://calendar.app.google/rnjEDtpSbDb3tWwS6",
+      "executaEm": "2025-08-24"
+    },
     {
-      "texto": "Reunião de Homens - 16/Ago - 20h00",
+      "texto": "Reunião de Homens - 16/Ago - 19h45",
       "imagem": "data/avisos/aUMM.png",
-      "linkAgenda": "https://calendar.app.google/a7e51HQwx1jeAmAn7",
+      "linkAgenda": "https://calendar.app.google/8vM1Wm2G7pbqVhm26",
       "executaEm": "2025-08-16"
     },
     {
@@ -25,21 +31,15 @@
       "executaEm": "2025-07-04"
     },
     {
-      "texto": "Atletas de Cristo - 21/Jul - 20h00",
+      "texto": "Atletas de Cristo - 11/Ago - 20h00",
       "imagem": "data/avisos/aATL.png",
-      "linkAgenda": "https://calendar.app.google/bmzyCsbRC6sWtQdn9",
-      "executaEm": "2025-07-21"
+      "linkAgenda": "https://calendar.app.google/mBAwWz9BDZ3t2PiG9",
+      "executaEm": "2025-08-11"
     },
     {
       "texto": "Ceia - 13/Jul - 09h00",
       "imagem": "data/avisos/aCEIA.png",
       "linkAgenda": "https://calendar.app.google/6tBigFs9ckaCFHeKA",
-      "executaEm": "2025-07-13"
-    },
-    {
-      "texto": "Reunião de Jovens - 13/Jul - 10h45",
-      "imagem": "data/avisos/aUJB.png",
-      "linkAgenda": "https://calendar.app.google/gZp5p3K8FVV4D4Sk9",
       "executaEm": "2025-07-13"
     }
   ]
