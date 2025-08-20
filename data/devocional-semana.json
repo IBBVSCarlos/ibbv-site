@@ -1,4 +1,142 @@
 {
+  "semana01": {
+    "titulo": "Novo Começo",
+    "referencia": "Isaías 43:19",
+    "versiculo": "Eis que faço uma coisa nova; agora sairá à luz; porventura não a sabereis?",
+    "mensagem": "Deus é especialista em recomeços. Confie que Ele está preparando algo novo e bom para você."
+  },
+  "semana02": {
+    "titulo": "Confiança Plena",
+    "referencia": "Salmos 37:5",
+    "versiculo": "Entrega o teu caminho ao Senhor; confia nele, e ele o fará.",
+    "mensagem": "Entregar é confiar. Deixe seus planos nas mãos de Deus e veja o agir dEle."
+  },
+  "semana03": {
+    "titulo": "Direção Divina",
+    "referencia": "Provérbios 16:9",
+    "versiculo": "O coração do homem planeja o seu caminho, mas o Senhor lhe dirige os passos.",
+    "mensagem": "Planeje com sabedoria, mas permita que Deus conduza cada passo seu."
+  },
+  "semana04": {
+    "titulo": "Alegria na Presença",
+    "referencia": "Salmos 16:11",
+    "versiculo": "Na tua presença há fartura de alegrias; à tua mão direita há delícias perpetuamente.",
+    "mensagem": "A verdadeira alegria está em estar perto de Deus. Busque Sua presença diariamente."
+  },
+  "semana05": {
+    "titulo": "Proteção Celestial",
+    "referencia": "Salmos 121:7",
+    "versiculo": "O Senhor te guardará de todo o mal; guardará a tua alma.",
+    "mensagem": "Deus é teu protetor. Confie que Ele cuida de você em todos os momentos."
+  },
+  "semana06": {
+    "titulo": "Fidelidade de Deus",
+    "referencia": "Deuteronômio 7:9",
+    "versiculo": "Saberás, pois, que o Senhor teu Deus é Deus, o Deus fiel...",
+    "mensagem": "Mesmo quando tudo muda, Deus permanece fiel. Apoie-se nessa verdade."
+  },
+  "semana07": {
+    "titulo": "Esperança Renovada",
+    "referencia": "Romanos 15:13",
+    "versiculo": "Ora, o Deus de esperança vos encha de todo o gozo e paz em crença...",
+    "mensagem": "Deus é fonte de esperança. Deixe que Ele renove sua fé e alegria."
+  },
+  "semana08": {
+    "titulo": "Poder da Palavra",
+    "referencia": "Hebreus 4:12",
+    "versiculo": "Porque a palavra de Deus é viva e eficaz...",
+    "mensagem": "A Palavra de Deus transforma. Leia, medite e permita que ela fale ao seu coração."
+  },
+  "semana09": {
+    "titulo": "Descanso Espiritual",
+    "referencia": "Salmos 23:2",
+    "versiculo": "Deitar-me faz em verdes pastos, guia-me mansamente a águas tranquilas.",
+    "mensagem": "Deus oferece descanso verdadeiro. Confie nEle para restaurar sua alma."
+  },
+  "semana10": {
+    "titulo": "Coração Transformado",
+    "referencia": "Ezequiel 36:26",
+    "versiculo": "E dar-vos-ei um coração novo, e porei dentro de vós um espírito novo...",
+    "mensagem": "Deus transforma de dentro para fora. Permita que Ele renove seu coração."
+  },
+  "semana11": {
+    "titulo": "Perdão que Liberta",
+    "referencia": "1 João 1:9",
+    "versiculo": "Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar...",
+    "mensagem": "O perdão de Deus é completo. Confesse, receba graça e siga em liberdade."
+  },
+  "semana12": {
+    "titulo": "Amor Incondicional",
+    "referencia": "Romanos 8:38-39",
+    "versiculo": "Nada nos poderá separar do amor de Deus, que está em Cristo Jesus nosso Senhor.",
+    "mensagem": "O amor de Deus é eterno e imutável. Viva com essa certeza no coração."
+  },
+  "semana13": {
+    "titulo": "Sabedoria para Viver",
+    "referencia": "Provérbios 3:13",
+    "versiculo": "Bem-aventurado o homem que acha sabedoria, e o homem que adquire conhecimento.",
+    "mensagem": "Busque sabedoria em Deus. Ela é mais preciosa que qualquer tesouro."
+  },
+  "semana14": {
+    "titulo": "Luz no Mundo",
+    "referencia": "Mateus 5:14",
+    "versiculo": "Vós sois a luz do mundo; não se pode esconder uma cidade edificada sobre um monte.",
+    "mensagem": "Seja luz onde estiver. Sua vida pode iluminar caminhos e corações."
+  },
+  "semana15": {
+    "titulo": "Paz em Meio à Luta",
+    "referencia": "João 16:33",
+    "versiculo": "No mundo tereis aflições, mas tende bom ânimo; eu venci o mundo.",
+    "mensagem": "Mesmo nas tribulações, Jesus oferece paz. Confie nEle e siga com coragem."
+  },
+  "semana16": {
+    "titulo": "Obediência que Honra",
+    "referencia": "Deuteronômio 28:2",
+    "versiculo": "E todas estas bênçãos virão sobre ti e te alcançarão, quando ouvires a voz do Senhor teu Deus.",
+    "mensagem": "A obediência atrai bênçãos. Ouça a voz de Deus e caminhe em fidelidade."
+  },
+  "semana17": {
+    "titulo": "Coragem para Avançar",
+    "referencia": "Josué 1:9",
+    "versiculo": "Não te mandei eu? Esforça-te, e tem bom ânimo...",
+    "mensagem": "Deus está contigo. Enfrente os desafios com coragem e fé."
+  },
+  "semana18": {
+    "titulo": "Frutos do Espírito",
+    "referencia": "Gálatas 5:22",
+    "versiculo": "Mas o fruto do Espírito é: amor, gozo, paz, longanimidade...",
+    "mensagem": "Cultive os frutos do Espírito. Eles revelam o caráter de Cristo em você."
+  },
+  "semana19": {
+    "titulo": "Chamado à Santidade",
+    "referencia": "1 Tessalonicenses 4:7",
+    "versiculo": "Porque Deus não nos chamou para a imundícia, mas para a santificação.",
+    "mensagem": "Santidade é viver separado para Deus. Escolha agradá-Lo em cada atitude."
+  },
+  "semana20": {
+    "titulo": "Deus Proverá",
+    "referencia": "Gênesis 22:14",
+    "versiculo": "E chamou Abraão o nome daquele lugar: O Senhor proverá.",
+    "mensagem": "Deus é o Deus da provisão. Confie que Ele suprirá cada necessidade."
+  },
+  "semana21": {
+    "titulo": "Vida em Comunhão",
+    "referencia": "Salmos 133:1",
+    "versiculo": "Oh! quão bom e quão suave é que os irmãos vivam em união.",
+    "mensagem": "A comunhão fortalece. Valorize os relacionamentos e viva em paz com os outros."
+  },
+  "semana22": {
+    "titulo": "Renovação da Mente",
+    "referencia": "Romanos 12:2",
+    "versiculo": "E não vos conformeis com este mundo, mas transformai-vos pela renovação do vosso entendimento...",
+    "mensagem": "Deixe Deus renovar sua mente. Isso mudará sua forma de viver e decidir."
+  },
+  "semana23": {
+    "titulo": "Vitória em Cristo",
+    "referencia": "1 Coríntios 15:57",
+    "versiculo": "Mas graças a Deus que nos dá a vitória por nosso Senhor Jesus Cristo.",
+    "mensagem": "A vitória já foi conquistada. Caminhe com fé, sabendo que Cristo venceu por você."
+  },
   "semana24": {
     "titulo": "Paz Interior",
     "referencia": "Filipenses 4:7",
