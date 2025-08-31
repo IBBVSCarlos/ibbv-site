@@ -14,13 +14,13 @@
     },
     {
       "texto": "Aniversário da Associação das Igrejas do Planalto Paulista - Nova Canaa - 20/09",
-      "imagem": "data/avisos/aPIBSC.png",
+      "imagem": "",
       "linkAgenda": "",
       "executaEm": "2025-09-20"
     },
     {
       "texto": "Aniversário PIB São Carlos - 27/Set",
-      "imagem": "data/avisos/aATL.png",
+      "imagem": "data/avisos/aPIBSC.png",
       "linkAgenda": "",
       "executaEm": "2025-09-27"
     },
@@ -43,7 +43,7 @@
       "executaEm": "2025-09-06"
     },
     {
-      "texto": "Café com a Palavra",
+      "texto": "Café com a Palavra - 07/Set - 09h00",
       "imagem": "data/avisos/aCAF.png",
       "linkAgenda": "",
       "executaEm": "2025-09-07"
