@@ -6,32 +6,48 @@
       "linkAgenda": "https://calendar.app.google/prVYJFc5r2Jetcci9",
       "executaEm": "2025-09-06"
     },
+        {
+      "texto": "Café com a Palavra",
+      "imagem": "data/avisos/aUMM.png",
+      "linkAgenda": "",
+      "executaEm": "2025-09-07"
+    },
     {
-      "texto": "Cantina - 03/Ago - Pão de Queijo + Chocolate Quente por 10 reais!",
+      "texto": "Cantina - 31/Ago - ",
       "imagem": "data/avisos/aCANTINA.png",
       "linkAgenda": "",
-      "executaEm": "2025-08-03"
+      "executaEm": "2025-08-31"
     },
         {
-      "texto": "Reunião de Jovens - 24/Ago - 10h45",
+      "texto": "Reunião de Jovens - 30/Ago - 19h30",
       "imagem": "data/avisos/aUJB.png",
       "linkAgenda": "https://calendar.app.google/rnjEDtpSbDb3tWwS6",
       "executaEm": "2025-08-24"
     },
     {
-      "texto": "Reunião de Homens - 16/Ago - 19h45",
+      "texto": "Reunião de Homens - 13/Set 19h30",
       "imagem": "data/avisos/aUMM.png",
-      "linkAgenda": "https://calendar.app.google/8vM1Wm2G7pbqVhm26",
-      "executaEm": "2025-08-16"
+      "linkAgenda": "",
+      "executaEm": "2025-09-13"
     },
     {
-      "texto": "Reunião de Mulheres - 04/Jul - 20h00",
+      "texto": "Reunião de Mulheres - 13/Set 19h30",
       "imagem": "data/avisos/aMCM.png",
       "linkAgenda": "https://calendar.app.google/pcfBiBrVwfigqRth9",
-      "executaEm": "2025-07-04"
+      "executaEm": "2025-09-13"
+    },
+          "texto": "ANIVERSÁRIO DA ASSOCIAÇÃO DAS IGREJAS DO PLANALTO PAULISTA - Nova Canaa - 20/09",
+      "imagem": "data/avisos/aATL.png",
+      "linkAgenda": "https://calendar.app.google/mBAwWz9BDZ3t2PiG9",
+      "executaEm": "2025-08-11"
     },
     {
       "texto": "Atletas de Cristo - 11/Ago - 20h00",
+      "imagem": "data/avisos/aATL.png",
+      "linkAgenda": "https://calendar.app.google/mBAwWz9BDZ3t2PiG9",
+      "executaEm": "2025-08-11"
+    },
+          "texto": "Aniversário PIBISC- 27/Set",
       "imagem": "data/avisos/aATL.png",
       "linkAgenda": "https://calendar.app.google/mBAwWz9BDZ3t2PiG9",
       "executaEm": "2025-08-11"
