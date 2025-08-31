@@ -13,24 +13,6 @@
       "executaEm": "2025-08-11"
     },
     {
-      "texto": "Aniversário da AIBAPP - Associação das Igrejas do Planalto Paulista - Nova Canaa - 20/09",
-      "imagem": "",
-      "linkAgenda": "",
-      "executaEm": "2025-09-20"
-    },
-    {
-      "texto": "Aniversário PIB São Carlos - 27/Set",
-      "imagem": "data/avisos/aPIBSC.png",
-      "linkAgenda": "",
-      "executaEm": "2025-09-27"
-    },
-    {
-      "texto": "Reunião de Jovens - 30/Ago - 19h30",
-      "imagem": "data/avisos/aUJB.png",
-      "linkAgenda": "https://calendar.app.google/rnjEDtpSbDb3tWwS6",
-      "executaEm": "2025-08-24"
-    },
-    {
       "texto": "Cantina - 31/Ago - ",
       "imagem": "data/avisos/aCANTINA.png",
       "linkAgenda": "",
@@ -59,6 +41,24 @@
       "imagem": "data/avisos/aMCM.png",
       "linkAgenda": "",
       "executaEm": "2025-09-13"
+    },
+    {
+      "texto": "Reunião de Jovens - 14/Set - 10h45",
+      "imagem": "data/avisos/aUJB.png",
+      "linkAgenda": "",
+      "executaEm": "2025-09-14"
+    },
+    {
+      "texto": "Aniversário da AIBAPP - Associação das Igrejas do Planalto Paulista - Nova Canaã - 20/09",
+      "imagem": "",
+      "linkAgenda": "",
+      "executaEm": "2025-09-20"
+    },
+    {
+      "texto": "Aniversário PIB São Carlos - 27/Set",
+      "imagem": "data/avisos/aPIBSC.png",
+      "linkAgenda": "",
+      "executaEm": "2025-09-27"
     }
   ]
 }
