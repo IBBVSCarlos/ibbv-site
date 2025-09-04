@@ -1,7 +1,18 @@
-[
-  {
-    "titulo": "",
-    "imagem": "",
-    "linkInscricao": ""
-  }
-]
+{
+  "eventos": [
+    {
+      "titulo": "Aniversário da AIBAPP - Associação das Igrejas do Planalto Paulista - Nova Canaã - 20/09 - 19h30",
+      "imagem": "",
+      "linkInscricao": "",
+      "linkAgenda": "",
+      "executaEm": "2025-09-20"
+    },
+    {
+      "titulo": "Aniversário PIB São Carlos - 27/Set",
+      "imagem": "",
+      "linkInscricao": "",
+      "linkAgenda": "",
+      "executaEm": "2025-09-27"
+    }
+  ]
+}
