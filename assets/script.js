@@ -157,32 +157,29 @@ function carregarAvisos() {
         ? avisosValidos.map(({ texto, imagem, linkAgenda, executaEm }, index) => {
             const idContador = `contador-${index}`;
 
-            // Caminho exibido (prévia) e caminho real (sem 'a')
-            const imagemPreview = imagem; // já vem como 'data/avisos/aXYZ.png'
-            const imagemReal = imagem ? imagem.replace(/^.*\/a/, 'img/') : '';
+            const imagemPreview = imagem && imagem.trim() !== "" ? imagem : null;
+            const imagemReal = imagemPreview ? imagemPreview.replace(/^.*\/a/, 'img/') : null;
 
             return `
               <li class="aviso-item">
                 <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
-                ${imagem ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ''}
+                ${imagemPreview ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ""}
                 <div class="aviso-contador" id="${idContador}">⏳ Carregando...</div>
                 <div class="aviso-botoes">
-                  ${imagem ? `
-                  <a href="${imagemReal}" download class="btn-aviso" title="Baixar imagem">
-                    📥 Baixar
-                  </a>` : ''}
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
                   <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
                     📅 Agendar
-                  </a>` : ''}
+                  </a>` : ""}
                 </div>
               </li>
             `;
           }).join("")
         : '<li>Nenhum aviso disponível.</li>';
 
+      // inicia os contadores
       avisosValidos.forEach((aviso, index) => iniciarContador(aviso.executaEm, `contador-${index}`));
 
+      // notificação de novos avisos
       const ultimosAvisos = JSON.stringify(avisosValidos.map(a => a.texto));
       const anteriores = localStorage.getItem('avisos-vistos');
 
@@ -200,7 +197,6 @@ function carregarAvisos() {
     })
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
-
 // =====================================
 // ⏳ Contador regressivo
 // =====================================
@@ -304,3 +300,4 @@ function carregarCampanhas() {
 }
 
 document.addEventListener("DOMContentLoaded", carregarCampanhas);
+
