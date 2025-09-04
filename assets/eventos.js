@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 : ""
               }
               ${evento.linkAgenda && evento.linkAgenda.trim() !== "" 
-                ? `<a href="${evento.linkAgenda}" target="_blank" class="btn-evento">📅 Agendar</a>` 
+                ? `<a href="${evento.linkAgenda}" target="_blank" class="btn-evento">📅 Coloque na Agenda!</a>` 
                 : ""
               }
             </div>
