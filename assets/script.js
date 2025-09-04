@@ -248,24 +248,34 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =====================================
-// 🔍 Ampliar imagem
+// 🔍 Ampliar imagem compatível com seu CSS
 // =====================================
 function ampliarImagem(src) {
+  if (!src || src.trim() === "") return; // evita abrir modal se não houver imagem
+
+  // Cria o modal
   const modal = document.createElement('div');
   modal.className = 'imagem-modal';
   modal.innerHTML = `
     <div class="imagem-modal-conteudo">
-      <span class="imagem-modal-fechar" onclick="this.parentElement.parentElement.remove()">✖</span>
+      <span class="imagem-modal-fechar" title="Fechar">✖</span>
       <img src="${src}" alt="Aviso ampliado">
     </div>
   `;
+
+  // Adiciona no body
   document.body.appendChild(modal);
+
+  // Fecha ao clicar no X ou fora da imagem
+  const fechar = modal.querySelector('.imagem-modal-fechar');
+  fechar.addEventListener('click', () => modal.remove());
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.remove();
+  });
 }
-
 // =====================================
-// CAMPANHAS IBBV
+// 🎯 Campanhas IBBV
 // =====================================
-
 function carregarCampanhas() {
   fetch('data/campanhasibbv.json')
     .then(res => res.json())
@@ -273,31 +283,25 @@ function carregarCampanhas() {
       const listaCampanhas = document.getElementById('lista-campanhas');
 
       listaCampanhas.innerHTML = campanhas.length
-        ? campanhas.map(({ texto, imagem, linkAgenda }) => {
-            const imagemPreview = imagem;
-            const imagemReal = imagem ? imagem.replace(/^.*\/c/, 'img/') : '';
-
+        ? campanhas.map(({ texto, imagem, linkAgenda }, index) => {
             return `
-              <li class="aviso-item">
-                <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
-                ${imagem ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ''}
-                <div class="aviso-botoes">
-                  ${imagem ? `
-                  <a href="${imagemReal}" download class="btn-aviso" title="Baixar imagem">
-                    📥 Baixar
-                  </a>` : ''}
+              <li class="campanha-item">
+                <p class="campanha-texto">${texto}</p>
+                ${imagem && imagem.trim() !== "" ? `<img src="${imagem}" alt="${texto}" class="campanha-img">` : ""}
+                <div class="campanha-botoes">
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
-                  <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
+                  <a href="${linkAgenda}" target="_blank" class="btn-campanha" title="Abrir agenda">
                     📅 Agendar
-                  </a>` : ''}
+                  </a>` : ""}
                 </div>
               </li>
             `;
           }).join("")
-        : '<li>Nenhuma campanha no momento.</li>';
+        : '<li>Nenhuma campanha disponível.</li>';
     })
     .catch(err => console.error('Erro ao carregar campanhas:', err));
 }
 
 document.addEventListener("DOMContentLoaded", carregarCampanhas);
+
 
