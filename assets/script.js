@@ -168,7 +168,7 @@ function carregarAvisos() {
                 <div class="aviso-botoes">
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
                   <a href="${linkAgenda}" target="_blank" class="btn-aviso" title="Abrir agenda">
-                    📅 Agendar
+                    📅 Colocar na Agenda!
                   </a>` : ""}
                 </div>
               </li>
@@ -291,7 +291,7 @@ function carregarCampanhas() {
                 <div class="campanha-botoes">
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
                   <a href="${linkAgenda}" target="_blank" class="btn-campanha" title="Abrir agenda">
-                    📅 Agendar
+                    📅 Colocar na Agenda!
                   </a>` : ""}
                 </div>
               </li>
@@ -303,5 +303,6 @@ function carregarCampanhas() {
 }
 
 document.addEventListener("DOMContentLoaded", carregarCampanhas);
+
 
 
