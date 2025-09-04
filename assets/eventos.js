@@ -4,7 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(eventos => {
       const container = document.getElementById("lista-eventos");
-      eventos.forEach(evento => {
+
+      // Filtra apenas eventos válidos
+      const eventosValidos = eventos.filter(e => 
+        e.titulo && e.titulo.trim() !== "" &&
+        e.imagem && e.imagem.trim() !== "" &&
+        e.linkInscricao && e.linkInscricao.trim() !== ""
+      );
+
+      // Se não houver eventos válidos, não exibe nada
+      if (eventosValidos.length === 0) {
+        return; // não insere nada no HTML
+      }
+
+      // Renderiza apenas eventos válidos
+      eventosValidos.forEach(evento => {
         const eventoDiv = document.createElement("div");
         eventoDiv.className = "evento-item";
 
@@ -27,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
       console.error("Erro ao carregar eventos:", error);
-      document.getElementById("lista-eventos").textContent = "Não foi possível carregar os eventos.";
+      // opcional: remover mensagem fixa e só logar no console
+      // document.getElementById("lista-eventos").textContent = "Não foi possível carregar os eventos.";
     });
 });
