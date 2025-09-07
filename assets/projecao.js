@@ -22,13 +22,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Limpa container
     container.innerHTML = "";
 
-    // Exibe todas as imagens (lado a lado ou empilhadas)
+    // Exibe todas as imagens (com zoom 20% e download no tamanho real)
     imagensRecentes.forEach(imgInfo => {
+      const link = document.createElement("a");
+      link.href = `../data/midia/${imgInfo.img_name}`;
+      link.download = imgInfo.img_name;
+
       const img = document.createElement("img");
       img.src = `../data/midia/${imgInfo.img_name}`;
       img.alt = "Projeção IBBV";
       img.style.margin = "10px";
-      container.appendChild(img);
+      img.style.width = "20%"; // Exibe em 20% do tamanho original
+      img.style.maxWidth = "250px"; // garante limite
+      img.style.borderRadius = "10px";
+      img.style.boxShadow = "0 0 10px rgba(255,255,255,0.2)";
+      img.style.cursor = "pointer";
+      img.style.transition = "transform 0.2s, box-shadow 0.2s";
+
+      img.addEventListener("mouseover", () => {
+        img.style.transform = "scale(1.1)";
+        img.style.boxShadow = "0 0 20px rgba(255,255,255,0.4)";
+      });
+
+      img.addEventListener("mouseout", () => {
+        img.style.transform = "scale(1)";
+        img.style.boxShadow = "0 0 10px rgba(255,255,255,0.2)";
+      });
+
+      link.appendChild(img);
+      container.appendChild(link);
     });
   } catch (error) {
     console.error("Erro ao carregar projeção:", error);
