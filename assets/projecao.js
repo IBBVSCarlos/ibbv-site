@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("container");
 
   try {
-    // sobe um nível (..), pois o JSON está em /data
     const res = await fetch("../data/projecao.json");
     const dados = await res.json();
 
@@ -11,17 +10,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    // Ordena pela data de inclusão (mais recente primeiro)
-    const ultimaImagem = dados.sort(
-      (a, b) => new Date(b.dt_inclusao) - new Date(a.dt_inclusao)
-    )[0];
+    // Descobre a data mais recente
+    const datas = dados.map(item => new Date(item.dt_inclusao));
+    const maxData = new Date(Math.max.apply(null, datas));
 
-    // Caminho correto para imagens em /data/midia
-    const img = document.createElement("img");
-    img.src = `../data/midia/${ultimaImagem.img_name}`;
-    img.alt = "Projeção IBBV";
+    // Filtra todas as imagens com a mesma data
+    const imagensRecentes = dados.filter(
+      item => new Date(item.dt_inclusao).getTime() === maxData.getTime()
+    );
+
+    // Limpa container
     container.innerHTML = "";
-    container.appendChild(img);
+
+    // Exibe todas as imagens (lado a lado ou empilhadas)
+    imagensRecentes.forEach(imgInfo => {
+      const img = document.createElement("img");
+      img.src = `../data/midia/${imgInfo.img_name}`;
+      img.alt = "Projeção IBBV";
+      img.style.margin = "10px";
+      container.appendChild(img);
+    });
   } catch (error) {
     console.error("Erro ao carregar projeção:", error);
     container.textContent = "Erro ao carregar projeção.";
