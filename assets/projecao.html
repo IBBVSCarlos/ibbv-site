@@ -28,10 +28,34 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
+
+    /* Botão flutuante */
+    .btn-voltar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1e90ff;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: background 0.3s ease;
+    }
+    .btn-voltar:hover {
+      background: #0d6efd;
+    }
   </style>
 </head>
 <body>
   <div id="container">Carregando projeção...</div>
+
+  <!-- Botão flutuante -->
+  <button class="btn-voltar" onclick="window.location.href='../index.html'">⌂</button>
+
   <script src="projecao.js"></script>
 </body>
 </html>
