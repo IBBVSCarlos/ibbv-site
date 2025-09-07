@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("container");
 
   try {
-    const res = await fetch("data/projecao.json");
+    // sobe um nível (..), pois o JSON está em /data
+    const res = await fetch("../data/projecao.json");
     const dados = await res.json();
 
     if (!dados || dados.length === 0) {
@@ -11,11 +12,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Ordena pela data de inclusão (mais recente primeiro)
-    const ultimaImagem = dados.sort((a, b) => new Date(b.dt_inclusao) - new Date(a.dt_inclusao))[0];
+    const ultimaImagem = dados.sort(
+      (a, b) => new Date(b.dt_inclusao) - new Date(a.dt_inclusao)
+    )[0];
 
-    // Exibe a imagem
+    // Caminho correto para imagens em /data/midia
     const img = document.createElement("img");
-    img.src = "imagens/" + ultimaImagem.img_name;
+    img.src = `../data/midia/${ultimaImagem.img_name}`;
     img.alt = "Projeção IBBV";
     container.innerHTML = "";
     container.appendChild(img);
