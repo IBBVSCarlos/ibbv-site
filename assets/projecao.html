@@ -13,21 +13,22 @@
       padding: 20px;
     }
 
+    /* Grid de miniaturas */
     #container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 15px;
       justify-items: center;
       align-items: center;
     }
 
     #container img {
-      width: 20%; /* Exibe em 20% do tamanho real */
+      width: 20%;
       max-width: 250px;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     #container img:hover {
@@ -35,7 +36,7 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.4);
     }
 
-    /* Botão flutuante de voltar */
+    /* Botão flutuante voltar */
     .btn-voltar {
       position: fixed;
       bottom: 20px;
@@ -52,9 +53,55 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1000;
     }
 
     .btn-voltar:hover {
+      background: #16a085;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.5);
+    }
+
+    /* Controles lightbox */
+    .lightbox-controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .lightbox-controls button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #1abc9c;
+      color: #fff;
+      transition: background 0.2s;
+    }
+
+    .lightbox-controls button:hover {
       background: #16a085;
     }
   </style>
@@ -62,8 +109,19 @@
 <body>
   <div id="container">Carregando projeções...</div>
 
-  <!-- Botão flutuante -->
+  <!-- Botão flutuante voltar -->
   <a href="../index.html" class="btn-voltar" title="Voltar à página inicial">🏠</a>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <img id="lb-img" src="" alt="Projeção IBBV">
+    <div class="lightbox-controls">
+      <button id="prev">⬅️ Anterior</button>
+      <button id="download">⬇️ Baixar</button>
+      <button id="next">➡️ Próximo</button>
+      <button id="close">❌ Fechar</button>
+    </div>
+  </div>
 
   <script src="projecao.js"></script>
 </body>
