@@ -31,22 +31,28 @@
       "executaEm": "2025-09-07"
     },
     {
-      "texto": "Reunião de Homens - 13/Set 19h30",
+      "texto": "Reunião de Homens - 04/Out 19h30",
       "imagem": "data/avisos/aUMM.png",
       "linkAgenda": "https://calendar.app.google/y6ujyY6a4kvxdNix9",
-      "executaEm": "2025-09-13"
+      "executaEm": "2025-10-04"
     },
     {
-      "texto": "Reunião de Mulheres - 13/Set 19h30",
+      "texto": "Reunião de Mulheres - 04/Out 19h30",
       "imagem": "data/avisos/aMCM.png",
       "linkAgenda": "https://calendar.app.google/hqmhWXjbSDS7Yb5D8",
-      "executaEm": "2025-09-13"
+      "executaEm": "2025-10-04"
     },
     {
-      "texto": "Reunião de Jovens - 14/Set - 10h45",
+      "texto": "Reunião de Jovens - 11/Out - 10h45",
       "imagem": "data/avisos/aUJB.png",
       "linkAgenda": "https://calendar.app.google/N2maNsQAo4zzaYxK7",
-      "executaEm": "2025-09-14"
+      "executaEm": "2025-10-11"
+    },
+        {
+      "texto": "Reunião de Jovens - 25/Out - 10h45",
+      "imagem": "data/avisos/aUJB.png",
+      "linkAgenda": "https://calendar.app.google/N2maNsQAo4zzaYxK7",
+      "executaEm": "2025-10-25"
     },
         {
       "texto": "Culto de Quarta-feira transferido para Terça-Feira, dia 16/09!!",
