@@ -249,7 +249,7 @@ h2 {
 }
 
 
-/* -------------------------------------------------------------------- AVISOS --------------------------------------------------------------------- */
+/* -------------------------------------------------------------------- AVISOS --------------------------------------------------------------------- 
 .imagem-modal {
   position: fixed;
   top: 0;
@@ -333,7 +333,7 @@ h2 {
   color: #333;
   transition: background-color 0.3s ease;
 }
-
+ ---------------------------------------------------- */
 /* Urgência por proximidade */
 .aviso-contador[data-status="urgente"] {
   background-color: #ffdddd;
@@ -796,4 +796,5 @@ footer a:focus {
   transform: translateY(-8px);
   transition: opacity 0.4s ease, transform 0.3s ease;
 }
+
 
