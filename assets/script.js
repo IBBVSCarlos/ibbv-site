@@ -146,7 +146,6 @@ function carregarAvisos() {
 
           const executa = new Date(ano, mes - 1, dia, 0, 0, 0, 0);
           const expira = new Date(ano, mes - 1, dia, 23, 59, 59, 999);
-
           const limitePublicacao = new Date(ano, mes - 1, dia - 7, 0, 0, 0, 0);
 
           return hoje >= limitePublicacao && hoje <= expira;
@@ -154,16 +153,14 @@ function carregarAvisos() {
         .sort((a, b) => new Date(a.executaEm) - new Date(b.executaEm));
 
       listaAvisos.innerHTML = avisosValidos.length
-        ? avisosValidos.map(({ texto, imagem, linkAgenda, executaEm }, index) => {
+        ? avisosValidos.map(({ texto, imagem, linkAgenda }, index) => {
             const idContador = `contador-${index}`;
-
             const imagemPreview = imagem && imagem.trim() !== "" ? imagem : null;
-            const imagemReal = imagemPreview ? imagemPreview.replace(/^.*\/a/, 'img/') : null;
 
             return `
               <li class="aviso-item">
                 <p class="aviso-texto">${texto.replace(' - ', '<br>').replace(' - ', ' - ')}</p>
-                ${imagemPreview ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img" onclick="ampliarImagem('${imagemReal}')">` : ""}
+                ${imagemPreview ? `<img src="${imagemPreview}" alt="${texto}" class="aviso-img">` : ""}
                 <div class="aviso-contador" id="${idContador}">⏳ Carregando...</div>
                 <div class="aviso-botoes">
                   ${linkAgenda && linkAgenda.trim() !== "" ? `
@@ -197,6 +194,7 @@ function carregarAvisos() {
     })
     .catch(err => console.error('Erro ao carregar avisos:', err));
 }
+
 // =====================================
 // ⏳ Contador regressivo
 // =====================================
@@ -303,6 +301,7 @@ function carregarCampanhas() {
 }
 
 document.addEventListener("DOMContentLoaded", carregarCampanhas);
+
 
 
 
