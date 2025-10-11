@@ -1,10 +1,10 @@
 {
   "avisos": [
     {
-      "texto": "Ceia - 13/Jul - 09h00",
+      "texto": "Ceia - 12/Out - 19h00",
       "imagem": "data/avisos/aCEIA.png",
-      "linkAgenda": "",
-      "executaEm": "2025-07-13"
+      "linkAgenda": "https://calendar.app.google/tftT8fXaPs4UUFDt9",
+      "executaEm": "2025-10-12"
     },
     {
       "texto": "Atletas de Cristo - 11/Ago - 20h00",
@@ -31,16 +31,16 @@
       "executaEm": "2025-09-07"
     },
     {
-      "texto": "Reunião de Homens - 04/Out 19h30",
+      "texto": "Reunião de Homens - 11/Out 19h30",
       "imagem": "data/avisos/aUMM.png",
-      "linkAgenda": "https://calendar.app.google/4nUwAh6bXR2Yopvc9",
-      "executaEm": "2025-10-04"
+      "linkAgenda": "https://calendar.app.google/YDjWnJqYo9PzSaeB6",
+      "executaEm": "2025-10-11"
     },
     {
-      "texto": "Reunião de Mulheres - 04/Out 19h30",
+      "texto": "Reunião de Mulheres - 11/Out 19h30",
       "imagem": "data/avisos/aMCM.png",
-      "linkAgenda": "https://calendar.app.google/pmysWVBfdtc1pUbF6",
-      "executaEm": "2025-10-04"
+      "linkAgenda": "https://calendar.app.google/SNR4MSCnb3cdGAgC8",
+      "executaEm": "2025-10-11"
     },
     {
       "texto": "Reunião de Jovens - 12/Out - 10h45",
